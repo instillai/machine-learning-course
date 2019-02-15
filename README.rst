@@ -1,0 +1,98 @@
+
+###################################################
+Machine Learning for Everybody
+###################################################
+
+.. image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
+    :target: https://github.com/pyairesearch/machine-learning-for-everybody/pulls
+.. image:: https://badges.frapsoft.com/os/v2/open-source.png?v=103
+    :target: https://github.com/ellerbrock/open-source-badge/
+.. image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
+      :target: https://www.python.org/
+.. image:: https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg
+      :target: https://github.com/pyairesearch/machine-learning-for-everybody/graphs/contributors
+.. image:: https://img.shields.io/twitter/follow/pyairesearch.svg?label=Follow&style=social
+      :target: https://twitter.com/pyairesearch
+
+
+
+##################
+Table of Contents
+##################
+.. contents::
+  :local:
+  :depth: 4
+
+***************
+Introduction
+***************
+
+The purpose of this project is to introduce a shortcut to developers and researcher
+for finding useful resources about ``Generative Adversarial Networks``.
+
+============
+Motivation
+============
+
+
+------------------------------------------------------------
+What's the point of this open source project?
+------------------------------------------------------------
+
+
+
+----------------------------------------------------------
+Conditional Generative Adversarial Networks (CGAN)
+----------------------------------------------------------
+
+.. _conganpaper: https://arxiv.org/abs/1411.1784
+.. _congancode: https://github.com/zhangqianhui/Conditional-GAN
+
+.. _photorealpaper: https://arxiv.org/pdf/1609.04802.pdf
+.. _photorealcode: https://github.com/tensorlayer/srgan
+
+.. _im2impaper: https://arxiv.org/abs/1611.07004
+.. _im2imcode: https://github.com/phillipi/pix2pix
+
+.. _vismanpaper: https://arxiv.org/abs/1609.03552
+.. _vismancode: https://github.com/junyanz/iGAN
+
+
+
+
++--------------------------------------------------------------------+-------------------------------+---------------------------+------------------------------------------------+
+| Title                                                              |    Text                       |    Software               |    Citation                                    |
++====================================================================+===============================+===========================+================================================+
+| Conditional generative adversarial nets                            | `Paper <conganpaper_>`_       | `Code <congancode_>`_     |  Rate :star2: :star2: :star2: :star2: :star2:  |
++--------------------------------------------------------------------+-------------------------------+---------------------------+------------------------------------------------+
+| Photo-realistic single image super-resolution using a GAN          | `Paper <photorealpaper_>`_    | `Code <photorealcode_>`_  |  Rate :star2: :star2: :star2: :star2:          |
++--------------------------------------------------------------------+-------------------------------+---------------------------+------------------------------------------------+
+| Image-to-Image Translation with Conditional Adversarial Networks   | `Paper <im2impaper_>`_        | `Code <im2imcode_>`_      |  Rate :star2: :star2: :star2: :star2:          |
++--------------------------------------------------------------------+-------------------------------+---------------------------+------------------------------------------------+
+| Generative Visual Manipulation on the Natural Image Manifold       | `Paper <vismanpaper_>`_       | `Code <vismancode_>`_     |  Rate :star2: :star2:                          |
++--------------------------------------------------------------------+-------------------------------+---------------------------+------------------------------------------------+
+
+
+
+========================
+Pull Request Process
+========================
+
+Please consider the following criterions in order to help us in a better way:
+
+1. The pull request is mainly expected to be a link suggestion.
+2. Please make sure your suggested resources are not obsolete or broken.
+3. Ensure any install or build dependencies are removed before the end of the layer when doing a
+   build and creating a pull request.
+4. Add comments with details of changes to the interface, this includes new environment
+   variables, exposed ports, useful file locations and container parameters.
+5. You may merge the Pull Request in once you have the sign-off of at least one other developer, or if you
+   do not have permission to do that, you may request the owner to merge it for you if you believe all checks are passed.
+
+========================
+Final Note
+========================
+
+We are looking forward to your kind feedback. Please help us to improve this open source project and make our work better.
+For contribution, please create a pull request and we will investigate it promptly. Once again, we appreciate
+your kind feedback and support.
