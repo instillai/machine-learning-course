@@ -11,8 +11,8 @@ Machine Learning for Everybody
       :target: https://www.python.org/
 .. image:: https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg
       :target: https://github.com/pyairesearch/machine-learning-for-everybody/graphs/contributors
-.. image:: https://img.shields.io/twitter/follow/pyairesearch.svg?label=Follow&style=social
-      :target: https://twitter.com/pyairesearch
+.. image:: https://img.shields.io/twitter/follow/machinemindset.svg?label=Follow&style=social
+      :target: https://twitter.com/machinemindset
 
 
 
