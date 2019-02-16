@@ -41,9 +41,13 @@ What's the point of this open source project?
 
 
 
-----------------------------------------------------------
-Conditional Generative Adversarial Networks (CGAN)
-----------------------------------------------------------
+=====================
+Machine Learning
+=====================
+
+------------------------------------------------------------
+Overview of machine learning
+------------------------------------------------------------
 
 .. _conganpaper: https://arxiv.org/abs/1411.1784
 .. _congancode: https://github.com/zhangqianhui/Conditional-GAN
@@ -63,13 +67,105 @@ Conditional Generative Adversarial Networks (CGAN)
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
 | Title                                                              |    Text                       |    Software               |
 +====================================================================+===============================+===========================+
-| Somthing                                                           | `Paper <conganpaper_>`_       | `Code <congancode_>`_     |
+| Linear Regression                                                  | `Paper <conganpaper_>`_       | `Code <congancode_>`_     |
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
-| Something                                                          | `Paper <photorealpaper_>`_    | `Code <photorealcode_>`_  |
+| overfitting                                                        | `Paper <photorealpaper_>`_    | `Code <photorealcode_>`_  |
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
-| sss                                                                | `Paper <im2impaper_>`_        | `Code <im2imcode_>`_      |
+| regularization                                                     | `Paper <im2impaper_>`_        | `Code <im2imcode_>`_      |
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
-| asdads                                                             | `Paper <vismanpaper_>`_       | `Code <vismancode_>`_     |
+| cross-validation                                                   | `Paper <vismanpaper_>`_       | `Code <vismancode_>`_     |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+
+
+------------------------------------------------------------
+Supervised learning
+------------------------------------------------------------
+
+.. _conganpaper: https://arxiv.org/abs/1411.1784
+.. _congancode: https://github.com/zhangqianhui/Conditional-GAN
+
+.. _photorealpaper: https://arxiv.org/pdf/1609.04802.pdf
+.. _photorealcode: https://github.com/tensorlayer/srgan
+
+.. _im2impaper: https://arxiv.org/abs/1611.07004
+.. _im2imcode: https://github.com/phillipi/pix2pix
+
+.. _vismanpaper: https://arxiv.org/abs/1609.03552
+.. _vismancode: https://github.com/junyanz/iGAN
+
+
+
+
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Title                                                              |    Text                       |    Software               |
++====================================================================+===============================+===========================+
+| Decision trees                                                     | `Paper <conganpaper_>`_       | `Code <congancode_>`_     |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Naive Bayes                                                        | `Paper <photorealpaper_>`_    | `Code <photorealcode_>`_  |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Logistic Regression                                                | `Paper <im2impaper_>`_        | `Code <im2imcode_>`_      |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Support Vector Machines                                            | `Paper <vismanpaper_>`_       | `Code <vismancode_>`_     |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+
+
+
+------------------------------------------------------------
+Unsupervised learning
+------------------------------------------------------------
+
+.. _conganpaper: https://arxiv.org/abs/1411.1784
+.. _congancode: https://github.com/zhangqianhui/Conditional-GAN
+
+.. _photorealpaper: https://arxiv.org/pdf/1609.04802.pdf
+.. _photorealcode: https://github.com/tensorlayer/srgan
+
+.. _im2impaper: https://arxiv.org/abs/1611.07004
+.. _im2imcode: https://github.com/phillipi/pix2pix
+
+.. _vismanpaper: https://arxiv.org/abs/1609.03552
+.. _vismancode: https://github.com/junyanz/iGAN
+
+
+
+
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Title                                                              |    Text                       |    Software               |
++====================================================================+===============================+===========================+
+| clustering                                                         | `Paper <conganpaper_>`_       | `Code <congancode_>`_     |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Principal Components Analysis                                      | `Paper <photorealpaper_>`_    | `Code <photorealcode_>`_  |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+
+------------------------------------------------------------
+Deep Learning
+------------------------------------------------------------
+
+.. _conganpaper: https://arxiv.org/abs/1411.1784
+.. _congancode: https://github.com/zhangqianhui/Conditional-GAN
+
+.. _photorealpaper: https://arxiv.org/pdf/1609.04802.pdf
+.. _photorealcode: https://github.com/tensorlayer/srgan
+
+.. _im2impaper: https://arxiv.org/abs/1611.07004
+.. _im2imcode: https://github.com/phillipi/pix2pix
+
+.. _vismanpaper: https://arxiv.org/abs/1609.03552
+.. _vismancode: https://github.com/junyanz/iGAN
+
+
+
+
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Title                                                              |    Text                       |    Software               |
++====================================================================+===============================+===========================+
+| Neural Networks Overview                                           | `Paper <conganpaper_>`_       | `Code <congancode_>`_     |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Convolutional Neural Networks                                      | `Paper <photorealpaper_>`_    | `Code <photorealcode_>`_  |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Recurrent Neural Networks                                          | `Paper <im2impaper_>`_        | `Code <im2imcode_>`_      |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Autoencoders                                                       | `Paper <vismanpaper_>`_       | `Code <vismancode_>`_     |
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
 
 
