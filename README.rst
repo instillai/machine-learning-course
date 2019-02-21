@@ -27,8 +27,6 @@ Table of Contents
 Introduction
 ***************
 
-The purpose of this project is to introduce a shortcut to developers and researcher
-for finding useful resources about ``Generative Adversarial Networks``.
 
 ============
 Motivation
