@@ -21,7 +21,7 @@ testing set. This is the simplest form of cross-validation techniques,
 and is useful if you have a large amount of data or need to implement
 validation quickly and easily.
 
-.. figure:: _img/holdout.png
+.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/holdout.png
    :scale: 50 %
    :alt: holdout method
 
@@ -46,7 +46,7 @@ test and training data. The holdout method is performed using each
 combination of data, and the results are averaged to find a total error
 estimation.
 
-.. figure:: _img/kfold.png
+.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/kfold.png
    :scale: 50 %
    :alt: kfold method
 
@@ -75,7 +75,7 @@ be trained and tested as follows:
 Where P is a test point, and T is a training point. Below is another
 visualization of LPOCV:
 
-.. figure:: _img/LPOCV.png
+.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/LPOCV.png
    :scale: 50 %
    :alt: kfold method
 
@@ -95,7 +95,7 @@ there are data points. LOOCV can also be seen as K-Fold Cross
 Validation, where the number of folds is equal to the number of data
 points.
 
-.. figure:: _img/LOOCV.png
+.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/LOOCV.png
    :scale: 50 %
    :alt: kfold method
 
