@@ -29,7 +29,7 @@ validation quickly and easily.
 
    <!-- http://scott.fortmann-roe.com/docs/docs/MeasuringError/holdout.png -->
 
-|Holdout Method|
+|HoldoutMethod|
 
 Typically the holdout method involves splitting a dataset into 20-30%
 test data and the rest as training data. These numbers can vary - a
@@ -64,7 +64,7 @@ estimation.
 
    <!-- http://scott.fortmann-roe.com/docs/docs/MeasuringError/holdout.png -->
 
-|K-Fold Cross Validation|
+|K-FoldCrossValidation|
 
 A "fold" here is a unique section of test data. For instance, if you
 have 100 data points and use 10 folds, each fold contains 10 test
