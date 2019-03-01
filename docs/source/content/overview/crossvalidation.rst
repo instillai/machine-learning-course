@@ -21,13 +21,11 @@ testing set. This is the simplest form of cross-validation techniques,
 and is useful if you have a large amount of data or need to implement
 validation quickly and easily.
 
-.. raw:: html
+.. figure:: _img/holdout.png
+   :scale: 50 %
+   :alt: holdout method
 
-   <!-- TODO: Let's make our own graphics in PowerPoint -->
-
-.. raw:: html
-
-   <!-- http://scott.fortmann-roe.com/docs/docs/MeasuringError/holdout.png -->
+   References
 
 |HoldoutMethod|
 
@@ -40,15 +38,6 @@ This lack of training or bias can lead to
 [Underfitting/Overfitting](TODO: Link to under/overfitting) of our
 model.
 
-.. raw:: html
-
-   <!-- TODO:
-   Let's explore the holdout method using [sklearn](https://scikit-learn.org), a Python machine-learning library:
-
-   ```python
-
-   ```
-   -->
 
 K-Fold Cross Validation
 -----------------------
