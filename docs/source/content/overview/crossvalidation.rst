@@ -80,7 +80,48 @@ Leave-P-Out / Leave-One-Out Cross Validation
 Leave-P-Out Cross Validation (LPOCV) tests a model by using every
 possible combination of P test data points on a model. As a simple
 example, if you have 3 data points and use 2 test points, the model will
-be trained an
+be trained and tested as follows:
 
-.. |Holdout Method| image:: http://scott.fortmann-roe.com/docs/docs/MeasuringError/holdout.png
-.. |K-Fold Cross Validation| image:: http://scott.fortmann-roe.com/docs/docs/MeasuringError/crossvalidation.png
+::
+
+   [P][P][T]
+   [P][T][P]
+   [T][P][P]
+
+Where P is a test point, and T is a training point. Below is another
+visualization of LPOCV:
+
+.. raw:: html
+
+   <!-- http://www.ebc.cat/2017/01/31/cross-validation-strategies/ -->
+
+|LPOCV|
+
+LPOCV can provide an extremely accurate error estimation, but can
+quickly become exhaustive for large datasets. The amount of testing
+iterations a model has to go through using LPOCV can be calculated using
+a mathematical `combination`_ n C P, with n being our total number of
+data points. We can see, for instance, that a LPOCV run using a dataset
+of 10 points with 3 test points would require 10 C 3 = 120 iterations.
+
+Because of this, Leave-One-Out Cross Validation (LOOCV) is a commonly
+used cross-validation method. It is just a subset of LPOCV, with P being
+1. This allows us to evaluate a model in the same number of steps as
+there are data points. LOOCV can also be seen as K-Fold Cross
+Validation, where the number of folds is equal to the number of data
+points.
+
+.. raw:: html
+
+   <!-- http://www.ebc.cat/2017/01/31/cross-validation-strategies/ -->
+
+|LOOCV|
+
+Similar to K-Fold Cross Validation, LPOCV and LOOCV train a model using
+the full dataset. They are particularly useful when you're working with
+a small dataset, but incur performance tradeoffs.
+
+.. _combination: https://en.wikipedia.org/wiki/Combination
+
+.. |LPOCV| image:: http://www.ebc.cat/wp-content/uploads/2017/01/leave_p_out.png
+.. |LOOCV| image:: http://www.ebc.cat/wp-content/uploads/2017/01/leave_one_out.png
