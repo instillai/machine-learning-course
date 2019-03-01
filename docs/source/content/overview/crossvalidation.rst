@@ -25,9 +25,6 @@ validation quickly and easily.
    :scale: 50 %
    :alt: holdout method
 
-   References
-
-|HoldoutMethod|
 
 Typically the holdout method involves splitting a dataset into 20-30%
 test data and the rest as training data. These numbers can vary - a
@@ -49,11 +46,9 @@ test and training data. The holdout method is performed using each
 combination of data, and the results are averaged to find a total error
 estimation.
 
-.. raw:: html
-
-   <!-- http://scott.fortmann-roe.com/docs/docs/MeasuringError/holdout.png -->
-
-|K-FoldCrossValidation|
+.. figure:: _img/kfold.png
+   :scale: 50 %
+   :alt: kfold method
 
 A "fold" here is a unique section of test data. For instance, if you
 have 100 data points and use 10 folds, each fold contains 10 test
@@ -80,11 +75,11 @@ be trained and tested as follows:
 Where P is a test point, and T is a training point. Below is another
 visualization of LPOCV:
 
-.. raw:: html
+.. figure:: _img/LPOCV.png
+   :scale: 50 %
+   :alt: kfold method
 
-   <!-- http://www.ebc.cat/2017/01/31/cross-validation-strategies/ -->
-
-|LPOCV|
+   Ref: http://www.ebc.cat/2017/01/31/cross-validation-strategies/
 
 LPOCV can provide an extremely accurate error estimation, but can
 quickly become exhaustive for large datasets. The amount of testing
@@ -100,11 +95,12 @@ there are data points. LOOCV can also be seen as K-Fold Cross
 Validation, where the number of folds is equal to the number of data
 points.
 
-.. raw:: html
+.. figure:: _img/LOOCV.png
+   :scale: 50 %
+   :alt: kfold method
 
-   <!-- http://www.ebc.cat/2017/01/31/cross-validation-strategies/ -->
+   Ref: http://www.ebc.cat/2017/01/31/cross-validation-strategies/
 
-|LOOCV|
 
 Similar to K-Fold Cross Validation, LPOCV and LOOCV train a model using
 the full dataset. They are particularly useful when you're working with
