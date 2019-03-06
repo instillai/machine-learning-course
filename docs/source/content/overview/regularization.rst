@@ -36,7 +36,7 @@ get penalized more. The tuning parameter basically lets us adjust the regulariza
 by changing its value. The higher the ``lambda`` the less impact the weights have on the total cost. Below we’ll
 cover some methods of regularization and when they are good to use. When looking through the code, note the import statements used for each model.
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/latex-lasso-eq.png
+.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/latex-lasso-eq.gif
 
 The equation above is an example of the regularization with w representing our weights.
 Ridge regression forces weights to approach zero but will never cause them to be zero. This means that
