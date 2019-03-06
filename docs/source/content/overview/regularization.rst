@@ -44,3 +44,16 @@ all the features will be represented in our model but overfitting will be minimi
 good choice when we don’t have a very large number of features and just want to avoid overfitting.
 
 .. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Regularization_Ridge.png
+
+In the figure above, the black line represents a model without Ridge regression applied and the red line represents a model with Ridge regression applied.
+Note how much smoother the red line is. It will probably do a better job against future data.
+
+In the included file, ``regularization_ridge.py``, the code that adds ridge regression is:
+
+.. code-block:: python
+    regModel = Pipeline([('poly', PolynomialFeatures(degree=6)), \
+    ('ridge', Ridge(alpha=5.0))])
+
+Adding the Ridge regression is as simple as adding an additional argument to our Pipeline call.
+Here, the parameter alpha represents our tuning variable. For additional information on Ridge regression
+in scikit-learn, consult https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html.
