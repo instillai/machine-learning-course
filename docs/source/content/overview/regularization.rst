@@ -15,6 +15,6 @@ We obviously want our models to make predictions that are accurate but can they 
 there are two main components: the underlying pattern and noise. We only want to match the pattern and not the noise. Consider
 the figures below that represent quadratic data.
 
-.. figure:: Regularization_Linear.png
-.. figure:: Regularization_Quadratic.png
-.. figure:: Regularization_Polynomial.png
+.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Regularization_Linear.png
+.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Regularization_Quadratic.png
+.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Regularization_Polynomial.png
