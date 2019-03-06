@@ -36,4 +36,4 @@ get penalized more. The tuning parameter basically lets us adjust the regulariza
 by changing its value. The higher the ``lambda`` the less impact the weights have on the total cost. Below we’ll
 cover some methods of regularization and when they are good to use. When looking through the code, note the import statements used for each model.
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/latex-lasso.png
+.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/latex-lasso-eq.png
