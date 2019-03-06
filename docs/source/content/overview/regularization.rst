@@ -36,6 +36,28 @@ get penalized more. The tuning parameter basically lets us adjust the regulariza
 by changing its value. The higher the λ the less impact the weights have on the total cost. Below we’ll
 cover some methods of regularization and when they are good to use. When looking through the code, note the import statements used for each model.
 
-.. math::
+math.rst::
 
-   \frac{ \sum_{t=0}^{N}f(t,k) }{N}
+        .. role:: raw-latex(raw)
+            :format: latex html
+
+        .. raw:: html
+
+           <script type="text/javascript" src="http://localhost/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        This: :raw-latex:`\((x+a)^3\)`
+
+        this: :raw-latex:`\(W \approx \sum{f(x_k) \Delta x}\)`
+
+        this: :raw-latex:`\(W = \int_{a}^{b}{f(x) dx}\)`
+
+        and this:
+
+        .. raw:: latex html
+
+           \[ \frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} =
+           1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}}
+           {1+\frac{e^{-8\pi}} {1+\ldots} } } } \]
+
+        When :raw-latex:`\(a \ne 0\)`, there are two solutions to :raw-latex:`\(ax^2 + bx + c = 0\)` and they are
+        :raw-latex:`\(x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\)`
