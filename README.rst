@@ -47,32 +47,30 @@ Machine Learning
 Overview of machine learning
 ------------------------------------------------------------
 
-.. _conganpaper: https://arxiv.org/abs/1411.1784
-.. _congancode: https://github.com/zhangqianhui/Conditional-GAN
+.. _lrtutorial: docs/source/content/overview/linear-regression.rst
 
-.. _photorealpaper: https://arxiv.org/pdf/1609.04802.pdf
-.. _photorealcode: https://github.com/tensorlayer/srgan
+.. _overtutorial: docs/source/content/overview/overfitting.rst
 
-.. _im2impaper: https://arxiv.org/abs/1611.07004
-.. _im2imcode: https://github.com/phillipi/pix2pix
+.. _regtutorial: docs/source/content/overview/regularization.rst
+.. _regpython: code/overview/regularization
 
-.. _vismanpaper: https://arxiv.org/abs/1609.03552
-.. _vismancode: https://github.com/junyanz/iGAN
+.. _crosstutorial: docs/source/content/overview/crossvalidation.rst
+.. _crosspython: code/overview/cross-validation
 
 
 
 
-+--------------------------------------------------------------------+-------------------------------+---------------------------+
-| Title                                                              |    Text                       |    Software               |
-+====================================================================+===============================+===========================+
-| Linear Regression                                                  | `Paper <conganpaper_>`_       | `Code <congancode_>`_     |
-+--------------------------------------------------------------------+-------------------------------+---------------------------+
-| overfitting                                                        | `Paper <photorealpaper_>`_    | `Code <photorealcode_>`_  |
-+--------------------------------------------------------------------+-------------------------------+---------------------------+
-| regularization                                                     | `Paper <im2impaper_>`_        | `Code <im2imcode_>`_      |
-+--------------------------------------------------------------------+-------------------------------+---------------------------+
-| cross-validation                                                   | `Paper <vismanpaper_>`_       | `Code <vismancode_>`_     |
-+--------------------------------------------------------------------+-------------------------------+---------------------------+
++--------------------------------------------------------------------+-------------------------------+--------------------------------+
+| Title                                                              |    Code                       |    Document                    |
++====================================================================+===============================+================================+
+| Linear Regression                                                  | `Python <lrpython_>`_         | `Tutorial <lrtutorial_>`_      |
++--------------------------------------------------------------------+-------------------------------+--------------------------------+
+| overfitting                                                        | `Python <overpython_>`_       | `Tutorial <overtutorial_>`_    |
++--------------------------------------------------------------------+-------------------------------+--------------------------------+
+| regularization                                                     | `Python <regpython_>`_        | `Tutorial <regtutorial_>`_     |
++--------------------------------------------------------------------+-------------------------------+--------------------------------+
+| cross-validation                                                   | `Python <crosspython_>`_      | `Tutorial <crosstutorial_>`_   |
++--------------------------------------------------------------------+-------------------------------+--------------------------------+
 
 
 ------------------------------------------------------------
