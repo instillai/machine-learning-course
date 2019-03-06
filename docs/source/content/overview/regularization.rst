@@ -35,3 +35,7 @@ of our weights and λ is a tuning parameter. The result is that models with high
 get penalized more. The tuning parameter basically lets us adjust the regularization to get better results
 by changing its value. The higher the λ the less impact the weights have on the total cost. Below we’ll
 cover some methods of regularization and when they are good to use. When looking through the code, note the import statements used for each model.
+
+.. math::
+
+   \frac{ \sum_{t=0}^{N}f(t,k) }{N}
