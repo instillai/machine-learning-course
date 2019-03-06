@@ -63,10 +63,10 @@ Two common terms that appear in cost functions are the **error** and **squared e
 
 Cost functions are important in machine learning because it’s the main way to measure success.  If we craft a model with a low cost, our program can make small changes, knowing that it is close to the best solution.  If the result of the cost function is high, the program can make a larger change to the model to more quickly approach the best solution.  Get comfortable with this idea, since you’ll see it show up in most of the modules for this course.
 
-*******
-Methods
-*******
+# *******
+# Methods
+# *******
 
-======================
-Ordinary Least Squares
-======================
+# ======================
+# Ordinary Least Squares
+# ======================
