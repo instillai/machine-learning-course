@@ -36,7 +36,13 @@ get penalized more. The tuning parameter basically lets us adjust the regulariza
 by changing its value. The higher the ``lambda`` the less impact the weights have on the total cost. Below we’ll
 cover some methods of regularization and when they are good to use. When looking through the code, note the import statements used for each model.
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/latex-lasso-eq.gif
+-----------------
+Ridge Regression
+-----------------
+
+Ridge regression is a type of regularization where the function R involves summing the squares of our weights. In statistics, this would be called an L2 norm.
+
+.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/latex-ridge-eq.gif
 
 The equation above is an example of the regularization with w representing our weights.
 Ridge regression forces weights to approach zero but will never cause them to be zero. This means that
@@ -57,3 +63,8 @@ In the included file, ``regularization_ridge.py``, the code that adds ridge regr
 Adding the Ridge regression is as simple as adding an additional argument to our Pipeline call.
 Here, the parameter alpha represents our tuning variable. For additional information on Ridge regression
 in scikit-learn, consult https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html.
+
+Lasso Regression
+Lasso regression is a type of regularization where the function R involves summing the absolute values of our weights. In statistics, this would be called an L1 norm.
+
+The equation above is an example of the regularization with w representing our weights. Notice how similar ridge regression and lasso regression are. The only noticeable difference is that square on the weights. This happens to have a big impact on what they do. Unlike ridge regression, lasso regression can force weights to be zero. This means that our resulting model may not even consider some of the features! In the case we have a million features where only a small amount are important, this is an incredibly useful result. Lasso regression lets us avoid overfitting and focus on a small subset of all our features. In the original scenario, we would end up ignoring those factors that don’t have as much impact on our sandwich eating experience.
