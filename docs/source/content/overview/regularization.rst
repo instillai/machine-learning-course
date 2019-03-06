@@ -40,7 +40,7 @@ cover some methods of regularization and when they are good to use. When looking
 Ridge Regression
 -----------------
 
-Ridge regression is a type of regularization where the function R involves summing the squares of our weights. In statistics, this would be called an L2 norm.
+``Ridge regression`` is a type of regularization where the function R involves summing the squares of our weights. In statistics, this would be called an L2 norm.
 
 .. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/latex-ridge-eq.gif
 
@@ -64,7 +64,41 @@ Adding the Ridge regression is as simple as adding an additional argument to our
 Here, the parameter alpha represents our tuning variable. For additional information on Ridge regression
 in scikit-learn, consult https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html.
 
+-----------------
 Lasso Regression
-Lasso regression is a type of regularization where the function R involves summing the absolute values of our weights. In statistics, this would be called an L1 norm.
+-----------------
 
-The equation above is an example of the regularization with w representing our weights. Notice how similar ridge regression and lasso regression are. The only noticeable difference is that square on the weights. This happens to have a big impact on what they do. Unlike ridge regression, lasso regression can force weights to be zero. This means that our resulting model may not even consider some of the features! In the case we have a million features where only a small amount are important, this is an incredibly useful result. Lasso regression lets us avoid overfitting and focus on a small subset of all our features. In the original scenario, we would end up ignoring those factors that don’t have as much impact on our sandwich eating experience.
+``Lasso regression`` is a type of regularization where the function R involves summing the absolute values of our weights. In statistics, this would be called an L1 norm.
+
+.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/latex-lasso-eq.gif
+
+
+The equation above is an example of the regularization with w representing our weights. Notice how similar ridge regression and lasso regression are.
+The only noticeable difference is that square on the weights. This happens to have a big impact on what they do. Unlike ridge regression,
+lasso regression can force weights to be zero. This means that our resulting model may not even consider some of the features! In the case
+we have a million features where only a small amount are important, this is an incredibly useful result. Lasso regression lets us avoid overfitting
+and focus on a small subset of all our features. In the original scenario, we would end up ignoring those factors that don’t have as much impact on
+our sandwich eating experience.
+
+.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Regularization_Lasso.png
+
+In the figure above, the black line represents a model without Lasso regression applied and the red line represents a model with Lasso
+regression applied. The red line is much smoother than the black line. The Lasso regression was applied to a model of degree 6 but the
+result looks like its degree 2! The Lasso model will probably do a better job against future data.
+
+In the included file, ``regularization_lasso.py``, the code that adds Lasso regression is:
+
+.. code-block:: python
+  regModel = Pipeline([('poly', PolynomialFeatures(degree=6)), \
+  ('lasso', Lasso(alpha=0.1, max_iter=100000))])
+
+Adding the Lasso regression is as simple as adding the Ridge regression. Here, the parameter alpha represents our tuning variable and ``max_iter``
+represents the max number of iterations to run for. For additional information on Lasso regression in scikit-learn,
+consult https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html.
+
+--------
+Summary
+--------
+
+With regularization, we have found a good way to avoid overfitting our data. We also have some methods of regularization for different situations.
+Some of you may be wondering how to choose that tuning parameter to get the best results. That will be covered in another section.
