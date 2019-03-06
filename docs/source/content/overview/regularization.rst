@@ -37,3 +37,10 @@ by changing its value. The higher the ``lambda`` the less impact the weights hav
 cover some methods of regularization and when they are good to use. When looking through the code, note the import statements used for each model.
 
 .. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/latex-lasso-eq.png
+
+The equation above is an example of the regularization with w representing our weights.
+Ridge regression forces weights to approach zero but will never cause them to be zero. This means that
+all the features will be represented in our model but overfitting will be minimized. Ridge regression is a
+good choice when we don’t have a very large number of features and just want to avoid overfitting.
+
+.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Regularization_Ridge.png
