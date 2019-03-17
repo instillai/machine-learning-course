@@ -1,7 +1,7 @@
 # Decision Trees
 
 Decision trees are a classifier in machine learning that allow us to make predictions based on previous data.
-They are like a series of sequential "if ... then" statements you feed new data into.
+They are like a series of sequential "if ... then" statements you feed new data into to get a result.
 
 To demonstrate decision trees, let's take a look at an example.
 Imagine we want to predict whether Mike is going to go grocery shopping on any given day.
@@ -37,21 +37,24 @@ Now that we have all pure subsets, we can create our final decision tree:
 
 ![Tree 4](/decision_tree_4.png)
 
-## Classification Trees
+## Classification and Regression Trees
 
-TODO
-
-## Regression Trees
-
-TODO
+Decision tree algorithms are also known as CART, or Classification and Regression Trees.
+A **Classification Tree**, like the one shown above, is used to get a result from a set of possible values.
+A **Regression Tree** is a decision tree where the result is a continuous value, such as the price of a car.
 
 ## Splitting
 
-TODO
+Decision trees are created through a process of splitting, but how do we create the tree?
+We need a recursive algorithm that determines the best attributes to split on.
+One such algorithm is the **greedy algorithm**:
 
-### Recursive Binary
+1. Starting from the root, we create a split for each attribute.
+2. For each created split, calculate the cost of the split.
+3. Choose the split that costs the least.
+4. Recurse into the sub-trees and continue from step 1.
 
-TODO
+This process is repeated until all nodes have the same value as the target result, or splitting adds no value to a prediction. This algorithm has the root node as the best classifier.
 
 ### Cost of Splitting
 
