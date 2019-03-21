@@ -80,8 +80,9 @@ Supervised learning
 .. _dtdoc: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/supervised/decisiontrees.rst
 .. _dtcode: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/code/supervised/DecisionTree/decisiontrees.py
 
-
 .. _knndoc: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/supervised/knn.rst
+
+.. _linearsvmdoc: 
 
 
 
