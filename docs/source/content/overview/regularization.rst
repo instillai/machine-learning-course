@@ -15,9 +15,9 @@ We obviously want our models to make predictions that are accurate but can they 
 there are two main components: the underlying pattern and noise. We only want to match the pattern and not the noise. Consider
 the figures below that represent quadratic data.
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Regularization_Linear.png
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Regularization_Quadratic.png
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Regularization_Polynomial.png
+.. figure:: _img/Regularization_Linear.png
+.. figure:: _img/Regularization_Quadratic.png
+.. figure:: _img/Regularization_Polynomial.png
 
 The first model underfits the data, the second model looks to be a good fit for the data,
 and the third model is a very close fit for the data. Of all the models above, the third
@@ -42,14 +42,14 @@ Ridge Regression
 
 ``Ridge regression`` is a type of regularization where the function R involves summing the squares of our weights. In statistics, this would be called an L2 norm.
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/latex-ridge-eq.gif
+.. figure:: _img/latex-ridge-eq.gif
 
 The equation above is an example of the regularization with w representing our weights.
 Ridge regression forces weights to approach zero but will never cause them to be zero. This means that
 all the features will be represented in our model but overfitting will be minimized. Ridge regression is a
 good choice when we don’t have a very large number of features and just want to avoid overfitting.
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Regularization_Ridge.png
+.. figure:: _img/Regularization_Ridge.png
 
 In the figure above, the black line represents a model without Ridge regression applied and the red line represents a model with Ridge regression applied.
 Note how much smoother the red line is. It will probably do a better job against future data.
@@ -70,7 +70,7 @@ Lasso Regression
 
 ``Lasso regression`` is a type of regularization where the function R involves summing the absolute values of our weights. In statistics, this would be called an L1 norm.
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/latex-lasso-eq.gif
+.. figure:: _img/latex-lasso-eq.gif
 
 
 The equation above is an example of the regularization with w representing our weights. Notice how similar ridge regression and lasso regression are.
@@ -80,7 +80,7 @@ we have a million features where only a small amount are important, this is an i
 and focus on a small subset of all our features. In the original scenario, we would end up ignoring those factors that don’t have as much impact on
 our sandwich eating experience.
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Regularization_Lasso.png
+.. figure:: _img/Regularization_Lasso.png
 
 In the figure above, the black line represents a model without Lasso regression applied and the red line represents a model with Lasso
 regression applied. The red line is much smoother than the black line. The Lasso regression was applied to a model of degree 6 but the

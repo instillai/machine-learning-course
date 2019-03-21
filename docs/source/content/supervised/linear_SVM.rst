@@ -9,7 +9,7 @@ How do we find the best hyperplane/line?
 
 You might be wondering that there could be multiple lines that split the data well. As you can see in the graph below every line splits the squares and the circles, so which one do we choose?
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Possible_hyperplane.png
+.. figure:: _img/Possible_hyperplane.png
    :scale: 50 %
    :alt: Possible_Hyperplane
 
@@ -17,7 +17,7 @@ You might be wondering that there could be multiple lines that split the data we
 
 We want to choose the line/plane with the **maximum margin**. Maximizing the margin will give us the optimal line to classify the data. This is shown in the figure below.
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Optimal_hyperplane.PNG
+.. figure:: _img/Optimal_hyperplane.PNG
    :scale: 50 %
    :alt: Optimal_Hyperplane
 
@@ -33,7 +33,7 @@ Ignore Outliers
 
 Sometimes data classes will have **outliers**, (data that is separated from it's class). Support Vector Machines will ignore these outliers. This is shown in the figure below.
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/SVM_Outliers.png
+.. figure:: _img/SVM_Outliers.png
    :scale: 50 %
    :alt: Outliers
 
@@ -47,7 +47,7 @@ Kernal SVM
 
 There will be data classes that can't be separated with a simple line or hyperplane. This is called **non-linearly separable data**. Here is an example of that kind of data.
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/SVM_Kernal.png
+.. figure:: _img/SVM_Kernal.png
    :scale: 50 %
    :alt: Outliers
 
