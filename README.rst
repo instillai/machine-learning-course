@@ -77,8 +77,8 @@ Overview of machine learning
 Supervised learning
 ------------------------------------------------------------
 
-.. _dtdoc: https://arxiv.org/abs/1411.1784
-.. _dtcode: https://github.com/zhangqianhui/Conditional-GAN
+.. _dtdoc: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/supervised/decisiontrees.rst
+.. _dtcode: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/code/supervised/DecisionTree/decisiontrees.py
 
 
 
