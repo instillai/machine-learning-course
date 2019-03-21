@@ -21,7 +21,7 @@ testing set. This is the simplest form of cross-validation techniques,
 and is useful if you have a large amount of data or need to implement
 validation quickly and easily.
 
-.. figure:: docs/source/content/overview/_img/holdout.png
+.. figure:: _img/holdout.png
    :scale: 50 %
    :alt: holdout method
 
