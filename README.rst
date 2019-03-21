@@ -81,6 +81,10 @@ Supervised learning
 .. _dtcode: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/code/supervised/DecisionTree/decisiontrees.py
 
 
+.. _knndoc: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/supervised/knn.rst
+
+
+
 
 
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
@@ -88,9 +92,11 @@ Supervised learning
 +====================================================================+===============================+===========================+
 | Decision trees                                                     | `Python <dtcode_>`_           | `Tutorial <dtdoc_>`_      |
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
-| Naive Bayes                                                        | `Paper <photorealpaper_>`_    | `Code <photorealcode_>`_  |
+| K-Nearest Neighbor                                                 |                               | `Tutorial <knndoc_>`_     |
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
-| Logistic Regression                                                | `Paper <im2impaper_>`_        | `Code <im2imcode_>`_      |
+| Naive Bayes                                                        |                               |                           |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Logistic Regression                                                |                               |                               |
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
 | Support Vector Machines                                            | `Paper <vismanpaper_>`_       | `Code <vismancode_>`_     |
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
