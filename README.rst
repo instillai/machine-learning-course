@@ -77,17 +77,8 @@ Overview of machine learning
 Supervised learning
 ------------------------------------------------------------
 
-.. _conganpaper: https://arxiv.org/abs/1411.1784
-.. _congancode: https://github.com/zhangqianhui/Conditional-GAN
-
-.. _photorealpaper: https://arxiv.org/pdf/1609.04802.pdf
-.. _photorealcode: https://github.com/tensorlayer/srgan
-
-.. _im2impaper: https://arxiv.org/abs/1611.07004
-.. _im2imcode: https://github.com/phillipi/pix2pix
-
-.. _vismanpaper: https://arxiv.org/abs/1609.03552
-.. _vismancode: https://github.com/junyanz/iGAN
+.. _dtdoc: https://arxiv.org/abs/1411.1784
+.. _dtcode: https://github.com/zhangqianhui/Conditional-GAN
 
 
 
