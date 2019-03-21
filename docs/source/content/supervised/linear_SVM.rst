@@ -17,7 +17,7 @@ You might be wondering that there could be multiple lines that split the data we
 
 We want to choose the line/plane with the **maximum margin**. Maximizing the margin will give us the optimal line to classify the data. This is shown in the figure below.
 
-.. figure:: _img/Optimal_hyperplane.png
+.. figure:: _img/optimal_hyperplane.png
    :scale: 50 %
    :alt: Optimal_Hyperplane
 
