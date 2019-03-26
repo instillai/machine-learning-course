@@ -68,7 +68,7 @@ Two common terms that appear in cost functions are the **error** and **squared e
 
 .. image:: _img/Square_Error_Function.png
 
-We will use the Mean Squared Error (MSE) function [*Equation 3] as our cost function. This function finds the average squared error value for all of our data points.
+We will use the Mean Squared Error (MSE) function [Equation 3] as our cost function. This function finds the average squared error value for all of our data points.
 
 *Equation 3*:
 
