@@ -57,7 +57,7 @@ Once we have a prediction, we need some way to tell if it’s reasonable. A **co
 
 .. image:: _img/Cost.png
 
-Two common terms that appear in cost functions are the **error** and **squared error**. The error [*Figure 1*] is how far away from the actual value our prediction is. Squaring this value gives us a useful expression for the general error distance [*Figure 2*]. We know an error of 2 above the actual value and an error of 2 below the actual value should be about as bad as each other. The squared error makes this clear because both of these values result in a squared error of 4.
+Two common terms that appear in cost functions are the **error** and **squared error**. The error [*Equation 1*] is how far away from the actual value our prediction is. Squaring this value gives us a useful expression for the general error distance [*Equation 2*]. We know an error of 2 above the actual value and an error of 2 below the actual value should be about as bad as each other. The squared error makes this clear because both of these values result in a squared error of 4.
 
 *Equation 1*:
 
@@ -68,7 +68,7 @@ Two common terms that appear in cost functions are the **error** and **squared e
 
 .. image:: _img/Square_Error_Function.png
 
-We will use the Mean Squared Error (MSE) function [Equation 3] as our cost function. This function finds the average squared error value for all of our data points.
+We will use the Mean Squared Error (MSE) function [*Equation 3*] as our cost function. This function finds the average squared error value for all of our data points.
 
 *Equation 3*:
 
