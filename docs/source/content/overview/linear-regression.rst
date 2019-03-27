@@ -13,17 +13,25 @@ Overview
 
 .. image:: _img/LR.png
 
-Our goal is to find the line that best models the path of the data points called a line of best fit. The equation for this line looks like this: :math:`y=a_0+a_1x`.
+Our goal is to find the line that best models the path of the data points called a line of best fit [*Equation 1*].
+
+*Equation 1*:
+
+.. image:: _img/Linear_Equation.png
 
 .. image:: _img/LR_LOBF.png
 
-Let’s break it down. We already know that x is the input value and y is our predicted output. :math:`a_0` and :math:`a_1` describe the shape of our line. :math:`a_0` is called the **bias** and :math:`a_1` is called a **weight**. Changing :math:`a_0` will move the line up or down on the plot and changing :math:`a_1` changes the slope of the line. Linear regression helps us pick appropriate values for :math:`a_0` and :math:`a_1`.
+Let’s break it down. We already know that x is the input value and y is our predicted output. a₀ and a₁ describe the shape of our line. a₀ is called the **bias** and a₁ is called a **weight**. Changing a₀ will move the line up or down on the plot and changing a₁ changes the slope of the line. Linear regression helps us pick appropriate values for a₀ and a₁.
 
 Note that we could have more than one input variable. In this case, we call it **multiple linear regression**. Let’s add another input variable called z.
 
 .. image:: _img/MLR.png
 
-Then the equation changes to :math:`y=a_0+a_1x+a_2z` which is a plane.
+Then the equation changes to a plane [*Equation 2*].
+
+*Equation 2*:
+
+.. image:: _img/3d_Linear_Equation.png
 
 .. image:: _img/MLR_POBF.png
 
@@ -57,20 +65,20 @@ Once we have a prediction, we need some way to tell if it’s reasonable. A **co
 
 .. image:: _img/Cost.png
 
-Two common terms that appear in cost functions are the **error** and **squared error**. The error [*Equation 1*] is how far away from the actual value our prediction is. Squaring this value gives us a useful expression for the general error distance [*Equation 2*]. We know an error of 2 above the actual value and an error of 2 below the actual value should be about as bad as each other. The squared error makes this clear because both of these values result in a squared error of 4.
+Two common terms that appear in cost functions are the **error** and **squared error**. The error [*Equation 3*] is how far away from the actual value our prediction is. Squaring this value gives us a useful expression for the general error distance [*Equation 4*]. We know an error of 2 above the actual value and an error of 2 below the actual value should be about as bad as each other. The squared error makes this clear because both of these values result in a squared error of 4.
 
-*Equation 1*:
+*Equation 3*:
 
 .. image:: _img/Error_Function.png
 
 
-*Equation 2*:
+*Equation 4*:
 
 .. image:: _img/Square_Error_Function.png
 
-We will use the Mean Squared Error (MSE) function [*Equation 3*] as our cost function. This function finds the average squared error value for all of our data points.
+We will use the Mean Squared Error (MSE) function [*Equation 5*] as our cost function. This function finds the average squared error value for all of our data points.
 
-*Equation 3*:
+*Equation 5*:
 
 .. image:: _img/MSE_Function.png
 
