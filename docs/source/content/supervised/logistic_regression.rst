@@ -25,16 +25,19 @@ Logistic Regression is great for situations where you need to classify between t
 Some good examples are accepted and rejected applicants and victory or defeat in a competition.  
 Here is an example table of data that would be a good candidate for logistic regression.
 
-=====  =====  ====== 
-  Studying    Success 
-------------  ------ 
+=====  ======   ======= 
+  Studying      Success 
+--------------  -------
 Hours  Focused  Pass? 
-=====  =====  ====== 
-1      False  True 
-3      False  True 
-0.5    True   False 
-2      False  True 
-=====  =====  ======
+=====  ======   =======
+1      False    True 
+3      False    True 
+0.5    True     False 
+2      False    True 
+=====  ======   =======
+
+Notice that the student's success is determined by the inputs and the value is binary, so Logistic Regression will work well for this scenario.
+
 
 How does it work?
 -----------------
