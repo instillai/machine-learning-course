@@ -5,7 +5,7 @@ from sklearn import datasets
 from sklearn.model_selection import train_test_split
 
 # The percentage (as a decimal) of our data that will be training data
-train_split = 0.7
+TRAIN_SPLIT = 0.7
 
 # The diabetes dataset contains the following columns:
 columns = [
@@ -29,7 +29,7 @@ dataframe = pandas.DataFrame(dataset.data, columns=columns)
 
 # Split via the holdout method
 x_train, x_test, y_train, y_test = train_test_split(
-  dataframe, dataset.target, train_size=train_split, test_size=1-train_split)
+  dataframe, dataset.target, train_size=TRAIN_SPLIT, test_size=1-TRAIN_SPLIT)
 
 # Print our test and training data
 print("X Test Data:")

@@ -3,6 +3,9 @@
 import numpy
 from sklearn.model_selection import LeaveOneOut, LeavePOut
 
+# Configurable constants
+P_VAL = 2
+
 
 def print_result(method):
     """
@@ -27,17 +30,18 @@ def print_result(method):
 
     print("") # prints a newline
 
+
 # Create some data to split with
 data = numpy.array([[1, 2], [3, 4], [5, 6], [7, 8]])
 
 # Our two methods
 loocv = LeaveOneOut()
-lpocv = LeavePOut(p=2)
+lpocv = LeavePOut(p=P_VAL)
 
 print("Data:\n{}\n".format(data))
 
 print("Leave-One-Out:")
 print_result(loocv)
 
-print("Leave-P-Out (where p = 2):")
+print("Leave-P-Out (where p = {}):".format(P_VAL))
 print_result(lpocv)

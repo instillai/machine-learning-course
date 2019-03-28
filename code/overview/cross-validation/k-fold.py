@@ -3,6 +3,10 @@
 import numpy
 from sklearn.model_selection import KFold
 
+# Configurable constants
+NUM_SPLITS = 3
+
+
 def print_result(kfold):
     """
     Prints the result of a K-Fold split
@@ -26,13 +30,14 @@ def print_result(kfold):
 
     print("") # prints a newline
 
+
 # Create some data to perform K-Fold CV on
 data = numpy.array([[1, 2], [3, 4], [5, 6], [7, 8]])
 
 # Perform a K-Fold split and print results
-kfold = KFold(n_splits=3)
+kfold = KFold(n_splits=NUM_SPLITS)
 
 print("Data:\n{}\n".format(data))
 
-print('K-Fold split (with n_splits = 3):')
+print('K-Fold split (with n_splits = {}):'.format(NUM_SPLITS))
 print_result(kfold)
