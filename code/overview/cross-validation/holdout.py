@@ -1,12 +1,41 @@
-# An example of the Holdout Cross-Validation method
+# An example of the Holdout Cross-Validation split
 
-import pprint
 import pandas
-from sklearn import datasets, linear_model
+from sklearn import datasets
 from sklearn.model_selection import train_test_split
 
-test = datasets.load_boston()
+# The percentage (as a decimal) of our data that will be training data
+train_split = 0.7
 
-pp = pprint.PrettyPrinter(indent=2)
-pp.pprint("this is a test:")
-pp.pprint(test)
+# The diabetes dataset contains the following columns:
+columns = [
+  'age',
+  'sex',
+  'bmi',
+  'map',
+  'tc',
+  'ldl',
+  'hdl',
+  'tch',
+  'ltg',
+  'glu'
+]
+
+# Load the diabetes dataset
+dataset = datasets.load_diabetes()
+
+# Create a pandas DataFrame from the diabetes dataset
+dataframe = pandas.DataFrame(dataset.data, columns=columns)
+
+# Split via the holdout method
+x_train, x_test, y_train, y_test = train_test_split(
+  dataframe, dataset.target, train_size=train_split, test_size=1-train_split)
+
+# Print our test and training data
+print("X Test Data:")
+print(x_test)
+
+print("\n\n")
+
+print("X Training Data:")
+print(x_train)
