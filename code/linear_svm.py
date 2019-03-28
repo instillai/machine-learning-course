@@ -20,7 +20,7 @@ X_train, Y_train = make_blobs(n_samples=50, centers=2)
 # The optional parameter will be default other than these two,
 # You can find the other parameters at https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html
 # =============================================================================
-model = svm.SVC(kernel='linear', C = 10000)
+model = svm.SVC(kernel = 'linear', C = 10000)
 model.fit(X_train, Y_train)
 
 #plots the points 
@@ -37,7 +37,7 @@ y = np.linspace(y_limit[0], y_limit[1], 50)
 X, Y = np.meshgrid(x, y)
 xy = np.c_[X.ravel(), Y.ravel()]
 
-#Creates the decision line for the data points 
+#Creates the decision line for the data points, use model.predict if you are classifying more than two 
 decision_line = model.decision_function(xy).reshape(Y.shape)
 
 
