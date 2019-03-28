@@ -11,7 +11,7 @@ If it is low (lower than 50%), then we classify it in category A.  Otherwise, it
 It's also important to note that logistic regression is better for this purpose than linear regression with a threshold 
 because the threshold would have to be manually set, which is not feasible.  Logistic regression will create a sort of S-curve 
 (using the sigmoid function) which will also help show certainty, since the output from logistic regression is not just a one or zero.  
-Here is the standard logistic function, note that the output is always between 0 and 1, but never reaches either of those values.:
+Here is the standard logistic function, note that the output is always between 0 and 1, but never reaches either of those values.
 
 .. figure:: _img/WikiLogistic.svg.png
    :scale: 50 %
@@ -25,14 +25,21 @@ Logistic Regression is great for situations where you need to classify between t
 Some good examples are accepted and rejected applicants and victory or defeat in a competition.  
 Here is an example table of data that would be a good candidate for logistic regression. IMAGE SOON
 
-.. figure:: _img/Logistic_Table
-   :scale: 50 %
-   :alt: Logit table
+=====  =====  ====== 
+  Studying    Success 
+------------  ------ 
+Hours  Focused  Pass? 
+=====  =====  ====== 
+1      False  True 
+3      False  True 
+0.5    True   False 
+2      False  True 
+=====  =====  ======
 
 How does it work?
 -----------------
 
-Logistic regression works using a linear combination of inputs, so multiple information sources can govern the output of the model.  The parameters of the model are the weights of the various features, and represent their relative importance to the result.:  
+Logistic regression works using a linear combination of inputs, so multiple information sources can govern the output of the model.  The parameters of the model are the weights of the various features, and represent their relative importance to the result.
 
 .. figure:: _img/Logistic_Eq.svg
    :alt: Equation
