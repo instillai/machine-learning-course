@@ -3,21 +3,36 @@
 import numpy
 from sklearn.model_selection import KFold
 
+def print_result(kfold):
+    """
+    Prints the result of a K-Fold split
+
+    Args:
+        kfold (KFold): The KFold object from sklearn
+    """
+    # Perform a KFold split and print the result
+    for train, test in kfold.split(data):
+        output_train = ''
+        output_test = ''
+
+        # Build our output for display from the resulting split
+        for i in train:
+            output_train = "{}({}: {}) ".format(output_train, i, data[i])
+
+        for i in test:
+            output_test = "{}({}: {}) ".format(output_test, i, data[i])
+
+        print("Train: {}\tTest: {}".format(output_train, output_test))
+
+    print("") # prints a newline
+
 # Create some data to perform K-Fold CV on
-x = numpy.array([[1, 2], [3, 4], [5, 6], [7, 8]])
-y = numpy.array([1, 2, 3, 4])
+data = numpy.array([[1, 2], [3, 4], [5, 6], [7, 8]])
 
-# Perform a K-Fold split
+# Perform a K-Fold split and print results
 kfold = KFold(n_splits=3)
-kfold.get_n_splits(x)
 
-#Print split results
-print('X Data:')
-print(x)
+print("Data:\n{}\n".format(data))
 
-print('Y Data:')
-print(y)
-
-print('Training splits:')
-for train_data, test_data in kfold.split(x):
-    print("Training data: {}\tTest data: {}".format(train_data, test_data))
+print('K-Fold split (with n_splits = 3):')
+print_result(kfold)
