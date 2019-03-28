@@ -16,14 +16,14 @@ Here is the standard logistic function, note that the output is always between 0
 .. figure:: _img/WikiLogistic.svg.png
    :scale: 50 %
    :alt: Logistic
-   Ref: https://en.wikipedia.org/wiki/Logistic_regression
+Ref: https://en.wikipedia.org/wiki/Logistic_regression
 
 When to use it
 -----------------
 
 Logistic Regression is great for situations where you need to classify between two categories.  
 Some good examples are accepted and rejected applicants and victory or defeat in a competition.  
-Here is an example table of data that would be a good candidate for logistic regression. IMAGE SOON
+Here is an example table of data that would be a good candidate for logistic regression.
 
 =====  =====  ====== 
   Studying    Success 
@@ -43,7 +43,8 @@ Logistic regression works using a linear combination of inputs, so multiple info
 
 .. figure:: _img/Logistic_Eq.svg
    :alt: Equation
-   Ref: https://en.wikipedia.org/wiki/Logistic_regression
+Ref: https://en.wikipedia.org/wiki/Logistic_regression
+
 The beta values are the weights and x values are the variable inputs.  This formula gives the probability that the input belongs to Class B, which is the output of the function.
 
 Conclusion
