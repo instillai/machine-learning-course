@@ -12,7 +12,7 @@ It's also important to note that logistic regression is better for this purpose 
 because the threshold would have to be manually set, which is not feasible.  Logistic regression will create a sort of S-curve 
 (using the sigmoid function) which will also help show certainty, since the output from logistic regression is not just a one or zero.  
 
-.. figure:: _img/WikiLogit.svg.png
+.. figure:: _img/WikiLogistic.svg.png
    :scale: 50 %
    :alt: Logistic
 
