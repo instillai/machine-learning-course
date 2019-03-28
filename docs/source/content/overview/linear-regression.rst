@@ -82,12 +82,38 @@ We will use the Mean Squared Error (MSE) function [*Equation 5*] as our cost fun
 
 .. image:: _img/MSE_Function.png
 
-Cost functions are important in machine learning because it’s the main way to measure success.  If we craft a model with a low cost, our program can make small changes, knowing that it is close to the best solution.  If the result of the cost function is high, the program can make a larger change to the model to more quickly approach the best solution.  Get comfortable with this idea, since you’ll see it show up in most of the modules for this course.
+Cost functions are important to us because they measure how accurate our model is against the target values. Making sure our models are accurate will remain a key theme throughout later modules.
 
-# *******
-# Methods
-# *******
+*******
+Methods
+*******
+A lower cost function means a lower average error across the data points. In other words, lower cost means a more accurate model for the dataset. We will briefly mention a couple of methods for minimizing the cost function.
 
-# ======================
-# Ordinary Least Squares
-# ======================
+======================
+Ordinary Least Squares
+======================
+Ordinary least squares is a common method for minimizing the cost function. In this method, we treat the data as one big matrix and use linear algebra to estimate the optimal values of the coefficients in our linear equation. Luckily, you don't have to worry about doing any linear algebra because the Python code handles it for you. This also happens to be the method used for this modules code.
+
+Below are the relevant lines of Python code from this module related to ordinary least squares.
+
+.. code-block:: python
+
+   # Create a linear regression object
+   regr = linear_model.LinearRegression()
+
+================
+Gradient Descent
+================
+Gradient descent is an iterative method of guessing the coefficients of our linear equation in order to minimize the cost function. The name comes from the concept of gradients in calculus. Basically this method will slightly move the values of the coefficients and monitor whether the cost decreases or not. If the cost keeps increasing over several iterations, we stop because we've probably hit the minimum already. The number of iterations and tolerance before stopping can both be chosen to fine tune the method.
+
+Below are the relevant lines of Python code from this module modified to use gradient descent.
+
+.. code-block:: python
+
+   # Create a linear regression object
+   regr = linear_model.SGDRegressor(max_iter=10000, tol=0.001)
+
+*******
+Summary
+*******
+Linear regression is a technique used to analyze a linear relationship between input variables and a single output variable. We measure how accurate the resulting model is using a cost function. We want to minimize the value of the cost function in order to get a more accurate model.
