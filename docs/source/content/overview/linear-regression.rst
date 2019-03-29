@@ -6,81 +6,83 @@ Linear Regression
   :local:
   :depth: 3
 
+*******
+Summary
+*******
+Linear regression is a technique used to analyze a linear relationship between input variables and a single output variable. We measure how accurate the resulting model is using a cost function. We want to minimize the value of the cost function in order to get a more accurate model.
+
 ********
 Overview
 ********
-**Linear regression** is a technique used to analyze a **linear relationship** between **input/independent/x** variables and a single **output/dependent/y** variable. A **linear relationship** means that the data points tend to follow a straight line. **Simple linear regression** involves only a single input variable.
+**Linear regression** is a technique used to analyze a **linear relationship** between **input** variables and a single **output** variable. A **linear relationship** means that the data points tend to follow a straight line. **Simple linear regression** involves only a single input variable.
 
-.. image:: _img/LR.png
+.. figure:: _img/LR.png
+   
+   *Figure 1*. A sample data set with a linear relationship
 
-Our goal is to find the line that best models the path of the data points called a line of best fit [*Equation 1*].
+Our goal is to find the line that best models the path of the data points called a line of best fit [*Equation 1, Figure 2*].
 
-*Equation 1*:
+.. figure:: _img/Linear_Equation.png
+   
+   *Equation 1*. A linear equation
 
-.. image:: _img/Linear_Equation.png
-
-.. image:: _img/LR_LOBF.png
+.. figure:: _img/LR_LOBF.png
+   
+   *Figure 2*. The dataset from *Figure 1* with a line of best fit
 
 Let’s break it down. We already know that x is the input value and y is our predicted output. a₀ and a₁ describe the shape of our line. a₀ is called the **bias** and a₁ is called a **weight**. Changing a₀ will move the line up or down on the plot and changing a₁ changes the slope of the line. Linear regression helps us pick appropriate values for a₀ and a₁.
 
-Note that we could have more than one input variable. In this case, we call it **multiple linear regression**. Let’s add another input variable called z.
-
-.. image:: _img/MLR.png
-
-Then the equation changes to a plane [*Equation 2*].
-
-*Equation 2*:
-
-.. image:: _img/3d_Linear_Equation.png
-
-.. image:: _img/MLR_POBF.png
-
-Adding extra input variables just means that we’ll need to find more weights. For this exercise, we will only consider a simple linear regression.
+Note that we could have more than one input variable. In this case, we call it **multiple linear regression**. Adding extra input variables just means that we’ll need to find more weights. For this exercise, we will only consider a simple linear regression.
 
 ***********
 When to Use
 ***********
-Linear regression is a useful technique but isn’t always the right choice for your data. Linear regression is a good choice when there is a linear relationship between your independent and dependent variables and you are trying to predict continuous values.
+Linear regression is a useful technique but isn’t always the right choice for your data. Linear regression is a good choice when there is a linear relationship between your independent and dependent variables and you are trying to predict continuous values [*Figure 1*].
 
-.. image:: _img/LR.png
+It is not a good choice when the relationship between independent and dependent variables is more complicated or when outputs are discrete values [*Figure 3*].
 
-It is not a good choice when the relationship between independent and dependent variables is more complicated or when outputs are discrete values.
+.. figure:: _img/Not_Linear.png
+   
+   *Figure3*. A sample data set without a linear relationship
 
-.. image:: _img/Not_Linear.png
+It is worth noting that sometimes you can apply transformations to data so that it appears to be linear. For example, you could apply a logarithm to exponential data to flatten it out. Then you can use linear regression on the transformed data. One method of transforming data in :code:`sklearn` is documented at https://scikit-learn.org/stable/modules/generated/sklearn.compose.TransformedTargetRegressor.html.
 
-It is worth noting that sometimes you can apply transformations to data so that it appears to be linear. For example, you could apply a logarithm to exponential data. Then you can use linear regression on the transformed data.
+*Figure 4* is an example of data that does not look linear but can be transformed to have a linear relationship.
 
-Here is an example of data that does not look linear.
+.. figure:: _img/Exponential.png
+   
+   *Figure 4*. A sample data set that follows an exponential curve
 
-.. image:: _img/Exponential.png
+*Figure 5* is the same data after transforming the output variable with a logarithm.
 
-Here is the same data after transforming the output variable.
-
-.. image:: _img/Exponential_Transformed.png
+.. figure:: _img/Exponential_Transformed.png
+   
+   *Figure 5*. The dataset from *Figure 4* after applying a logarithm to the output variable
 
 *************
 Cost Function
 *************
-Once we have a prediction, we need some way to tell if it’s reasonable. A **cost function** helps us do this. The cost function compares all the predictions against their actual values and provides us with a single number that we can use to score the prediction function.
+Once we have a prediction, we need some way to tell if it’s reasonable. A **cost function** helps us do this. The cost function compares all the predictions against their actual values and provides us with a single number that we can use to score the prediction function. *Figure 6* shows the cost for one such prediction.
 
-.. image:: _img/Cost.png
+.. figure:: _img/Cost.png
+   
+   *Figure 6*. The plot from *Figure 2* with the cost of one prediction emphasized
 
-Two common terms that appear in cost functions are the **error** and **squared error**. The error [*Equation 3*] is how far away from the actual value our prediction is. Squaring this value gives us a useful expression for the general error distance [*Equation 4*]. We know an error of 2 above the actual value and an error of 2 below the actual value should be about as bad as each other. The squared error makes this clear because both of these values result in a squared error of 4.
+Two common terms that appear in cost functions are the **error** and **squared error**. The error [*Equation 2*] is how far away from the actual value our prediction is. Squaring this value gives us a useful expression for the general error distance [*Equation 3*]. We know an error of 2 above the actual value and an error of 2 below the actual value should be about as bad as each other. The squared error makes this clear because both of these values result in a squared error of 4.
 
-*Equation 3*:
+.. figure:: _img/Error_Function.png
+   
+   *Equation 2*. An example error function
 
-.. image:: _img/Error_Function.png
+.. figure:: _img/Square_Error_Function.png
+   
+   *Equation 3*. An example squared error function
 
+We will use the Mean Squared Error (MSE) function [*Equation 4*] as our cost function. This function finds the average squared error value for all of our data points.
 
-*Equation 4*:
-
-.. image:: _img/Square_Error_Function.png
-
-We will use the Mean Squared Error (MSE) function [*Equation 5*] as our cost function. This function finds the average squared error value for all of our data points.
-
-*Equation 5*:
-
-.. image:: _img/MSE_Function.png
+.. figure:: _img/MSE_Function.png
+   
+   *Equation 4*. The Mean Square Error (MSE) function
 
 Cost functions are important to us because they measure how accurate our model is against the target values. Making sure our models are accurate will remain a key theme throughout later modules.
 
@@ -113,7 +115,5 @@ Below are the relevant lines of Python code from this module modified to use gra
    # Create a linear regression object
    regr = linear_model.SGDRegressor(max_iter=10000, tol=0.001)
 
-*******
-Summary
-*******
-Linear regression is a technique used to analyze a linear relationship between input variables and a single output variable. We measure how accurate the resulting model is using a cost function. We want to minimize the value of the cost function in order to get a more accurate model.
+
+All figures in this module were created with simple modifications of the linear_regression.py code.
