@@ -32,8 +32,7 @@ larger percentage of test data will make your model more prone to errors
 as it has less training experience, while a smaller percentage of test
 data may give your model an unwanted bias towards the training data.
 This lack of training or bias can lead to
-[Underfitting/Overfitting](TODO: Link to under/overfitting) of our
-model.
+`Underfitting/Overfitting`_ of our model.
 
 
 K-Fold Cross Validation
@@ -106,6 +105,7 @@ Similar to K-Fold Cross Validation, LPOCV and LOOCV train a model using
 the full dataset. They are particularly useful when you're working with
 a small dataset, but incur performance tradeoffs.
 
+.. _Underfitting/Overfitting: overfitting.rst
 .. _combination: https://en.wikipedia.org/wiki/Combination
 
 .. |LPOCV| image:: http://www.ebc.cat/wp-content/uploads/2017/01/leave_p_out.png
