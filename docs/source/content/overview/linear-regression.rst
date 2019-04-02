@@ -7,6 +7,18 @@ Linear Regression
   :depth: 3
 
 
+**********
+Motivation
+**********
+When we are presented with a data set, we try and figure out what it means. 
+We look for connections between the data points and see if we can find 
+any patterns. Sometimes those patterns are hard to see so we use code to help 
+us find them. There are lots of different patterns data can follow so it helps 
+if we can narrow down those options and write less code to analyze them. One 
+of those patterns is a linear relationship. If we can find this pattern in our 
+data, we can use the linear regression technique to analyze it.
+
+
 ********
 Overview
 ********
@@ -28,12 +40,12 @@ linear equation.
    
    **Equation 1. A linear equation**
 
-*Figure 2* shows the dataset we use in *Figure 1* with a line of best fit
+*Figure 2* shows the data set we use in *Figure 1* with a line of best fit
 through it.
 
 .. figure:: _img/LR_LOBF.png
    
-   **Figure 2. The dataset from Figure 1 with a line of best fit**
+   **Figure 2. The data set from Figure 1 with a line of best fit**
 
 Let’s break it down. We already know that x is the input value and y is our 
 predicted output. a₀ and a₁ describe the shape of our line. a₀ is called the 
@@ -68,7 +80,9 @@ It is worth noting that sometimes you can apply transformations to data so
 that it appears to be linear. For example, you could apply a logarithm to 
 exponential data to flatten it out. Then you can use linear regression on the 
 transformed data. One method of transforming data in :code:`sklearn` is 
-documented at https://scikit-learn.org/stable/modules/generated/sklearn.compose.TransformedTargetRegressor.html.
+documented here_.
+
+.. _here: https://scikit-learn.org/stable/modules/generated/sklearn.compose.TransformedTargetRegressor.html
 
 *Figure 4* is an example of data that does not look linear but can be 
 transformed to have a linear relationship.
@@ -82,7 +96,7 @@ logarithm.
 
 .. figure:: _img/Exponential_Transformed.png
    
-   **Figure 5. The dataset from Figure 4 after applying a logarithm to the 
+   **Figure 5. The data set from Figure 4 after applying a logarithm to the 
    output variable**
 
 
@@ -125,7 +139,7 @@ our data points.
 
 .. figure:: _img/MSE_Function.png
    
-   **Equation 4. The Mean Square Error (MSE) function**
+   **Equation 4. The Mean Squared Error (MSE) function**
 
 Cost functions are important to us because they measure how accurate our model 
 is against the target values. Making sure our models are accurate will remain 
@@ -136,7 +150,7 @@ a key theme throughout later modules.
 Methods
 *******
 A lower cost function means a lower average error across the data points. In 
-other words, lower cost means a more accurate model for the dataset. We will 
+other words, lower cost means a more accurate model for the data set. We will 
 briefly mention a couple of methods for minimizing the cost function.
 
 Ordinary Least Squares
@@ -177,3 +191,36 @@ gradient descent.
 
 All figures in this module were created with simple modifications of the 
 linear_regression.py code.
+
+
+****
+Code
+****
+This module's code is available in the linear_regression.py_ file.
+
+.. _linear_regression.py: https://github.com/machinelearningmindset/python-machine-learning/blob/master/code/overview/linear_regression/linear_regression.py
+
+The code for this module is a slightly modified version of code by Jaques 
+Grobler used by scikit-learn_.
+
+.. _scikit-learn: https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html
+
+In the code, we analyze one of scikit-learn's existing data sets. We split the 
+data into a training set to train our model and a testing set to test its 
+accuracy. You may have guessed that the model used is based on linear 
+regression. We can also find some of the other results mentioned in this 
+module. After training our model and making some predictions, we print out the 
+coefficients of the model, the mean squared error, and the variance score. 
+These tell us a little more about what is happening behind the scenes. 
+Finally, we display a nice plot of the data with a line of best fit.
+
+
+**********
+Conclusion
+**********
+In this module, we learned about linear regression. This technique helps us 
+model data with linear relationships. Linear relationships are fairly simple 
+but still show up in a lot of data sets so this is a good technique to know. 
+Learning about linear regression is a good first step towards learning more 
+complicated analysis techniques. We will build on a lot of the concepts 
+covered here in later modules.
