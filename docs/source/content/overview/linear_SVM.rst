@@ -15,6 +15,8 @@ You might be wondering that there could be multiple lines that split the data we
 
 .. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Possible_hyperplane.png
    :scale: 50%
+   :width: 50%
+   :height: 50%
    :alt: Possible_Hyperplane
 
    Ref: https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47 
@@ -23,6 +25,8 @@ So how does SVM find the ideal line to separate the two classes. It doesn't just
 
 .. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Optimal_hyperplane.PNG
    :scale: 10%
+   :width: 50%
+   :height: 50%
    :alt: Optimal_Hyperplane
 
    Ref: https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47 
