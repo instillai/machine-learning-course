@@ -66,16 +66,19 @@ Leave-P-Out / Leave-One-Out Cross Validation
 
 Leave-P-Out Cross Validation (LPOCV) tests a model by using every
 possible combination of P test data points on a model. As a simple
-example, if you have 3 data points and use 2 test points, the model will
+example, if you have 4 data points and use 2 test points, the model will
 be trained and tested as follows:
 
 ::
 
-   [P][P][T]
-   [P][T][P]
-   [T][P][P]
+    1: [ T T - - ]
+    2: [ T - T - ]
+    3: [ T - - T ]
+    4: [ - T T - ]
+    5: [ - T - T ]
+    6: [ - - T T ]
 
-Where P is a test point, and T is a training point. Below is another
+Where "T" is a test point, and "-" is a training point. Below is another
 visualization of LPOCV:
 
 .. figure:: _img/LPOCV.png
