@@ -30,7 +30,9 @@ shows a data set with a linear relationship.
 
 .. figure:: _img/LR.png
    
-   **Figure 1. A sample data set with a linear relationship**
+   **Figure 1. A sample data set with a linear relationship** [`code`__]
+   
+   .. __: /code/overview/linear_regression/linear_regression.py
 
 Our goal is to find the line that best models the path of the data points 
 called a line of best fit. The equation in *Equation 1*, is an example of a
@@ -45,7 +47,9 @@ through it.
 
 .. figure:: _img/LR_LOBF.png
    
-   **Figure 2. The data set from Figure 1 with a line of best fit**
+   **Figure 2. The data set from Figure 1 with a line of best fit** [`code`__]
+   
+   .. __: /code/overview/linear_regression/linear_regression_lobf.py
 
 Let’s break it down. We already know that x is the input value and y is our 
 predicted output. a₀ and a₁ describe the shape of our line. a₀ is called the 
@@ -74,7 +78,9 @@ relationship so linear regression would not be a good choice.
 
 .. figure:: _img/Not_Linear.png
    
-   **Figure3. A sample data set without a linear relationship**
+   **Figure3. A sample data set without a linear relationship** [`code`__]
+   
+   .. __: /code/overview/linear_regression/not_linear_regression.py
 
 It is worth noting that sometimes you can apply transformations to data so 
 that it appears to be linear. For example, you could apply a logarithm to 
@@ -89,7 +95,9 @@ transformed to have a linear relationship.
 
 .. figure:: _img/Exponential.png
    
-   **Figure 4. A sample data set that follows an exponential curve**
+   **Figure 4. A sample data set that follows an exponential curve** [`code`__]
+   
+   .. __: /code/overview/linear_regression/exponential_regression.py
 
 *Figure 5* is the same data after transforming the output variable with a 
 logarithm.
@@ -97,7 +105,9 @@ logarithm.
 .. figure:: _img/Exponential_Transformed.png
    
    **Figure 5. The data set from Figure 4 after applying a logarithm to the 
-   output variable**
+   output variable** [`code`__]
+   
+   .. __: /code/overview/linear_regression/exponential_regression_transformed.py
 
 
 *************
@@ -112,7 +122,9 @@ for one such prediction.
 .. figure:: _img/Cost.png
    
    **Figure 6. The plot from Figure 2 with the cost of one prediction 
-   emphasized**
+   emphasized** [`code`__]
+   
+   .. __: /code/overview/linear_regression/linear_regression_cost.py
 
 Two common terms that appear in cost functions are the **error** and 
 **squared error**. The error [*Equation 2*] is how far away from the actual 
@@ -189,30 +201,22 @@ gradient descent.
    regr = linear_model.SGDRegressor(max_iter=10000, tol=0.001)
 
 
-All figures in this module were created with simple modifications of the 
-linear_regression.py code.
-
-
 ****
 Code
 ****
-This module's code is available in the linear_regression.py_ file.
+This module's main code is available in the linear_regression_lobf.py_ file.
 
-.. _linear_regression.py: https://github.com/machinelearningmindset/python-machine-learning/blob/master/code/overview/linear_regression/linear_regression.py
+.. _linear_regression_lobf.py: /code/overview/linear_regression/linear_regression_lobf.py
 
-The code for this module is a slightly modified version of code by Jaques 
-Grobler used by scikit-learn_.
+All figures in this module were created with simple modifications of the 
+linear_regression.py_ code.
 
-.. _scikit-learn: https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html
+.. _linear_regression.py: /code/overview/linear_regression/linear_regression.py
 
-In the code, we analyze one of scikit-learn's existing data sets. We split the 
+In the code, we analyze a data set with a linear relationship. We split the 
 data into a training set to train our model and a testing set to test its 
 accuracy. You may have guessed that the model used is based on linear 
-regression. We can also find some of the other results mentioned in this 
-module. After training our model and making some predictions, we print out the 
-coefficients of the model, the mean squared error, and the variance score. 
-These tell us a little more about what is happening behind the scenes. 
-Finally, we display a nice plot of the data with a line of best fit.
+regression. We also display a nice plot of the data with a line of best fit.
 
 
 **********
