@@ -14,9 +14,9 @@ How do we find the best hyperplane/line?
 You might be wondering that there could be multiple lines that split the data well. In fact there is a infinite amount of lines that can divide two classes.  As you can see in the graph below every line splits the squares and the circles, so which one do we choose?
 
 .. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Possible_hyperplane.png
-   :scale: 50%
-   :width: 50%
-   :height: 50%
+   :width: 200px
+   :align: center
+   :height: 100px
    :alt: Possible_Hyperplane
 
    Ref: https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47 
@@ -24,9 +24,7 @@ You might be wondering that there could be multiple lines that split the data we
 So how does SVM find the ideal line to separate the two classes. It doesn't just pick a random one. The algorithm the line/hyperplane with the **maximum margin**. Maximizing the margin will give us the optimal line to classify the data. This is shown in the figure below.  
 
 .. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Optimal_hyperplane.PNG
-   :scale: 10%
-   :width: 50%
-   :height: 50%
+   :scale: 50%
    :alt: Optimal_Hyperplane
 
    Ref: https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47 
