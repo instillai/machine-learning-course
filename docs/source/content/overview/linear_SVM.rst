@@ -58,7 +58,7 @@ There will be data classes that can't be separated with a simple line or hyperpl
    Ref:  https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/
 
 
-There's is no clear way to separate the stars from the circles. SVMs will be able to classify non-lenearly separable data by using a trick called the **kernel trick**. Basically what goes behind the scenes, is that it takes the points to a higher dimension, which turns non-linearly separable date to linear seprarable data. So the the above figure would be classified with a circle that separates the data. 
+There's is no clear way to separate the stars from the circles. SVMs will be able to classify non-linearly separable data by using a trick called the **kernel trick**. Basically what goes behind the scenes, is that it takes the points to a higher dimension, which turns non-linearly separable date to linear separable data. So the above figure would be classified with a circle that separates the data. 
 
 There are three types of kernels:
 
