@@ -2,7 +2,7 @@
 Linear Support Vector Machines
 ==========================
 
-A **Support Vector Machine** (SVM for short) is another machine learning algorithm that is used to classify data. The point of SVM's are to try and find a line or **hyperplane** to divide a dimensional space which best classifies the data points. If we were trying to divide two classes A and B we would try best separate the two classes with a line. So on one side of the line/hyperplane would be data from class A and on the otherside would be from class B. This alogorithm is very useful in classifying because we just have to caluclate the best line or hyperplane once and any knew data points we can easily classify just by seeing which side of the line it falls on. Unlike KNN, where we would have to calculate each data points nearest neighbors. 
+A **Support Vector Machine** (SVM for short) is another machine learning algorithm that is used to classify data. The point of SVM's are to try and find a line or **hyperplane** to divide a dimensional space which best classifies the data points. If we were trying to divide two classes A and B we would try best separate the two classes with a line. So on one side of the line/hyperplane would be data from class A and on the otherside would be from class B. This alogorithm is very useful in classifying because we just have to caluclate the best line or hyperplane once and any new data points we can easily classify just by seeing which side of the line it falls on. Unlike KNN, where we would have to calculate each data points nearest neighbors. 
 
 Hyperplane
 ----------
