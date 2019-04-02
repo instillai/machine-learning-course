@@ -209,7 +209,9 @@ This module's main code is available in the linear_regression_lobf.py_ file.
 .. _linear_regression_lobf.py: /code/overview/linear_regression/linear_regression_lobf.py
 
 All figures in this module were created with simple modifications of the 
-linear_regression.py code.
+linear_regression.py_ code.
+
+.. _linear_regression.py: /code/overview/linear_regression/linear_regression.py
 
 In the code, we analyze a data set with a linear relationship. We split the 
 data into a training set to train our model and a testing set to test its 
