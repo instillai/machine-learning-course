@@ -13,17 +13,15 @@ How do we find the best hyperplane/line?
 
 You might be wondering that there could be multiple lines that split the data well. In fact there is a infinite amount of lines that can divide two classes.  As you can see in the graph below every line splits the squares and the circles, so which one do we choose?
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Possible_hyperplane.png
-   :width: 200px
-   :align: center
-   :height: 100px
+.. figure:: /_img/Possible_hyperplane.png
+   :scale: 50%
    :alt: Possible_Hyperplane
 
    Ref: https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47 
 
 So how does SVM find the ideal line to separate the two classes. It doesn't just pick a random one. The algorithm the line/hyperplane with the **maximum margin**. Maximizing the margin will give us the optimal line to classify the data. This is shown in the figure below.  
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/Optimal_hyperplane.PNG
+.. figure:: /_img/Optimal_hyperplane.PNG
    :scale: 50%
    :alt: Optimal_Hyperplane
 
@@ -39,7 +37,7 @@ Ignore Outliers
 
 Sometimes data classes will have **outliers**. This is data points that are clearly separated from the rest of it's class. Support Vector Machines will ignore these outliers. This is shown in the figure below. 
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/SVM_Outliers.png
+.. figure:: /_img/SVM_Outliers.png
    :scale: 50%
    :alt: Outliers
 
@@ -53,7 +51,7 @@ Kernel SVM
 
 There will be data classes that can't be separated with a simple line or hyperplane. This is called **non-linearly separable data**. Here is an example of that kind of data. 
 
-.. figure:: https://github.com/machinelearningmindset/machine-learning-for-everybody/blob/master/docs/source/content/overview/_img/SVM_Kernal.png
+.. figure:: /_img/SVM_Kernal.png
    :scale: 50%
    :alt: Outliers
 
