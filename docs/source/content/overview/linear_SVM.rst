@@ -74,7 +74,7 @@ Conclusion
 
 A SVM is a great machine learning technique to classify data. Now that we know a little about SVM's we can show the advantages and disadvantages to using this classifier. 
 The pros to SVM's:
-- Effective in classifying higher dimesional space
+- Effective in classifying higher dimensional space
 - Saves space on memory because it only uses the support vectors to create the optimal line. 
 - Best classifier when data points are separable
 
@@ -82,7 +82,41 @@ The cons to SVM's:
 - Peforms poorly when there is a large data set, the training times are longer.
 - Performs badly when the classes are overlapping, i.e. non-separable data points.   
 
-Check out our code to learn how to implement a linear SVM using Python's scikit-learn library. 
+
+Motivation
+----------
+
+Why would you ever use SVMs? There are so many different models that can classify data. Why use this one? This is probably the best classifier if you know the data points are easily separable. Also it can be extended by using kernel tricks, so try using the different kernels like Radial Basis Function (RBF). 
 
 
+Code Example
+-------------
+Check out our code, `linear_svm.py` to learn how to implement a linear SVM using Python's scikit-learn library. More information about `Scikit-Learn` can be found here. 
+
+`linear_svm`, Classifies a set of data on breast cancer, loaded from Scikit-Learn's dataset library. The program will take the data and plot them on a graph, then use the SVM to create a hyperplane to separate the data. It also circles the support vectors that determine the hyperplane. The output should look like this:
+
+.. figure:: _img/linear_svm_output.png
+   :scale: 50%
+   :alt: Linear SVM output
+
+The green points are classified as benign.
+The red points are classified as malignant.
+
+This loads the data from the Scikit-Learn's dataset library. You can change the data to whatever you would like just make sure you have, data points and an array of targets to classfy those data points. 
+
+.. code:: python
+        dataCancer = load_breast_cancer()
+        data = dataCancer.data[:, :2]
+        target = dataCancer.target
+
+You can also change the kernel to 'rbf' or 'polynomial'. This will create a different hyperplane to classify the data. You can change it here in the code:
+
+.. code:: python
+        model = svm.SVC(kernel = 'linear', C = 10000)
+        model.fit(data, target)
+
+
+.. _Scikit-Learn: https://scikit-learn.org
+
+.. _linear_svm.py: /code/linear_svm.py
 

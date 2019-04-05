@@ -3,17 +3,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import svm
 #This is used for our dataset
-from sklearn.datasets import make_blobs
+from sklearn.datasets import load_breast_cancer
 
 
 # =============================================================================
-# We are using sklearn datasets to create the set of data point that is separable 
-# n_samples is the number of data points. 
-# centers is the number of cluster of data points so in our case it is 2.
-# There are more optional parameters but we will leave them as default, 
-# You can find them at https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html
+# We are using sklearn datasets to create the set of data points about breast cancer
+# Data is the set data points
+# target is the classification of those data points. 
+# More information can be found athttps://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer
 # =============================================================================
-X_train, Y_train = make_blobs(n_samples=50, centers=2)
+dataCancer = load_breast_cancer()
+data = dataCancer.data[:, :2]
+target = dataCancer.target
 
 # =============================================================================
 # Creates the linear svm model and fits it to our data points
@@ -21,12 +22,13 @@ X_train, Y_train = make_blobs(n_samples=50, centers=2)
 # You can find the other parameters at https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html
 # =============================================================================
 model = svm.SVC(kernel = 'linear', C = 10000)
-model.fit(X_train, Y_train)
+model.fit(data, target)
+
 
 #plots the points 
-plt.scatter(X_train[:, 0], X_train[:, 1], c=Y_train, s=30, cmap=plt.cm.prism)
+plt.scatter(data[:, 0], data[:, 1], c=target, s=30, cmap=plt.cm.prism)
 
-# Creates the axis for the grid
+# Creates the axis bounds for the grid
 axis = plt.gca()
 x_limit = axis.get_xlim()
 y_limit = axis.get_ylim()
@@ -42,8 +44,8 @@ decision_line = model.decision_function(xy).reshape(Y.shape)
 
 
 # Plot the decision line and the margins
-axis.contour(X, Y,  decision_line, colors = 'k',  levels=[-1, 0, 1], alpha=0.5,
-           linestyles=[':', '-', ':'])
+axis.contour(X, Y,  decision_line, colors = 'k',  levels=[0], 
+           linestyles=['-'])
 # Shows the support vectors that determine the desision line
 axis.scatter(model.support_vectors_[:, 0], model.support_vectors_[:, 1], s=100,
            linewidth=1, facecolors='none', edgecolors='k')
