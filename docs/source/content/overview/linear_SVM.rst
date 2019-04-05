@@ -93,7 +93,7 @@ Code Example
 -------------
 Check out our code, `linear_svm.py`_ to learn how to implement a linear SVM using Python's scikit-learn library. More information about `Scikit-Learn`_ can be found here. 
 
-`linear_svm`_, Classifies a set of data on breast cancer, loaded from Scikit-Learn's dataset library. The program will take the data and plot them on a graph, then use the SVM to create a hyperplane to separate the data. It also circles the support vectors that determine the hyperplane. The output should look like this:
+`linear_svm.py`_, Classifies a set of data on breast cancer, loaded from Scikit-Learn's dataset library. The program will take the data and plot them on a graph, then use the SVM to create a hyperplane to separate the data. It also circles the support vectors that determine the hyperplane. The output should look like this:
 
 .. figure:: _img/linear_svm_output.png
    :scale: 50%
