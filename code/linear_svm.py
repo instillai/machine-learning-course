@@ -1,4 +1,4 @@
-#All the libraries we need for linear SVM
+# All the libraries we need for linear SVM
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import svm
@@ -13,6 +13,9 @@ from sklearn.datasets import load_breast_cancer
 # More information can be found athttps://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer
 # =============================================================================
 dataCancer = load_breast_cancer()
+
+# The data[:, :2] gets two features for the data given. If we wanted to plot a 
+# 3 dimensional plot then we would replace :2 with :3
 data = dataCancer.data[:, :2]
 target = dataCancer.target
 
