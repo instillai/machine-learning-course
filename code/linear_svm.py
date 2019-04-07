@@ -2,7 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import svm
-#This is used for our dataset
+# This is used for our dataset
 from sklearn.datasets import load_breast_cancer
 
 
@@ -28,7 +28,7 @@ model = svm.SVC(kernel = 'linear', C = 10000)
 model.fit(data, target)
 
 
-#plots the points 
+# plots the points 
 plt.scatter(data[:, 0], data[:, 1], c=target, s=30, cmap=plt.cm.prism)
 
 # Creates the axis bounds for the grid
@@ -42,7 +42,7 @@ y = np.linspace(y_limit[0], y_limit[1], 50)
 X, Y = np.meshgrid(x, y)
 xy = np.c_[X.ravel(), Y.ravel()]
 
-#Creates the decision line for the data points, use model.predict if you are classifying more than two 
+# Creates the decision line for the data points, use model.predict if you are classifying more than two 
 decision_line = model.decision_function(xy).reshape(Y.shape)
 
 
@@ -53,5 +53,5 @@ axis.contour(X, Y,  decision_line, colors = 'k',  levels=[0],
 axis.scatter(model.support_vectors_[:, 0], model.support_vectors_[:, 1], s=100,
            linewidth=1, facecolors='none', edgecolors='k')
 
-#Shows the graph
+# Shows the graph
 plt.show()
