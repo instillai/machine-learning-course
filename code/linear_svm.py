@@ -55,3 +55,5 @@ axis.scatter(model.support_vectors_[:, 0], model.support_vectors_[:, 1], s=100,
 
 # Shows the graph
 plt.show()
+
+
