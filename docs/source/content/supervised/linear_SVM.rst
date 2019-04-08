@@ -32,7 +32,7 @@ So how does SVM find the ideal line to separate the two classes? It doesn't just
 the line/hyperplane with the **maximum margin**. Maximizing the margin will give us the optimal line to classify the data. 
 This is shown in the figure below.  
 
-.. figure:: _img/optimal_hyperplane.PNG
+.. figure:: _img/Optimal_hyperplane.PNG
    :scale: 50%
    :alt: Optimal_Hyperplane
 
