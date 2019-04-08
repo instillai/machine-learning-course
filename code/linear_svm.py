@@ -14,9 +14,13 @@ from sklearn.datasets import load_breast_cancer
 # =============================================================================
 dataCancer = load_breast_cancer()
 
-# The data[:, :2] gets two features for the data given. If we wanted to plot a 
-# 3 dimensional plot then we would replace :2 with :3
-data = dataCancer.data[:, :2]
+# The data[:, x:n] gets two features for the data given. 
+# The : part gets all the rows in the matrix. And 0:2 gets the first 2 columns 
+# If you want to get a different two features you can replace 0:2 with 1:3, 2:4,... 28:30, 
+# there are 30 features in the set so it can only go up to 30.
+# If we wanted to plot a 3 dimensional plot then the difference between x and n needs to be 3 instead of two
+data = dataCancer.data[:, :]
+print(data)
 target = dataCancer.target
 
 # =============================================================================
