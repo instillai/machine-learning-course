@@ -84,18 +84,11 @@ classified with a circle that separates the data.
 
 Here is an example of the kernel trick.
 
-.. figure:: _img/SVM_Kernel1.png
-   :scale: 50%
-   :alt: Kernel X Z graph
-
-   Ref:  https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/
-
 .. figure:: _img/SVM_Kernel2.png
    :scale: 50%
    :alt: Kernel X Y graph
 
    Ref:  https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/
-
 
 
 There are three types of kernels:
@@ -136,8 +129,8 @@ by using kernel tricks, so try using the different kernels like Radial Basis Fun
 
 Code Example
 -------------
-Check out our code, `here`_ to learn how to implement a linear SVM using Python's Scikit-learn library. 
-More information about `Scikit-Learn`_ can be found here. 
+Check out our code, `linear_svm.py`_ to learn how to implement a linear SVM using Python's Scikit-learn library. 
+More information about Scikit-Learn can be found `here`_. 
 
 `linear_svm.py`_, Classifies a set of data on breast cancer, loaded from Scikit-Learn's dataset library. 
 The program will take the data and plot them on a graph, then use the SVM to create a hyperplane to separate the data.
@@ -168,7 +161,7 @@ the data. You can change it here in the code:
     model.fit(data, target)
 
 
-.. _Scikit-Learn: https://scikit-learn.org
+.. _here: https://scikit-learn.org
 
-.. _here: /code/linear_svm.py
+.. _linear_svm.py: /code/linear_svm.py
 
