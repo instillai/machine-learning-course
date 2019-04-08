@@ -19,8 +19,7 @@ dataCancer = load_breast_cancer()
 # If you want to get a different two features you can replace 0:2 with 1:3, 2:4,... 28:30, 
 # there are 30 features in the set so it can only go up to 30.
 # If we wanted to plot a 3 dimensional plot then the difference between x and n needs to be 3 instead of two
-data = dataCancer.data[:, :]
-print(data)
+data = dataCancer.data[:, 0:2]
 target = dataCancer.target
 
 # =============================================================================

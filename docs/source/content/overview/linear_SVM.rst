@@ -4,22 +4,22 @@ Linear Support Vector Machines
 
 A **Support Vector Machine** (SVM for short) is another machine learning algorithm that is used to classify data.
 The point of SVM's are to try and find a line or **hyperplane** to divide a dimensional space which best classifies
-the data points. If we were trying to divide two classes A and B, we would try best separate the two classes with a 
-line. So, on one side of the line/hyperplane would be data from class A and on the other side would be from class B. 
+the data points. If we were trying to divide two classes A and B, we would try to best separate the two classes with a 
+line. On one side of the line/hyperplane would be data from class A and on the other side would be from class B. 
 This alogorithm is very useful in classifying because we must to calculate the best line or hyperplane once 
-and any new data points we can easily classify just by seeing which side of the line it falls on. Unlike KNN, where 
+and any new data points can easily be classified just by seeing which side of the line they fall on. This contrasts with the k-nearest neighbors algortihm, where 
 we would have to calculate each data points nearest neighbors. 
 
 Hyperplane
 ----------
-A **hyperplane** depends on the space it is in, but it divides the space into two disconnected parts. So 
-1-dimensional space this would just be a point, 2-d space a line, 3-d space a plane, and so on. 
+A **hyperplane** depends on the space it is in, but it divides the space into two disconnected parts. For example,  
+1-dimensional space would just be a point, 2-d space a line, 3-d space a plane, and so on. 
 
 How do we find the best hyperplane/line?
 ----------------------------------------
 
 You might be wondering that there could be multiple lines that split the data well. In fact, there is an infinite
-amount of lines that can divide two classes.  As you can see in the graph below every line splits the squares and
+amount of lines that can divide two classes. As you can see in the graph below, every line splits the squares and
 the circles, so which one do we choose?
 
 .. figure:: _img/Possible_hyperplane.png
@@ -28,7 +28,7 @@ the circles, so which one do we choose?
 
    Ref: https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47 
 
-So how does SVM find the ideal line to separate the two classes. It doesn't just pick a random one. The algorithm 
+So how does SVM find the ideal line to separate the two classes? It doesn't just pick a random one. The algorithm chooses
 the line/hyperplane with the **maximum margin**. Maximizing the margin will give us the optimal line to classify the data. 
 This is shown in the figure below.  
 
@@ -41,7 +41,7 @@ This is shown in the figure below.
 How to maximize the margin?
 ---------------------------
 
-The data that is closest to the line are what determine the optimal line. These data points are called 
+The data that is closest to the line is what determines the optimal line. These data points are called 
 **support vectors**. They are shown as the filled in squares and circles above. The distance from these vectors to the
 hyperplane is called the **margin**. In general, the further those points are from the hyperplane, the greater the 
 probability of correctly classifying the data. There is a lot of complex math that goes into finding the support vectors
@@ -50,7 +50,7 @@ and maximizing the margin. We won't go into that; we just want to get the basic 
 Ignore Outliers
 ---------------
 
-Sometimes data classes will have **outliers**. This is data points that are clearly separated from the rest of its class.
+Sometimes data classes will have **outliers**. These are data points that are clearly separated from the rest of their class.
 Support Vector Machines will ignore these outliers. This is shown in the figure below. 
 
 
@@ -72,15 +72,31 @@ separable data**. Here is an example of that kind of data.
 
 .. figure:: _img/SVM_Kernal.png
    :scale: 50%
-   :alt: Outliers
+   :alt: Kernel
 
    Ref:  https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/
 
 
-There's is no clear way to separate the stars from the circles. SVMs will be able to classify non-linearly separable
-data by using a trick called the **kernel trick**. Basically, what goes behind the scenes, is that it takes the points
-to a higher dimension, which turns non-linearly separable date to linear separable data. So the above figure would be
+There is no clear way to separate the stars from the circles. SVMs will be able to classify non-linearly separable
+data by using a trick called the **kernel trick**. Basically, the kernel trick takes the points
+to a higher dimension to turn non-linearly separable data to linear separable data. So the above figure would be
 classified with a circle that separates the data. 
+
+Here is an example of the kernel trick.
+
+.. figure:: _img/SVM_Kernel1.png
+   :scale: 50%
+   :alt: Kernel X Z graph
+
+   Ref:  https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/
+
+.. figure:: _img/SVM_Kernel2.png
+   :scale: 50%
+   :alt: Kernel X Y graph
+
+   Ref:  https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/
+
+
 
 There are three types of kernels:
 
@@ -114,13 +130,13 @@ Motivation
 ----------
 
 Why would you ever use SVMs? There are so many different models that can classify data. Why use this one? 
-This is probably the best classifier if you know the data points are easily separable. Also it can be extended
+This is probably the best classifier if you know the data points are easily separable. Also, it can be extended
 by using kernel tricks, so try using the different kernels like Radial Basis Function (RBF). 
 
 
 Code Example
 -------------
-Check out our code, `linear_svm.py`_ to learn how to implement a linear SVM using Python's Scikit-learn library. 
+Check out our code, `here`_ to learn how to implement a linear SVM using Python's Scikit-learn library. 
 More information about `Scikit-Learn`_ can be found here. 
 
 `linear_svm.py`_, Classifies a set of data on breast cancer, loaded from Scikit-Learn's dataset library. 
@@ -134,8 +150,8 @@ It also circles the support vectors that determine the hyperplane. The output sh
 The green points are classified as benign.
 The red points are classified as malignant.
 
-This loads the data from the Scikit-Learn's dataset library. You can change the data to whatever you would like
-just make sure you have, data points and an array of targets to classify those data points. 
+This loads the data from the Scikit-Learn's dataset library. You can change the data to whatever you would like. 
+Just make sure you have, data points and an array of targets to classify those data points. 
 
 .. code:: python
 
@@ -154,5 +170,5 @@ the data. You can change it here in the code:
 
 .. _Scikit-Learn: https://scikit-learn.org
 
-.. _linear_svm.py: /code/linear_svm.py
+.. _here: /code/linear_svm.py
 
