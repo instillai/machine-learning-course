@@ -106,12 +106,22 @@ algorithm.
 
 Gaussian Model (Continuous)
 ===========================
-Gaussian models assume features follow a normal distribution. As far as you
-need to know, a normal distribution is just a specific type of distribution.
-This is another big assumption because many features do not follow a normal
-distribution. While this is true, assuming a normal distribution makes our
-calculations a whole lot easier. We use Gaussian models when features are not
-counts and include decimal values.
+Gaussian models assume features follow a normal distribution. As far as you 
+need to know, a normal distribution is just a specific type of probability 
+distribution where values tend to be close to the average. As you can see in 
+*Figure 2*, the plot of a normal distribution has a bell shape. Values are 
+most frequent around the peak of the plot and tend to be rarer the farther 
+away you go. This is another big assumption because many features do not 
+follow a normal distribution. While this is true, assuming a normal 
+distribution makes our calculations a whole lot easier. We use Gaussian models 
+when features are not counts and include decimal values.
+
+.. figure:: _img/Bell_Curve.png 
+
+   **Figure 2. A normal distribution with the iconic bell curve shape** 
+   [`code`__]
+   
+   .. __: /code/supervised/Naive_Bayes/bell_curve.py
 
 The relevant code is available in the gaussian.py_ file.
 
@@ -129,7 +139,18 @@ Multinomial Model (Discrete)
 Multinomial models are used when we are working with discrete counts.
 Specifically, we want to use them when we are counting how often a feature
 occurs. For example, we might want to count how often the word “count” appears
-on this page.
+on this page. *Figure 3* shows the sort of data we might use with a 
+multinomial model. If we know the counts will only be one of two values, we 
+should use a Bernoulli model instead.
+
+.. csv-table:: **Figure 3. A table of word frequencies for this page**
+   :header: "Word", "Frequency"
+   :stub-columns: 1
+
+   "Algebra", "0"
+   "Big", "1"
+   "Count", "2"
+   "Data", "12"
 
 The relevant code is available in the multinomial.py_ file.
 
@@ -151,8 +172,17 @@ Bernoulli models are also used when we are working with discrete counts.
 Unlike the multinomial case, here we are counting whether or not a feature
 occurred. For example, we might want to check if the word “count” appears at
 all on this page. We can also use Bernoulli models when features only have 2
-possible values like red or blue.
+possible values like red or blue. *Figure 4* shows the sort of data we might use with a 
+Bernoulli model.
 
+.. csv-table:: **Figure 4. A table of word appearances on this page**
+   :header: "Word", "Present?"
+   :stub-columns: 1
+
+   "Algebra", "False"
+   "Big", "True"
+   "Count", "True"
+   "Data", "True"
 
 The relevant code is available in the bernoulli.py_ file.
 
