@@ -46,7 +46,7 @@ What is it?
 Naive Bayes is a classification technique that uses probabilities we already
 know to determine how to classify input. These probabilities are related to
 existing classes and what features they have. In the example above, we choose
-the class that most resembles our input, apple, as its classification. This
+the class that most resembles our input as its classification. This
 technique is based around using Bayes’ Theorem. If you’re unfamiliar with what
 Bayes’ Theorem is, don’t worry! We will explain it in the next section.
 
