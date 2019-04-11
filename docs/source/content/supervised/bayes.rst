@@ -115,7 +115,7 @@ counts and include decimal values.
 
 The relevant code is available in the gaussian.py_ file.
 
-.. _gaussian.py: /code/supervised/naive_bayes/gaussian.py
+.. _gaussian.py: /code/supervised/Naive_Bayes/gaussian.py
 
 In the code, we try and guess a color from given RGB percentages. We create
 some data to work with where each data point represents an RGB triple. The
@@ -133,7 +133,7 @@ on this page.
 
 The relevant code is available in the multinomial.py_ file.
 
-.. _multinomial.py: /code/supervised/naive_bayes/multinomial.py
+.. _multinomial.py: /code/supervised/Naive_Bayes/multinomial.py
 
 The code is based on our fruit example. In the code, we try and guess a fruit
 from given characteristics. We create some data to work with where each data
@@ -156,7 +156,7 @@ possible values like red or blue.
 
 The relevant code is available in the bernoulli.py_ file.
 
-.. _bernoulli.py: /code/supervised/naive_bayes/bernoulli.py
+.. _bernoulli.py: /code/supervised/Naive_Bayes/bernoulli.py
 
 In the code, we try and guess if something is a duck or not based on certain
 characteristics it has. We create some data to work with where each data point
