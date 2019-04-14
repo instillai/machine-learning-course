@@ -163,5 +163,5 @@ the data. You can change it here in the code:
 
 .. _here: https://scikit-learn.org
 
-.. _linear_svm.py: /code/supervised/Linear_SVM/linear_svm.py
+.. _linear_svm.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/Linear_SVM/linear_svm.py
 
