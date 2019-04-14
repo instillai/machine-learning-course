@@ -48,8 +48,10 @@ Overview of machine learning
 ------------------------------------------------------------
 
 .. _lrtutorial: docs/source/content/overview/linear-regression.rst
+.. _lrcode: code/overview/linear_regression
 
 .. _overtutorial: docs/source/content/overview/overfitting.rst
+.. _overcode: code/overview/overfitting
 
 .. _regtutorial: docs/source/content/overview/regularization.rst
 .. _regpython: code/overview/regularization
@@ -63,9 +65,9 @@ Overview of machine learning
 +--------------------------------------------------------------------+-------------------------------+--------------------------------+
 | Title                                                              |    Code                       |    Document                    |
 +====================================================================+===============================+================================+
-| Linear Regression                                                  |                               | `Tutorial <lrtutorial_>`_      |
+| Linear Regression                                                  |   `Python <lrcode_>`_         | `Tutorial <lrtutorial_>`_      |
 +--------------------------------------------------------------------+-------------------------------+--------------------------------+
-| overfitting                                                        |                               | `Tutorial <overtutorial_>`_    |
+| overfitting                                                        |  `Python <overcode_>`_        | `Tutorial <overtutorial_>`_    |
 +--------------------------------------------------------------------+-------------------------------+--------------------------------+
 | regularization                                                     | `Python <regpython_>`_        | `Tutorial <regtutorial_>`_     |
 +--------------------------------------------------------------------+-------------------------------+--------------------------------+
