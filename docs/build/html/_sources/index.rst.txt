@@ -14,10 +14,17 @@ Welcome to Deep Learning NLP documentation!
 
 .. toctree::
    :maxdepth: 3
-   :caption: Content
+   :caption: Core Concepts
 
-   content/overview/
+   content/overview/crossvalidation
+   content/overview/linear-regression
+   content/overview/overfitting
+   content/overview/regularization
 
+.. toctree::
+  :maxdepth: 3
+  :caption: Supervised Learning
+  
    content/supervised/logistic_regression
    content/supervised/bayes
    content/supervised/decisiontrees
