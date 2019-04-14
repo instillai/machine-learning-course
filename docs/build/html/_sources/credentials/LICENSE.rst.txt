@@ -3,7 +3,7 @@ LICENSE
 
 MIT License
 
-Copyright (c) 2017 Amirsina Torfi
+Copyright (c) 2019 Amirsina Torfi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
