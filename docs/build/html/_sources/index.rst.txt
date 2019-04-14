@@ -16,10 +16,7 @@ Welcome to Deep Learning NLP documentation!
    :maxdepth: 3
    :caption: Content
 
-   content/overview/crossvalidation
-   content/overview/linear-regression
-   content/overview/overfitting
-   content/overview/regularization
+   content/overview/
 
    content/supervised/logistic_regression
    content/supervised/bayes
