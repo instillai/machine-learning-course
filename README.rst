@@ -51,6 +51,8 @@ tutorials using many different well-known Machine Learning frameworks such as ``
 Machine Learning
 =====================
 
+.. figure:: _img/deeplearning.png
+
 ------------------------------------------------------------
 Overview of machine learning
 ------------------------------------------------------------
