@@ -23,7 +23,7 @@ Welcome to Deep Learning NLP documentation!
 
 .. toctree::
   :maxdepth: 3
-  :caption: Core Concepts
+  :caption: Supervised Learning
 
   content/supervised/logistic_regression
   content/supervised/bayes
