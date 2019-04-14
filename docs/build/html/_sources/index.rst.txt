@@ -17,6 +17,15 @@ Welcome to Deep Learning NLP documentation!
    :caption: Content
 
    content/overview/crossvalidation
+   content/overview/linear-regression
+   content/overview/overfitting
+   content/overview/regularization
+
+   content/supervised/logistic_regression
+   content/supervised/bayes
+   content/supervised/decisiontrees
+   content/supervised/knn
+   content/supervised/linear_SVM
 
 .. toctree::
    :maxdepth: 3

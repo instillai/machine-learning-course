@@ -57,8 +57,7 @@ Note how much smoother the red line is. It will probably do a better job against
 In the included file, ``regularization_ridge.py``, the code that adds ridge regression is:
 
 .. code-block:: python
-    regModel = Pipeline([('poly', PolynomialFeatures(degree=6)), \
-    ('ridge', Ridge(alpha=5.0))])
+    regModel = Pipeline([('poly', PolynomialFeatures(degree=6)), ('ridge', Ridge(alpha=5.0))])
 
 Adding the Ridge regression is as simple as adding an additional argument to our Pipeline call.
 Here, the parameter alpha represents our tuning variable. For additional information on Ridge regression
