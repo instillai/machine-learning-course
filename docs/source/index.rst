@@ -23,13 +23,22 @@ Welcome to Deep Learning NLP documentation!
 
 .. toctree::
   :maxdepth: 3
-  :caption: Supervised Learning
-  
-   content/supervised/logistic_regression
-   content/supervised/bayes
-   content/supervised/decisiontrees
-   content/supervised/knn
-   content/supervised/linear_SVM
+  :caption: Core Concepts
+
+  content/supervised/logistic_regression
+  content/supervised/bayes
+  content/supervised/decisiontrees
+  content/supervised/knn
+  content/supervised/linear_SVM
+
+..   :maxdepth: 3
+..   :caption: Supervised Learning
+..
+..    content/supervised/logistic_regression
+..    content/supervised/bayes
+..    content/supervised/decisiontrees
+..    content/supervised/knn
+..    content/supervised/linear_SVM
 
 .. toctree::
    :maxdepth: 3
