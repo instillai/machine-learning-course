@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>k-Nearest Neighbors &mdash; Machine-Learning-Course 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Foreword</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/crossvalidation.html">Cross-Validation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Document Credentials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/LICENSE.html">LICENSE</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Machine-Learning-Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>k-Nearest Neighbors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com///blob/content/supervised/knn.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="k-nearest-neighbors">
+<h1>k-Nearest Neighbors<a class="headerlink" href="#k-nearest-neighbors" title="Permalink to this headline">¶</a></h1>
+<p>K-Nearest Neighbors (KNN) is a basic classifier for machine learning. So we are trying to identify what class an object is in. To do this we look at the closest points (neighbors) to the object and the class with the majority of neighbors will be the class that we identify the object to be in. The k is the number of nearest neighbors to the object. So if k = 1 then the class the object would be in is the class of the closest neighbor. Let’s look at an example.</p>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="../../_images/knn.png"><img alt="KNN" src="../../_images/knn.png" style="width: 1148.0px; height: 1006.5px;" /></a>
+<p class="caption"><span class="caption-text">Ref: <a class="reference external" href="https://coxdocs.org">https://coxdocs.org</a></span></p>
+</div>
+<p>So in this example we are trying to classify the red star to be either a green square or a blue octagon. So first if we look at the inner circle where k = 3, we can see that there are 2 blue octagons and 1 green square. So there is a majority of blue octagons, so the red star would be classified as a blue octagon. Now we take a look at k = 5, the outer circle. In this one there is 2 blue octagons and 3 green squares. So the red star would be classified as a green square.</p>
+<div class="section" id="how-does-it-work">
+<h2>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">¶</a></h2>
+<p>We will look at two different ways to go about this. The two ways we will look at is the brute force method and the K-D tree method.</p>
+</div>
+<div class="section" id="brute-force-method">
+<h2>Brute Force Method<a class="headerlink" href="#brute-force-method" title="Permalink to this headline">¶</a></h2>
+<p>This is the simpliest method. Basically it’s just calculating the euclidean distance from the object being classified to each point in the set. You want to use this method when the dimensions are small or the number of points are small.</p>
+</div>
+<div class="section" id="k-d-tree-method">
+<h2>K-D Tree Method<a class="headerlink" href="#k-d-tree-method" title="Permalink to this headline">¶</a></h2>
+<p>This method tries to improve the running time by reducing the amount of times we calculate the euclidean distance. The idea behind this method is that if we know that two data points are close to each other and we calculate the euclidean distance to one of them and then we know that distance is roughly close to the other point. If you have a larger data set it is better to use this method.</p>
+</div>
+<div class="section" id="choosing-k">
+<h2>Choosing k<a class="headerlink" href="#choosing-k" title="Permalink to this headline">¶</a></h2>
+<p>Choosing k typically depends on the dataset you are looking at. You never want to choose k = 2 because it has a very high chance that there won’t be a majority class, so in the example above the there would be one of each so we wouldn’t be able to classify the red star. Typically k you want the value of k to be small. As k goes to infinity all unidentified data points will always be classified to one class or the other depending on which class has more data points. So typically you don’t want this to happen, so it is wise to choose a k that is relatively small.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Amirsina Torfi
+      Last updated on True.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'en',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

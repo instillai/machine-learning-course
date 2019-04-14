@@ -1,0 +1,248 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overfitting and Underfitting &mdash; Machine-Learning-Course 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Foreword</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="crossvalidation.html">Cross-Validation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Document Credentials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/LICENSE.html">LICENSE</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Machine-Learning-Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Overfitting and Underfitting</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com///blob/content/overview/overfitting.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overfitting-and-underfitting">
+<h1>Overfitting and Underfitting<a class="headerlink" href="#overfitting-and-underfitting" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id1">Overview</a></li>
+<li><a class="reference internal" href="#overfitting" id="id2">Overfitting</a></li>
+<li><a class="reference internal" href="#underfitting" id="id3">Underfitting</a></li>
+<li><a class="reference internal" href="#how-to-avoid-overfitting" id="id4">How to avoid overfitting</a></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>When using machine learning, there are many ways to go wrong.  Some of the most common issues in machine learning are <strong>overfitting</strong> and <strong>underfitting</strong>.  To understand these concepts, let’s imagine a machine learning model that is trying to learn to classify numbers, and has access to a training set of data and a testing set of data.  Be sure to <strong>follow along with the sample code</strong> courtesy of scikit-learn.org</p>
+</div>
+<div class="section" id="overfitting">
+<h2><a class="toc-backref" href="#id2">Overfitting</a><a class="headerlink" href="#overfitting" title="Permalink to this headline">¶</a></h2>
+<p>A model suffers from <strong>Overfitting</strong> when it has learned too much from the training data, and does not perform well in practice as a result.  This is usually caused by the model having too much exposure to the training data.  For the number classification example, if the model is overfit in this way, it may be picking up on tiny details that are misleading, like stray marks as an indication of a specific number.</p>
+<p>The estimate looks pretty good when you look at the middle of the graph, but the edges have large error.  In practice, this error isn’t always at edge cases and can pop up anywhere.  The noise in training can cause the error seen in the graph</p>
+</div>
+<div class="section" id="underfitting">
+<h2><a class="toc-backref" href="#id3">Underfitting</a><a class="headerlink" href="#underfitting" title="Permalink to this headline">¶</a></h2>
+<p>A model suffers from <strong>Underfitting</strong> when it has not learned enough from the training data, and does not perform well in practice as a result.  As a direct contrast to the previous idea, this issue is caused by not letting the model learn enough from training data.  In the number classification example, if the training set is too small or the model has not had enough attempts to learn from it, then it will not be able to pick out key features of the numbers.</p>
+<p>The issue with this estimate is clear to the human eye, the model should be nonlinear, and is instead just a simple line.  In machine learning, this could be a result of underfitting, the model has not had enough exposure to training data to adapt to it, and is currently in a simple state.</p>
+</div>
+<div class="section" id="how-to-avoid-overfitting">
+<h2><a class="toc-backref" href="#id4">How to avoid overfitting</a><a class="headerlink" href="#how-to-avoid-overfitting" title="Permalink to this headline">¶</a></h2>
+<p>A key idea in avoiding overfitting issues in machine learning is to maintain a <strong>validation set</strong>.  This set is used for training purposes, but most importantly the model <strong>does not learn from it</strong>.  So, the model first learns from the <strong>training set</strong>, then checks its knowledge on a completely different <strong>validation set</strong>.  When it performs well enough on the <strong>validation set</strong>, we can be more confident that it is not overfit to the training data than if we just looked at training results.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Amirsina Torfi
+      Last updated on True.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'en',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

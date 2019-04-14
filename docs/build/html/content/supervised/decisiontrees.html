@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Decision Trees &mdash; Machine-Learning-Course 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Foreword</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/crossvalidation.html">Cross-Validation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Document Credentials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/LICENSE.html">LICENSE</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Machine-Learning-Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Decision Trees</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com///blob/content/supervised/decisiontrees.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="decision-trees">
+<h1>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">¶</a></h1>
+<p>Decision trees are a classifier in machine learning that allows us to
+make predictions based on previous data. They are like a series of
+sequential “if … then” statements you feed new data into to get a
+result.</p>
+<p>To demonstrate decision trees, let’s take a look at an example. Imagine
+we want to predict whether Mike is going to go grocery shopping on any
+given day. We can look at previous factors that led Mike to go to the
+store:</p>
+<div class="figure" id="id1">
+<img alt="Dataset" src="../../_images/shopping_table.png" />
+<p class="caption"><span class="caption-text">Dataset</span></p>
+</div>
+<p>Here we can see the amount of grocery supplies Mike had, the weather,
+and whether Mike worked each day. Green rows are days he went to the
+store, and red days are those he didn’t. The goal of a decision tree is
+to try to understand <em>why</em> Mike goes to the store, and apply that to new
+data later on.</p>
+<p>Let’s divide the first attribute up into a tree. Mike can either have a
+low, medium, or high amount of supplies:</p>
+<div class="figure" id="id2">
+<img alt="Tree 1" src="../../_images/decision_tree_1.png" />
+<p class="caption"><span class="caption-text">Tree 1</span></p>
+</div>
+<p>Here we can see that Mike never goes to the store if he has a high
+amount of supplies. This is called a <strong>pure subset</strong>, a subset with only
+positive or only negative examples. With decision trees, there is no
+need to break a pure subset down further.</p>
+<p>Let’s break the Med Supplies category into whether Mike worked that day:</p>
+<div class="figure" id="id3">
+<img alt="Tree 2" src="../../_images/decision_tree_2.png" />
+<p class="caption"><span class="caption-text">Tree 2</span></p>
+</div>
+<p>Here we can see we have two more pure subsets, so this tree is complete.
+We can replace any pure subsets with their respective answer - in this
+case, yes or no.</p>
+<p>Finally, let’s split the Low Supplies category by the Weather attribute:</p>
+<div class="figure" id="id4">
+<img alt="Tree 3" src="../../_images/decision_tree_3.png" />
+<p class="caption"><span class="caption-text">Tree 3</span></p>
+</div>
+<p>Now that we have all pure subsets, we can create our final decision
+tree:</p>
+<div class="figure" id="id5">
+<img alt="Tree 4" src="../../_images/decision_tree_4.png" />
+<p class="caption"><span class="caption-text">Tree 4</span></p>
+</div>
+<div class="section" id="classification-and-regression-trees">
+<h2>Classification and Regression Trees<a class="headerlink" href="#classification-and-regression-trees" title="Permalink to this headline">¶</a></h2>
+<p>Decision tree algorithms are also known as CART, or Classification and
+Regression Trees. A <strong>Classification Tree</strong>, like the one shown above,
+is used to get a result from a set of possible values. A <strong>Regression
+Tree</strong> is a decision tree where the result is a continuous value, such
+as the price of a car.</p>
+</div>
+<div class="section" id="splitting">
+<h2>Splitting<a class="headerlink" href="#splitting" title="Permalink to this headline">¶</a></h2>
+<p>Decision trees are created through a process of splitting, but how do we
+create the tree? We need a recursive algorithm that determines the best
+attributes to split on. One such algorithm is the <strong>greedy algorithm</strong>:</p>
+<ol class="arabic simple">
+<li>Starting from the root, we create a split for each attribute.</li>
+<li>For each created split, calculate the cost of the split.</li>
+<li>Choose the split that costs the least.</li>
+<li>Recurse into the sub-trees and continue from step 1.</li>
+</ol>
+<p>This process is repeated until all nodes have the same value as the
+target result, or splitting adds no value to a prediction. This
+algorithm has the root node as the best classifier.</p>
+<div class="section" id="cost-of-splitting">
+<h3>Cost of Splitting<a class="headerlink" href="#cost-of-splitting" title="Permalink to this headline">¶</a></h3>
+<p>TODO</p>
+</div>
+</div>
+<div class="section" id="pruning">
+<h2>Pruning<a class="headerlink" href="#pruning" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+<div class="section" id="reduced-error">
+<h3>Reduced Error<a class="headerlink" href="#reduced-error" title="Permalink to this headline">¶</a></h3>
+<p>TODO</p>
+</div>
+<div class="section" id="complexity-weakest-link">
+<h3>Complexity / Weakest Link<a class="headerlink" href="#complexity-weakest-link" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Amirsina Torfi
+      Last updated on True.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'en',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

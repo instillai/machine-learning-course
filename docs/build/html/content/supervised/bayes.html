@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Naive Bayes Classification &mdash; Machine-Learning-Course 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Foreword</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/crossvalidation.html">Cross-Validation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Document Credentials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/LICENSE.html">LICENSE</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Machine-Learning-Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Naive Bayes Classification</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com///blob/content/supervised/bayes.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="naive-bayes-classification">
+<h1>Naive Bayes Classification<a class="headerlink" href="#naive-bayes-classification" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#motivation" id="id7">Motivation</a></li>
+<li><a class="reference internal" href="#what-is-it" id="id8">What is it?</a></li>
+<li><a class="reference internal" href="#bayes-theorem" id="id9">Bayes’ Theorem</a></li>
+<li><a class="reference internal" href="#naive-bayes" id="id10">Naive Bayes</a></li>
+<li><a class="reference internal" href="#algorithms" id="id11">Algorithms</a><ul>
+<li><a class="reference internal" href="#gaussian-model-continuous" id="id12">Gaussian Model (Continuous)</a></li>
+<li><a class="reference internal" href="#multinomial-model-discrete" id="id13">Multinomial Model (Discrete)</a></li>
+<li><a class="reference internal" href="#bernoulli-model-discrete" id="id14">Bernoulli Model (Discrete)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#conclusion" id="id15">Conclusion</a></li>
+</ul>
+</div>
+<div class="section" id="motivation">
+<h2><a class="toc-backref" href="#id7">Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>A recurring problem in machine learning is the need to classify input into
+some preexisting class. Consider the following example.</p>
+<p>Say we want to classify a random piece of fruit we found lying around. In this
+example, we have three existing fruit categories: apple, blueberry, and
+coconut. Each of these fruits have three features we care about: size, weight,
+and color. This information is shown in <em>Figure 1</em>.</p>
+<table border="1" class="docutils" id="id2">
+<caption><span class="caption-text"><strong>Figure 1. A table of fruit characteristics</strong></span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head stub">&#160;</th>
+<th class="head">Apple</th>
+<th class="head">Blueberry</th>
+<th class="head">Coconut</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><th class="stub">Size</th>
+<td>Moderate</td>
+<td>Small</td>
+<td>Large</td>
+</tr>
+<tr class="row-odd"><th class="stub">Weight</th>
+<td>Moderate</td>
+<td>Light</td>
+<td>Heavy</td>
+</tr>
+<tr class="row-even"><th class="stub">Color</th>
+<td>Red</td>
+<td>Blue</td>
+<td>Brown</td>
+</tr>
+</tbody>
+</table>
+<p>We observe the piece of fruit we found and determine it has a moderate size,
+it is heavy, and it is red. We can compare these features against the features
+of our known classes to guess what type of fruit it is. The unknown fruit is
+heavy like a coconut but it shares more features with the apple class. The
+unknown fruit shares 2 of 3 characteristics with the apple class so we guess
+that it’s an apple. We used the fact that the random fruit is moderately sized
+and red like an apple to make our guess.</p>
+<p>This example is a bit silly but it highlights some fundamental points about
+classification problems. In these types of problems, we are comparing features
+of an unknown input to features of known classes in our data set. Naive Bayes
+classification is one way to do this.</p>
+</div>
+<div class="section" id="what-is-it">
+<h2><a class="toc-backref" href="#id8">What is it?</a><a class="headerlink" href="#what-is-it" title="Permalink to this headline">¶</a></h2>
+<p>Naive Bayes is a classification technique that uses probabilities we already
+know to determine how to classify input. These probabilities are related to
+existing classes and what features they have. In the example above, we choose
+the class that most resembles our input as its classification. This
+technique is based around using Bayes’ Theorem. If you’re unfamiliar with what
+Bayes’ Theorem is, don’t worry! We will explain it in the next section.</p>
+</div>
+<div class="section" id="bayes-theorem">
+<h2><a class="toc-backref" href="#id9">Bayes’ Theorem</a><a class="headerlink" href="#bayes-theorem" title="Permalink to this headline">¶</a></h2>
+<p>Bayes’ Theorem [<em>Equation 1</em>] is a very useful result that shows up in
+probability theory and other disciplines.</p>
+<div class="figure" id="id3">
+<img alt="../../_images/Bayes.png" src="../../_images/Bayes.png" />
+<p class="caption"><span class="caption-text"><strong>Equation 1. Bayes’ Theorem</strong></span></p>
+</div>
+<p>With Bayes’ Theorem, we can examine conditional probabilities (the probability
+of an event happening given another event has happened). P(A|B) is the
+probability that event A will happen given that event B has already happened.
+We can determine this value using other information we know about events A and
+B. We need to know P(B|A) (the probability that event B will happen given that
+event A has already happened), P(B) (the probability event B will happen), and
+P(A) (the probability event A will happen). We can even apply Bayes’ Theorem
+to machine learning problems!</p>
+</div>
+<div class="section" id="naive-bayes">
+<h2><a class="toc-backref" href="#id10">Naive Bayes</a><a class="headerlink" href="#naive-bayes" title="Permalink to this headline">¶</a></h2>
+<p>Naive Bayes classification uses Bayes’ Theorem with some additional
+assumptions. The main thing we will assume is that features are independent.
+Assuming independence means that the probability of a set of features
+occurring given a certain class is the same as the product of all the
+probabilities of each individual feature occurring given that class. In the
+case of our fruit example above, being red does not affect the probability of
+being moderately sized so assuming independence between color and size is
+fine. This is often not the case in real-world problems where features may
+have complex relationships. This is why “naive” is in the name. If the math
+seems complicated, don’t worry! The code will handle the number crunching for
+us. Just remember that we are assuming that features are independent of each
+other to simplify calculations.</p>
+<p>In this technique, we take some input and calculate the probability of it
+happening given that it belongs to one of our classes. We must do this for
+<strong>each</strong> of our classes. After we have all these probabilities, we just take
+the one that’s the largest as our prediction for what class the input belongs
+to.</p>
+</div>
+<div class="section" id="algorithms">
+<h2><a class="toc-backref" href="#id11">Algorithms</a><a class="headerlink" href="#algorithms" title="Permalink to this headline">¶</a></h2>
+<p>Below are some common models used for Naive Bayes classification. We have
+separated them into two general cases based on what type of feature
+distributions they use: continuous or discrete. Continuous means real-valued
+(you can have decimal answers) and discrete means a count (you can only have
+whole number answers). Also provided are the relevant code snippets for each
+algorithm.</p>
+<div class="section" id="gaussian-model-continuous">
+<h3><a class="toc-backref" href="#id12">Gaussian Model (Continuous)</a><a class="headerlink" href="#gaussian-model-continuous" title="Permalink to this headline">¶</a></h3>
+<p>Gaussian models assume features follow a normal distribution. As far as you
+need to know, a normal distribution is just a specific type of probability
+distribution where values tend to be close to the average. As you can see in
+<em>Figure 2</em>, the plot of a normal distribution has a bell shape. Values are
+most frequent around the peak of the plot and tend to be rarer the farther
+away you go. This is another big assumption because many features do not
+follow a normal distribution. While this is true, assuming a normal
+distribution makes our calculations a whole lot easier. We use Gaussian models
+when features are not counts and include decimal values.</p>
+<div class="figure" id="id4">
+<img alt="../../_images/Bell_Curve.png" src="../../_images/Bell_Curve.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 2. A normal distribution with the iconic bell curve shape</strong>
+[<a class="reference external" href="/code/supervised/Naive_Bayes/bell_curve.py">code</a>]</span></p>
+<div class="legend">
+</div>
+</div>
+<p>The relevant code is available in the <a class="reference external" href="/code/supervised/Naive_Bayes/gaussian.py">gaussian.py</a> file.</p>
+<p>In the code, we try and guess a color from given RGB percentages. We create
+some data to work with where each data point represents an RGB triple. The
+values of the triples are decimals ranging from 0 to 1 and each has a color
+class it is associated with. We create a Gaussian model and fit it to the
+data. We then make a prediction with new input to see which color it should be
+classified as.</p>
+</div>
+<div class="section" id="multinomial-model-discrete">
+<h3><a class="toc-backref" href="#id13">Multinomial Model (Discrete)</a><a class="headerlink" href="#multinomial-model-discrete" title="Permalink to this headline">¶</a></h3>
+<p>Multinomial models are used when we are working with discrete counts.
+Specifically, we want to use them when we are counting how often a feature
+occurs. For example, we might want to count how often the word “count” appears
+on this page. <em>Figure 3</em> shows the sort of data we might use with a
+multinomial model. If we know the counts will only be one of two values, we
+should use a Bernoulli model instead.</p>
+<table border="1" class="docutils" id="id5">
+<caption><span class="caption-text"><strong>Figure 3. A table of word frequencies for this page</strong></span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head stub">Word</th>
+<th class="head">Frequency</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><th class="stub">Algebra</th>
+<td>0</td>
+</tr>
+<tr class="row-odd"><th class="stub">Big</th>
+<td>1</td>
+</tr>
+<tr class="row-even"><th class="stub">Count</th>
+<td>2</td>
+</tr>
+<tr class="row-odd"><th class="stub">Data</th>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>The relevant code is available in the <a class="reference external" href="/code/supervised/Naive_Bayes/multinomial.py">multinomial.py</a> file.</p>
+<p>The code is based on our fruit example. In the code, we try and guess a fruit
+from given characteristics. We create some data to work with where each data
+point is a triple representing characteristics of a fruit namely size, weight,
+and color. The values of the triples are integers ranging from 0 to 2 and each
+has a fruit class it is associated with. The integers are basically just
+labels associated with characteristics but using them instead of strings
+allows us to use a Multinomial model. We create a Multinomial model and fit it
+to the data. We then make a prediction with new input to see which fruit it
+should be classified as.</p>
+</div>
+<div class="section" id="bernoulli-model-discrete">
+<h3><a class="toc-backref" href="#id14">Bernoulli Model (Discrete)</a><a class="headerlink" href="#bernoulli-model-discrete" title="Permalink to this headline">¶</a></h3>
+<p>Bernoulli models are also used when we are working with discrete counts.
+Unlike the multinomial case, here we are counting whether or not a feature
+occurred. For example, we might want to check if the word “count” appears at
+all on this page. We can also use Bernoulli models when features only have 2
+possible values like red or blue. <em>Figure 4</em> shows the sort of data we might use with a
+Bernoulli model.</p>
+<table border="1" class="docutils" id="id6">
+<caption><span class="caption-text"><strong>Figure 4. A table of word appearances on this page</strong></span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head stub">Word</th>
+<th class="head">Present?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><th class="stub">Algebra</th>
+<td>False</td>
+</tr>
+<tr class="row-odd"><th class="stub">Big</th>
+<td>True</td>
+</tr>
+<tr class="row-even"><th class="stub">Count</th>
+<td>True</td>
+</tr>
+<tr class="row-odd"><th class="stub">Data</th>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>The relevant code is available in the <a class="reference external" href="/code/supervised/Naive_Bayes/bernoulli.py">bernoulli.py</a> file.</p>
+<p>In the code, we try and guess if something is a duck or not based on certain
+characteristics it has. We create some data to work with where each data point
+is a triple representing the characteristics: walks like a duck, talks like a
+duck, and is small. The values of the triples are either 1 or 0 for true or
+false and each is either a duck or not a duck. We create a Bernoulli model and
+fit it to the data. We then make a prediction with new input to see whether or
+not it is a duck.</p>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2><a class="toc-backref" href="#id15">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>In this module, we learned about Naive Bayes classification. Naive Bayes
+classification lets us classify an input based on probabilities of existing
+classes and features. As demonstrated in the code, you don’t need a lot of
+training data for Naive Bayes to be useful. Another bonus is speed which can
+come in handy for real-time predictions. We make a lot of assumptions to use
+Naive Bayes so results should be taken with a grain of salt. But if you don’t
+have much data and need fast results, Naive Bayes is a good choice for
+classification problems.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Amirsina Torfi
+      Last updated on True.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'en',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

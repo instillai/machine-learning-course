@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Linear Support Vector Machines &mdash; Machine-Learning-Course 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Foreword</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/crossvalidation.html">Cross-Validation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Document Credentials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/LICENSE.html">LICENSE</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Machine-Learning-Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Linear Support Vector Machines</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com///blob/content/supervised/linear_SVM.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="linear-support-vector-machines">
+<h1>Linear Support Vector Machines<a class="headerlink" href="#linear-support-vector-machines" title="Permalink to this headline">¶</a></h1>
+<p>A <strong>Support Vector Machine</strong> (SVM for short) is another machine learning algorithm that is used to classify data.
+The point of SVM’s are to try and find a line or <strong>hyperplane</strong> to divide a dimensional space which best classifies
+the data points. If we were trying to divide two classes A and B, we would try to best separate the two classes with a
+line. On one side of the line/hyperplane would be data from class A and on the other side would be from class B.
+This alogorithm is very useful in classifying because we must to calculate the best line or hyperplane once
+and any new data points can easily be classified just by seeing which side of the line they fall on. This contrasts with the k-nearest neighbors algortihm, where
+we would have to calculate each data points nearest neighbors.</p>
+<div class="section" id="hyperplane">
+<h2>Hyperplane<a class="headerlink" href="#hyperplane" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>hyperplane</strong> depends on the space it is in, but it divides the space into two disconnected parts. For example,
+1-dimensional space would just be a point, 2-d space a line, 3-d space a plane, and so on.</p>
+</div>
+<div class="section" id="how-do-we-find-the-best-hyperplane-line">
+<h2>How do we find the best hyperplane/line?<a class="headerlink" href="#how-do-we-find-the-best-hyperplane-line" title="Permalink to this headline">¶</a></h2>
+<p>You might be wondering that there could be multiple lines that split the data well. In fact, there is an infinite
+amount of lines that can divide two classes. As you can see in the graph below, every line splits the squares and
+the circles, so which one do we choose?</p>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="../../_images/Possible_hyperplane.png"><img alt="Possible_Hyperplane" src="../../_images/Possible_hyperplane.png" style="width: 236.0px; height: 236.0px;" /></a>
+<p class="caption"><span class="caption-text">Ref: <a class="reference external" href="https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47">https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47</a></span></p>
+</div>
+<p>So how does SVM find the ideal line to separate the two classes? It doesn’t just pick a random one. The algorithm chooses
+the line/hyperplane with the <strong>maximum margin</strong>. Maximizing the margin will give us the optimal line to classify the data.
+This is shown in the figure below.</p>
+<div class="figure" id="id2">
+<a class="reference internal image-reference" href="../../_images/optimal_hyperplane.png"><img alt="Optimal_Hyperplane" src="../../_images/optimal_hyperplane.png" style="width: 236.0px; height: 235.0px;" /></a>
+<p class="caption"><span class="caption-text">Ref: <a class="reference external" href="https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47">https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47</a></span></p>
+</div>
+</div>
+<div class="section" id="how-to-maximize-the-margin">
+<h2>How to maximize the margin?<a class="headerlink" href="#how-to-maximize-the-margin" title="Permalink to this headline">¶</a></h2>
+<p>The data that is closest to the line is what determines the optimal line. These data points are called
+<strong>support vectors</strong>. They are shown as the filled in squares and circles above. The distance from these vectors to the
+hyperplane is called the <strong>margin</strong>. In general, the further those points are from the hyperplane, the greater the
+probability of correctly classifying the data. There is a lot of complex math that goes into finding the support vectors
+and maximizing the margin. We won’t go into that; we just want to get the basic idea behind SVMs.</p>
+</div>
+<div class="section" id="ignore-outliers">
+<h2>Ignore Outliers<a class="headerlink" href="#ignore-outliers" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes data classes will have <strong>outliers</strong>. These are data points that are clearly separated from the rest of their class.
+Support Vector Machines will ignore these outliers. This is shown in the figure below.</p>
+<div class="figure" id="id3">
+<a class="reference internal image-reference" href="../../_images/SVM_Outliers.png"><img alt="Outliers" src="../../_images/SVM_Outliers.png" style="width: 231.0px; height: 155.5px;" /></a>
+<p class="caption"><span class="caption-text">Ref:  <a class="reference external" href="https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/">https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/</a></span></p>
+</div>
+<p>The star that is with the red circles is the outlier. So, the SVM ignores the outlier and creates the best line to separate
+the two classes.</p>
+</div>
+<div class="section" id="kernel-svm">
+<h2>Kernel SVM<a class="headerlink" href="#kernel-svm" title="Permalink to this headline">¶</a></h2>
+<p>There will be data classes that can’t be separated with a simple line or hyperplane. This is called <strong>non-linearly
+separable data</strong>. Here is an example of that kind of data.</p>
+<div class="figure" id="id4">
+<a class="reference internal image-reference" href="../../_images/SVM_Kernal.png"><img alt="Kernel" src="../../_images/SVM_Kernal.png" style="width: 236.0px; height: 204.0px;" /></a>
+<p class="caption"><span class="caption-text">Ref:  <a class="reference external" href="https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/">https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/</a></span></p>
+</div>
+<p>There is no clear way to separate the stars from the circles. SVMs will be able to classify non-linearly separable
+data by using a trick called the <strong>kernel trick</strong>. Basically, the kernel trick takes the points
+to a higher dimension to turn non-linearly separable data to linear separable data. So the above figure would be
+classified with a circle that separates the data.</p>
+<p>Here is an example of the kernel trick.</p>
+<div class="figure" id="id5">
+<a class="reference internal image-reference" href="../../_images/SVM_Kernel2.png"><img alt="Kernel X Y graph" src="../../_images/SVM_Kernel2.png" style="width: 236.0px; height: 204.0px;" /></a>
+<p class="caption"><span class="caption-text">Ref:  <a class="reference external" href="https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/">https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/</a></span></p>
+</div>
+<p>There are three types of kernels:</p>
+<ul class="simple">
+<li><strong>Linear</strong> Kernel</li>
+<li><strong>Polynomial</strong> Kernel</li>
+<li><strong>Radial Basis Function (RBF)</strong> kernel</li>
+</ul>
+<p>You can see how these kernels change the outcome of the optimal hyperplane by changing the value of kernel in
+“model = svm.SVC(kernel = ‘linear’, C = 10000)” to either ‘poly’ or ‘rbf’. This is in the linear_svm.py.</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>An SVM is a great machine learning technique to classify data. Now that we know a little about SVM’s we can show
+the advantages and disadvantages to using this classifier.</p>
+<p>The pros to SVM’s:</p>
+<ul class="simple">
+<li>Effective in classifying higher dimensional space</li>
+<li>Saves space on memory because it only uses the support vectors to create the optimal line.</li>
+<li>Best classifier when data points are separable</li>
+</ul>
+<p>The cons to SVM’s:</p>
+<ul class="simple">
+<li>Performs poorly when there is a large data set, the training times are longer.</li>
+<li>Performs badly when the classes are overlapping, i.e. non-separable data points.</li>
+</ul>
+</div>
+<div class="section" id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Why would you ever use SVMs? There are so many different models that can classify data. Why use this one?
+This is probably the best classifier if you know the data points are easily separable. Also, it can be extended
+by using kernel tricks, so try using the different kernels like Radial Basis Function (RBF).</p>
+</div>
+<div class="section" id="code-example">
+<h2>Code Example<a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
+<p>Check out our code, <a class="reference external" href="/code/supervised/Linear_SVM/linear_svm.py">linear_svm.py</a> to learn how to implement a linear SVM using Python’s Scikit-learn library.
+More information about Scikit-Learn can be found <a class="reference external" href="https://scikit-learn.org">here</a>.</p>
+<p><a class="reference external" href="/code/supervised/Linear_SVM/linear_svm.py">linear_svm.py</a>, Classifies a set of data on breast cancer, loaded from Scikit-Learn’s dataset library.
+The program will take the data and plot them on a graph, then use the SVM to create a hyperplane to separate the data.
+It also circles the support vectors that determine the hyperplane. The output should look like this:</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/linear_svm_output.png"><img alt="Linear SVM output" src="../../_images/linear_svm_output.png" style="width: 186.0px; height: 126.0px;" /></a>
+</div>
+<p>The green points are classified as benign.
+The red points are classified as malignant.</p>
+<p>This loads the data from the Scikit-Learn’s dataset library. You can change the data to whatever you would like.
+Just make sure you have, data points and an array of targets to classify those data points.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataCancer</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">dataCancer</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">dataCancer</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+<p>You can also change the kernel to ‘rbf’ or ‘polynomial’. This will create a different hyperplane to classify
+the data. You can change it here in the code:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span> <span class="o">=</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Amirsina Torfi
+      Last updated on True.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'en',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

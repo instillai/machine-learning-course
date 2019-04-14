@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cross-Validation &mdash; Machine-Learning-Course 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Contributing" href="../../credentials/CONTRIBUTING.html" />
+    <link rel="prev" title="Introduction" href="../../intro/intro.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Foreword</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cross-Validation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#holdout-method">Holdout Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k-fold-cross-validation">K-Fold Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#leave-p-out-leave-one-out-cross-validation">Leave-P-Out / Leave-One-Out Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-examples">Code Examples</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Document Credentials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/LICENSE.html">LICENSE</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Machine-Learning-Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Cross-Validation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com///blob/content/overview/crossvalidation.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cross-validation">
+<h1>Cross-Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h1>
+<p>It’s easy to train a model against a particular dataset, but how does
+this model perform when introduced with new data? How do you know which
+machine learning model to use? Cross-validation answers these questions
+by assuring a model is producing accurate results and comparing those
+results against other models. Cross-validation goes beyond regular
+validation, the process of analyzing how a model does on its own
+training data, by evaluating how a model does on <em>new</em> data. Several
+different methods of cross-validation are discussed in the following
+sections:</p>
+<div class="section" id="holdout-method">
+<h2>Holdout Method<a class="headerlink" href="#holdout-method" title="Permalink to this headline">¶</a></h2>
+<p>The holdout cross-validation method involves removing a certain portion
+of the training data and using it as test data. The model is first
+trained against the training set, then asked to predict output from the
+testing set. This is the simplest form of cross-validation techniques,
+and is useful if you have a large amount of data or need to implement
+validation quickly and easily.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/holdout.png"><img alt="holdout method" src="../../_images/holdout.png" style="width: 194.0px; height: 111.5px;" /></a>
+</div>
+<p>Typically the holdout method involves splitting a dataset into 20-30%
+test data and the rest as training data. These numbers can vary - a
+larger percentage of test data will make your model more prone to errors
+as it has less training experience, while a smaller percentage of test
+data may give your model an unwanted bias towards the training data.
+This lack of training or bias can lead to
+<a class="reference external" href="overfitting.rst">Underfitting/Overfitting</a> of our model.</p>
+</div>
+<div class="section" id="k-fold-cross-validation">
+<h2>K-Fold Cross Validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">¶</a></h2>
+<p>K-Fold Cross Validation helps remove these biases from your model by
+repeating the holdout method on k subsets of your dataset. With K-Fold
+Cross Validation, a dataset is broken up into several unique folds of
+test and training data. The holdout method is performed using each
+combination of data, and the results are averaged to find a total error
+estimation.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/kfold.png"><img alt="kfold method" src="../../_images/kfold.png" style="width: 194.5px; height: 268.0px;" /></a>
+</div>
+<p>A “fold” here is a unique section of test data. For instance, if you
+have 100 data points and use 10 folds, each fold contains 10 test
+points. K-Fold Cross Validation is important because it allows you to
+use your complete dataset for both training and testing. It’s especially
+useful when evaluating a model using small or limited datasets.</p>
+</div>
+<div class="section" id="leave-p-out-leave-one-out-cross-validation">
+<span id="id1"></span><h2>Leave-P-Out / Leave-One-Out Cross Validation<a class="headerlink" href="#leave-p-out-leave-one-out-cross-validation" title="Permalink to this headline">¶</a></h2>
+<p>Leave-P-Out Cross Validation (LPOCV) tests a model by using every
+possible combination of P test data points on a model. As a simple
+example, if you have 4 data points and use 2 test points, the model will
+be trained and tested as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span> <span class="n">T</span> <span class="n">T</span> <span class="o">-</span> <span class="o">-</span> <span class="p">]</span>
+<span class="mi">2</span><span class="p">:</span> <span class="p">[</span> <span class="n">T</span> <span class="o">-</span> <span class="n">T</span> <span class="o">-</span> <span class="p">]</span>
+<span class="mi">3</span><span class="p">:</span> <span class="p">[</span> <span class="n">T</span> <span class="o">-</span> <span class="o">-</span> <span class="n">T</span> <span class="p">]</span>
+<span class="mi">4</span><span class="p">:</span> <span class="p">[</span> <span class="o">-</span> <span class="n">T</span> <span class="n">T</span> <span class="o">-</span> <span class="p">]</span>
+<span class="mi">5</span><span class="p">:</span> <span class="p">[</span> <span class="o">-</span> <span class="n">T</span> <span class="o">-</span> <span class="n">T</span> <span class="p">]</span>
+<span class="mi">6</span><span class="p">:</span> <span class="p">[</span> <span class="o">-</span> <span class="o">-</span> <span class="n">T</span> <span class="n">T</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>Where “T” is a test point, and “-” is a training point. Below is another
+visualization of LPOCV:</p>
+<div class="figure" id="id2">
+<a class="reference internal image-reference" href="../../_images/LPOCV.png"><img alt="kfold method" src="../../_images/LPOCV.png" style="width: 281.0px; height: 110.5px;" /></a>
+<p class="caption"><span class="caption-text">Ref: <a class="reference external" href="http://www.ebc.cat/2017/01/31/cross-validation-strategies/">http://www.ebc.cat/2017/01/31/cross-validation-strategies/</a></span></p>
+</div>
+<p>LPOCV can provide an extremely accurate error estimation, but can
+quickly become exhaustive for large datasets. The amount of testing
+iterations a model has to go through using LPOCV can be calculated using
+a mathematical <a class="reference external" href="https://en.wikipedia.org/wiki/Combination">combination</a> n C P, with n being our total number of
+data points. We can see, for instance, that a LPOCV run using a dataset
+of 10 points with 3 test points would require 10 C 3 = 120 iterations.</p>
+<p>Because of this, Leave-One-Out Cross Validation (LOOCV) is a commonly
+used cross-validation method. It is just a subset of LPOCV, with P being
+1. This allows us to evaluate a model in the same number of steps as
+there are data points. LOOCV can also be seen as K-Fold Cross
+Validation, where the number of folds is equal to the number of data
+points.</p>
+<div class="figure" id="id3">
+<a class="reference internal image-reference" href="../../_images/LOOCV.png"><img alt="kfold method" src="../../_images/LOOCV.png" style="width: 281.0px; height: 110.5px;" /></a>
+<p class="caption"><span class="caption-text">Ref: <a class="reference external" href="http://www.ebc.cat/2017/01/31/cross-validation-strategies/">http://www.ebc.cat/2017/01/31/cross-validation-strategies/</a></span></p>
+</div>
+<p>Similar to K-Fold Cross Validation, LPOCV and LOOCV train a model using
+the full dataset. They are particularly useful when you’re working with
+a small dataset, but incur performance tradeoffs.</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Cross-validation is a way to validate your model against new data. The
+most effective forms of cross-validation involve repeatedly testing
+a model against a dataset until every point or combination of points
+have been used to validate a model, though this comes with performance
+trade-offs. We discussed several methods of splitting a dataset for
+cross-validation:</p>
+<ul class="simple">
+<li>Holdout Method: Splitting a percent of data off as test data</li>
+<li>K-Fold Method: Dividing data into sections, using each as a test/train split</li>
+<li>Leave-P-Out Method: Using every combination of a number of points (P) as test data</li>
+</ul>
+</div>
+<div class="section" id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>There are many different types of machine learning models, including
+Linear/Logistic Regression, K-Nearest-Neighbors, and Support Vector
+Machines - but how do we know which type of model is the best for our
+dataset? Using a model unsuitable for our data will lead to less accurate
+predictions, and could lead to financial, physical, or other forms of harm.
+Individuals and companies should make sure to cross-validate any models
+they put into use.</p>
+</div>
+<div class="section" id="code-examples">
+<h2>Code Examples<a class="headerlink" href="#code-examples" title="Permalink to this headline">¶</a></h2>
+<p>The provided code shows how to split a set of data with the three
+discussed methods of cross-validation using <a class="reference external" href="https://scikit-learn.org">Scikit-Learn</a>, a Python machine
+learning library.</p>
+<p><a class="reference external" href="/code/overview/cross-validation/holdout.py">holdout.py</a> splits a set of sample diabetes data using the Holdout Method.
+In scikit-learn, this is done using a function called <code class="xref py py-obj docutils literal notranslate"><span class="pre">train_test_split()</span></code>
+which randomly splits a set of data into two portions:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TRAIN_SPLIT</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="o">...</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_diabetes</span><span class="p">()</span>
+<span class="o">...</span>
+
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that you can change the portion of data used for training by changing
+the <code class="xref py py-obj docutils literal notranslate"><span class="pre">TRAIN_SPLIT</span></code> value at the top. This should be a number from 0 to 1.
+Output from this file shows the number of training and test points used
+for the split. It may be beneficial to see the actual data points - if you
+would like to see these, uncomment the last two print statements in the script.</p>
+<hr class="docutils" />
+<p><a class="reference external" href="/code/overview/cross-validation/k-fold.py">k-fold.py</a> splits a set of data using the K-Fold Method. This is done by
+creating a KFold object initialized with the number of splits to use.
+Scikit-learn makes it easy to split data by calling KFold’s <code class="xref py py-obj docutils literal notranslate"><span class="pre">split()</span></code> method:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NUM_SPLITS</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>
+
+<span class="n">kfold</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="n">NUM_SPLITS</span><span class="p">)</span>
+<span class="n">split_data</span> <span class="o">=</span> <span class="n">kfold</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The return value of this is an array of train and test points. Note that
+you can play with the number of splits by changing the associated value
+at the top of the script. This script not only outputs the train/test data,
+but also outputs a nice bar where where you can track the progress of the
+current fold:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="n">T</span> <span class="n">T</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="o">-</span> <span class="p">]</span>
+<span class="n">Train</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span> <span class="mi">6</span><span class="p">])</span> <span class="p">(</span><span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span> <span class="mi">8</span><span class="p">])</span> <span class="p">(</span><span class="mi">4</span><span class="p">:</span> <span class="p">[</span> <span class="mi">9</span> <span class="mi">10</span><span class="p">])</span> <span class="p">(</span><span class="mi">5</span><span class="p">:</span> <span class="p">[</span><span class="mi">11</span> <span class="mi">12</span><span class="p">])</span>
+<span class="n">Test</span><span class="p">:</span>  <span class="p">(</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span><span class="p">])</span> <span class="p">(</span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span> <span class="mi">4</span><span class="p">])</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><a class="reference external" href="/code/overview/cross-validation/leave-p-out.py">leave-p-out.py</a> splits a set of data using both the Leave-P-Out and
+Leave-One-Out Methods. This is done by creating LeavePOut/LeaveOneOut objects,
+the LPO initialized with the number of splits to use. Similar to KFold, the
+train-test data split is created with the <code class="xref py py-obj docutils literal notranslate"><span class="pre">split()</span></code> method:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P_VAL</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+
+<span class="n">loocv</span> <span class="o">=</span> <span class="n">LeaveOneOut</span><span class="p">()</span>
+<span class="n">lpocv</span> <span class="o">=</span> <span class="n">LeavePOut</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">P_VAL</span><span class="p">)</span>
+
+<span class="n">split_loocv</span> <span class="o">=</span> <span class="n">loocv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">split_lpocv</span> <span class="o">=</span> <span class="n">lpocv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that you can change the P value at the top of the script to see
+how different values operate.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../credentials/CONTRIBUTING.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../intro/intro.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Amirsina Torfi
+      Last updated on True.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'en',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,304 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Regularization &mdash; Machine-Learning-Course 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Foreword</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="crossvalidation.html">Cross-Validation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Document Credentials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/LICENSE.html">LICENSE</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Machine-Learning-Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Regularization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com///blob/content/overview/regularization.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="regularization">
+<h1>Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">¶</a></h1>
+<p><strong>Note:</strong> All code for data set creation and modeling is provided.</p>
+<p>Consider the following scenario. You are making a peanut butter sandwich and are trying to adjust parameters so that it has the best taste.
+You might consider the type of bread, type of peanut butter, or peanut butter to bread ratio in your decision making process. But would you
+consider other factors like how warm it is in the room, what you had for breakfast, or what color socks you’re wearing? Probably not as these
+things don’t have as much impact on the taste of your sandwich. You would focus more on the first few features for whatever model you end up
+developing and avoid paying too much attention to the other ones.</p>
+<p>In previous modules, we have seen prediction models trained on some sample set and scored against how close they are to a test set.
+We obviously want our models to make predictions that are accurate but can they be too accurate? When we look at a set of data,
+there are two main components: the underlying pattern and noise. We only want to match the pattern and not the noise. Consider
+the figures below that represent quadratic data.</p>
+<div class="figure">
+<img alt="../../_images/Regularization_Linear.png" src="../../_images/Regularization_Linear.png" />
+</div>
+<div class="figure">
+<img alt="../../_images/Regularization_Quadratic.png" src="../../_images/Regularization_Quadratic.png" />
+</div>
+<div class="figure">
+<img alt="../../_images/Regularization_Polynomial.png" src="../../_images/Regularization_Polynomial.png" />
+</div>
+<p>The first model underfits the data, the second model looks to be a good fit for the data,
+and the third model is a very close fit for the data. Of all the models above, the third
+is likely the most accurate against the test set. But this isn’t necessarily a good thing.
+If we add in some more test points, we’ll likely find that the third model is no longer as
+accurate at predicting them but the second model is still pretty good. This is because the
+third model suffers from overfitting. Overfitting means it does a really good job at fitting
+the test data (including noise) but is bad at generalizing to new data. The second model is a
+nice fit for the data and is not so complex that it won’t generalize.</p>
+<p>The goal of regularization is to avoid overfitting by penalizing more complex models. The general
+form of regularization involves adding an extra term to our cost function. So if we were using a
+cost function CF, regularization might lead us to change it to CF + lambda * R where R is some function
+of our weights and <code class="docutils literal notranslate"><span class="pre">lambda</span></code> is a tuning parameter. The result is that models with higher weights (more complex)
+get penalized more. The tuning parameter basically lets us adjust the regularization to get better results
+by changing its value. The higher the <code class="docutils literal notranslate"><span class="pre">lambda</span></code> the less impact the weights have on the total cost. Below we’ll
+cover some methods of regularization and when they are good to use. When looking through the code, note the import statements used for each model.</p>
+<div class="section" id="ridge-regression">
+<h2>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Ridge</span> <span class="pre">regression</span></code> is a type of regularization where the function R involves summing the squares of our weights. In statistics, this would be called an L2 norm.</p>
+<div class="figure">
+<img alt="../../_images/latex-ridge-eq.gif" src="../../_images/latex-ridge-eq.gif" />
+</div>
+<p>The equation above is an example of the regularization with w representing our weights.
+Ridge regression forces weights to approach zero but will never cause them to be zero. This means that
+all the features will be represented in our model but overfitting will be minimized. Ridge regression is a
+good choice when we don’t have a very large number of features and just want to avoid overfitting.</p>
+<div class="figure">
+<img alt="../../_images/Regularization_Ridge.png" src="../../_images/Regularization_Ridge.png" />
+</div>
+<p>In the figure above, the black line represents a model without Ridge regression applied and the red line represents a model with Ridge regression applied.
+Note how much smoother the red line is. It will probably do a better job against future data.</p>
+<p>In the included file, <code class="docutils literal notranslate"><span class="pre">regularization_ridge.py</span></code>, the code that adds ridge regression is:</p>
+<p>Adding the Ridge regression is as simple as adding an additional argument to our Pipeline call.
+Here, the parameter alpha represents our tuning variable. For additional information on Ridge regression
+in scikit-learn, consult <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html">https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</a>.</p>
+</div>
+<div class="section" id="lasso-regression">
+<h2>Lasso Regression<a class="headerlink" href="#lasso-regression" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Lasso</span> <span class="pre">regression</span></code> is a type of regularization where the function R involves summing the absolute values of our weights. In statistics, this would be called an L1 norm.</p>
+<div class="figure">
+<img alt="../../_images/latex-lasso-eq.gif" src="../../_images/latex-lasso-eq.gif" />
+</div>
+<p>The equation above is an example of the regularization with w representing our weights. Notice how similar ridge regression and lasso regression are.
+The only noticeable difference is that square on the weights. This happens to have a big impact on what they do. Unlike ridge regression,
+lasso regression can force weights to be zero. This means that our resulting model may not even consider some of the features! In the case
+we have a million features where only a small amount are important, this is an incredibly useful result. Lasso regression lets us avoid overfitting
+and focus on a small subset of all our features. In the original scenario, we would end up ignoring those factors that don’t have as much impact on
+our sandwich eating experience.</p>
+<div class="figure">
+<img alt="../../_images/Regularization_Lasso.png" src="../../_images/Regularization_Lasso.png" />
+</div>
+<p>In the figure above, the black line represents a model without Lasso regression applied and the red line represents a model with Lasso
+regression applied. The red line is much smoother than the black line. The Lasso regression was applied to a model of degree 6 but the
+result looks like its degree 2! The Lasso model will probably do a better job against future data.</p>
+<p>In the included file, <code class="docutils literal notranslate"><span class="pre">regularization_lasso.py</span></code>, the code that adds Lasso regression is:</p>
+<p>Adding the Lasso regression is as simple as adding the Ridge regression. Here, the parameter alpha represents our tuning variable and <code class="docutils literal notranslate"><span class="pre">max_iter</span></code>
+represents the max number of iterations to run for. For additional information on Lasso regression in scikit-learn,
+consult <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html">https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html</a>.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>With regularization, we have found a good way to avoid overfitting our data. We also have some methods of regularization for different situations.
+Some of you may be wondering how to choose that tuning parameter to get the best results. That will be covered in another section.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Amirsina Torfi
+      Last updated on True.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'en',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
