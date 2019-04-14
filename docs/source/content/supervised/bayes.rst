@@ -121,11 +121,11 @@ when features are not counts and include decimal values.
    **Figure 2. A normal distribution with the iconic bell curve shape** 
    [`code`__]
    
-   .. __: /code/supervised/Naive_Bayes/bell_curve.py
+   .. __: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/Naive_Bayes/bell_curve.py
 
 The relevant code is available in the gaussian.py_ file.
 
-.. _gaussian.py: /code/supervised/Naive_Bayes/gaussian.py
+.. _gaussian.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/Naive_Bayes/gaussian.py
 
 In the code, we try and guess a color from given RGB percentages. We create
 some data to work with where each data point represents an RGB triple. The
@@ -154,7 +154,7 @@ should use a Bernoulli model instead.
 
 The relevant code is available in the multinomial.py_ file.
 
-.. _multinomial.py: /code/supervised/Naive_Bayes/multinomial.py
+.. _multinomial.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/Naive_Bayes/multinomial.py
 
 The code is based on our fruit example. In the code, we try and guess a fruit
 from given characteristics. We create some data to work with where each data
@@ -186,7 +186,7 @@ Bernoulli model.
 
 The relevant code is available in the bernoulli.py_ file.
 
-.. _bernoulli.py: /code/supervised/Naive_Bayes/bernoulli.py
+.. _bernoulli.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/Naive_Bayes/bernoulli.py
 
 In the code, we try and guess if something is a duck or not based on certain
 characteristics it has. We create some data to work with where each data point
