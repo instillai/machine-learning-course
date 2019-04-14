@@ -51,12 +51,12 @@ tutorials using many different well-known Machine Learning frameworks such as ``
 Machine Learning
 =====================
 
-.. figure:: _img/deeplearning.png
+
 
 ------------------------------------------------------------
 Overview of machine learning
 ------------------------------------------------------------
-
+.. figure:: _img/deeplearning.png
 .. _lrtutorial: docs/source/content/overview/linear-regression.rst
 .. _lrcode: code/overview/linear_regression
 
@@ -88,6 +88,8 @@ Overview of machine learning
 ------------------------------------------------------------
 Supervised learning
 ------------------------------------------------------------
+
+.. figure:: _img/supervised.png
 
 .. _dtdoc: docs/source/content/supervised/decisiontrees.rst
 .. _dtcode: code/supervised/DecisionTree/decisiontrees.py
@@ -131,6 +133,7 @@ Supervised learning
 Unsupervised learning
 ------------------------------------------------------------
 
+.. figure:: _img/unsupervised.png
 
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
 | Title                                                              |    Text                       |    Software               |
