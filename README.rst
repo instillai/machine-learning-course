@@ -84,7 +84,18 @@ Supervised learning
 
 .. _knndoc: docs/source/content/supervised/knn.rst
 
+.. _nbdoc: docs/source/content/supervised/bayes.rst
+.. _nbcode: code/supervised/Naive_Bayes
+
+.. _logisticrdoc: docs/source/content/supervised/logistic_regression.rst
+.. _logisticrcode:
+
+
 .. _linearsvmdoc: docs/source/content/supervised/linear_SVM.rst
+.. _linearsvmcode: code/supervised/Linear_SVM/linear_svm.py
+
+
+
 
 
 
@@ -97,11 +108,11 @@ Supervised learning
 +--------------------------------------------------------------------+-------------------------------+------------------------------+
 | K-Nearest Neighbor                                                 |                               | `Tutorial <knndoc_>`_        |
 +--------------------------------------------------------------------+-------------------------------+------------------------------+
-| Naive Bayes                                                        |                               |                              |
+| Naive Bayes                                                        | `Python <nbcode_>`_           |  `Tutorial <nbdoc_>`_        |
 +--------------------------------------------------------------------+-------------------------------+------------------------------+
-| Logistic Regression                                                |                               |                              |
+| Logistic Regression                                                |                               |  `Tutorial <logisticrdoc_>`_ |
 +--------------------------------------------------------------------+-------------------------------+------------------------------+
-| Support Vector Machines                                            |                               | `Tutorial <linearsvmdoc_>`_  |
+| Support Vector Machines                                            | `Python <linearsvmcode_>`_    | `Tutorial <linearsvmdoc_>`_  |
 +--------------------------------------------------------------------+-------------------------------+------------------------------+
 
 
@@ -109,20 +120,6 @@ Supervised learning
 ------------------------------------------------------------
 Unsupervised learning
 ------------------------------------------------------------
-
-.. _conganpaper: https://arxiv.org/abs/1411.1784
-.. _congancode: https://github.com/zhangqianhui/Conditional-GAN
-
-.. _photorealpaper: https://arxiv.org/pdf/1609.04802.pdf
-.. _photorealcode: https://github.com/tensorlayer/srgan
-
-.. _im2impaper: https://arxiv.org/abs/1611.07004
-.. _im2imcode: https://github.com/phillipi/pix2pix
-
-.. _vismanpaper: https://arxiv.org/abs/1609.03552
-.. _vismancode: https://github.com/junyanz/iGAN
-
-
 
 
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
