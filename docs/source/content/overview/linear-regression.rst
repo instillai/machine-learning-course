@@ -32,7 +32,7 @@ shows a data set with a linear relationship.
    
    **Figure 1. A sample data set with a linear relationship** [`code`__]
    
-   .. __: /code/overview/linear_regression/linear_regression.py
+   .. __: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/linear_regression/linear_regression.py
 
 Our goal is to find the line that best models the path of the data points 
 called a line of best fit. The equation in *Equation 1*, is an example of a
@@ -49,7 +49,7 @@ through it.
    
    **Figure 2. The data set from Figure 1 with a line of best fit** [`code`__]
    
-   .. __: /code/overview/linear_regression/linear_regression_lobf.py
+   .. __: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/linear_regression/linear_regression_lobf.py
 
 Let’s break it down. We already know that x is the input value and y is our 
 predicted output. a₀ and a₁ describe the shape of our line. a₀ is called the 
@@ -80,7 +80,7 @@ relationship so linear regression would not be a good choice.
    
    **Figure3. A sample data set without a linear relationship** [`code`__]
    
-   .. __: /code/overview/linear_regression/not_linear_regression.py
+   .. __: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/linear_regression/not_linear_regression.py
 
 It is worth noting that sometimes you can apply transformations to data so 
 that it appears to be linear. For example, you could apply a logarithm to 
@@ -97,7 +97,7 @@ transformed to have a linear relationship.
    
    **Figure 4. A sample data set that follows an exponential curve** [`code`__]
    
-   .. __: /code/overview/linear_regression/exponential_regression.py
+   .. __: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/linear_regression/exponential_regression.py
 
 *Figure 5* is the same data after transforming the output variable with a 
 logarithm.
@@ -107,7 +107,7 @@ logarithm.
    **Figure 5. The data set from Figure 4 after applying a logarithm to the 
    output variable** [`code`__]
    
-   .. __: /code/overview/linear_regression/exponential_regression_transformed.py
+   .. __: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/linear_regression/exponential_regression_transformed.py
 
 
 *************
@@ -124,7 +124,7 @@ for one such prediction.
    **Figure 6. The plot from Figure 2 with the cost of one prediction 
    emphasized** [`code`__]
    
-   .. __: /code/overview/linear_regression/linear_regression_cost.py
+   .. __: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/linear_regression/linear_regression_cost.py
 
 Two common terms that appear in cost functions are the **error** and 
 **squared error**. The error [*Equation 2*] is how far away from the actual 
@@ -206,12 +206,12 @@ Code
 ****
 This module's main code is available in the linear_regression_lobf.py_ file.
 
-.. _linear_regression_lobf.py: /code/overview/linear_regression/linear_regression_lobf.py
+.. _linear_regression_lobf.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/linear_regression/linear_regression_lobf.py
 
 All figures in this module were created with simple modifications of the 
 linear_regression.py_ code.
 
-.. _linear_regression.py: /code/overview/linear_regression/linear_regression.py
+.. _linear_regression.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/linear_regression/linear_regression.py
 
 In the code, we analyze a data set with a linear relationship. We split the 
 data into a training set to train our model and a testing set to test its 
