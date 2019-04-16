@@ -29,7 +29,7 @@ and scored against how close they are to a test set. We obviously want our
 models to make predictions that are accurate but can they be too accurate?
 When we look at a set of data, there are two main components: the underlying
 pattern and noise. We only want to match the pattern and not the noise.
-Consider the figures below that represent quadratic data.*Figure 1* uses a
+Consider the figures below that represent quadratic data. *Figure 1* uses a
 linear model to approximate the data. *Figure 2* uses a quadratic model to
 approximate the data. *Figure 3* uses a high degree polynomial model to
 approximate the data.
