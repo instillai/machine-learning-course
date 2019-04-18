@@ -1,42 +1,36 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import PolynomialFeatures
+from sklearn.datasets import make_regression
 from sklearn.linear_model import LinearRegression, Lasso
 from sklearn.pipeline import Pipeline
 import numpy as np
 
-# We will create some x-values and randomly choose some as data points
-X = np.linspace(0, 10, 100)
-# We are fixing the random number seed for consistency
-rn = np.random.RandomState(0)
-# Shuffle the data for variety
-rn.shuffle(X)
-# Grab the first 30 of our shuffled points and sort them for plotting
-X = np.sort(X[:30])
-# Our output will be a quadratic function
-y = X**2
-# We will add some variance to the data so that it's more interesting
-y = y + (((np.random.rand(30) * 2) - 1) * 30)
+# Create a data set for analysis
+x, y = make_regression(n_samples=100, n_features = 1, noise=15, random_state=0)
+y = y ** 2
 
-# Pipeline lets us setup a fixed number of steps for our modeling
-model = Pipeline([('poly', PolynomialFeatures(degree=6)), \
+# Pipeline lets us set the steps for our modeling
+# We are comparing a standard polynomial model against one with lasso
+model = Pipeline([('poly', PolynomialFeatures(degree=10)), \
 ('linear', LinearRegression(fit_intercept=False))])
-regModel = Pipeline([('poly', PolynomialFeatures(degree=6)), \
-('lasso', Lasso(alpha=0.1, max_iter=100000))])
+regModel = Pipeline([('poly', PolynomialFeatures(degree=10)), \
+('lasso', Lasso(alpha=5, max_iter=1000000))])
+
 # Now we train on our data
-model = model.fit(X[:, np.newaxis], y)
-regModel = regModel.fit(X[:, np.newaxis], y)
+model = model.fit(x, y)
+regModel = regModel.fit(x, y)
 # Now we pridict
-X_plot = np.linspace(0, 10, 100)
-X_plot = X_plot[:, np.newaxis]
-y_plot = model.predict(X_plot)
-yReg_plot = regModel.predict(X_plot)
+x_plot = np.linspace(min(x)[0], max(x)[0], 100)
+x_plot = x_plot[:, np.newaxis]
+y_plot = model.predict(x_plot)
+yReg_plot = regModel.predict(x_plot)
 
 # Plot data
 sns.set_style("darkgrid")
-plt.plot(X_plot, y_plot, color='black')
-plt.plot(X_plot, yReg_plot, color='red')
-plt.scatter(X, y, marker='o')
+plt.plot(x_plot, y_plot, color='black')
+plt.plot(x_plot, yReg_plot, color='red')
+plt.scatter(x, y, marker='o')
 plt.xticks(())
 plt.yticks(())
 plt.tight_layout()
