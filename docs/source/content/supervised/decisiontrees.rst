@@ -1,6 +1,10 @@
 Decision Trees
 ==============
 
+.. contents::
+  :local:
+  :depth: 2
+
 Decision trees are a classifier in machine learning that allows us to
 make predictions based on previous data. They are like a series of
 sequential “if … then” statements you feed new data into to get a
@@ -89,7 +93,61 @@ algorithm has the root node as the best classifier.
 Cost of Splitting
 ~~~~~~~~~~~~~~~~~
 
-TODO
+The cost of a split is determined by a **cost function**. The goal of
+using a cost function is to split the data in a way that can be computed
+and that provides the most information gain. For classification trees,
+those that provide an answer rather than a value, we use the
+*Gini Index Function*:
+
+.. figure:: _img/Gini.png
+
+    **Equation 1. The Gini Index Function**
+    Ref: https://towardsdatascience.com/a-guide-to-decision-trees-for-machine-learning-and-data-science-fe2607241956
+
+The Gini Index Function gives us a measure of Gini Impurity, the
+likelihood of an incorrect classification of new data. For example,
+let's take a look at the example data we used earlier:
+
++-----+----------+----------+----------+----------+
+|     | Supplies | Weather  | Worked?  | Shopped? |
++=====+==========+==========+==========+==========+
+| D1  | Low      | Sunny    | Yes      | Yes      |
++-----+----------+----------+----------+----------+
+| D2  | High     | Sunny    | Yes      | No       |
++-----+----------+----------+----------+----------+
+| D3  | Med      | Cloudy   | Yes      | No       |
++-----+----------+----------+----------+----------+
+| D4  | Low      | Raining  | Yes      | No       |
++-----+----------+----------+----------+----------+
+| D5  | Low      | Cloudy   | No       | Yes      |
++-----+----------+----------+----------+----------+
+| D6  | High     | Sunny    | No       | No       |
++-----+----------+----------+----------+----------+
+| D7  | High     | Raining  | No       | No       |
++-----+----------+----------+----------+----------+
+| D8  | Med      | Cloudy   | Yes      | No       |
++-----+----------+----------+----------+----------+
+| D9  | Low      | Raining  | Yes      | No       |
++-----+----------+----------+----------+----------+
+| D10 | Low      | Raining  | No       | Yes      |
++-----+----------+----------+----------+----------+
+| D11 | Med      | Sunny    | No       | Yes      |
++-----+----------+----------+----------+----------+
+| D12 | High     | Sunny    | Yes      | No       |
++-----+----------+----------+----------+----------+
+
+Let's calculate the Gini Index of the first class, Supplies.
+To do this, we take each available option and calculate the
+probability of our outcome based off of it. For instance, Mike
+went shopping on 3 out of 5 days when he had low supplies. This
+gives us P(Low) = 3/5.
+
+We continue this pattern for every option in the class and plug
+the probabilities into our cost function:
+
+.. figure:: _img/dec_trees_eq1.png
+
+
 
 Pruning
 -------
@@ -103,3 +161,5 @@ TODO
 
 Complexity / Weakest Link
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
