@@ -18,7 +18,7 @@ store:
 .. figure:: _img/shopping_table.png
    :alt: Dataset
 
-   Dataset
+   **Figure 1. An example dataset**
 
 Here we can see the amount of grocery supplies Mike had, the weather,
 and whether Mike worked each day. Green rows are days he went to the
@@ -32,7 +32,7 @@ low, medium, or high amount of supplies:
 .. figure:: _img/decision_tree_1.png
    :alt: Tree 1
 
-   Tree 1
+   **Figure 2. Our first split**
 
 Here we can see that Mike never goes to the store if he has a high
 amount of supplies. This is called a **pure subset**, a subset with only
@@ -44,7 +44,7 @@ Let’s break the Med Supplies category into whether Mike worked that day:
 .. figure:: _img/decision_tree_2.png
    :alt: Tree 2
 
-   Tree 2
+   **Figure 3. Our second split**
 
 Here we can see we have two more pure subsets, so this tree is complete.
 We can replace any pure subsets with their respective answer - in this
@@ -55,7 +55,7 @@ Finally, let’s split the Low Supplies category by the Weather attribute:
 .. figure:: _img/decision_tree_3.png
    :alt: Tree 3
 
-   Tree 3
+   **Figure 4. Our third split**
 
 Now that we have all pure subsets, we can create our final decision
 tree:
@@ -63,7 +63,7 @@ tree:
 .. figure:: _img/decision_tree_4.png
    :alt: Tree 4
 
-   Tree 4
+   **Figure 5. The final decision tree**
 
 Classification and Regression Trees
 -----------------------------------
@@ -103,11 +103,13 @@ value, we can compute imformation gain using *Gini Impurities*:
 .. figure:: _img/Gini_Impurity.png
 
     **Equation 1. The Gini Impurity Function**
+
     Ref: https://sebastianraschka.com/faq/docs/decision-tree-binary.html
 
 .. figure:: _img/Gini_Information_Gain.png
 
     **Equation 2. The Gini Information Gain Formula**
+
     Ref: https://sebastianraschka.com/faq/docs/decision-tree-binary.html
 
 To calculate information gain, we first start by computing the Gini
@@ -174,7 +176,7 @@ of each child's impurity:
 .. figure:: _img/Gini_8.png
 
 We continue this pattern for every possible split, then choose the
-split that gives us the most information gain.
+split that gives us the highest information gain value.
 
 Pruning
 -------
