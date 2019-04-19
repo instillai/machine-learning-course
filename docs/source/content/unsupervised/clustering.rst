@@ -171,12 +171,12 @@ and a node from the other cluster. This is illustrated in *Figure 8*.
 We continue to split the sub-clusters until every data point belongs to its
 own cluster or until we decide to stop. If we start from one giant cluster and
 break it down into successively smaller clusters, it is called **top-down** or
-**agglomerative** clustering. Alternatively, we could start by considering a
+**divisive** clustering. Alternatively, we could start by considering a
 cluster for every data point. The next step would be to combine the two
 closest clusters into a larger cluster. This can be done by finding the
 distance between every cluster and choosing the pair with the least distance
 between them. We would continue this process until we had a single cluster.
-This method of combining clusters is called **bottom-up** or **divisive**
+This method of combining clusters is called **bottom-up** or **agglomerative**
 clustering. At any point in these two methods, we can stop when the clusters
 look appropriate.
 
