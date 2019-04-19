@@ -91,22 +91,27 @@ target result, or splitting adds no value to a prediction. This
 algorithm has the root node as the best classifier.
 
 Cost of Splitting
-~~~~~~~~~~~~~~~~~
+-----------------
 
 The cost of a split is determined by a **cost function**. The goal of
 using a cost function is to split the data in a way that can be computed
-and that provides the most information gain. For classification trees,
-those that provide an answer rather than a value, we use the
-*Gini Index Function*:
+and that provides the most information gain.
 
-.. figure:: _img/Gini.png
+For classification trees, those that provide an answer rather than a
+value, we can compute imformation gain using *Gini Impurities*:
 
-    **Equation 1. The Gini Index Function**
-    Ref: https://towardsdatascience.com/a-guide-to-decision-trees-for-machine-learning-and-data-science-fe2607241956
+.. figure:: _img/Gini_Impurity.png
 
-The Gini Index Function gives us a measure of Gini Impurity, the
-likelihood of an incorrect classification of new data. For example,
-let's take a look at the example data we used earlier:
+    **Equation 1. The Gini Impurity Function**
+    Ref: https://sebastianraschka.com/faq/docs/decision-tree-binary.html
+
+.. figure:: _img/Gini_Information_Gain.png
+
+    **Equation 2. The Gini Information Gain Formula**
+    Ref: https://sebastianraschka.com/faq/docs/decision-tree-binary.html
+
+To calculate information gain, we first start by computing the Gini
+Impurity of our root node. Let's take a look at the data we used earlier:
 
 +-----+----------+----------+----------+----------+
 |     | Supplies | Weather  | Worked?  | Shopped? |
@@ -136,18 +141,40 @@ let's take a look at the example data we used earlier:
 | D12 | High     | Sunny    | Yes      | No       |
 +-----+----------+----------+----------+----------+
 
-Let's calculate the Gini Index of the first class, Supplies.
-To do this, we take each available option and calculate the
-probability of our outcome based off of it. For instance, Mike
-went shopping on 3 out of 5 days when he had low supplies. This
-gives us P(Low) = 3/5.
+Our root node is the target variable, whether Mike is going to go
+shopping. To calculate its Gini Impurity, we need to find the sum of
+probabilities squared for each outcome and subtract this result from
+one:
 
-We continue this pattern for every option in the class and plug
-the probabilities into our cost function:
+.. figure:: _img/Gini_1.png
 
-.. figure:: _img/dec_trees_eq1.png
+.. figure:: _img/Gini_2.png
 
+.. figure:: _img/Gini_3.png
 
+Let's calculate the Gini Information Gain if we split on the first
+attribute, Supplies. We have three different categories we can split
+by - Low, Med, and High. For each of these, we calculate its Gini 
+Impurity:
+
+.. figure:: _img/Gini_4.png
+
+.. figure:: _img/Gini_5.png
+
+.. figure:: _img/Gini_6.png
+
+As you can see, the impurity for High supplies is 0. This means that
+if we split on Supplies and receive High input, we immediately know
+what the outcome will be. To determine the Gini Information Gain for
+this split, we compute the root's impurity minus the weighted average
+of each child's impurity:
+
+.. figure:: _img/Gini_7.png
+
+.. figure:: _img/Gini_8.png
+
+We continue this pattern for every possible split, then choose the
+split that gives us the most information gain.
 
 Pruning
 -------
