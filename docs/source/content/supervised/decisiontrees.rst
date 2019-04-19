@@ -1,6 +1,13 @@
 Decision Trees
 ==============
 
+.. contents::
+  :local:
+  :depth: 2
+
+Introduction
+------------
+
 Decision trees are a classifier in machine learning that allows us to
 make predictions based on previous data. They are like a series of
 sequential “if … then” statements you feed new data into to get a
@@ -14,7 +21,7 @@ store:
 .. figure:: _img/shopping_table.png
    :alt: Dataset
 
-   Dataset
+   **Figure 1. An example dataset**
 
 Here we can see the amount of grocery supplies Mike had, the weather,
 and whether Mike worked each day. Green rows are days he went to the
@@ -28,7 +35,7 @@ low, medium, or high amount of supplies:
 .. figure:: _img/decision_tree_1.png
    :alt: Tree 1
 
-   Tree 1
+   **Figure 2. Our first split**
 
 Here we can see that Mike never goes to the store if he has a high
 amount of supplies. This is called a **pure subset**, a subset with only
@@ -40,7 +47,7 @@ Let’s break the Med Supplies category into whether Mike worked that day:
 .. figure:: _img/decision_tree_2.png
    :alt: Tree 2
 
-   Tree 2
+   **Figure 3. Our second split**
 
 Here we can see we have two more pure subsets, so this tree is complete.
 We can replace any pure subsets with their respective answer - in this
@@ -51,7 +58,7 @@ Finally, let’s split the Low Supplies category by the Weather attribute:
 .. figure:: _img/decision_tree_3.png
    :alt: Tree 3
 
-   Tree 3
+   **Figure 4. Our third split**
 
 Now that we have all pure subsets, we can create our final decision
 tree:
@@ -59,7 +66,7 @@ tree:
 .. figure:: _img/decision_tree_4.png
    :alt: Tree 4
 
-   Tree 4
+   **Figure 5. The final decision tree**
 
 Classification and Regression Trees
 -----------------------------------
@@ -87,9 +94,92 @@ target result, or splitting adds no value to a prediction. This
 algorithm has the root node as the best classifier.
 
 Cost of Splitting
-~~~~~~~~~~~~~~~~~
+-----------------
 
-TODO
+The cost of a split is determined by a **cost function**. The goal of
+using a cost function is to split the data in a way that can be computed
+and that provides the most information gain.
+
+For classification trees, those that provide an answer rather than a
+value, we can compute imformation gain using *Gini Impurities*:
+
+.. figure:: _img/Gini_Impurity.png
+
+    **Equation 1. The Gini Impurity Function**
+
+    Ref: https://sebastianraschka.com/faq/docs/decision-tree-binary.html
+
+.. figure:: _img/Gini_Information_Gain.png
+
+    **Equation 2. The Gini Information Gain Formula**
+
+    Ref: https://sebastianraschka.com/faq/docs/decision-tree-binary.html
+
+To calculate information gain, we first start by computing the Gini
+Impurity of our root node. Let's take a look at the data we used earlier:
+
++-----+----------+----------+----------+----------+
+|     | Supplies | Weather  | Worked?  | Shopped? |
++=====+==========+==========+==========+==========+
+| D1  | Low      | Sunny    | Yes      | Yes      |
++-----+----------+----------+----------+----------+
+| D2  | High     | Sunny    | Yes      | No       |
++-----+----------+----------+----------+----------+
+| D3  | Med      | Cloudy   | Yes      | No       |
++-----+----------+----------+----------+----------+
+| D4  | Low      | Raining  | Yes      | No       |
++-----+----------+----------+----------+----------+
+| D5  | Low      | Cloudy   | No       | Yes      |
++-----+----------+----------+----------+----------+
+| D6  | High     | Sunny    | No       | No       |
++-----+----------+----------+----------+----------+
+| D7  | High     | Raining  | No       | No       |
++-----+----------+----------+----------+----------+
+| D8  | Med      | Cloudy   | Yes      | No       |
++-----+----------+----------+----------+----------+
+| D9  | Low      | Raining  | Yes      | No       |
++-----+----------+----------+----------+----------+
+| D10 | Low      | Raining  | No       | Yes      |
++-----+----------+----------+----------+----------+
+| D11 | Med      | Sunny    | No       | Yes      |
++-----+----------+----------+----------+----------+
+| D12 | High     | Sunny    | Yes      | No       |
++-----+----------+----------+----------+----------+
+
+Our root node is the target variable, whether Mike is going to go
+shopping. To calculate its Gini Impurity, we need to find the sum of
+probabilities squared for each outcome and subtract this result from
+one:
+
+.. figure:: _img/Gini_1.png
+
+.. figure:: _img/Gini_2.png
+
+.. figure:: _img/Gini_3.png
+
+Let's calculate the Gini Information Gain if we split on the first
+attribute, Supplies. We have three different categories we can split
+by - Low, Med, and High. For each of these, we calculate its Gini 
+Impurity:
+
+.. figure:: _img/Gini_4.png
+
+.. figure:: _img/Gini_5.png
+
+.. figure:: _img/Gini_6.png
+
+As you can see, the impurity for High supplies is 0. This means that
+if we split on Supplies and receive High input, we immediately know
+what the outcome will be. To determine the Gini Information Gain for
+this split, we compute the root's impurity minus the weighted average
+of each child's impurity:
+
+.. figure:: _img/Gini_7.png
+
+.. figure:: _img/Gini_8.png
+
+We continue this pattern for every possible split, then choose the
+split that gives us the highest information gain value.
 
 Pruning
 -------
@@ -103,3 +193,5 @@ TODO
 
 Complexity / Weakest Link
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
