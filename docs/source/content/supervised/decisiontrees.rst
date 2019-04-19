@@ -5,6 +5,9 @@ Decision Trees
   :local:
   :depth: 2
 
+Introduction
+------------
+
 Decision trees are a classifier in machine learning that allows us to
 make predictions based on previous data. They are like a series of
 sequential “if … then” statements you feed new data into to get a
