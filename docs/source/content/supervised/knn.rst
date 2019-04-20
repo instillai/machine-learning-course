@@ -34,8 +34,8 @@ classified as a green square.
 How does it work?
 -----------------
 
-We will look at two different ways to go about this. The two ways we will 
-look at is the brute force method and the K-D tree method.
+We will look at two different ways to go about this. The two ways are
+the brute force method and the K-D tree method.
 
 Brute Force Method
 --------------------
@@ -43,6 +43,9 @@ Brute Force Method
 This is the simplest method. Basically, it's just calculating the Euclidean 
 distance from the object being classified to each point in the set. You want
 to use this method when the dimensions are small or the number of points is small.
+As the number of points increases the number of times the method will have to calculate
+the Euclidean distance also increases, so the performance of the method drops. Luckily,
+the K-D tree method is better equipped for larger sets of data. 
 
 K-D Tree Method
 -----------------
@@ -50,8 +53,25 @@ K-D Tree Method
 This method tries to improve the running time by reducing the amount of times we
 calculate the Euclidean distance. The idea behind this method is that if we know
 that two data points are close to each other and we calculate the Euclidean distance
-to one of them and then we know that distance is roughly close to the other point.
-If you have a larger data set it is better to use this method.
+to one of them and then we know that distance is roughly close to the other point. 
+Here is an example of how the K-D tree looks like.
+
+.. figure:: _img/KNN_KDTree.jpg
+   :scale: 50 %
+   :alt: KNN K-d tree
+
+   Ref: https://slideplayer.com/slide/3273367/
+
+How a K-D tree works is that a node in the tree represents and holds data from a n-dimensional
+graph. Each node represents a box in the graph. First we can build a K-D tree of the data, then 
+when it's time to classify a point we would just look at the where the point will fall in the 
+tree then calculate the Euclidean distance between only the points it is close to until we reach 
+k neighbors. 
+
+If you have a larger data set it is recommended to use this method. This is because the cost of creating
+the K-D tree is relatively low if the data set is larger, and the cost of classifiying a point is 
+constant as the data gets larger. 
+
 
 Choosing k
 -----------
@@ -81,7 +101,7 @@ be relatively small.
 Motivation
 ------------
 
-So why would someone use this classifier over another? Is this the best classifier? The answer to these questions is that it depends. 
+So why would someone use this classifier over another? Is this the best classifier? The answer to these questions are that it depends. 
 There is no classifier that is best, it all depends on the data that a classifier is given. KNN might be the best for one dataset but 
 not another. It's good to know about other classifiers like Support Vector Machines, and then decide which one best classifies the 
 a given dataset.
@@ -102,6 +122,8 @@ The output should look like this:
 
 The green points are classified as benign.
 The red points are classified as malignant.
+The boundary line is the prediction that the classifier makes. This boundary line is determined by the k value, for this instance
+k = 9. 
 
 This loads the data from the Scikit-Learn's dataset library. You can change the data to whatever you would like. 
 Just make sure you have, data points and an array of targets to classify those data points. 
@@ -113,9 +135,9 @@ Just make sure you have, data points and an array of targets to classify those d
     target = dataCancer.target
 
 You can also change the k value or n_neighbors value that will change the algorithm. It is suggested that you 
-choose a k that is relatively small. You can also change the algorithm used the options are 
+choose a k that is relatively small. You can also change the algorithm used, the options are 
 {‘auto’, ‘ball_tree’, ‘kd_tree’, ‘brute’}. These don't change the output of the prediction they just will 
-change the time it takes to predict the data. You can change it here in the code, try change the value of n_neighbors to 1. 
+change the time it takes to predict the data. You can change it here in the code, try changing the value of n_neighbors to 1. 
 
 .. code:: python
 

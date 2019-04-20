@@ -49,6 +49,7 @@ y = np.linspace(y_limit[0], y_limit[1])
 X, Y = np.meshgrid(x, y)
 xy = np.c_[X.ravel(), Y.ravel()]
 
+# Creates the line that will separate the data
 boundary = model.predict(xy)
 boundary = boundary.reshape(X.shape)
 
