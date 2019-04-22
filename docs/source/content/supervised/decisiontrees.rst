@@ -179,19 +179,29 @@ of each child's impurity:
 .. figure:: _img/Gini_8.png
 
 We continue this pattern for every possible split, then choose the
-split that gives us the highest information gain value.
+split that gives us the highest information gain value. Maximizing
+information gain leaves us with the most polarized splits possible,
+lowering the probability new input is incorrectly classified.
 
 Pruning
 -------
 
-TODO
+A decision tree created through a sufficiently large dataset may end
+up with an excessive amount of splits, each with decreasing usefulness.
+A highly detailed decision tree can even lead to overfitting, discussed
+in the previous module. Because of this, it's beneficial to prune less
+important splits of a decision tree away. Pruning involves calculating
+the information gain of each ending sub-tree (the leaf nodes and their
+parent node), then removing the sub-tree with the least information
+gain:
 
-Reduced Error
-~~~~~~~~~~~~~
+.. figure:: _img/Dec_Trees_Pruning.png
 
-TODO
+    Ref: http://www.cs.cmu.edu/~bhiksha/courses/10-601/decisiontrees/
 
-Complexity / Weakest Link
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
+As you can see, the sub-tree is replaced with the more prominent
+result, becoming a new leaf. This process can be repeated until you
+reach a desired complexity level, tree height, or information gain
+amount. Information gain can be tracked and stored as the tree is
+built to save time when pruning as well. Each model should make use of
+its own pruning algorithm to meet its needs.
