@@ -63,7 +63,7 @@ Here is an example of how the K-D tree looks like.
    Ref: https://slideplayer.com/slide/3273367/
 
 How a K-D tree works is that a node in the tree represents and holds data from a n-dimensional
-graph. Each node represents a box in the graph. First we can build a K-D tree of the data, then 
+graph. Each node represents a box in the graph. First we can build a K-D tree out of a set of data, then 
 when it's time to classify a point we would just look at the where the point will fall in the 
 tree then calculate the Euclidean distance between only the points it is close to until we reach 
 k neighbors. 
