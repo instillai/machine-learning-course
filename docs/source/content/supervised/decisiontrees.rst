@@ -68,6 +68,18 @@ tree:
 
    **Figure 5. The final decision tree**
 
+Motivation
+----------
+
+Decision trees are easily created, visualized, and interpreted.
+Because of this, they are typically the first method used to model
+a dataset. The hierarchical structure and categorical nature of a
+decision tree makes it highly intuitive to implement. Decision
+trees expand logarithmically based on the number of data points you
+have, meaning larger datasets will impact the tree creation process
+less than other classifiers. Because of the tree structure, classifying
+new data points is also performed logarithmically.
+
 Classification and Regression Trees
 -----------------------------------
 
@@ -77,12 +89,13 @@ is used to get a result from a set of possible values. A **Regression
 Tree** is a decision tree where the result is a continuous value, such
 as the price of a car.
 
-Splitting
----------
+Splitting (Induction)
+---------------------
 
-Decision trees are created through a process of splitting, but how do we
-create the tree? We need a recursive algorithm that determines the best
-attributes to split on. One such algorithm is the **greedy algorithm**:
+Decision trees are created through a process of splitting called
+**induction**, but how do we know when to split? We need a recursive
+algorithm that determines the best attributes to split on. One such
+algorithm is the **greedy algorithm**:
 
 1. Starting from the root, we create a split for each attribute.
 2. For each created split, calculate the cost of the split.
@@ -205,3 +218,101 @@ reach a desired complexity level, tree height, or information gain
 amount. Information gain can be tracked and stored as the tree is
 built to save time when pruning as well. Each model should make use of
 its own pruning algorithm to meet its needs.
+
+Conclusion
+----------
+
+Decision trees allow you to quickly and efficiently classify data.
+Because they shape data into a heirarchy of decisions, they are highly
+understandable by even non-experts. Decision trees are created and
+refined in a two-step process - induction and pruning. Induction
+involves picking the best attribute to split on, while pruning
+helps to filter out results deemed useless. Because decision trees
+are so simple to create and understand, they are typically the first
+approach used to model and predict outcomes of a dataset.
+
+Code Example
+------------
+
+The provided code, `decisiontrees.py`_ takes the example discussed in
+this documentation and creates a decision tree from it. First, each
+possible option for each class is defined. This is used later to fit
+and display our decision tree:
+
+.. _decisiontrees.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/DecisionTree/decisiontrees.py
+
+.. code:: python
+
+    # The possible values for each class
+    classes = {
+        'supplies': ['low', 'med', 'high'],
+        'weather':  ['raining', 'cloudy', 'sunny'],
+        'worked?':  ['yes', 'no']
+    }
+
+Next, we've created a matrix of the dataset shown above and defined
+each row's outcome:
+
+.. code:: python
+
+    # Our example data from the documentation
+    data = [
+        ['low',  'sunny',   'yes'],
+        ['high', 'sunny',   'yes'],
+        ['med',  'cloudy',  'yes'],
+        ['low',  'raining', 'yes'],
+        ['low',  'cloudy',  'no' ],
+        ['high', 'sunny',   'no' ],
+        ['high', 'raining', 'no' ],
+        ['med',  'cloudy',  'yes'],
+        ['low',  'raining', 'yes'],
+        ['low',  'raining', 'no' ],
+        ['med',  'sunny',   'no' ],
+        ['high', 'sunny',   'yes']
+    ]
+
+    # Our target variable, whether someone went shopping
+    target = ['yes', 'no', 'no', 'no', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no']
+
+Unfortunately, the sklearn machine learning package can't create a
+decision tree from categorical data. There is in-progress work to
+allow this, but for now we need another way to represent the data
+in a decision tree with the library. A naive approach would be to
+just enumerate each category - for instance, converting
+sunny/raining/cloudy to values such as 0, 1, and 2. There are some
+unfortunate side effects of doing this though, such as the values
+being comparable (sunny < raining) and continuous. To get around this,
+we "one hot encode" the data:
+
+.. code:: python
+
+    categories = [classes['supplies'], classes['weather'], classes['worked?']]
+    encoder = OneHotEncoder(categories=categories)
+
+    x_data = encoder.fit_transform(data)
+
+One hot encoding allows us to convert categorical data into values
+recognizable by ML algorithms expecting continuous data. It works
+by taking a class and dividing it up into each option, with a bit
+representing whether the option is present.
+
+Now that we have data suited to sklearn's decision tree model, we
+simply fit the classifier to the data:
+
+.. code:: python
+
+    # Form and fit our decision tree to the now-encoded data
+    classifier = DecisionTreeClassifier()
+    tree = classifier.fit(x_data, target)
+
+The rest of the code involves creating some random prediction input
+to show how you can use the tree. We create a random set of data
+in the same format as the data above, then pass it into
+DecisionTreeClassifier's predict method. This gives us an array of
+predicted target variables - in this case, yes or no answers to
+whether Mike will go shopping:
+
+.. code:: python
+
+    # Use our tree to predict the outcome of the random values
+    prediction_results = tree.predict(encoder.transform(prediction_data))
