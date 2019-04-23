@@ -9,7 +9,9 @@ k-Nearest Neighbors
 Introduction
 -------------
 
-K-Nearest Neighbors (KNN) is a basic classifier for machine learning. 
+K-Nearest Neighbors (KNN) is a basic classifier for machine learning.
+A **classifier** takes an already labeled data set, and then it trys to 
+label new data points into one of the catagories. 
 So, we are trying to identify what class an object is in. To do this we 
 look at the closest points (neighbors) to the object and the class with 
 the majority of neighbors will be the class that we identify the object 
@@ -40,9 +42,10 @@ the brute force method and the K-D tree method.
 Brute Force Method
 --------------------
 
-This is the simplest method. Basically, it's just calculating the Euclidean 
-distance from the object being classified to each point in the set. You want
-to use this method when the dimensions are small or the number of points is small.
+This is the simplest method. Basically, it's just calculating the **Euclidean 
+distance** from the object being classified to each point in the set. The Euclidean distance
+is simply the length of a line segment that connects two points. The Brute Force method is
+useful when the dimensions of the points are small or the number of points is small.
 As the number of points increases the number of times the method will have to calculate
 the Euclidean distance also increases, so the performance of the method drops. Luckily,
 the K-D tree method is better equipped for larger sets of data. 
@@ -62,9 +65,9 @@ Here is an example of how the K-D tree looks like.
 
    Ref: https://slideplayer.com/slide/3273367/
 
-How a K-D tree works is that a node in the tree represents and holds data from a n-dimensional
+How an K-D tree works is that a node in the tree represents and holds data from a n-dimensional
 graph. Each node represents a box in the graph. First we can build a K-D tree out of a set of data, then 
-when it's time to classify a point we would just look at the where the point will fall in the 
+when it's time to classify a point we would just look at where the point will fall in the 
 tree then calculate the Euclidean distance between only the points it is close to until we reach 
 k neighbors. 
 
@@ -90,7 +93,7 @@ Conclusion
 Here are some things to take away:
 
 - The different methods to KNN only affect the performance, not the output
-- The Brute Method is best when the dimensions of the points or the number of points are small
+- The Brute Force Method is best when the dimensions of the points or the number of points are small
 - The K-D Tree Method is best when you have a larger data set
 - SKLearn KNN classifier has a auto method which decides what method to use given what data it's trained on. 
 
@@ -103,7 +106,7 @@ Motivation
 
 So why would someone use this classifier over another? Is this the best classifier? The answer to these questions are that it depends. 
 There is no classifier that is best, it all depends on the data that a classifier is given. KNN might be the best for one dataset but 
-not another. It's good to know about other classifiers like Support Vector Machines, and then decide which one best classifies the 
+not another. It's good to know about other classifiers like `Support Vector Machines`_, and then decide which one best classifies the 
 a given dataset.
 
 Code Example
@@ -126,7 +129,7 @@ The boundary line is the prediction that the classifier makes. This boundary lin
 k = 9. 
 
 This loads the data from the Scikit-Learn's dataset library. You can change the data to whatever you would like. 
-Just make sure you have, data points and an array of targets to classify those data points. 
+Just make sure you have data points and an array of targets to classify those data points. 
 
 .. code:: python
 
@@ -135,9 +138,13 @@ Just make sure you have, data points and an array of targets to classify those d
     target = dataCancer.target
 
 You can also change the k value or n_neighbors value that will change the algorithm. It is suggested that you 
-choose a k that is relatively small. You can also change the algorithm used, the options are 
-{‘auto’, ‘ball_tree’, ‘kd_tree’, ‘brute’}. These don't change the output of the prediction they just will 
-change the time it takes to predict the data. You can change it here in the code, try changing the value of n_neighbors to 1. 
+choose a k that is relatively small. 
+
+You can also change the algorithm used, the options are 
+{‘auto’, ‘ball_tree’, ‘kd_tree’, ‘brute’}. These don't change the output of the prediction, they will just 
+change the time it takes to predict the data. 
+
+Try changing the value of n_neighbors to 1 in the code below. 
 
 .. code:: python
 
@@ -151,11 +158,13 @@ If you changed the value of n_neighbors to 1 this will classify by the point tha
    :alt: KNN k = 1 output
 
 Comparing this output to k = 9 you can see a large difference on how it classifies the data. So if you want to ignore outliers you
-will want a higher k value otherwise choose a smaller k like 1, 3 or 5. You can experiment by choosing a very high k greater than 100.
+will want a higher k value, otherwise choose a smaller k like 1, 3 or 5. You can experiment by choosing a very high k greater than 100.
 Eventually the algorithm will classify all the data into 1 class, and there will be no line to split the data. 
 
 .. _here: https://scikit-learn.org
 
 .. _knn.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/KNN/knn.py
+
+.. _Support Vector Machines: linear_SVM.rst
 
 
