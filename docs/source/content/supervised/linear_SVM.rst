@@ -2,6 +2,13 @@
 Linear Support Vector Machines
 ==========================
 
+.. contents::
+  :local:
+  :depth: 3
+
+Introduction
+-------------
+
 A **Support Vector Machine** (SVM for short) is another machine learning algorithm that is used to classify data.
 The point of SVM's are to try and find a line or **hyperplane** to divide a dimensional space which best classifies
 the data points. If we were trying to divide two classes A and B, we would try to best separate the two classes with a 
@@ -129,6 +136,7 @@ by using kernel tricks, so try using the different kernels like Radial Basis Fun
 
 Code Example
 -------------
+
 Check out our code, `linear_svm.py`_ to learn how to implement a linear SVM using Python's Scikit-learn library. 
 More information about Scikit-Learn can be found `here`_. 
 
