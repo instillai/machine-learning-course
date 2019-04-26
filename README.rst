@@ -51,10 +51,16 @@ tutorials using many different well-known Machine Learning frameworks such as ``
 Machine Learning
 =====================
 
++--------------------------------------------------------------------+-------------------------------+
+| Title                                                              |    Document                   |
++====================================================================+===============================+
+| An Introduction to Machine Learning                                |   `Link <intro_>`_            |
++--------------------------------------------------------------------+-------------------------------+
 
+.. _intro: docs/source/intro/intro.rst
 
 ------------------------------------------------------------
-Overview of machine learning
+Machine Learning Basics
 ------------------------------------------------------------
 .. figure:: _img/deeplearning.png
 .. _lrtutorial: docs/source/content/overview/linear-regression.rst
