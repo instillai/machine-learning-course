@@ -95,6 +95,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#when-to-use-it">When to use it</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-does-it-work">How does it work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multinomial-logistic-regression">Multinomial logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code">Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
 </ul>
 </li>
@@ -102,6 +105,10 @@
 <li class="toctree-l1"><a class="reference internal" href="decisiontrees.html">Decision Trees</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knn.html">k-Nearest Neighbors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear_SVM.html">Linear Support Vector Machines</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Document Credentials</span></p>
 <ul>
@@ -176,38 +183,151 @@
             
   <div class="section" id="logistic-regression">
 <h1>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#introduction" id="id1">Introduction</a></li>
+<li><a class="reference internal" href="#when-to-use-it" id="id2">When to use it</a></li>
+<li><a class="reference internal" href="#how-does-it-work" id="id3">How does it work?</a></li>
+<li><a class="reference internal" href="#multinomial-logistic-regression" id="id4">Multinomial logistic regression</a></li>
+<li><a class="reference internal" href="#code" id="id5">Code</a></li>
+<li><a class="reference internal" href="#motivation" id="id6">Motivation</a></li>
+<li><a class="reference internal" href="#conclusion" id="id7">Conclusion</a></li>
+</ul>
+</div>
 <div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>Logistic regression is a method for binary classification.  It works to divide points in a dataset into two distinct classes, or categories.
-For simplicity, let’s call them class A and class B.  The model will give us the probability that a given point belongs in category B.
-If it is low (lower than 50%), then we classify it in category A.  Otherwise, it falls in class B.
-It’s also important to note that logistic regression is better for this purpose than linear regression with a threshold
-because the threshold would have to be manually set, which is not feasible.  Logistic regression will create a sort of S-curve
-(using the sigmoid function) which will also help show certainty, since the output from logistic regression is not just a one or zero.
-Here is the standard logistic function, note that the output is always between 0 and 1, but never reaches either of those values.</p>
+<h2><a class="toc-backref" href="#id1">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Logistic regression is a method for binary classification.  It works to divide
+points in a dataset into two distinct classes, or categories.
+For simplicity, let’s call them class A and class B.
+The model will give us the probability that a given point belongs in category B.
+If it is low (lower than 50%), then we classify it in category A.
+Otherwise, it falls in class B.
+It’s also important to note that logistic regression is better for this purpose
+than linear regression with a threshold
+because the threshold would have to be manually set, which is not feasible.
+Logistic regression will instead create a sort of S-curve
+(using the sigmoid function) which will also help show certainty, since the
+output from logistic regression is not just a one or zero.
+Here is the standard logistic function, note that the output is always between
+0 and 1, but never reaches either of those values.</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../../_images/WikiLogistic.svg.png"><img alt="Logistic" src="../../_images/WikiLogistic.svg.png" style="width: 160.0px; height: 106.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/WikiLogistic.svg.png"><img alt="Logistic" src="../../_images/WikiLogistic.svg.png" style="width: 64.0px; height: 42.6px;" /></a>
 </div>
 <p>Ref: <a class="reference external" href="https://en.wikipedia.org/wiki/Logistic_regression">https://en.wikipedia.org/wiki/Logistic_regression</a></p>
 </div>
 <div class="section" id="when-to-use-it">
-<h2>When to use it<a class="headerlink" href="#when-to-use-it" title="Permalink to this headline">¶</a></h2>
-<p>Logistic Regression is great for situations where you need to classify between two categories.
+<h2><a class="toc-backref" href="#id2">When to use it</a><a class="headerlink" href="#when-to-use-it" title="Permalink to this headline">¶</a></h2>
+<p>Logistic regression is great for situations where you need to classify between two categories.
 Some good examples are accepted and rejected applicants and victory or defeat in a competition.
 Here is an example table of data that would be a good candidate for logistic regression.</p>
-<p>Notice that the student’s success is determined by the inputs and the value is binary, so Logistic Regression will work well for this scenario.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="37%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Studying</th>
+<th class="head">Success</th>
+</tr>
+<tr class="row-even"><th class="head">Hours</th>
+<th class="head">Focused</th>
+<th class="head">Pass?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>1</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr class="row-odd"><td>0.5</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that the student’s success is determined by the inputs and the value is
+binary, so logistic regression will work well for this scenario.</p>
 </div>
 <div class="section" id="how-does-it-work">
-<h2>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">¶</a></h2>
-<p>Logistic regression works using a linear combination of inputs, so multiple information sources can govern the output of the model.  The parameters of the model are the weights of the various features, and represent their relative importance to the result.</p>
+<h2><a class="toc-backref" href="#id3">How does it work?</a><a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">¶</a></h2>
+<p>Logistic regression works using a linear combination of inputs, so multiple
+information sources can govern the output of the model.
+The parameters of the model are the weights of the various features, and
+represent their relative importance to the result.
+In the equation that follows, you should recognize the formula used in linear regression.
+Logistic regression is, at its base, a transformation from a linear predictor
+to a probability between 0 and 1.</p>
 <div class="figure">
-<img alt="Equation" src="../../_images/Logistic_Eq.svg" /></div>
+<img alt="Equation" src="../../_images/WikiLogisticEQ.svg" /></div>
 <p>Ref: <a class="reference external" href="https://en.wikipedia.org/wiki/Logistic_regression">https://en.wikipedia.org/wiki/Logistic_regression</a></p>
-<p>The beta values are the weights and x values are the variable inputs.  This formula gives the probability that the input belongs to Class B, which is the output of the function.</p>
+<p>As in linear regression, the beta values are the weights and x values are the variable inputs.
+This formula gives the probability that the input belongs to Class B, which
+is the goal of the logistic regression model.</p>
+</div>
+<div class="section" id="multinomial-logistic-regression">
+<h2><a class="toc-backref" href="#id4">Multinomial logistic regression</a><a class="headerlink" href="#multinomial-logistic-regression" title="Permalink to this headline">¶</a></h2>
+<p>Until now, we’ve been discussing the situation where there are exactly
+two distinct outputs, for example a pass or a fail.
+But, what if there were more than two possible outputs?
+What about the number classification example, where the output can be any digit from 0 to 9?</p>
+<p>Well, there is a way to handle that with logistic regression.
+When using the scikit-learn library, as the example code does, the facility is already there.
+With scikit-learn, you can use the multinomial mode and supply any number of
+classes in the training data.
+You can think of the method as creating multiple models and comparing their
+probabilities, but the exact <a class="reference external" href="https://en.wikipedia.org/wiki/Multinomial_logistic_regression">details</a> are beyond the scope of this course.</p>
+</div>
+<div class="section" id="code">
+<h2><a class="toc-backref" href="#id5">Code</a><a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<p>Check out the <a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/Logistic_Regression/logistic_ex1.py">example</a> for logistic regression in our repository.</p>
+<p>In the example, scikit-learn and numpy are used to train a simple logistic regression model.
+The model is basic, but extensible.
+With logistic regression, more features could be added to the data set
+seamlessly, simply as a column in the 2D arrays.</p>
+<p>The code creates a 2D array representing the training input, in this case it is
+1000 x 1, since there are 1000 samples and 1 feature.
+These inputs are scores out of 1000.
+A training output array is also created, with the classification of 1 for
+pass and 0 for fail, based on a threshold.
+Then, scikit-learn’s <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">LogisticRegression</a> class is used to fit a logistic
+regression classifier to the data.
+After that, the next step is to test for accuracy with a different data set.
+So, we create another 100 random samples to test against, and predict against them using the model.</p>
+</div>
+<div class="section" id="motivation">
+<h2><a class="toc-backref" href="#id6">Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Why use logistic regression?
+Logistic regression is well suited to the case of <strong>binary classification</strong>,
+or classifying in 2 categories.
+Logistic regression is also a relatively simple method, utilizing a weighted
+sum of inputs, similar to linear regression.
+Logistic regression is also useful in that it gives a continuous value,
+representing the probability of a given classification being correct.
+For these reasons, advocates say that logistic regression should be the
+<a class="reference external" href="https://towardsdatascience.com/5-reasons-logistic-regression-should-be-the-first-thing-you-learn-when-become-a-data-scientist-fcaae46605c4">first</a> thing learned in the data science world.</p>
 </div>
 <div class="section" id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>Machine learning libraries make using Logistic Regression very simple.  Check out the example code in the repository and follow along. The basic idea is to supply the training data as pairs of input and classification, and the model will be built automatically.  As always, keep in mind the basics mentioned in this repository, as there is no fool-proof method for machine learning.</p>
+<h2><a class="toc-backref" href="#id7">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Logistic regression build upon linear regression by extending its use to classification.
+Although it is not able to classify into more than two classes, it is still
+effective in what it does, and simple to implement.
+Consider logistic regression as the first thought pass/fail method.
+When you just need a pass/fail probability from data, logistic regression is the simplest and likely best option.</p>
+<p>Machine learning libraries make using Logistic Regression very simple.
+Check out the example code in the repository and follow along.
+The basic idea is to supply the training data as pairs of input and
+classification, and the model will be built automatically.
+As always, keep in mind the basics mentioned in the overview section of this
+repository, as there is no fool-proof method for machine learning.</p>
 </div>
 </div>
 

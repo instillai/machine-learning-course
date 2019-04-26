@@ -88,8 +88,13 @@
 <li class="toctree-l1"><a class="reference internal" href="linear-regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overfitting.html">Overfitting and Underfitting</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Regularization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ridge-regression">Ridge Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#lasso-regression">Lasso Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ridge-regression">Ridge Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lasso-regression">Lasso Regression</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
 </li>
@@ -101,6 +106,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../supervised/decisiontrees.html">Decision Trees</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supervised/knn.html">k-Nearest Neighbors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../supervised/linear_SVM.html">Linear Support Vector Machines</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Document Credentials</span></p>
 <ul>
@@ -175,87 +184,163 @@
             
   <div class="section" id="regularization">
 <h1>Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">¶</a></h1>
-<p><strong>Note:</strong> All code for data set creation and modeling is provided.</p>
-<p>Consider the following scenario. You are making a peanut butter sandwich and are trying to adjust parameters so that it has the best taste.
-You might consider the type of bread, type of peanut butter, or peanut butter to bread ratio in your decision making process. But would you
-consider other factors like how warm it is in the room, what you had for breakfast, or what color socks you’re wearing? Probably not as these
-things don’t have as much impact on the taste of your sandwich. You would focus more on the first few features for whatever model you end up
-developing and avoid paying too much attention to the other ones.</p>
-<p>In previous modules, we have seen prediction models trained on some sample set and scored against how close they are to a test set.
-We obviously want our models to make predictions that are accurate but can they be too accurate? When we look at a set of data,
-there are two main components: the underlying pattern and noise. We only want to match the pattern and not the noise. Consider
-the figures below that represent quadratic data.</p>
-<div class="figure">
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#motivation" id="id15">Motivation</a></li>
+<li><a class="reference internal" href="#overview" id="id16">Overview</a></li>
+<li><a class="reference internal" href="#methods" id="id17">Methods</a><ul>
+<li><a class="reference internal" href="#ridge-regression" id="id18">Ridge Regression</a></li>
+<li><a class="reference internal" href="#lasso-regression" id="id19">Lasso Regression</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary" id="id20">Summary</a></li>
+</ul>
+</div>
+<div class="section" id="motivation">
+<h2><a class="toc-backref" href="#id15">Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Consider the following scenario. You are making a peanut butter sandwich and
+are trying to adjust ingredients so that it has the best taste. You might
+consider the type of bread, type of peanut butter, or peanut butter to bread
+ratio in your decision making process. But would you consider other factors
+like how warm it is in the room, what you had for breakfast, or what color
+socks you’re wearing? You probably wouldn’t as these things don’t have as much
+impact on the taste of your sandwich. You would focus more on the first few
+features for whatever recipe you end up using and avoid paying too much
+attention to the other ones. This is the basic idea of <strong>regularization</strong>.</p>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id16">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In previous modules, we have seen prediction models trained on some sample set
+and scored against how close they are to a test set. We obviously want our
+models to make predictions that are accurate but can they be too accurate?
+When we look at a set of data, there are two main components: the underlying
+pattern and noise. We only want to match the pattern and not the noise.
+Consider the figures below that represent quadratic data. <em>Figure 1</em> uses a
+linear model to approximate the data. <em>Figure 2</em> uses a quadratic model to
+approximate the data. <em>Figure 3</em> uses a high degree polynomial model to
+approximate the data.</p>
+<div class="figure" id="id8">
 <img alt="../../_images/Regularization_Linear.png" src="../../_images/Regularization_Linear.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 1. A linear prediction model</strong> [<a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/regularization/regularization_linear.py">code</a>]</span></p>
+<div class="legend">
 </div>
-<div class="figure">
+</div>
+<div class="figure" id="id9">
 <img alt="../../_images/Regularization_Quadratic.png" src="../../_images/Regularization_Quadratic.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 2. A quadratic prediction model</strong> [<a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/regularization/regularization_quadratic.py">code</a>]</span></p>
+<div class="legend">
 </div>
-<div class="figure">
+</div>
+<div class="figure" id="id10">
 <img alt="../../_images/Regularization_Polynomial.png" src="../../_images/Regularization_Polynomial.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 3. A high degree polynomial prediction model</strong> [<a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/regularization/regularization_polynomial.py">code</a>]</span></p>
+<div class="legend">
 </div>
-<p>The first model underfits the data, the second model looks to be a good fit for the data,
-and the third model is a very close fit for the data. Of all the models above, the third
-is likely the most accurate against the test set. But this isn’t necessarily a good thing.
-If we add in some more test points, we’ll likely find that the third model is no longer as
-accurate at predicting them but the second model is still pretty good. This is because the
-third model suffers from overfitting. Overfitting means it does a really good job at fitting
-the test data (including noise) but is bad at generalizing to new data. The second model is a
-nice fit for the data and is not so complex that it won’t generalize.</p>
-<p>The goal of regularization is to avoid overfitting by penalizing more complex models. The general
-form of regularization involves adding an extra term to our cost function. So if we were using a
-cost function CF, regularization might lead us to change it to CF + lambda * R where R is some function
-of our weights and <code class="docutils literal notranslate"><span class="pre">lambda</span></code> is a tuning parameter. The result is that models with higher weights (more complex)
-get penalized more. The tuning parameter basically lets us adjust the regularization to get better results
-by changing its value. The higher the <code class="docutils literal notranslate"><span class="pre">lambda</span></code> the less impact the weights have on the total cost. Below we’ll
-cover some methods of regularization and when they are good to use. When looking through the code, note the import statements used for each model.</p>
+</div>
+<p><em>Figure 1</em> underfits the data, <em>Figure 2</em> looks to be a pretty good fit for
+the data, and <em>Figure 3</em> is a very close fit for the data. Of all the models
+above, the third is likely the most accurate for the test set. But this isn’t
+necessarily a good thing. If we add in some more test points, we’ll likely
+find that the third model is no longer as accurate at predicting them but the
+second model is still pretty good. This is because the third model suffers
+from overfitting. Overfitting means it does a really good job at fitting the
+test data (including noise) but is bad at generalizing to new data. The second
+model is a nice fit for the data and is not so complex that it won’t
+generalize.</p>
+<p>The goal of regularization is to avoid overfitting by penalizing more complex
+models. The general form of regularization involves adding an extra term to
+our cost function. So if we were using a cost function CF, regularization
+might lead us to change it to CF + λ * R where R is some function of our
+weights and λ is a tuning parameter. The result is that models with higher
+weights (more complex) get penalized more. The tuning parameter basically lets
+us adjust the regularization to get better results. The higher the λ the less
+impact the weights have on the total cost.</p>
+</div>
+<div class="section" id="methods">
+<h2><a class="toc-backref" href="#id17">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<p>There are many methods we can use for regularization. Below we’ll cover some
+of the more common ones and when they are good to use.</p>
 <div class="section" id="ridge-regression">
-<h2>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">Ridge</span> <span class="pre">regression</span></code> is a type of regularization where the function R involves summing the squares of our weights. In statistics, this would be called an L2 norm.</p>
-<div class="figure">
+<h3><a class="toc-backref" href="#id18">Ridge Regression</a><a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h3>
+<p><strong>Ridge regression</strong> is a type of regularization where the function R involves
+summing the squares of our weights. <em>Equation 1</em> shows an example of the
+modified cost function.</p>
+<div class="figure" id="id11">
 <img alt="../../_images/latex-ridge-eq.gif" src="../../_images/latex-ridge-eq.gif" />
+<p class="caption"><span class="caption-text"><strong>Equation 1. A cost function for ridge regression</strong></span></p>
 </div>
-<p>The equation above is an example of the regularization with w representing our weights.
-Ridge regression forces weights to approach zero but will never cause them to be zero. This means that
-all the features will be represented in our model but overfitting will be minimized. Ridge regression is a
-good choice when we don’t have a very large number of features and just want to avoid overfitting.</p>
-<div class="figure">
+<p><em>Equation 1</em> is an example of the regularization with w representing our
+weights. Ridge regression forces weights to approach zero but will never cause
+them to be zero. This means that all the features will be represented in our
+model but overfitting will be minimized. Ridge regression is a good choice
+when we don’t have a very large number of features and just want to avoid
+overfitting. <em>Figure 4</em> gives a comparison of a model with and without ridge
+regression applied.</p>
+<div class="figure" id="id12">
 <img alt="../../_images/Regularization_Ridge.png" src="../../_images/Regularization_Ridge.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 4. Ridge regression applied to a model</strong> [<a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/regularization/regularization_ridge.py">code</a>]</span></p>
+<div class="legend">
 </div>
-<p>In the figure above, the black line represents a model without Ridge regression applied and the red line represents a model with Ridge regression applied.
-Note how much smoother the red line is. It will probably do a better job against future data.</p>
-<p>In the included file, <code class="docutils literal notranslate"><span class="pre">regularization_ridge.py</span></code>, the code that adds ridge regression is:</p>
-<p>Adding the Ridge regression is as simple as adding an additional argument to our Pipeline call.
-Here, the parameter alpha represents our tuning variable. For additional information on Ridge regression
-in scikit-learn, consult <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html">https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html</a>.</p>
+</div>
+<p>In <em>Figure 4</em>, the black line represents a model without Ridge regression
+applied and the red line represents a model with Ridge regression applied.
+Note how much smoother the red line is. It will probably do a better job
+against future data.</p>
+<p>In the included <a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/regularization/regularization_ridge.py">regularization_ridge.py</a> file, the code that adds ridge
+regression is:</p>
+<p>Adding the Ridge regression is as simple as adding an additional argument to
+our Pipeline call. Here, the parameter alpha represents our tuning variable.
+For additional information on Ridge regression in scikit-learn, consult
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html">here</a>.</p>
 </div>
 <div class="section" id="lasso-regression">
-<h2>Lasso Regression<a class="headerlink" href="#lasso-regression" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">Lasso</span> <span class="pre">regression</span></code> is a type of regularization where the function R involves summing the absolute values of our weights. In statistics, this would be called an L1 norm.</p>
-<div class="figure">
+<h3><a class="toc-backref" href="#id19">Lasso Regression</a><a class="headerlink" href="#lasso-regression" title="Permalink to this headline">¶</a></h3>
+<p><strong>Lasso regression</strong> is a type of regularization where the function R involves
+summing the absolute values of our weights. <em>Equation 2</em> shows an example of
+the modified cost function.</p>
+<div class="figure" id="id13">
 <img alt="../../_images/latex-lasso-eq.gif" src="../../_images/latex-lasso-eq.gif" />
+<p class="caption"><span class="caption-text"><strong>Equation 2. A cost function for lasso regression</strong></span></p>
 </div>
-<p>The equation above is an example of the regularization with w representing our weights. Notice how similar ridge regression and lasso regression are.
-The only noticeable difference is that square on the weights. This happens to have a big impact on what they do. Unlike ridge regression,
-lasso regression can force weights to be zero. This means that our resulting model may not even consider some of the features! In the case
-we have a million features where only a small amount are important, this is an incredibly useful result. Lasso regression lets us avoid overfitting
-and focus on a small subset of all our features. In the original scenario, we would end up ignoring those factors that don’t have as much impact on
-our sandwich eating experience.</p>
-<div class="figure">
+<p><em>Equation 2</em> is an example of the regularization with w representing our
+weights. Notice how similar ridge regression and lasso regression are. The
+only noticeable difference is that square on the weights. This happens to have
+a big impact on what they do. Unlike ridge regression, lasso regression can
+force weights to be zero. This means that our resulting model may not even
+consider some of the features! In the case we have a million features where
+only a small amount are important, this is an incredibly useful result. Lasso
+regression lets us avoid overfitting and focus on a small subset of all our
+features. In the original scenario, we would end up ignoring those factors
+that don’t have as much impact on our sandwich eating experience. <em>Figure 5</em>
+gives a comparison of a model with and without lasso regression applied.</p>
+<div class="figure" id="id14">
 <img alt="../../_images/Regularization_Lasso.png" src="../../_images/Regularization_Lasso.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 5. Lasso regression applied to a model</strong> [<a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/regularization/regularization_lasso.py">code</a>]</span></p>
+<div class="legend">
 </div>
-<p>In the figure above, the black line represents a model without Lasso regression applied and the red line represents a model with Lasso
-regression applied. The red line is much smoother than the black line. The Lasso regression was applied to a model of degree 6 but the
-result looks like its degree 2! The Lasso model will probably do a better job against future data.</p>
-<p>In the included file, <code class="docutils literal notranslate"><span class="pre">regularization_lasso.py</span></code>, the code that adds Lasso regression is:</p>
-<p>Adding the Lasso regression is as simple as adding the Ridge regression. Here, the parameter alpha represents our tuning variable and <code class="docutils literal notranslate"><span class="pre">max_iter</span></code>
-represents the max number of iterations to run for. For additional information on Lasso regression in scikit-learn,
-consult <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html">https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html</a>.</p>
+</div>
+<p>In the figure above, the black line represents a model without Lasso
+regression applied and the red line represents a model with Lasso regression
+applied. The red line is much smoother than the black line. The Lasso
+regression was applied to a model of degree 10 but the result looks like it
+has a much lower degree! The Lasso model will probably do a better job against
+future data.</p>
+<p>In the included <a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/regularization/regularization_lasso.py">regularization_lasso.py</a> file, the code that adds Lasso
+regression is:</p>
+<p>Adding the Lasso regression is as simple as adding the Ridge regression. Here,
+the parameter alpha represents our tuning variable and <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> represents
+the max number of iterations to run for. For additional information on Lasso
+regression in scikit-learn, consult <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html">here</a>.</p>
+</div>
 </div>
 <div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>With regularization, we have found a good way to avoid overfitting our data. We also have some methods of regularization for different situations.
-Some of you may be wondering how to choose that tuning parameter to get the best results. That will be covered in another section.</p>
+<h2><a class="toc-backref" href="#id20">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this module, we learned about regularization. With regularization, we have
+found a good way to avoid overfitting our data. This is a common but important
+problem in modeling so it’s good to know how to mediate it. We have also
+explored some methods of regularization that we can use in different
+situations. With this, we have learned enough about the core concepts of
+machine learning to move onto our next major topic, supervised learning.</p>
 </div>
 </div>
 

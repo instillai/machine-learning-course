@@ -31,6 +31,12 @@ Welcome to Deep Learning NLP documentation!
   content/supervised/knn
   content/supervised/linear_SVM
 
+.. toctree::
+  :maxdepth: 3
+  :caption: Unsupervised Learning
+
+  content/unsupervised/clustering
+
 ..   :maxdepth: 3
 ..   :caption: Supervised Learning
 ..

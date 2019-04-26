@@ -94,20 +94,22 @@
 <li class="toctree-l1"><a class="reference internal" href="logistic_regression.html">Logistic Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bayes.html">Naive Bayes Classification</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Decision Trees</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#classification-and-regression-trees">Classification and Regression Trees</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#splitting">Splitting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#cost-of-splitting">Cost of Splitting</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#pruning">Pruning</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#reduced-error">Reduced Error</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#complexity-weakest-link">Complexity / Weakest Link</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#splitting-induction">Splitting (Induction)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cost-of-splitting">Cost of Splitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pruning">Pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-example">Code Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="knn.html">k-Nearest Neighbors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear_SVM.html">Linear Support Vector Machines</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Document Credentials</span></p>
 <ul>
@@ -182,6 +184,20 @@
             
   <div class="section" id="decision-trees">
 <h1>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#introduction" id="id9">Introduction</a></li>
+<li><a class="reference internal" href="#motivation" id="id10">Motivation</a></li>
+<li><a class="reference internal" href="#classification-and-regression-trees" id="id11">Classification and Regression Trees</a></li>
+<li><a class="reference internal" href="#splitting-induction" id="id12">Splitting (Induction)</a></li>
+<li><a class="reference internal" href="#cost-of-splitting" id="id13">Cost of Splitting</a></li>
+<li><a class="reference internal" href="#pruning" id="id14">Pruning</a></li>
+<li><a class="reference internal" href="#conclusion" id="id15">Conclusion</a></li>
+<li><a class="reference internal" href="#code-example" id="id16">Code Example</a></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id9">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Decision trees are a classifier in machine learning that allows us to
 make predictions based on previous data. They are like a series of
 sequential “if … then” statements you feed new data into to get a
@@ -192,7 +208,7 @@ given day. We can look at previous factors that led Mike to go to the
 store:</p>
 <div class="figure" id="id1">
 <img alt="Dataset" src="../../_images/shopping_table.png" />
-<p class="caption"><span class="caption-text">Dataset</span></p>
+<p class="caption"><span class="caption-text"><strong>Figure 1. An example dataset</strong></span></p>
 </div>
 <p>Here we can see the amount of grocery supplies Mike had, the weather,
 and whether Mike worked each day. Green rows are days he went to the
@@ -203,7 +219,7 @@ data later on.</p>
 low, medium, or high amount of supplies:</p>
 <div class="figure" id="id2">
 <img alt="Tree 1" src="../../_images/decision_tree_1.png" />
-<p class="caption"><span class="caption-text">Tree 1</span></p>
+<p class="caption"><span class="caption-text"><strong>Figure 2. Our first split</strong></span></p>
 </div>
 <p>Here we can see that Mike never goes to the store if he has a high
 amount of supplies. This is called a <strong>pure subset</strong>, a subset with only
@@ -212,7 +228,7 @@ need to break a pure subset down further.</p>
 <p>Let’s break the Med Supplies category into whether Mike worked that day:</p>
 <div class="figure" id="id3">
 <img alt="Tree 2" src="../../_images/decision_tree_2.png" />
-<p class="caption"><span class="caption-text">Tree 2</span></p>
+<p class="caption"><span class="caption-text"><strong>Figure 3. Our second split</strong></span></p>
 </div>
 <p>Here we can see we have two more pure subsets, so this tree is complete.
 We can replace any pure subsets with their respective answer - in this
@@ -220,27 +236,40 @@ case, yes or no.</p>
 <p>Finally, let’s split the Low Supplies category by the Weather attribute:</p>
 <div class="figure" id="id4">
 <img alt="Tree 3" src="../../_images/decision_tree_3.png" />
-<p class="caption"><span class="caption-text">Tree 3</span></p>
+<p class="caption"><span class="caption-text"><strong>Figure 4. Our third split</strong></span></p>
 </div>
 <p>Now that we have all pure subsets, we can create our final decision
 tree:</p>
 <div class="figure" id="id5">
 <img alt="Tree 4" src="../../_images/decision_tree_4.png" />
-<p class="caption"><span class="caption-text">Tree 4</span></p>
+<p class="caption"><span class="caption-text"><strong>Figure 5. The final decision tree</strong></span></p>
+</div>
+</div>
+<div class="section" id="motivation">
+<h2><a class="toc-backref" href="#id10">Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Decision trees are easily created, visualized, and interpreted.
+Because of this, they are typically the first method used to model
+a dataset. The hierarchical structure and categorical nature of a
+decision tree makes it highly intuitive to implement. Decision
+trees expand logarithmically based on the number of data points you
+have, meaning larger datasets will impact the tree creation process
+less than other classifiers. Because of the tree structure, classifying
+new data points is also performed logarithmically.</p>
 </div>
 <div class="section" id="classification-and-regression-trees">
-<h2>Classification and Regression Trees<a class="headerlink" href="#classification-and-regression-trees" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">Classification and Regression Trees</a><a class="headerlink" href="#classification-and-regression-trees" title="Permalink to this headline">¶</a></h2>
 <p>Decision tree algorithms are also known as CART, or Classification and
 Regression Trees. A <strong>Classification Tree</strong>, like the one shown above,
 is used to get a result from a set of possible values. A <strong>Regression
 Tree</strong> is a decision tree where the result is a continuous value, such
 as the price of a car.</p>
 </div>
-<div class="section" id="splitting">
-<h2>Splitting<a class="headerlink" href="#splitting" title="Permalink to this headline">¶</a></h2>
-<p>Decision trees are created through a process of splitting, but how do we
-create the tree? We need a recursive algorithm that determines the best
-attributes to split on. One such algorithm is the <strong>greedy algorithm</strong>:</p>
+<div class="section" id="splitting-induction">
+<h2><a class="toc-backref" href="#id12">Splitting (Induction)</a><a class="headerlink" href="#splitting-induction" title="Permalink to this headline">¶</a></h2>
+<p>Decision trees are created through a process of splitting called
+<strong>induction</strong>, but how do we know when to split? We need a recursive
+algorithm that determines the best attributes to split on. One such
+algorithm is the <strong>greedy algorithm</strong>:</p>
 <ol class="arabic simple">
 <li>Starting from the root, we create a split for each attribute.</li>
 <li>For each created split, calculate the cost of the split.</li>
@@ -250,20 +279,264 @@ attributes to split on. One such algorithm is the <strong>greedy algorithm</stro
 <p>This process is repeated until all nodes have the same value as the
 target result, or splitting adds no value to a prediction. This
 algorithm has the root node as the best classifier.</p>
-<div class="section" id="cost-of-splitting">
-<h3>Cost of Splitting<a class="headerlink" href="#cost-of-splitting" title="Permalink to this headline">¶</a></h3>
-<p>TODO</p>
 </div>
+<div class="section" id="cost-of-splitting">
+<h2><a class="toc-backref" href="#id13">Cost of Splitting</a><a class="headerlink" href="#cost-of-splitting" title="Permalink to this headline">¶</a></h2>
+<p>The cost of a split is determined by a <strong>cost function</strong>. The goal of
+using a cost function is to split the data in a way that can be computed
+and that provides the most information gain.</p>
+<p>For classification trees, those that provide an answer rather than a
+value, we can compute imformation gain using <em>Gini Impurities</em>:</p>
+<div class="figure" id="id6">
+<img alt="../../_images/Gini_Impurity.png" src="../../_images/Gini_Impurity.png" />
+<p class="caption"><span class="caption-text"><strong>Equation 1. The Gini Impurity Function</strong></span></p>
+<div class="legend">
+Ref: <a class="reference external" href="https://sebastianraschka.com/faq/docs/decision-tree-binary.html">https://sebastianraschka.com/faq/docs/decision-tree-binary.html</a></div>
+</div>
+<div class="figure" id="id7">
+<img alt="../../_images/Gini_Information_Gain.png" src="../../_images/Gini_Information_Gain.png" />
+<p class="caption"><span class="caption-text"><strong>Equation 2. The Gini Information Gain Formula</strong></span></p>
+<div class="legend">
+Ref: <a class="reference external" href="https://sebastianraschka.com/faq/docs/decision-tree-binary.html">https://sebastianraschka.com/faq/docs/decision-tree-binary.html</a></div>
+</div>
+<p>To calculate information gain, we first start by computing the Gini
+Impurity of our root node. Let’s take a look at the data we used earlier:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="22%" />
+<col width="22%" />
+<col width="22%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">Supplies</th>
+<th class="head">Weather</th>
+<th class="head">Worked?</th>
+<th class="head">Shopped?</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>D1</td>
+<td>Low</td>
+<td>Sunny</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>D2</td>
+<td>High</td>
+<td>Sunny</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>D3</td>
+<td>Med</td>
+<td>Cloudy</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>D4</td>
+<td>Low</td>
+<td>Raining</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>D5</td>
+<td>Low</td>
+<td>Cloudy</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>D6</td>
+<td>High</td>
+<td>Sunny</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>D7</td>
+<td>High</td>
+<td>Raining</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>D8</td>
+<td>Med</td>
+<td>Cloudy</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>D9</td>
+<td>Low</td>
+<td>Raining</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td>D10</td>
+<td>Low</td>
+<td>Raining</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>D11</td>
+<td>Med</td>
+<td>Sunny</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>D12</td>
+<td>High</td>
+<td>Sunny</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Our root node is the target variable, whether Mike is going to go
+shopping. To calculate its Gini Impurity, we need to find the sum of
+probabilities squared for each outcome and subtract this result from
+one:</p>
+<div class="figure">
+<img alt="../../_images/Gini_1.png" src="../../_images/Gini_1.png" />
+</div>
+<div class="figure">
+<img alt="../../_images/Gini_2.png" src="../../_images/Gini_2.png" />
+</div>
+<div class="figure">
+<img alt="../../_images/Gini_3.png" src="../../_images/Gini_3.png" />
+</div>
+<p>Let’s calculate the Gini Information Gain if we split on the first
+attribute, Supplies. We have three different categories we can split
+by - Low, Med, and High. For each of these, we calculate its Gini
+Impurity:</p>
+<div class="figure">
+<img alt="../../_images/Gini_4.png" src="../../_images/Gini_4.png" />
+</div>
+<div class="figure">
+<img alt="../../_images/Gini_5.png" src="../../_images/Gini_5.png" />
+</div>
+<div class="figure">
+<img alt="../../_images/Gini_6.png" src="../../_images/Gini_6.png" />
+</div>
+<p>As you can see, the impurity for High supplies is 0. This means that
+if we split on Supplies and receive High input, we immediately know
+what the outcome will be. To determine the Gini Information Gain for
+this split, we compute the root’s impurity minus the weighted average
+of each child’s impurity:</p>
+<div class="figure">
+<img alt="../../_images/Gini_7.png" src="../../_images/Gini_7.png" />
+</div>
+<div class="figure">
+<img alt="../../_images/Gini_8.png" src="../../_images/Gini_8.png" />
+</div>
+<p>We continue this pattern for every possible split, then choose the
+split that gives us the highest information gain value. Maximizing
+information gain leaves us with the most polarized splits possible,
+lowering the probability new input is incorrectly classified.</p>
 </div>
 <div class="section" id="pruning">
-<h2>Pruning<a class="headerlink" href="#pruning" title="Permalink to this headline">¶</a></h2>
-<p>TODO</p>
-<div class="section" id="reduced-error">
-<h3>Reduced Error<a class="headerlink" href="#reduced-error" title="Permalink to this headline">¶</a></h3>
-<p>TODO</p>
+<h2><a class="toc-backref" href="#id14">Pruning</a><a class="headerlink" href="#pruning" title="Permalink to this headline">¶</a></h2>
+<p>A decision tree created through a sufficiently large dataset may end
+up with an excessive amount of splits, each with decreasing usefulness.
+A highly detailed decision tree can even lead to overfitting, discussed
+in the previous module. Because of this, it’s beneficial to prune less
+important splits of a decision tree away. Pruning involves calculating
+the information gain of each ending sub-tree (the leaf nodes and their
+parent node), then removing the sub-tree with the least information
+gain:</p>
+<div class="figure" id="id8">
+<img alt="../../_images/Dec_Trees_Pruning.png" src="../../_images/Dec_Trees_Pruning.png" />
+<p class="caption"><span class="caption-text">Ref: <a class="reference external" href="http://www.cs.cmu.edu/~bhiksha/courses/10-601/decisiontrees/">http://www.cs.cmu.edu/~bhiksha/courses/10-601/decisiontrees/</a></span></p>
 </div>
-<div class="section" id="complexity-weakest-link">
-<h3>Complexity / Weakest Link<a class="headerlink" href="#complexity-weakest-link" title="Permalink to this headline">¶</a></h3>
+<p>As you can see, the sub-tree is replaced with the more prominent
+result, becoming a new leaf. This process can be repeated until you
+reach a desired complexity level, tree height, or information gain
+amount. Information gain can be tracked and stored as the tree is
+built to save time when pruning as well. Each model should make use of
+its own pruning algorithm to meet its needs.</p>
+</div>
+<div class="section" id="conclusion">
+<h2><a class="toc-backref" href="#id15">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Decision trees allow you to quickly and efficiently classify data.
+Because they shape data into a heirarchy of decisions, they are highly
+understandable by even non-experts. Decision trees are created and
+refined in a two-step process - induction and pruning. Induction
+involves picking the best attribute to split on, while pruning
+helps to filter out results deemed useless. Because decision trees
+are so simple to create and understand, they are typically the first
+approach used to model and predict outcomes of a dataset.</p>
+</div>
+<div class="section" id="code-example">
+<h2><a class="toc-backref" href="#id16">Code Example</a><a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
+<p>The provided code, <a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/DecisionTree/decisiontrees.py">decisiontrees.py</a> takes the example discussed in
+this documentation and creates a decision tree from it. First, each
+possible option for each class is defined. This is used later to fit
+and display our decision tree:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># The possible values for each class</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;supplies&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">,</span> <span class="s1">&#39;med&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;weather&#39;</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;raining&#39;</span><span class="p">,</span> <span class="s1">&#39;cloudy&#39;</span><span class="p">,</span> <span class="s1">&#39;sunny&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;worked?&#39;</span><span class="p">:</span>  <span class="p">[</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Next, we’ve created a matrix of the dataset shown above and defined
+each row’s outcome:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Our example data from the documentation</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">,</span>  <span class="s1">&#39;sunny&#39;</span><span class="p">,</span>   <span class="s1">&#39;yes&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;sunny&#39;</span><span class="p">,</span>   <span class="s1">&#39;yes&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;med&#39;</span><span class="p">,</span>  <span class="s1">&#39;cloudy&#39;</span><span class="p">,</span>  <span class="s1">&#39;yes&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">,</span>  <span class="s1">&#39;raining&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">,</span>  <span class="s1">&#39;cloudy&#39;</span><span class="p">,</span>  <span class="s1">&#39;no&#39;</span> <span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;sunny&#39;</span><span class="p">,</span>   <span class="s1">&#39;no&#39;</span> <span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;raining&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span> <span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;med&#39;</span><span class="p">,</span>  <span class="s1">&#39;cloudy&#39;</span><span class="p">,</span>  <span class="s1">&#39;yes&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">,</span>  <span class="s1">&#39;raining&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;low&#39;</span><span class="p">,</span>  <span class="s1">&#39;raining&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span> <span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;med&#39;</span><span class="p">,</span>  <span class="s1">&#39;sunny&#39;</span><span class="p">,</span>   <span class="s1">&#39;no&#39;</span> <span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;sunny&#39;</span><span class="p">,</span>   <span class="s1">&#39;yes&#39;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="c1"># Our target variable, whether someone went shopping</span>
+<span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Unfortunately, the sklearn machine learning package can’t create a
+decision tree from categorical data. There is in-progress work to
+allow this, but for now we need another way to represent the data
+in a decision tree with the library. A naive approach would be to
+just enumerate each category - for instance, converting
+sunny/raining/cloudy to values such as 0, 1, and 2. There are some
+unfortunate side effects of doing this though, such as the values
+being comparable (sunny &lt; raining) and continuous. To get around this,
+we “one hot encode” the data:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="n">classes</span><span class="p">[</span><span class="s1">&#39;supplies&#39;</span><span class="p">],</span> <span class="n">classes</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">],</span> <span class="n">classes</span><span class="p">[</span><span class="s1">&#39;worked?&#39;</span><span class="p">]]</span>
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">)</span>
+
+<span class="n">x_data</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>One hot encoding allows us to convert categorical data into values
+recognizable by ML algorithms expecting continuous data. It works
+by taking a class and dividing it up into each option, with a bit
+representing whether the option is present.</p>
+<p>Now that we have data suited to sklearn’s decision tree model, we
+simply fit the classifier to the data:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Form and fit our decision tree to the now-encoded data</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The rest of the code involves creating some random prediction input
+to show how you can use the tree. We create a random set of data
+in the same format as the data above, then pass it into
+DecisionTreeClassifier’s predict method. This gives us an array of
+predicted target variables - in this case, yes or no answers to
+whether Mike will go shopping:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use our tree to predict the outcome of the random values</span>
+<span class="n">prediction_results</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">encoder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">prediction_data</span><span class="p">))</span>
+</pre></div>
 </div>
 </div>
 </div>

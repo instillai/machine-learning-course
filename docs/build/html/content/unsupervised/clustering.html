@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Clustering &mdash; Machine-Learning-Course 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Contributing" href="../../credentials/CONTRIBUTING.html" />
+    <link rel="prev" title="Linear Support Vector Machines" href="../supervised/linear_SVM.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Foreword</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/crossvalidation.html">Cross-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/linear-regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/overfitting.html">Overfitting and Underfitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/regularization.html">Regularization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Supervised Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/logistic_regression.html">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/bayes.html">Naive Bayes Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/decisiontrees.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/knn.html">k-Nearest Neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/linear_SVM.html">Linear Support Vector Machines</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Clustering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k-means">K-Means</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hierarchical">Hierarchical</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Document Credentials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/LICENSE.html">LICENSE</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Machine-Learning-Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Clustering</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com///blob/content/unsupervised/clustering.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="clustering">
+<h1>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id11">Overview</a></li>
+<li><a class="reference internal" href="#id1" id="id12">Clustering</a></li>
+<li><a class="reference internal" href="#motivation" id="id13">Motivation</a></li>
+<li><a class="reference internal" href="#methods" id="id14">Methods</a><ul>
+<li><a class="reference internal" href="#k-means" id="id15">K-Means</a></li>
+<li><a class="reference internal" href="#hierarchical" id="id16">Hierarchical</a></li>
+<li><a class="reference internal" href="#summary" id="id17">Summary</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id11">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In previous modules, we talked about supervised learning topics. We are now
+ready to move on to <strong>unsupervised learning</strong> where our goals will be much
+different. In supervised learning, we tried to match inputs to some existing
+patterns. For unsupervised learning, we will try to discover patterns in raw,
+unlabeled data sets. We saw classification problems come up often in
+supervised learning and we will now examine a similar problem in unsupervised
+learning: <strong>clustering</strong>.</p>
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id12">Clustering</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Clustering is the process of grouping similar data and isolating dissimilar
+data. We want the data points in clusters we come up with to share some common
+properties that separate them from data points in other clusters. Ultimately,
+we’ll end up with a number of groups that meet these requirements. This
+probably sounds familiar because on the surface it sounds a lot like
+classification. But be aware that clustering and classification solve two very
+different problems. Clustering is used to identify potential groups in a data
+set while classification is used to match an input to an existing group.</p>
+</div>
+<div class="section" id="motivation">
+<h2><a class="toc-backref" href="#id13">Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Clustering is a very useful technique for solving problems that commonly arise
+in unsupervised learning. With clustering, we can find underlying patterns in
+a data set by grouping similar data points. Consider the case of a toy
+manufacturer. The toy manufacturer makes a lot of products and happens to have
+a diverse consumer base. It could be useful for the manufacturer to identify
+groups that buy particular products so it can personalize advertisements.
+Targeted advertising is a common desire in marketing and clustering helps
+identify demographics. When we want to identify potential group structures in
+a raw data set, clustering is a good tool to use.</p>
+</div>
+<div class="section" id="methods">
+<h2><a class="toc-backref" href="#id14">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<p>Because clustering just provides an interpretation of a data set, there are
+many ways to go about implementing it. We might consider the distance between
+data points when deciding on clusters. We could also consider how dense data
+points are in a region to determine clusters. For this module, we will analyze
+two of the more common and popular methods: <strong>K-Means</strong> and <strong>Hierarchical</strong>.
+In both cases, we will use the data set in <em>Figure 1</em> for analysis.</p>
+<div class="figure" id="id2">
+<img alt="../../_images/Data_Set.png" src="../../_images/Data_Set.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 1. A data set to use for clustering</strong></span></p>
+</div>
+<p>This data set represents product data for a toy manufacturer. The manufacturer
+sells 3 products with 3 variants each to young children between the ages of 5
+and 10. These products are action figures, building blocks, and cars. The
+manufacturer has also noted which age group buys the most of each product.
+Each point in the data set represents one of the toys and the age group that
+buys the most of them.</p>
+<div class="section" id="k-means">
+<h3><a class="toc-backref" href="#id15">K-Means</a><a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h3>
+<p>K-Means clustering attempts to divide a data set into K clusters using an
+iterative process. The first step is choosing a center point for each cluster.
+This center point does not need to correspond to an actual data point. The
+center points could be chosen at random or we could pick them if we have a
+good guess of where they should be. In the code below, the center points are
+chosen using the k-means++ method which is designed to speed up convergence.
+Analysis of this method is beyond the scope of this module but for additional
+initial options in sklearn, check <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">here</a>.</p>
+<p>The second step is assigning each data point to a cluster. We do this by
+measuring the distance between a data point and each center point and choosing
+the cluster whose center point is the closest. This step is illustrated in
+<em>Figure 2</em>.</p>
+<div class="figure" id="id3">
+<img alt="../../_images/K_Means_Step2.png" src="../../_images/K_Means_Step2.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 2. Associate each point with a cluster</strong></span></p>
+</div>
+<p>Now that all the data points belong to a cluster, the third step is
+recomputing the center point of each cluster. This is just the average of all
+the data points belonging to the cluster. This step is illustrated in
+<em>Figure 3</em>.</p>
+<div class="figure" id="id4">
+<img alt="../../_images/K_Means_Step3.png" src="../../_images/K_Means_Step3.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 3. Find the new center for each cluster</strong></span></p>
+</div>
+<p>Now we just repeat the second and third step until the centers stop changing
+or only change slightly between iterations. The result is K clusters where
+data points are closer to their cluster’s center than any other cluster’s
+center. This is illustrated in <em>Figure 4</em>.</p>
+<div class="figure" id="id5">
+<img alt="../../_images/K_Means_Final.png" src="../../_images/K_Means_Final.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 4. The final clusters</strong></span></p>
+</div>
+<p>K-Means clustering requires us to input the number of expected clusters which
+isn’t always easy to determine. It can also be inconsistent depending on where
+we choose the starting center points in the first step. Over the course of the
+process, we may end up with clusters that appear to be optimized but may not
+be the best overall solution. In <em>Figure 4</em>, we end with a red data point that
+is equally far from the red center and the blue center. This stemmed from our
+initial center choices. In contrast, <em>Figure 5</em> shows another result we may
+have reached given different starting centers and looks a little better.</p>
+<div class="figure" id="id6">
+<img alt="../../_images/K_Means_Final_Alt.png" src="../../_images/K_Means_Final_Alt.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 5. An alternative set of clusters</strong></span></p>
+</div>
+<p>On the other hand, K-Means is very powerful because it considers the entire
+data set at each step. It is also fast because we’re only ever computing
+distances. So if we want a fast technique that considers the whole data set
+and we have some knowledge of what the underlying groups might look like,
+K-Means is a good choice.</p>
+<p>The relevant code is available in the <a class="reference external" href="/code/unsupervised/Clustering/clustering_kmeans.py">clustering_kmeans.py</a> file.</p>
+<p>In the code, we create the simple data set to use for analysis. Setting up the
+clustering is very simple and requires one line of code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">n_clusters</span></code> parameter was chosen to be 3 because there appears to be 3
+clusters in out data set. The <code class="xref py py-obj docutils literal notranslate"><span class="pre">random_state</span></code> parameter is just there to give a
+consistent result each time you run the code. The rest of the code is to
+display the final plot shown in <em>Figure 6</em>.</p>
+<div class="figure" id="id7">
+<img alt="../../_images/KMeans.png" src="../../_images/KMeans.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 6. A final clustered data set</strong></span></p>
+</div>
+<p>The clusters are color coded, the ‘x’s represent cluster centers, and the
+dotted lines represent cluster boundaries.</p>
+</div>
+<div class="section" id="hierarchical">
+<h3><a class="toc-backref" href="#id16">Hierarchical</a><a class="headerlink" href="#hierarchical" title="Permalink to this headline">¶</a></h3>
+<p>Hierarchical clustering imagines the data set as a hierarchy of clusters. We
+could start by making one giant cluster out of all the data points. This is
+illustrated in <em>Figure 7</em>.</p>
+<div class="figure" id="id8">
+<img alt="../../_images/Hierarchical_Step1.png" src="../../_images/Hierarchical_Step1.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 7. One giant cluster in the data set*</strong></span></p>
+</div>
+<p>Inside of this cluster, we find the two least similar sub-clusters and split
+them. This can be done by using an algorithm to maximize the inter-cluster
+distance. This is just the smallest distance between a node from one cluster
+and a node from the other cluster. This is illustrated in <em>Figure 8</em>.</p>
+<div class="figure" id="id9">
+<img alt="../../_images/Hierarchical_Step2.png" src="../../_images/Hierarchical_Step2.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 8. The giant cluster is split into 2 clusters</strong></span></p>
+</div>
+<p>We continue to split the sub-clusters until every data point belongs to its
+own cluster or until we decide to stop. If we start from one giant cluster and
+break it down into successively smaller clusters, it is called <strong>top-down</strong> or
+<strong>divisive</strong> clustering. Alternatively, we could start by considering a
+cluster for every data point. The next step would be to combine the two
+closest clusters into a larger cluster. This can be done by finding the
+distance between every cluster and choosing the pair with the least distance
+between them. We would continue this process until we had a single cluster.
+This method of combining clusters is called <strong>bottom-up</strong> or <strong>agglomerative</strong>
+clustering. At any point in these two methods, we can stop when the clusters
+look appropriate.</p>
+<p>Unlike K-Means, Hierarchical clustering is relatively slow so it doesn’t scale
+as well to large data sets. On the bright side, Hierarchical clustering is
+more consistent when you run it multiple times and doesn’t require you to know
+the number of expected clusters.</p>
+<p>The relevant code is available in the <a class="reference external" href="/code/unsupervised/Clustering/clustering_hierarchical.py">clustering_hierarchical.py</a> file.</p>
+<p>In the code, we create the simple data set to use for analysis. Setting up the
+clustering is very simple and requires one line of code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hierarchical</span> <span class="o">=</span> <span class="n">AgglomerativeClustering</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">n_clusters</span></code> parameter was chosen to be 3 because there appears to be 3
+clusters in out data set. If we didn’t already know this, we could try out
+different values and see which one worked the best. The rest of the code is to
+display the final plot shown in <em>Figure 9</em>.</p>
+<div class="figure" id="id10">
+<img alt="../../_images/Hierarchical.png" src="../../_images/Hierarchical.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 9. A final clustered data set</strong></span></p>
+</div>
+<p>The clusters are color coded and large clusters are surrounded with a border
+to show which data points belong to them.</p>
+</div>
+<div class="section" id="summary">
+<h3><a class="toc-backref" href="#id17">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<p>In this module, we learned about clustering. Clustering allows us to discover
+patterns in a raw data set by grouping similar data points. This is a common
+desire in unsupervised learning and clustering is a popular technique. You may
+have noticed that the methods discussed above were relatively simple compared
+to some of the more math-heavy descriptions in previous modules. These methods
+are simple but powerful. For example, we were able to determine clusters in
+the toy manufacturer example that could be used for targeted advertising. This
+is a very useful result for businesses and it only took us a few lines of
+code. By developing a good understanding of clustering, you are setting
+yourself up for success in the machine learning world.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../credentials/CONTRIBUTING.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../supervised/linear_SVM.html" class="btn btn-neutral" title="Linear Support Vector Machines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Amirsina Torfi
+      Last updated on True.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'en',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

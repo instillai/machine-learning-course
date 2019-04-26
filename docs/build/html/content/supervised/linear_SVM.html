@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Contributing" href="../../credentials/CONTRIBUTING.html" />
+    <link rel="next" title="Clustering" href="../unsupervised/clustering.html" />
     <link rel="prev" title="k-Nearest Neighbors" href="knn.html" /> 
 
   
@@ -96,6 +96,7 @@
 <li class="toctree-l1"><a class="reference internal" href="decisiontrees.html">Decision Trees</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knn.html">k-Nearest Neighbors</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Linear Support Vector Machines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hyperplane">Hyperplane</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-do-we-find-the-best-hyperplane-line">How do we find the best hyperplane/line?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-maximize-the-margin">How to maximize the margin?</a></li>
@@ -106,6 +107,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#code-example">Code Example</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Document Credentials</span></p>
 <ul>
@@ -180,6 +185,21 @@
             
   <div class="section" id="linear-support-vector-machines">
 <h1>Linear Support Vector Machines<a class="headerlink" href="#linear-support-vector-machines" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#introduction" id="id6">Introduction</a></li>
+<li><a class="reference internal" href="#hyperplane" id="id7">Hyperplane</a></li>
+<li><a class="reference internal" href="#how-do-we-find-the-best-hyperplane-line" id="id8">How do we find the best hyperplane/line?</a></li>
+<li><a class="reference internal" href="#how-to-maximize-the-margin" id="id9">How to maximize the margin?</a></li>
+<li><a class="reference internal" href="#ignore-outliers" id="id10">Ignore Outliers</a></li>
+<li><a class="reference internal" href="#kernel-svm" id="id11">Kernel SVM</a></li>
+<li><a class="reference internal" href="#conclusion" id="id12">Conclusion</a></li>
+<li><a class="reference internal" href="#motivation" id="id13">Motivation</a></li>
+<li><a class="reference internal" href="#code-example" id="id14">Code Example</a></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id6">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>A <strong>Support Vector Machine</strong> (SVM for short) is another machine learning algorithm that is used to classify data.
 The point of SVM’s are to try and find a line or <strong>hyperplane</strong> to divide a dimensional space which best classifies
 the data points. If we were trying to divide two classes A and B, we would try to best separate the two classes with a
@@ -187,13 +207,14 @@ line. On one side of the line/hyperplane would be data from class A and on the o
 This alogorithm is very useful in classifying because we must to calculate the best line or hyperplane once
 and any new data points can easily be classified just by seeing which side of the line they fall on. This contrasts with the k-nearest neighbors algortihm, where
 we would have to calculate each data points nearest neighbors.</p>
+</div>
 <div class="section" id="hyperplane">
-<h2>Hyperplane<a class="headerlink" href="#hyperplane" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">Hyperplane</a><a class="headerlink" href="#hyperplane" title="Permalink to this headline">¶</a></h2>
 <p>A <strong>hyperplane</strong> depends on the space it is in, but it divides the space into two disconnected parts. For example,
 1-dimensional space would just be a point, 2-d space a line, 3-d space a plane, and so on.</p>
 </div>
 <div class="section" id="how-do-we-find-the-best-hyperplane-line">
-<h2>How do we find the best hyperplane/line?<a class="headerlink" href="#how-do-we-find-the-best-hyperplane-line" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">How do we find the best hyperplane/line?</a><a class="headerlink" href="#how-do-we-find-the-best-hyperplane-line" title="Permalink to this headline">¶</a></h2>
 <p>You might be wondering that there could be multiple lines that split the data well. In fact, there is an infinite
 amount of lines that can divide two classes. As you can see in the graph below, every line splits the squares and
 the circles, so which one do we choose?</p>
@@ -210,7 +231,7 @@ This is shown in the figure below.</p>
 </div>
 </div>
 <div class="section" id="how-to-maximize-the-margin">
-<h2>How to maximize the margin?<a class="headerlink" href="#how-to-maximize-the-margin" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">How to maximize the margin?</a><a class="headerlink" href="#how-to-maximize-the-margin" title="Permalink to this headline">¶</a></h2>
 <p>The data that is closest to the line is what determines the optimal line. These data points are called
 <strong>support vectors</strong>. They are shown as the filled in squares and circles above. The distance from these vectors to the
 hyperplane is called the <strong>margin</strong>. In general, the further those points are from the hyperplane, the greater the
@@ -218,7 +239,7 @@ probability of correctly classifying the data. There is a lot of complex math th
 and maximizing the margin. We won’t go into that; we just want to get the basic idea behind SVMs.</p>
 </div>
 <div class="section" id="ignore-outliers">
-<h2>Ignore Outliers<a class="headerlink" href="#ignore-outliers" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id10">Ignore Outliers</a><a class="headerlink" href="#ignore-outliers" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes data classes will have <strong>outliers</strong>. These are data points that are clearly separated from the rest of their class.
 Support Vector Machines will ignore these outliers. This is shown in the figure below.</p>
 <div class="figure" id="id3">
@@ -229,7 +250,7 @@ Support Vector Machines will ignore these outliers. This is shown in the figure 
 the two classes.</p>
 </div>
 <div class="section" id="kernel-svm">
-<h2>Kernel SVM<a class="headerlink" href="#kernel-svm" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">Kernel SVM</a><a class="headerlink" href="#kernel-svm" title="Permalink to this headline">¶</a></h2>
 <p>There will be data classes that can’t be separated with a simple line or hyperplane. This is called <strong>non-linearly
 separable data</strong>. Here is an example of that kind of data.</p>
 <div class="figure" id="id4">
@@ -255,7 +276,7 @@ classified with a circle that separates the data.</p>
 “model = svm.SVC(kernel = ‘linear’, C = 10000)” to either ‘poly’ or ‘rbf’. This is in the linear_svm.py.</p>
 </div>
 <div class="section" id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
 <p>An SVM is a great machine learning technique to classify data. Now that we know a little about SVM’s we can show
 the advantages and disadvantages to using this classifier.</p>
 <p>The pros to SVM’s:</p>
@@ -271,16 +292,16 @@ the advantages and disadvantages to using this classifier.</p>
 </ul>
 </div>
 <div class="section" id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
 <p>Why would you ever use SVMs? There are so many different models that can classify data. Why use this one?
 This is probably the best classifier if you know the data points are easily separable. Also, it can be extended
 by using kernel tricks, so try using the different kernels like Radial Basis Function (RBF).</p>
 </div>
 <div class="section" id="code-example">
-<h2>Code Example<a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
-<p>Check out our code, <a class="reference external" href="/code/supervised/Linear_SVM/linear_svm.py">linear_svm.py</a> to learn how to implement a linear SVM using Python’s Scikit-learn library.
+<h2><a class="toc-backref" href="#id14">Code Example</a><a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
+<p>Check out our code, <a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/Linear_SVM/linear_svm.py">linear_svm.py</a> to learn how to implement a linear SVM using Python’s Scikit-learn library.
 More information about Scikit-Learn can be found <a class="reference external" href="https://scikit-learn.org">here</a>.</p>
-<p><a class="reference external" href="/code/supervised/Linear_SVM/linear_svm.py">linear_svm.py</a>, Classifies a set of data on breast cancer, loaded from Scikit-Learn’s dataset library.
+<p><a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/Linear_SVM/linear_svm.py">linear_svm.py</a>, Classifies a set of data on breast cancer, loaded from Scikit-Learn’s dataset library.
 The program will take the data and plot them on a graph, then use the SVM to create a hyperplane to separate the data.
 It also circles the support vectors that determine the hyperplane. The output should look like this:</p>
 <div class="figure">
@@ -312,7 +333,7 @@ the data. You can change it here in the code:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../credentials/CONTRIBUTING.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../unsupervised/clustering.html" class="btn btn-neutral float-right" title="Clustering" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="knn.html" class="btn btn-neutral" title="k-Nearest Neighbors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

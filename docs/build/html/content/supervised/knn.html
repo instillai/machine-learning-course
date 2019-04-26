@@ -95,13 +95,21 @@
 <li class="toctree-l1"><a class="reference internal" href="bayes.html">Naive Bayes Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="decisiontrees.html">Decision Trees</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">k-Nearest Neighbors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-does-it-work">How does it work?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#brute-force-method">Brute Force Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#k-d-tree-method">K-D Tree Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#choosing-k">Choosing k</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-example">Code Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="linear_SVM.html">Linear Support Vector Machines</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Document Credentials</span></p>
 <ul>
@@ -176,27 +184,144 @@
             
   <div class="section" id="k-nearest-neighbors">
 <h1>k-Nearest Neighbors<a class="headerlink" href="#k-nearest-neighbors" title="Permalink to this headline">¶</a></h1>
-<p>K-Nearest Neighbors (KNN) is a basic classifier for machine learning. So we are trying to identify what class an object is in. To do this we look at the closest points (neighbors) to the object and the class with the majority of neighbors will be the class that we identify the object to be in. The k is the number of nearest neighbors to the object. So if k = 1 then the class the object would be in is the class of the closest neighbor. Let’s look at an example.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#introduction" id="id3">Introduction</a></li>
+<li><a class="reference internal" href="#how-does-it-work" id="id4">How does it work?</a></li>
+<li><a class="reference internal" href="#brute-force-method" id="id5">Brute Force Method</a></li>
+<li><a class="reference internal" href="#k-d-tree-method" id="id6">K-D Tree Method</a></li>
+<li><a class="reference internal" href="#choosing-k" id="id7">Choosing k</a></li>
+<li><a class="reference internal" href="#conclusion" id="id8">Conclusion</a></li>
+<li><a class="reference internal" href="#motivation" id="id9">Motivation</a></li>
+<li><a class="reference internal" href="#code-example" id="id10">Code Example</a></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id3">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>K-Nearest Neighbors (KNN) is a basic classifier for machine learning.
+A <strong>classifier</strong> takes an already labeled data set, and then it trys to
+label new data points into one of the catagories.
+So, we are trying to identify what class an object is in. To do this we
+look at the closest points (neighbors) to the object and the class with
+the majority of neighbors will be the class that we identify the object
+to be in. The k is the number of nearest neighbors to the object. So, if
+k = 1 then the class the object would be in is the class of the closest
+neighbor. Let’s look at an example.</p>
 <div class="figure" id="id1">
-<a class="reference internal image-reference" href="../../_images/knn.png"><img alt="KNN" src="../../_images/knn.png" style="width: 1148.0px; height: 1006.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/knn.png"><img alt="KNN" src="../../_images/knn.png" style="width: 225.0px; height: 197.0px;" /></a>
 <p class="caption"><span class="caption-text">Ref: <a class="reference external" href="https://coxdocs.org">https://coxdocs.org</a></span></p>
 </div>
-<p>So in this example we are trying to classify the red star to be either a green square or a blue octagon. So first if we look at the inner circle where k = 3, we can see that there are 2 blue octagons and 1 green square. So there is a majority of blue octagons, so the red star would be classified as a blue octagon. Now we take a look at k = 5, the outer circle. In this one there is 2 blue octagons and 3 green squares. So the red star would be classified as a green square.</p>
+<p>In this example we are trying to classify the red star to be either
+a green square or a blue octagon. First, if we look at the inner circle
+where k = 3, we can see that there are 2 blue octagons and 1 green square.
+So there is a majority of blue octagons, so the red star would be classified
+as a blue octagon. Now we look at k = 5, the outer circle. In this one
+there is 2 blue octagons and 3 green squares. Then, the red star would be
+classified as a green square.</p>
+</div>
 <div class="section" id="how-does-it-work">
-<h2>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">¶</a></h2>
-<p>We will look at two different ways to go about this. The two ways we will look at is the brute force method and the K-D tree method.</p>
+<h2><a class="toc-backref" href="#id4">How does it work?</a><a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">¶</a></h2>
+<p>We will look at two different ways to go about this. The two ways are
+the brute force method and the K-D tree method.</p>
 </div>
 <div class="section" id="brute-force-method">
-<h2>Brute Force Method<a class="headerlink" href="#brute-force-method" title="Permalink to this headline">¶</a></h2>
-<p>This is the simpliest method. Basically it’s just calculating the euclidean distance from the object being classified to each point in the set. You want to use this method when the dimensions are small or the number of points are small.</p>
+<h2><a class="toc-backref" href="#id5">Brute Force Method</a><a class="headerlink" href="#brute-force-method" title="Permalink to this headline">¶</a></h2>
+<p>This is the simplest method. Basically, it’s just calculating the <strong>Euclidean
+distance</strong> from the object being classified to each point in the set. The Euclidean distance
+is simply the length of a line segment that connects two points. The Brute Force method is
+useful when the dimensions of the points are small or the number of points is small.
+As the number of points increases the number of times the method will have to calculate
+the Euclidean distance also increases, so the performance of the method drops. Luckily,
+the K-D tree method is better equipped for larger sets of data.</p>
 </div>
 <div class="section" id="k-d-tree-method">
-<h2>K-D Tree Method<a class="headerlink" href="#k-d-tree-method" title="Permalink to this headline">¶</a></h2>
-<p>This method tries to improve the running time by reducing the amount of times we calculate the euclidean distance. The idea behind this method is that if we know that two data points are close to each other and we calculate the euclidean distance to one of them and then we know that distance is roughly close to the other point. If you have a larger data set it is better to use this method.</p>
+<h2><a class="toc-backref" href="#id6">K-D Tree Method</a><a class="headerlink" href="#k-d-tree-method" title="Permalink to this headline">¶</a></h2>
+<p>This method tries to improve the running time by reducing the amount of times we
+calculate the Euclidean distance. The idea behind this method is that if we know
+that two data points are close to each other and we calculate the Euclidean distance
+to one of them and then we know that distance is roughly close to the other point.
+Here is an example of how the K-D tree looks like.</p>
+<div class="figure" id="id2">
+<a class="reference internal image-reference" href="../../_images/KNN_KDTree.jpg"><img alt="KNN K-d tree" src="../../_images/KNN_KDTree.jpg" style="width: 250.0px; height: 187.5px;" /></a>
+<p class="caption"><span class="caption-text">Ref: <a class="reference external" href="https://slideplayer.com/slide/3273367/">https://slideplayer.com/slide/3273367/</a></span></p>
+</div>
+<p>How a K-D tree works is that a node in the tree represents and holds data from an n-dimensional
+graph. Each node represents a box in the graph. First we can build a K-D tree out of a set of data, then
+when it’s time to classify a point we would just look at where the point will fall in the
+tree then calculate the Euclidean distance between only the points it is close to until we reach
+k neighbors.</p>
+<p>If you have a larger data set it is recommended to use this method. This is because the cost of creating
+the K-D tree is relatively low if the data set is larger, and the cost of classifiying a point is
+constant as the data gets larger.</p>
 </div>
 <div class="section" id="choosing-k">
-<h2>Choosing k<a class="headerlink" href="#choosing-k" title="Permalink to this headline">¶</a></h2>
-<p>Choosing k typically depends on the dataset you are looking at. You never want to choose k = 2 because it has a very high chance that there won’t be a majority class, so in the example above the there would be one of each so we wouldn’t be able to classify the red star. Typically k you want the value of k to be small. As k goes to infinity all unidentified data points will always be classified to one class or the other depending on which class has more data points. So typically you don’t want this to happen, so it is wise to choose a k that is relatively small.</p>
+<h2><a class="toc-backref" href="#id7">Choosing k</a><a class="headerlink" href="#choosing-k" title="Permalink to this headline">¶</a></h2>
+<p>Choosing k typically depends on the dataset you are looking at. You never want to
+choose k = 2 because it has a very high chance that there won’t be a majority class,
+so in the example above there would be one of each so we wouldn’t be able to
+classify the red star. Typically, you want the value of k to be small. As k goes to
+infinity all unidentified data points will always be classified to one class or the other
+depending on which class has more data points. You don’t want this to happen,
+so it is wise to choose a k that is relatively small.</p>
+</div>
+<div class="section" id="conclusion">
+<h2><a class="toc-backref" href="#id8">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Here are some things to take away:</p>
+<ul class="simple">
+<li>The different methods to KNN only affect the performance, not the output</li>
+<li>The Brute Force Method is best when the dimensions of the points or the number of points are small</li>
+<li>The K-D Tree Method is best when you have a larger data set</li>
+<li>SKLearn KNN classifier has a auto method which decides what method to use given what data it’s trained on.</li>
+</ul>
+<p>Choosing the value of k will drastically change how the data is classified. A higher k value will ignore outliers to the data
+and a lower will give more weight to them. If the k value is too high it will not be able to classify the data, so k needs to
+be relatively small.</p>
+</div>
+<div class="section" id="motivation">
+<h2><a class="toc-backref" href="#id9">Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>So why would someone use this classifier over another? Is this the best classifier? The answer to these questions are that it depends.
+There is no classifier that is best, it all depends on the data that a classifier is given. KNN might be the best for one dataset but
+not another. It’s good to know about other classifiers like <a class="reference external" href="linear_SVM.rst">Support Vector Machines</a>, and then decide which one best classifies the
+a given dataset.</p>
+</div>
+<div class="section" id="code-example">
+<h2><a class="toc-backref" href="#id10">Code Example</a><a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
+<p>Check out our code, <a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/KNN/knn.py">knn.py</a> to learn how to implement a k nearest neighbor classifier using Python’s Scikit-learn library.
+More information about Scikit-Learn can be found <a class="reference external" href="https://scikit-learn.org">here</a>.</p>
+<p><a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/KNN/knn.py">knn.py</a>, Classifies a set of data on breast cancer, loaded from Scikit-Learn’s dataset library.
+The program will take the data and plot them on a graph, then use the KNN algorithm to best separate the data.
+The output should look like this:</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/knn_output_k9.png"><img alt="KNN k = 9 output" src="../../_images/knn_output_k9.png" style="width: 186.0px; height: 126.0px;" /></a>
+</div>
+<p>The green points are classified as benign.
+The red points are classified as malignant.
+The boundary line is the prediction that the classifier makes. This boundary line is determined by the k value, for this instance
+k = 9.</p>
+<p>This loads the data from the Scikit-Learn’s dataset library. You can change the data to whatever you would like.
+Just make sure you have data points and an array of targets to classify those data points.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dataCancer</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">dataCancer</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">dataCancer</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+<p>You can also change the k value or n_neighbors value that will change the algorithm. It is suggested that you
+choose a k that is relatively small.</p>
+<p>You can also change the algorithm used, the options are
+{‘auto’, ‘ball_tree’, ‘kd_tree’, ‘brute’}. These don’t change the output of the prediction, they will just
+change the time it takes to predict the data.</p>
+<p>Try changing the value of n_neighbors to 1 in the code below.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span> <span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you changed the value of n_neighbors to 1 this will classify by the point that is closest to the point. The output should look like this:</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/knn_output_k1.png"><img alt="KNN k = 1 output" src="../../_images/knn_output_k1.png" style="width: 186.0px; height: 126.0px;" /></a>
+</div>
+<p>Comparing this output to k = 9 you can see a large difference on how it classifies the data. So if you want to ignore outliers you
+will want a higher k value, otherwise choose a smaller k like 1, 3 or 5. You can experiment by choosing a very high k greater than 100.
+Eventually the algorithm will classify all the data into 1 class, and there will be no line to split the data.</p>
 </div>
 </div>
 
