@@ -208,8 +208,9 @@ display the final plot shown in *Figure 9*.
 The clusters are color coded and large clusters are surrounded with a border
 to show which data points belong to them.
 
+*******
 Summary
-=======
+*******
 In this module, we learned about clustering. Clustering allows us to discover
 patterns in a raw data set by grouping similar data points. This is a common
 desire in unsupervised learning and clustering is a popular technique. You may
