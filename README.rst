@@ -54,10 +54,10 @@ Machine Learning
 +--------------------------------------------------------------------+-------------------------------+
 | Title                                                              |    Document                   |
 +====================================================================+===============================+
-| An Introduction to Machine Learning                                |   `Tutorial <intro_>`_        |
+| An Introduction to Machine Learning                                |   `Overview <intro_>`_        |
 +--------------------------------------------------------------------+-------------------------------+
 
-.. _Tutorial: docs/source/intro/intro.rst
+.. _Overview: docs/source/intro/intro.rst
 
 ------------------------------------------------------------
 Machine Learning Basics
