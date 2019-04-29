@@ -165,6 +165,6 @@ Eventually the algorithm will classify all the data into 1 class, and there will
 
 .. _knn.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/KNN/knn.py
 
-.. _Support Vector Machines: linear_SVM.rst
+.. _Support Vector Machines: linear_SVM.html
 
 
