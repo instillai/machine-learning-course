@@ -18,8 +18,13 @@ This means that a subset of the input neurons may only feed into a single
 neuron in the next layer. Another interesting feature of CNNs is their inputs.
 With other neural networks we might use vectors as inputs, but with CNNs we
 are typically working with images and other objects with many dimensions.
+*Figure 1* shows some sample images that are each 6 pixels by 6 pixels. The
+first image is colored and has three channels for red, green, and blue values.
+The second image is black-and-white and only has one channel for gray values
 
-*Sample of an RBG image input and Greyscale image input*
+.. figure:: _img/Images.png
+
+   **Figure 1. Two sample images and their color channels**
 
 
 **********
@@ -49,9 +54,11 @@ a lot of these requirements.
 Architecture
 ************
 The architecture of a CNN can be broken down into an input layer, a set of
-hidden layers, and an output layer.
+hidden layers, and an output layer. These are shown in *Figure 2*.
 
-*Image of layers*
+.. figure:: _img/Layers.png
+
+   **Figure 2. The layers of a CNN**
 
 The hidden layers are where the magic happens. The hidden layers will break
 down our input image in order to identify features present in the image. The
@@ -74,10 +81,13 @@ mathematics. Roughly, a convolution is some operation that acts on two input
 functions and produces an output function that combines the information
 present in the inputs. The first input will be our image and the second input
 will be some sort of filter such as a blur or sharpen. When we combine our
-image with the filter, we extract some information about the image. This is
-precisely how the CNN will go about extracting features.
+image with the filter, we extract some information about the image. This
+process is shown in *Figure 3*. This is precisely how the CNN will go about
+extracting features.
 
-*Image from site with blur applied*
+.. figure:: _img/Filtering.png
+
+   **Figure 3. An image before and after filtering**
 
 In the human eye, a single neuron is only responsible for a small region of
 our field of view. It is through many neurons with overlapping regions that we
@@ -88,20 +98,29 @@ filter concept we mentioned above.
 
 The **filter** or **kernel** is one of the functions used in the convolution.
 The filter will likely have a smaller height and width than the input image
-and can be thought of as a window sliding over the image.
+and can be thought of as a window sliding over the image. *Figure 4* shows a
+sample filter and the region of the image it will interact with in the first
+step of convolution.
 
-*Image of window*
+.. figure:: _img/Filter1.png
+
+   **Figure 4. A sample filter and sample window of an image**
 
 As the filter moves across the image, we are calculating values for the
 convolution output called a **feature map**. At each step, we multiply each
 entry in the image sample and filter elementwise and sum up all the products.
-This becomes an entry in the feature map.
+This becomes an entry in the feature map. This process is shown in *Figure 5*.
 
-*Image of calculating feature map value*
+.. figure:: _img/Filter2.png
+
+   **Figure 5. Calculating an entry in the feature map**
 
 After the window traverses the entire image, we have the complete feature map.
+This is shown in *Figure 6*.
 
-*Image of complete feature map*
+.. figure:: _img/Filter3.png
+
+   **Figure 6. The complete feature map**
 
 In the example above, we moved the filter one unit horizontally or one unit
 vertically from some previous position. This value is called the *stride*. We
@@ -113,16 +132,21 @@ height and width than the original image sample. This is a result of the way
 we moved the filter around the sample. If we wanted the feature map to have
 the same height and width, we could *pad* the sample. This involves adding
 zero entries around the sample so that moving the filter keeps the dimensions
-of the original sample in the feature map.
+of the original sample in the feature map. *Figure 7* illustrates this process.
 
-*Image of padding*
+.. figure:: _img/Padding.png
+
+   **Figure 7. Padding before applying a filter**
 
 A feature map represents one type of feature we’re analyzing the image for.
 Often, we want to analyze the image for a bunch of features so we end up with
 a bunch of feature maps! The output of the convolution layer is a set of
-feature maps.
+feature maps. *Figure 8* shows the process of going from an image to the
+resulting feature maps.
 
-*Image of the convolution layer output*
+.. figure:: _img/Convo_Output.png
+
+   **Figure 8. The output of a convolutional layer**
 
 After a convolutional layer, it is common to have a **ReLU** (rectified linear
 unit) layer. The purpose of this layer is to introduce non-linearity into the
@@ -142,9 +166,11 @@ amount of computation in the CNN. There are several options for pooling but we
 will cover the most common approach, **max pooling**.
 
 In max pooling, we slide a window over the input and take the max value in the
-window at each step.
+window at each step. This process is shown in *Figure 9*.
 
-*Max pooling*
+.. figure:: _img/Pooled.png
+
+   **Figure 9. Max pooling on a feature map**
 
 Max pooling is good because it maintains important features about the input,
 reduces noise by ignoring small values, and reduces the spatial size of the
@@ -157,19 +183,26 @@ The last type of layer we will discuss is called a **fully connected layer**.
 Fully connected layers are used to make the final classification in the CNN.
 They work exactly like they do in other neural networks. Before moving to the
 first fully connected layer, we must flatten our input values into a
-one-dimensional vector that the layer can interpret.
+one-dimensional vector that the layer can interpret. *Figure 10* shows a
+simple example of converting a multi-dimensional input into a one-dimensional
+vector.
 
-*Flattening*
+.. figure:: _img/Flatten.png
+
+   **Figure 10. Flattening input values**
 
 After doing this, we may have several fully connected layers before the final
 output layer. The output layer uses some function, such as softmax_,
 to convert the neuron values into a probability distribution over our classes.
 This means that the image has a certain probability for being classified as
-one of our classes and the sum of all those probabilities equals one.
+one of our classes and the sum of all those probabilities equals one. This is
+clearly visible in *Figure 11*.
 
 .. _softmax: https://developers.google.com/machine-learning/crash-course/multi-class-neural-networks/softmax
 
-*Image of classes with probabilities*
+.. figure:: _img/Data_Set.png
+
+   **Figure 11. The final probabilistic outputs**
 
 
 ********
