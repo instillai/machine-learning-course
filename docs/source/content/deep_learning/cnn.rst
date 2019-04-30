@@ -123,14 +123,14 @@ This is shown in *Figure 6*.
    **Figure 6. The complete feature map**
 
 In the example above, we moved the filter one unit horizontally or one unit
-vertically from some previous position. This value is called the *stride*. We
+vertically from some previous position. This value is called the **stride**. We
 could have used other values for the stride but using one everywhere tends to
 produce the best results.
 
 You may have noticed that the feature map we ended up with had a smaller
 height and width than the original image sample. This is a result of the way
 we moved the filter around the sample. If we wanted the feature map to have
-the same height and width, we could *pad* the sample. This involves adding
+the same height and width, we could **pad** the sample. This involves adding
 zero entries around the sample so that moving the filter keeps the dimensions
 of the original sample in the feature map. *Figure 7* illustrates this process.
 
@@ -200,7 +200,7 @@ clearly visible in *Figure 11*.
 
 .. _softmax: https://developers.google.com/machine-learning/crash-course/multi-class-neural-networks/softmax
 
-.. figure:: _img/Data_Set.png
+.. figure:: _img/Layers_Final.png
 
    **Figure 11. The final probabilistic outputs**
 
