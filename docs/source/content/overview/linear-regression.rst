@@ -228,3 +228,18 @@ but still show up in a lot of data sets so this is a good technique to know.
 Learning about linear regression is a good first step towards learning more 
 complicated analysis techniques. We will build on a lot of the concepts 
 covered here in later modules.
+
+
+************
+Refrences
+************
+
+1. https://towardsdatascience.com/introduction-to-machine-learning-algorithms-linear-regression-14c4e325882a
+2. https://machinelearningmastery.com/linear-regression-for-machine-learning/
+3. https://ml-cheatsheet.readthedocs.io/en/latest/linear_regression.html
+#. https://machinelearningmastery.com/implement-simple-linear-regression-scratch-python/
+#. https://medium.com/analytics-vidhya/linear-regression-in-python-from-scratch-24db98184276
+#. https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html
+#. https://scikit-learn.org/stable/modules/generated/sklearn.compose.TransformedTargetRegressor.html
+
+
