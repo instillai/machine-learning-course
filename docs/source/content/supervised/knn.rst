@@ -20,7 +20,7 @@ k = 1 then the class the object would be in is the class of the closest
 neighbor. Let's look at an example.
 
 .. figure:: _img/knn.png
-   :scale: 50 %
+   :scale: 100 %
    :alt: KNN
 
    Ref: https://coxdocs.org
@@ -60,7 +60,7 @@ to one of them and then we know that distance is roughly close to the other poin
 Here is an example of how the K-D tree looks like.
 
 .. figure:: _img/KNN_KDTree.jpg
-   :scale: 50 %
+   :scale: 100 %
    :alt: KNN K-d tree
 
    Ref: https://slideplayer.com/slide/3273367/
@@ -106,7 +106,7 @@ Motivation
 
 So why would someone use this classifier over another? Is this the best classifier? The answer to these questions are that it depends. 
 There is no classifier that is best, it all depends on the data that a classifier is given. KNN might be the best for one dataset but 
-not another. It's good to know about other classifiers like `Support Vector Machines`_, and then decide which one best classifies the 
+not another. It's good to know about other classifiers like :ref:`Support Vector Machines`, and then decide which one best classifies the 
 a given dataset.
 
 Code Example
@@ -120,7 +120,7 @@ The program will take the data and plot them on a graph, then use the KNN algori
 The output should look like this:
 
 .. figure:: _img/knn_output_k9.png
-   :scale: 50%
+   :scale: 100%
    :alt: KNN k = 9 output
 
 The green points are classified as benign.
@@ -154,7 +154,7 @@ Try changing the value of n_neighbors to 1 in the code below.
 If you changed the value of n_neighbors to 1 this will classify by the point that is closest to the point. The output should look like this:
 
 .. figure:: _img/knn_output_k1.png
-   :scale: 50%
+   :scale: 100%
    :alt: KNN k = 1 output
 
 Comparing this output to k = 9 you can see a large difference on how it classifies the data. So if you want to ignore outliers you
@@ -165,6 +165,5 @@ Eventually the algorithm will classify all the data into 1 class, and there will
 
 .. _knn.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/KNN/knn.py
 
-.. _Support Vector Machines: linear_SVM.html
 
 

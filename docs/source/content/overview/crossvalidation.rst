@@ -23,7 +23,7 @@ and is useful if you have a large amount of data or need to implement
 validation quickly and easily.
 
 .. figure:: _img/holdout.png
-   :scale: 50 %
+   :scale: 75 %
    :alt: holdout method
 
 
@@ -33,9 +33,7 @@ larger percentage of test data will make your model more prone to errors
 as it has less training experience, while a smaller percentage of test
 data may give your model an unwanted bias towards the training data.
 This lack of training or bias can lead to
-`Underfitting/Overfitting`_ of our model.
-
-.. _Underfitting/Overfitting: overfitting.rst
+:ref:`Underfitting/Overfitting` of our model.
 
 
 K-Fold Cross Validation
@@ -49,7 +47,7 @@ combination of data, and the results are averaged to find a total error
 estimation.
 
 .. figure:: _img/kfold.png
-   :scale: 50 %
+   :scale: 75 %
    :alt: kfold method
 
 A "fold" here is a unique section of test data. For instance, if you
@@ -82,7 +80,7 @@ Where "T" is a test point, and "-" is a training point. Below is another
 visualization of LPOCV:
 
 .. figure:: _img/LPOCV.png
-   :scale: 50 %
+   :scale: 75 %
    :alt: kfold method
 
    Ref: http://www.ebc.cat/2017/01/31/cross-validation-strategies/
@@ -102,7 +100,7 @@ Validation, where the number of folds is equal to the number of data
 points.
 
 .. figure:: _img/LOOCV.png
-   :scale: 50 %
+   :scale: 75 %
    :alt: kfold method
 
    Ref: http://www.ebc.cat/2017/01/31/cross-validation-strategies/
@@ -222,6 +220,6 @@ train-test data split is created with the `split()` method:
 Note that you can change the P value at the top of the script to see
 how different values operate.
 
-.. _holdout.py: /code/overview/cross-validation/holdout.py
-.. _k-fold.py: /code/overview/cross-validation/k-fold.py
-.. _leave-p-out.py: /code/overview/cross-validation/leave-p-out.py
+.. _holdout.py: /https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/holdout.py
+.. _k-fold.py: /https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/k-fold.py
+.. _leave-p-out.py: /https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/leave-p-out.py

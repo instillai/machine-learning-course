@@ -128,7 +128,7 @@ K-Means is a good choice.
 
 The relevant code is available in the clustering_kmeans.py_ file.
 
-.. _clustering_kmeans.py: /code/unsupervised/Clustering/clustering_kmeans.py
+.. _clustering_kmeans.py: https://github.com/machinelearningmindset/machine-learning-course/code/unsupervised/Clustering/clustering_kmeans.py
 
 In the code, we create the simple data set to use for analysis. Setting up the
 clustering is very simple and requires one line of code:
@@ -187,7 +187,7 @@ the number of expected clusters.
 
 The relevant code is available in the clustering_hierarchical.py_ file.
 
-.. _clustering_hierarchical.py: /code/unsupervised/Clustering/clustering_hierarchical.py
+.. _clustering_hierarchical.py: https://github.com/machinelearningmindset/machine-learning-course/code/unsupervised/Clustering/clustering_hierarchical.py
 
 In the code, we create the simple data set to use for analysis. Setting up the
 clustering is very simple and requires one line of code:

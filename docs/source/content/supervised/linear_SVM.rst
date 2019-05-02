@@ -1,3 +1,5 @@
+.. _Support Vector Machines:
+
 ==========================
 Linear Support Vector Machines
 ==========================
@@ -30,7 +32,7 @@ amount of lines that can divide two classes. As you can see in the graph below, 
 the circles, so which one do we choose?
 
 .. figure:: _img/Possible_hyperplane.png
-   :scale: 50%
+   :scale: 100%
    :alt: Possible_Hyperplane
 
    Ref: https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47 
@@ -40,7 +42,7 @@ the line/hyperplane with the **maximum margin**. Maximizing the margin will give
 This is shown in the figure below.  
 
 .. figure:: _img/optimal_hyperplane.png
-   :scale: 50%
+   :scale: 100%
    :alt: Optimal_Hyperplane
 
    Ref: https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47 
@@ -62,7 +64,7 @@ Support Vector Machines will ignore these outliers. This is shown in the figure 
 
 
 .. figure:: _img/SVM_Outliers.png
-   :scale: 50%
+   :scale: 100%
    :alt: Outliers
 
    Ref:  https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/
@@ -78,7 +80,7 @@ There will be data classes that can't be separated with a simple line or hyperpl
 separable data**. Here is an example of that kind of data. 
 
 .. figure:: _img/SVM_Kernal.png
-   :scale: 50%
+   :scale: 100%
    :alt: Kernel
 
    Ref:  https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/
@@ -92,7 +94,7 @@ classified with a circle that separates the data.
 Here is an example of the kernel trick.
 
 .. figure:: _img/SVM_Kernel2.png
-   :scale: 50%
+   :scale: 100%
    :alt: Kernel X Y graph
 
    Ref:  https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/
@@ -145,7 +147,7 @@ The program will take the data and plot them on a graph, then use the SVM to cre
 It also circles the support vectors that determine the hyperplane. The output should look like this:
 
 .. figure:: _img/linear_svm_output.png
-   :scale: 50%
+   :scale: 100%
    :alt: Linear SVM output
 
 The green points are classified as benign.

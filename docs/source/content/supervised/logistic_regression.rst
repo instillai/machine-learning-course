@@ -25,7 +25,7 @@ Here is the standard logistic function, note that the output is always between
 0 and 1, but never reaches either of those values.
 
 .. figure:: _img/WikiLogistic.svg.png
-   :scale: 20%
+   :scale: 100%
    :alt: Logistic
 Ref: https://en.wikipedia.org/wiki/Logistic_regression
 
