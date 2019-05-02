@@ -33,8 +33,9 @@ larger percentage of test data will make your model more prone to errors
 as it has less training experience, while a smaller percentage of test
 data may give your model an unwanted bias towards the training data.
 This lack of training or bias can lead to
-:ref:`Underfitting/Overfitting` of our model.
+`Underfitting/Overfitting`_ of our model.
 
+.. _Underfitting/Overfitting: https://machine-learning-course.readthedocs.io/en/latest/content/overview/overfitting.html
 
 K-Fold Cross Validation
 -----------------------

@@ -1,5 +1,3 @@
-.. _Overfitting/Underfitting:
-
 ================================
 Overfitting and Underfitting
 ================================

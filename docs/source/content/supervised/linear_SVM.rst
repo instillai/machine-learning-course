@@ -1,5 +1,3 @@
-.. _Support Vector Machines:
-
 ==========================
 Linear Support Vector Machines
 ==========================

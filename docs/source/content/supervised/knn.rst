@@ -106,7 +106,7 @@ Motivation
 
 So why would someone use this classifier over another? Is this the best classifier? The answer to these questions are that it depends. 
 There is no classifier that is best, it all depends on the data that a classifier is given. KNN might be the best for one dataset but 
-not another. It's good to know about other classifiers like :ref:`Support Vector Machines`, and then decide which one best classifies the 
+not another. It's good to know about other classifiers like `Support Vector Machines`_, and then decide which one best classifies the 
 a given dataset.
 
 Code Example
@@ -165,5 +165,4 @@ Eventually the algorithm will classify all the data into 1 class, and there will
 
 .. _knn.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/KNN/knn.py
 
-
-
+.. _Support Vector Machines: https://machine-learning-course.readthedocs.io/en/latest/content/supervised/linear_SVM.html
