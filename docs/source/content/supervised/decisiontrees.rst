@@ -316,3 +316,17 @@ whether Mike will go shopping:
 
     # Use our tree to predict the outcome of the random values
     prediction_results = tree.predict(encoder.transform(prediction_data))
+
+
+************
+References
+************
+
+1. https://towardsdatascience.com/decision-trees-in-machine-learning-641b9c4e8052
+2. https://heartbeat.fritz.ai/introduction-to-decision-tree-learning-cd604f85e23 
+3. https://machinelearningmastery.com/implement-decision-tree-algorithm-scratch-python/ 
+#. https://sebastianraschka.com/faq/docs/decision-tree-binary.html
+#. https://www.cs.cmu.edu/~bhiksha/courses/10-601/decisiontrees/
+
+
+

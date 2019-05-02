@@ -173,3 +173,15 @@ the data. You can change it here in the code:
 
 .. _linear_svm.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/Linear_SVM/linear_svm.py
 
+
+************
+References
+************
+
+1. https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/
+2. https://stackabuse.com/implementing-svm-and-kernel-svm-with-pythons-scikit-learn/
+3. https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47
+#. https://towardsdatascience.com/https-medium-com-pupalerushikesh-svm-f4b42800e989
+#. https://towardsdatascience.com/support-vector-machines-svm-c9ef22815589
+
+

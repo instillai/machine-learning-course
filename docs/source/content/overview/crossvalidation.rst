@@ -224,3 +224,15 @@ how different values operate.
 .. _holdout.py: /https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/holdout.py
 .. _k-fold.py: /https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/k-fold.py
 .. _leave-p-out.py: /https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/leave-p-out.py
+
+
+************
+References
+************
+
+1. https://towardsdatascience.com/cross-validation-in-machine-learning-72924a69872f
+2. https://machinelearningmastery.com/k-fold-cross-validation/
+3. https://www.quora.com/What-is-cross-validation-in-machine-learning 
+#. http://www.ebc.cat/2017/01/31/cross-validation-strategies/ 
+
+

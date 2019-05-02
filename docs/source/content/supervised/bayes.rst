@@ -208,3 +208,14 @@ come in handy for real-time predictions. We make a lot of assumptions to use
 Naive Bayes so results should be taken with a grain of salt. But if you don’t
 have much data and need fast results, Naive Bayes is a good choice for
 classification problems.
+
+
+************
+References
+************
+
+1. https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/
+2. https://www.analyticsvidhya.com/blog/2017/09/naive-bayes-explained/ 
+3. https://towardsdatascience.com/naive-bayes-in-machine-learning-f49cc8f831b4
+#. https://medium.com/machine-learning-101/chapter-1-supervised-learning-and-naive-bayes-classification-part-1-theory-8b9e361897d5
+

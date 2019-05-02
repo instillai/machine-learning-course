@@ -231,7 +231,7 @@ covered here in later modules.
 
 
 ************
-Refrences
+References
 ************
 
 1. https://towardsdatascience.com/introduction-to-machine-learning-algorithms-linear-regression-14c4e325882a
