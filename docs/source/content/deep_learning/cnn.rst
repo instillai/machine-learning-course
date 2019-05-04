@@ -235,3 +235,15 @@ probabilistically guess a classification. CNNs are also complex models and
 understanding how they work can be an intimidating task. We hope that the
 information presented gives you a better understanding of how CNNs work so
 that you can continue to learn about them and deep learning.
+
+
+**********
+References
+**********
+#. https://towardsdatascience.com/convolutional-neural-networks-for-beginners-practical-guide-with-python-and-keras-dc688ea90dca
+#. https://medium.com/technologymadeeasy/the-best-explanation-of-convolutional-neural-networks-on-the-internet-fbb8b1ad5df8
+#. https://medium.freecodecamp.org/an-intuitive-guide-to-convolutional-neural-networks-260c2de0a050
+#. https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53
+#. https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/
+#. https://www.kaggle.com/dansbecker/rectified-linear-units-relu-in-deep-learning
+#. https://en.wikipedia.org/wiki/Convolutional_neural_network#ReLU_layer
