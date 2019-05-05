@@ -25,7 +25,7 @@ Here is the standard logistic function, note that the output is always between
 0 and 1, but never reaches either of those values.
 
 .. figure:: _img/WikiLogistic.svg.png
-   :scale: 20%
+   :scale: 100%
    :alt: Logistic
 Ref: https://en.wikipedia.org/wiki/Logistic_regression
 
@@ -142,3 +142,20 @@ The basic idea is to supply the training data as pairs of input and
 classification, and the model will be built automatically.
 As always, keep in mind the basics mentioned in the overview section of this
 repository, as there is no fool-proof method for machine learning.
+
+
+************
+References
+************
+
+1. https://towardsdatascience.com/logistic-regression-b0af09cdb8ad
+2. https://medium.com/datadriveninvestor/machine-learning-model-logistic-regression-5fa4ffde5773
+3. https://github.com/bfortuner/ml-cheatsheet/blob/master/docs/logistic_regression.rst
+#. https://machinelearningmastery.com/logistic-regression-tutorial-for-machine-learning/
+#. https://towardsdatascience.com/logistic-regression-a-simplified-approach-using-python-c4bc81a87c31
+#. https://hackernoon.com/introduction-to-machine-learning-algorithms-logistic-regression-cbdd82d81a36
+#. https://en.wikipedia.org/wiki/Logistic_regression
+#. https://en.wikipedia.org/wiki/Multinomial_logistic_regression
+#. https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html 
+#. https://towardsdatascience.com/5-reasons-logistic-regression-should-be-the-first-thing-you-learn-when-become-a-data-scientist-fcaae46605c4
+

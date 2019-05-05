@@ -128,7 +128,7 @@ K-Means is a good choice.
 
 The relevant code is available in the clustering_kmeans.py_ file.
 
-.. _clustering_kmeans.py: /code/unsupervised/Clustering/clustering_kmeans.py
+.. _clustering_kmeans.py: https://github.com/machinelearningmindset/machine-learning-course/code/unsupervised/Clustering/clustering_kmeans.py
 
 In the code, we create the simple data set to use for analysis. Setting up the
 clustering is very simple and requires one line of code:
@@ -187,7 +187,7 @@ the number of expected clusters.
 
 The relevant code is available in the clustering_hierarchical.py_ file.
 
-.. _clustering_hierarchical.py: /code/unsupervised/Clustering/clustering_hierarchical.py
+.. _clustering_hierarchical.py: https://github.com/machinelearningmindset/machine-learning-course/code/unsupervised/Clustering/clustering_hierarchical.py
 
 In the code, we create the simple data set to use for analysis. Setting up the
 clustering is very simple and requires one line of code:
@@ -221,3 +221,15 @@ the toy manufacturer example that could be used for targeted advertising. This
 is a very useful result for businesses and it only took us a few lines of
 code. By developing a good understanding of clustering, you are setting
 yourself up for success in the machine learning world.
+
+
+************
+References
+************
+
+1. https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/
+2. https://medium.com/datadriveninvestor/an-introduction-to-clustering-61f6930e3e0b
+3. https://medium.com/predict/three-popular-clustering-methods-and-when-to-use-each-4227c80ba2b6
+#. https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-know-a36d136ef68 
+#. https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+

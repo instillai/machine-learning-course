@@ -20,7 +20,7 @@ k = 1 then the class the object would be in is the class of the closest
 neighbor. Let's look at an example.
 
 .. figure:: _img/knn.png
-   :scale: 50 %
+   :scale: 100 %
    :alt: KNN
 
    Ref: https://coxdocs.org
@@ -60,7 +60,7 @@ to one of them and then we know that distance is roughly close to the other poin
 Here is an example of how the K-D tree looks like.
 
 .. figure:: _img/KNN_KDTree.jpg
-   :scale: 50 %
+   :scale: 100 %
    :alt: KNN K-d tree
 
    Ref: https://slideplayer.com/slide/3273367/
@@ -120,7 +120,7 @@ The program will take the data and plot them on a graph, then use the KNN algori
 The output should look like this:
 
 .. figure:: _img/knn_output_k9.png
-   :scale: 50%
+   :scale: 100%
    :alt: KNN k = 9 output
 
 The green points are classified as benign.
@@ -154,7 +154,7 @@ Try changing the value of n_neighbors to 1 in the code below.
 If you changed the value of n_neighbors to 1 this will classify by the point that is closest to the point. The output should look like this:
 
 .. figure:: _img/knn_output_k1.png
-   :scale: 50%
+   :scale: 100%
    :alt: KNN k = 1 output
 
 Comparing this output to k = 9 you can see a large difference on how it classifies the data. So if you want to ignore outliers you
@@ -165,6 +165,15 @@ Eventually the algorithm will classify all the data into 1 class, and there will
 
 .. _knn.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/KNN/knn.py
 
-.. _Support Vector Machines: linear_SVM.html
+.. _Support Vector Machines: https://machine-learning-course.readthedocs.io/en/latest/content/supervised/linear_SVM.html
 
+
+************
+References
+************
+
+1. https://medium.com/machine-learning-101/k-nearest-neighbors-classifier-1c1ff404d265
+2. https://www.analyticsvidhya.com/blog/2018/03/introduction-k-neighbours-algorithm-clustering/  
+3. https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html 
+#. https://turi.com/learn/userguide/supervised-learning/knn_classifier.html 
 
