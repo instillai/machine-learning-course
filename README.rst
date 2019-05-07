@@ -1,6 +1,7 @@
+.. figure:: _img/unsupervised.gif
 
 ###################################################
-Machine Learning for Everybody
+A Machine Learning Course with Python
 ###################################################
 
 .. image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
