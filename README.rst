@@ -63,7 +63,7 @@ Machine Learning
 Machine Learning Basics
 ------------------------------------------------------------
 
-.. figure:: _img/deeplearning.png
+.. figure:: _img/intro.png
 .. _lrtutorial: docs/source/content/overview/linear-regression.rst
 .. _lrcode: code/overview/linear_regression
 
@@ -158,6 +158,8 @@ Unsupervised learning
 ------------------------------------------------------------
 Deep Learning
 ------------------------------------------------------------
+
+.. figure:: _img/deeplearning.png
 
 .. _mlpdoc: docs/source/content/deep_learning/mlp.rst
 .. _mlpcode: code/deep_learning/mlp
