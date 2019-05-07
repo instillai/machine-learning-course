@@ -169,6 +169,9 @@ Deep Learning
 .. _aedoc: docs/source/content/deep_learning/autoencoder.rst
 .. _aecode: code/deep_learning/autoencoder
 
+.. _rnndoc: code/deep_learning/rnn/rnn.ipynb
+.. _rnncode: code/deep_learning/rnn.py
+
 
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
 | Title                                                              |    Code                       |    Document               |
@@ -179,7 +182,7 @@ Deep Learning
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
 | Autoencoders                                                       |    `Python <aecode_>`_        | `Tutorial <aedoc_>`_      |
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
-| Recurrent Neural Networks                                          |                               |                           |
+| Recurrent Neural Networks                                          |    `Python <rnncode_>`_       |  `Python <rnndoc_>`_      |
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
 
 
