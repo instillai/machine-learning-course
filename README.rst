@@ -1,4 +1,4 @@
-.. figure:: _img/unsupervised.gif
+.. figure:: _img/teaser.gif
 
 ###################################################
 A Machine Learning Course with Python
