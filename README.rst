@@ -136,7 +136,7 @@ Supervised learning
 Unsupervised learning
 ------------------------------------------------------------
 
-.. figure:: _img/unsupervised.png
+.. figure:: _img/unsupervised.gif
 
 .. _clusteringdoc: docs/source/content/unsupervised/clustering.rst
 .. _clusteringcode: code/unsupervised/Clustering
