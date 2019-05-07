@@ -159,32 +159,27 @@ Unsupervised learning
 Deep Learning
 ------------------------------------------------------------
 
-.. _conganpaper: https://arxiv.org/abs/1411.1784
-.. _congancode: https://github.com/zhangqianhui/Conditional-GAN
-
-.. _photorealpaper: https://arxiv.org/pdf/1609.04802.pdf
-.. _photorealcode: https://github.com/tensorlayer/srgan
-
-.. _im2impaper: https://arxiv.org/abs/1611.07004
-.. _im2imcode: https://github.com/phillipi/pix2pix
-
-.. _vismanpaper: https://arxiv.org/abs/1609.03552
-.. _vismancode: https://github.com/junyanz/iGAN
+.. _mlpdoc: docs/source/content/deep_learning/mlp.rst
+.. _mlpcode: code/deep_learning/mlp
 
 
 .. _cnndoc: docs/source/content/deep_learning/cnn.rst
+.. _cnncode: code/deep_learning/cnn
+
+.. _aedoc: docs/source/content/deep_learning/autoencoder.rst
+.. _aecode: code/deep_learning/autoencoder
 
 
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
 | Title                                                              |    Code                       |    Document               |
 +====================================================================+===============================+===========================+
-| Neural Networks Overview                                           |                               |                           |
+| Neural Networks Overview                                           |    `Python <mlpcode_>`_       |                           |
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
-| Convolutional Neural Networks                                      |                               | `Tutorial <cnndoc_>`_     |
+| Convolutional Neural Networks                                      |    `Python <cnncode_>`_       | `Tutorial <cnndoc_>`_     |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Autoencoders                                                       |    `Python <aecode_>`_        | `Tutorial <aedoc_>`_      |
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
 | Recurrent Neural Networks                                          |                               |                           |
-+--------------------------------------------------------------------+-------------------------------+---------------------------+
-| Autoencoders                                                       |                               |                           |
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
 
 
