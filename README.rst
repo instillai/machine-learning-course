@@ -23,9 +23,9 @@ Table of Contents
   :local:
   :depth: 4
 
-***************
+========================
 Introduction
-***************
+========================
 
 The purpose of this project is to provide a comperehensive and yet simple course in Machine Learning using Python.
 
