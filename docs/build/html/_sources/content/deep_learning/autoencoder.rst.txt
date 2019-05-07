@@ -1,11 +1,17 @@
+#############################
+Autoencoders
+#############################
+
+********************************************************
 Autoencoders and their implementations in TensorFlow
-----------------------------------------------------
+********************************************************
 
 In this post, you will learn the concept behind Autoencoders as well how
 to implement an autoencoder in TensorFlow.
 
+********************************************************
 Introduction
-------------
+********************************************************
 
 Autoencoders are a type of neural networks which copy its input to its
 output. They usually consist of two main parts, namely Encoder and
@@ -47,8 +53,9 @@ In this post, we are going to create a simple Undercomplete Autoencoder
 in TensorFlow to learn a low dimension representation (code) of the
 MNIST dataset.
 
+********************************************************
 Create an Undercomplete Autoencoder
------------------------------------
+********************************************************
 
 We are going to create an autoencoder with a 3-layer encoder and 3-layer
 decoder. Each layer of encoder downsamples its input along the spatial

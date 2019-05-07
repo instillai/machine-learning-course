@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Autoencoders and their implementations in TensorFlow &mdash; Machine-Learning-Course 1.0 documentation</title>
+  <title>Autoencoders &mdash; Machine-Learning-Course 1.0 documentation</title>
   
 
   
@@ -105,9 +105,12 @@
 <p class="caption"><span class="caption-text">Deep Learning</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="cnn.html">Convolutional Neural Networks</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Autoencoders and their implementations in TensorFlow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#create-an-undercomplete-autoencoder">Create an Undercomplete Autoencoder</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Autoencoders</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#autoencoders-and-their-implementations-in-tensorflow">Autoencoders and their implementations in TensorFlow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-an-undercomplete-autoencoder">Create an Undercomplete Autoencoder</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Document Credentials</span></p>
 <ul>
@@ -159,7 +162,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Autoencoders and their implementations in TensorFlow</li>
+      <li>Autoencoders</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -180,13 +183,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="autoencoders-and-their-implementations-in-tensorflow">
-<h1>Autoencoders and their implementations in TensorFlow<a class="headerlink" href="#autoencoders-and-their-implementations-in-tensorflow" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="autoencoders">
+<h1>Autoencoders<a class="headerlink" href="#autoencoders" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="autoencoders-and-their-implementations-in-tensorflow">
+<h2>Autoencoders and their implementations in TensorFlow<a class="headerlink" href="#autoencoders-and-their-implementations-in-tensorflow" title="Permalink to this headline">¶</a></h2>
 <p>In this post, you will learn the concept behind Autoencoders as well how
 to implement an autoencoder in TensorFlow.</p>
 </div>
 <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Autoencoders are a type of neural networks which copy its input to its
 output. They usually consist of two main parts, namely Encoder and
 Decoder. The encoder map the input into a hidden layer space which we
@@ -235,7 +240,7 @@ in TensorFlow to learn a low dimension representation (code) of the
 MNIST dataset.</p>
 </div>
 <div class="section" id="create-an-undercomplete-autoencoder">
-<h1>Create an Undercomplete Autoencoder<a class="headerlink" href="#create-an-undercomplete-autoencoder" title="Permalink to this headline">¶</a></h1>
+<h2>Create an Undercomplete Autoencoder<a class="headerlink" href="#create-an-undercomplete-autoencoder" title="Permalink to this headline">¶</a></h2>
 <p>We are going to create an autoencoder with a 3-layer encoder and 3-layer
 decoder. Each layer of encoder downsamples its input along the spatial
 dimensions (width, height) by a factor of two using a stride 2.
@@ -345,6 +350,7 @@ network by reconstructing a batch of test images.</p>
         <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">batch_img</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
+</div>
 </div>
 </div>
 
