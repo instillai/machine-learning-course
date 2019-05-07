@@ -225,6 +225,7 @@ Developers
 <https://github.com/astorfi>`_, `Personal Website
 <https://astorfi.github.io/>`_, `Linkedin
 <https://www.linkedin.com/in/amirsinatorfi/>`_ ]
+
 **Developers**: Brendan Sherman\*, James E Hopkins\* [`Linkedin <https://www.linkedin.com/in/jhopk>`_], Zac Smith [`Linkedin <https://www.linkedin.com/in/zac-smith-a7bb60185/i>`_]
 
 \*: equally contributed
