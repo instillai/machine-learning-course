@@ -140,8 +140,43 @@ Techniques of performing principal component analysis range from
 arbitrarily selecting principal components, to automatically finding
 them until a variance is reached.
 
-Code Examples
--------------
+Code Example
+------------
+
+Our example code, `pca.py`_, shows you how to perform principal component
+analysis on a dataset of random x, y pairs. The script goes through a
+short process of generating this data, then calls sklearn's PCA module:
+
+.. _pca.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/unsupervised/PCA/pca.py
+
+.. code:: python
+
+   # Find two principal components from our given dataset
+   pca = PCA(n_components = 2)
+   pca.fit(points)
+
+Each step in the process includes helpful visualizations using
+matplotlib. For instance, the principal components fitted above are
+plotted as two vectors on the dataset:
+
+.. figure:: _img/pca5.png
+
+The script also shows how to perform dimensionality reduction, discussed
+above. In sklearn, this is done by simply calling the transform method
+once a PCA is fitted, or doing both steps at the same time with
+fit_transform:
+
+.. code:: python
+
+   # Reduce the dimensionality of our data using a PCA transformation
+   pca = PCA(n_components = 1)
+   transformed_points = pca.fit_transform(points)
+
+The end result of our transformation is just a series of X values,
+though the code example performs an inverse transformation for plotting
+the result in the following graph:
+
+.. figure:: _img/pca6.png
 
 References
 ----------
