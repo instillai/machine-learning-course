@@ -46,7 +46,7 @@ interpretability, feature extraction allows you to maintain all
 important information held within features.
 
 Principal component analysis deals with feature extraction (rather than
-elimation) by creating a set of independent variables called principal
+elimination) by creating a set of independent variables called principal
 components.
 
 PCA Example
