@@ -102,7 +102,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#choosing-k">Choosing k</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#code-example">Code Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-example">Code Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="linear_SVM.html">Linear Support Vector Machines</a></li>
@@ -110,6 +113,14 @@
 <p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/pca.html">Principal Component Analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Deep Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/cnn.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html">Autoencoders and their implementations in TensorFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#create-an-undercomplete-autoencoder">Create an Undercomplete Autoencoder</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Document Credentials</span></p>
 <ul>
@@ -193,7 +204,10 @@
 <li><a class="reference internal" href="#choosing-k" id="id7">Choosing k</a></li>
 <li><a class="reference internal" href="#conclusion" id="id8">Conclusion</a></li>
 <li><a class="reference internal" href="#motivation" id="id9">Motivation</a></li>
-<li><a class="reference internal" href="#code-example" id="id10">Code Example</a></li>
+<li><a class="reference internal" href="#code-example" id="id10">Code Example</a><ul>
+<li><a class="reference internal" href="#references" id="id11">References</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="introduction">
@@ -208,7 +222,7 @@ to be in. The k is the number of nearest neighbors to the object. So, if
 k = 1 then the class the object would be in is the class of the closest
 neighbor. Let’s look at an example.</p>
 <div class="figure" id="id1">
-<a class="reference internal image-reference" href="../../_images/knn.png"><img alt="KNN" src="../../_images/knn.png" style="width: 225.0px; height: 197.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/knn.png"><img alt="KNN" src="../../_images/knn.png" style="width: 450.0px; height: 394.0px;" /></a>
 <p class="caption"><span class="caption-text">Ref: <a class="reference external" href="https://coxdocs.org">https://coxdocs.org</a></span></p>
 </div>
 <p>In this example we are trying to classify the red star to be either
@@ -242,7 +256,7 @@ that two data points are close to each other and we calculate the Euclidean dist
 to one of them and then we know that distance is roughly close to the other point.
 Here is an example of how the K-D tree looks like.</p>
 <div class="figure" id="id2">
-<a class="reference internal image-reference" href="../../_images/KNN_KDTree.jpg"><img alt="KNN K-d tree" src="../../_images/KNN_KDTree.jpg" style="width: 250.0px; height: 187.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/KNN_KDTree.jpg"><img alt="KNN K-d tree" src="../../_images/KNN_KDTree.jpg" style="width: 500.0px; height: 375.0px;" /></a>
 <p class="caption"><span class="caption-text">Ref: <a class="reference external" href="https://slideplayer.com/slide/3273367/">https://slideplayer.com/slide/3273367/</a></span></p>
 </div>
 <p>How a K-D tree works is that a node in the tree represents and holds data from an n-dimensional
@@ -281,7 +295,7 @@ be relatively small.</p>
 <h2><a class="toc-backref" href="#id9">Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
 <p>So why would someone use this classifier over another? Is this the best classifier? The answer to these questions are that it depends.
 There is no classifier that is best, it all depends on the data that a classifier is given. KNN might be the best for one dataset but
-not another. It’s good to know about other classifiers like <a class="reference external" href="linear_SVM.rst">Support Vector Machines</a>, and then decide which one best classifies the
+not another. It’s good to know about other classifiers like <a class="reference external" href="https://machine-learning-course.readthedocs.io/en/latest/content/supervised/linear_SVM.html">Support Vector Machines</a>, and then decide which one best classifies the
 a given dataset.</p>
 </div>
 <div class="section" id="code-example">
@@ -292,7 +306,7 @@ More information about Scikit-Learn can be found <a class="reference external" h
 The program will take the data and plot them on a graph, then use the KNN algorithm to best separate the data.
 The output should look like this:</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../../_images/knn_output_k9.png"><img alt="KNN k = 9 output" src="../../_images/knn_output_k9.png" style="width: 186.0px; height: 126.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/knn_output_k9.png"><img alt="KNN k = 9 output" src="../../_images/knn_output_k9.png" style="width: 372.0px; height: 252.0px;" /></a>
 </div>
 <p>The green points are classified as benign.
 The red points are classified as malignant.
@@ -317,11 +331,20 @@ change the time it takes to predict the data.</p>
 </div>
 <p>If you changed the value of n_neighbors to 1 this will classify by the point that is closest to the point. The output should look like this:</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../../_images/knn_output_k1.png"><img alt="KNN k = 1 output" src="../../_images/knn_output_k1.png" style="width: 186.0px; height: 126.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/knn_output_k1.png"><img alt="KNN k = 1 output" src="../../_images/knn_output_k1.png" style="width: 372.0px; height: 252.0px;" /></a>
 </div>
 <p>Comparing this output to k = 9 you can see a large difference on how it classifies the data. So if you want to ignore outliers you
 will want a higher k value, otherwise choose a smaller k like 1, 3 or 5. You can experiment by choosing a very high k greater than 100.
 Eventually the algorithm will classify all the data into 1 class, and there will be no line to split the data.</p>
+<div class="section" id="references">
+<h3><a class="toc-backref" href="#id11">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://medium.com/machine-learning-101/k-nearest-neighbors-classifier-1c1ff404d265">https://medium.com/machine-learning-101/k-nearest-neighbors-classifier-1c1ff404d265</a></li>
+<li><a class="reference external" href="https://www.analyticsvidhya.com/blog/2018/03/introduction-k-neighbours-algorithm-clustering/">https://www.analyticsvidhya.com/blog/2018/03/introduction-k-neighbours-algorithm-clustering/</a></li>
+<li><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html">https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html</a></li>
+<li><a class="reference external" href="https://turi.com/learn/userguide/supervised-learning/knn_classifier.html">https://turi.com/learn/userguide/supervised-learning/knn_classifier.html</a></li>
+</ol>
+</div>
 </div>
 </div>
 

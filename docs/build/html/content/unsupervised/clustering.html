@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Contributing" href="../../credentials/CONTRIBUTING.html" />
+    <link rel="next" title="Principal Component Analysis" href="pca.html" />
     <link rel="prev" title="Linear Support Vector Machines" href="../supervised/linear_SVM.html" /> 
 
   
@@ -106,11 +106,20 @@
 <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#k-means">K-Means</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#hierarchical">Hierarchical</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="pca.html">Principal Component Analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Deep Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/cnn.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html">Autoencoders and their implementations in TensorFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#create-an-undercomplete-autoencoder">Create an Undercomplete Autoencoder</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Document Credentials</span></p>
 <ul>
@@ -193,9 +202,10 @@
 <li><a class="reference internal" href="#methods" id="id14">Methods</a><ul>
 <li><a class="reference internal" href="#k-means" id="id15">K-Means</a></li>
 <li><a class="reference internal" href="#hierarchical" id="id16">Hierarchical</a></li>
-<li><a class="reference internal" href="#summary" id="id17">Summary</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#summary" id="id17">Summary</a></li>
+<li><a class="reference internal" href="#references" id="id18">References</a></li>
 </ul>
 </div>
 <div class="section" id="overview">
@@ -300,7 +310,7 @@ data set at each step. It is also fast because we’re only ever computing
 distances. So if we want a fast technique that considers the whole data set
 and we have some knowledge of what the underlying groups might look like,
 K-Means is a good choice.</p>
-<p>The relevant code is available in the <a class="reference external" href="/code/unsupervised/Clustering/clustering_kmeans.py">clustering_kmeans.py</a> file.</p>
+<p>The relevant code is available in the <a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/unsupervised/Clustering/clustering_kmeans.py">clustering_kmeans.py</a> file.</p>
 <p>In the code, we create the simple data set to use for analysis. Setting up the
 clustering is very simple and requires one line of code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -349,7 +359,7 @@ look appropriate.</p>
 as well to large data sets. On the bright side, Hierarchical clustering is
 more consistent when you run it multiple times and doesn’t require you to know
 the number of expected clusters.</p>
-<p>The relevant code is available in the <a class="reference external" href="/code/unsupervised/Clustering/clustering_hierarchical.py">clustering_hierarchical.py</a> file.</p>
+<p>The relevant code is available in the <a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/unsupervised/Clustering/clustering_hierarchical.py">clustering_hierarchical.py</a> file.</p>
 <p>In the code, we create the simple data set to use for analysis. Setting up the
 clustering is very simple and requires one line of code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hierarchical</span> <span class="o">=</span> <span class="n">AgglomerativeClustering</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -366,8 +376,9 @@ display the final plot shown in <em>Figure 9</em>.</p>
 <p>The clusters are color coded and large clusters are surrounded with a border
 to show which data points belong to them.</p>
 </div>
+</div>
 <div class="section" id="summary">
-<h3><a class="toc-backref" href="#id17">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<h2><a class="toc-backref" href="#id17">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <p>In this module, we learned about clustering. Clustering allows us to discover
 patterns in a raw data set by grouping similar data points. This is a common
 desire in unsupervised learning and clustering is a popular technique. You may
@@ -379,6 +390,15 @@ is a very useful result for businesses and it only took us a few lines of
 code. By developing a good understanding of clustering, you are setting
 yourself up for success in the machine learning world.</p>
 </div>
+<div class="section" id="references">
+<h2><a class="toc-backref" href="#id18">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/">https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/</a></li>
+<li><a class="reference external" href="https://medium.com/datadriveninvestor/an-introduction-to-clustering-61f6930e3e0b">https://medium.com/datadriveninvestor/an-introduction-to-clustering-61f6930e3e0b</a></li>
+<li><a class="reference external" href="https://medium.com/predict/three-popular-clustering-methods-and-when-to-use-each-4227c80ba2b6">https://medium.com/predict/three-popular-clustering-methods-and-when-to-use-each-4227c80ba2b6</a></li>
+<li><a class="reference external" href="https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-know-a36d136ef68">https://towardsdatascience.com/the-5-clustering-algorithms-data-scientists-need-to-know-a36d136ef68</a></li>
+<li><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html</a></li>
+</ol>
 </div>
 </div>
 
@@ -390,7 +410,7 @@ yourself up for success in the machine learning world.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../credentials/CONTRIBUTING.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pca.html" class="btn btn-neutral float-right" title="Principal Component Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../supervised/linear_SVM.html" class="btn btn-neutral" title="Linear Support Vector Machines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

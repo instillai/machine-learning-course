@@ -90,7 +90,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#leave-p-out-leave-one-out-cross-validation">Leave-P-Out / Leave-One-Out Cross Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#code-examples">Code Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-examples">Code Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="linear-regression.html">Linear Regression</a></li>
@@ -108,6 +111,14 @@
 <p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/pca.html">Principal Component Analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Deep Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/cnn.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html">Autoencoders and their implementations in TensorFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#create-an-undercomplete-autoencoder">Create an Undercomplete Autoencoder</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Document Credentials</span></p>
 <ul>
@@ -200,7 +211,7 @@ testing set. This is the simplest form of cross-validation techniques,
 and is useful if you have a large amount of data or need to implement
 validation quickly and easily.</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../../_images/holdout.png"><img alt="holdout method" src="../../_images/holdout.png" style="width: 194.0px; height: 111.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/holdout.png"><img alt="holdout method" src="../../_images/holdout.png" style="width: 291.0px; height: 167.25px;" /></a>
 </div>
 <p>Typically the holdout method involves splitting a dataset into 20-30%
 test data and the rest as training data. These numbers can vary - a
@@ -208,7 +219,7 @@ larger percentage of test data will make your model more prone to errors
 as it has less training experience, while a smaller percentage of test
 data may give your model an unwanted bias towards the training data.
 This lack of training or bias can lead to
-<a class="reference external" href="overfitting.rst">Underfitting/Overfitting</a> of our model.</p>
+<a class="reference external" href="https://machine-learning-course.readthedocs.io/en/latest/content/overview/overfitting.html">Underfitting/Overfitting</a> of our model.</p>
 </div>
 <div class="section" id="k-fold-cross-validation">
 <h2>K-Fold Cross Validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">¶</a></h2>
@@ -219,7 +230,7 @@ test and training data. The holdout method is performed using each
 combination of data, and the results are averaged to find a total error
 estimation.</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../../_images/kfold.png"><img alt="kfold method" src="../../_images/kfold.png" style="width: 194.5px; height: 268.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/kfold.png"><img alt="kfold method" src="../../_images/kfold.png" style="width: 291.75px; height: 402.0px;" /></a>
 </div>
 <p>A “fold” here is a unique section of test data. For instance, if you
 have 100 data points and use 10 folds, each fold contains 10 test
@@ -244,7 +255,7 @@ be trained and tested as follows:</p>
 <p>Where “T” is a test point, and “-” is a training point. Below is another
 visualization of LPOCV:</p>
 <div class="figure" id="id2">
-<a class="reference internal image-reference" href="../../_images/LPOCV.png"><img alt="kfold method" src="../../_images/LPOCV.png" style="width: 281.0px; height: 110.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/LPOCV.png"><img alt="kfold method" src="../../_images/LPOCV.png" style="width: 421.5px; height: 165.75px;" /></a>
 <p class="caption"><span class="caption-text">Ref: <a class="reference external" href="http://www.ebc.cat/2017/01/31/cross-validation-strategies/">http://www.ebc.cat/2017/01/31/cross-validation-strategies/</a></span></p>
 </div>
 <p>LPOCV can provide an extremely accurate error estimation, but can
@@ -260,7 +271,7 @@ there are data points. LOOCV can also be seen as K-Fold Cross
 Validation, where the number of folds is equal to the number of data
 points.</p>
 <div class="figure" id="id3">
-<a class="reference internal image-reference" href="../../_images/LOOCV.png"><img alt="kfold method" src="../../_images/LOOCV.png" style="width: 281.0px; height: 110.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/LOOCV.png"><img alt="kfold method" src="../../_images/LOOCV.png" style="width: 421.5px; height: 165.75px;" /></a>
 <p class="caption"><span class="caption-text">Ref: <a class="reference external" href="http://www.ebc.cat/2017/01/31/cross-validation-strategies/">http://www.ebc.cat/2017/01/31/cross-validation-strategies/</a></span></p>
 </div>
 <p>Similar to K-Fold Cross Validation, LPOCV and LOOCV train a model using
@@ -296,7 +307,7 @@ they put into use.</p>
 <p>The provided code shows how to split a set of data with the three
 discussed methods of cross-validation using <a class="reference external" href="https://scikit-learn.org">Scikit-Learn</a>, a Python machine
 learning library.</p>
-<p><a class="reference external" href="/code/overview/cross-validation/holdout.py">holdout.py</a> splits a set of sample diabetes data using the Holdout Method.
+<p><a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/holdout.py">holdout.py</a> splits a set of sample diabetes data using the Holdout Method.
 In scikit-learn, this is done using a function called <code class="xref py py-obj docutils literal notranslate"><span class="pre">train_test_split()</span></code>
 which randomly splits a set of data into two portions:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TRAIN_SPLIT</span> <span class="o">=</span> <span class="mf">0.7</span>
@@ -314,7 +325,7 @@ Output from this file shows the number of training and test points used
 for the split. It may be beneficial to see the actual data points - if you
 would like to see these, uncomment the last two print statements in the script.</p>
 <hr class="docutils" />
-<p><a class="reference external" href="/code/overview/cross-validation/k-fold.py">k-fold.py</a> splits a set of data using the K-Fold Method. This is done by
+<p><a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/k-fold.py">k-fold.py</a> splits a set of data using the K-Fold Method. This is done by
 creating a KFold object initialized with the number of splits to use.
 Scikit-learn makes it easy to split data by calling KFold’s <code class="xref py py-obj docutils literal notranslate"><span class="pre">split()</span></code> method:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NUM_SPLITS</span> <span class="o">=</span> <span class="mi">3</span>
@@ -336,7 +347,7 @@ current fold:</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<p><a class="reference external" href="/code/overview/cross-validation/leave-p-out.py">leave-p-out.py</a> splits a set of data using both the Leave-P-Out and
+<p><a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/leave-p-out.py">leave-p-out.py</a> splits a set of data using both the Leave-P-Out and
 Leave-One-Out Methods. This is done by creating LeavePOut/LeaveOneOut objects,
 the LPO initialized with the number of splits to use. Similar to KFold, the
 train-test data split is created with the <code class="xref py py-obj docutils literal notranslate"><span class="pre">split()</span></code> method:</p>
@@ -352,6 +363,15 @@ train-test data split is created with the <code class="xref py py-obj docutils l
 </div>
 <p>Note that you can change the P value at the top of the script to see
 how different values operate.</p>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://towardsdatascience.com/cross-validation-in-machine-learning-72924a69872f">https://towardsdatascience.com/cross-validation-in-machine-learning-72924a69872f</a></li>
+<li><a class="reference external" href="https://machinelearningmastery.com/k-fold-cross-validation/">https://machinelearningmastery.com/k-fold-cross-validation/</a></li>
+<li><a class="reference external" href="https://www.quora.com/What-is-cross-validation-in-machine-learning">https://www.quora.com/What-is-cross-validation-in-machine-learning</a></li>
+<li><a class="reference external" href="http://www.ebc.cat/2017/01/31/cross-validation-strategies/">http://www.ebc.cat/2017/01/31/cross-validation-strategies/</a></li>
+</ol>
+</div>
 </div>
 </div>
 

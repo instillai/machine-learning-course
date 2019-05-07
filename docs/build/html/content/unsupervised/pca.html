@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Principal Component Analysis &mdash; Machine-Learning-Course 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Convolutional Neural Networks" href="../deep_learning/cnn.html" />
+    <link rel="prev" title="Clustering" href="clustering.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Foreword</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/crossvalidation.html">Cross-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/linear-regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/overfitting.html">Overfitting and Underfitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/regularization.html">Regularization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Supervised Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/logistic_regression.html">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/bayes.html">Naive Bayes Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/decisiontrees.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/knn.html">k-Nearest Neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/linear_SVM.html">Linear Support Vector Machines</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">Clustering</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Principal Component Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dimensionality-reduction">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pca-example">PCA Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#number-of-components">Number of Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-example">Code Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Deep Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/cnn.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html">Autoencoders and their implementations in TensorFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#create-an-undercomplete-autoencoder">Create an Undercomplete Autoencoder</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Document Credentials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/LICENSE.html">LICENSE</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Machine-Learning-Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Principal Component Analysis</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com///blob/content/unsupervised/pca.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="principal-component-analysis">
+<h1>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#introduction" id="id5">Introduction</a></li>
+<li><a class="reference internal" href="#motivation" id="id6">Motivation</a></li>
+<li><a class="reference internal" href="#dimensionality-reduction" id="id7">Dimensionality Reduction</a></li>
+<li><a class="reference internal" href="#pca-example" id="id8">PCA Example</a></li>
+<li><a class="reference internal" href="#number-of-components" id="id9">Number of Components</a></li>
+<li><a class="reference internal" href="#conclusion" id="id10">Conclusion</a></li>
+<li><a class="reference internal" href="#code-example" id="id11">Code Example</a></li>
+<li><a class="reference internal" href="#references" id="id12">References</a></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2><a class="toc-backref" href="#id5">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Principal component analysis is one technique used to take a large list
+of interconnected variables and choose the ones that best suit a model.
+This process of focusing in on only a few variables is called
+<strong>dimensionality reduction</strong>, and helps reduce complexity of our
+dataset. At its root, principal component analysis <em>summarizes</em> data.</p>
+<div class="figure" id="id1">
+<img alt="../../_images/pca4.png" src="../../_images/pca4.png" />
+<p class="caption"><span class="caption-text">Ref: <a class="reference external" href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues">https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues</a></span></p>
+</div>
+</div>
+<div class="section" id="motivation">
+<h2><a class="toc-backref" href="#id6">Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Principal component analysis is extremely useful for deriving an overall,
+linearly independent, trend for a given dataset with many variables.
+It allows you to extract important relationships out of variables that
+may or may not be related. Another application of principal component
+analysis is for display - instead of representing a number of different
+variables, you can create principal components for just a few and plot
+them.</p>
+</div>
+<div class="section" id="dimensionality-reduction">
+<h2><a class="toc-backref" href="#id7">Dimensionality Reduction</a><a class="headerlink" href="#dimensionality-reduction" title="Permalink to this headline">¶</a></h2>
+<p>There are two types of dimensionality reduction: feature elimination
+and feature extraction.</p>
+<p><strong>Feature elimination</strong> simply involves pruning
+features from a dataset we deem unnecessary. A downside of feature
+elimination is that we lose any potential information gained from the
+dropped features.</p>
+<p><strong>Feature extraction</strong>, however, creates new variables
+by combining existing features. At the cost of some simplicity or
+interpretability, feature extraction allows you to maintain all
+important information held within features.</p>
+<p>Principal component analysis deals with feature extraction (rather than
+elimination) by creating a set of independent variables called principal
+components.</p>
+</div>
+<div class="section" id="pca-example">
+<h2><a class="toc-backref" href="#id8">PCA Example</a><a class="headerlink" href="#pca-example" title="Permalink to this headline">¶</a></h2>
+<p>Principal component analysis is performed by considering all of our
+variables and calculating a set of direction and magnitude pairs (vectors)
+to represent them. For example, let’s consider a small example dataset
+plotted below:</p>
+<div class="figure" id="id2">
+<img alt="../../_images/pca1.png" src="../../_images/pca1.png" />
+<p class="caption"><span class="caption-text">Ref: <a class="reference external" href="https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c">https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c</a></span></p>
+</div>
+<p>Here we can see two direction pairs, represented by the red and green
+lines. In this scenario, the red line has a greater magnitude as the
+points are more clustered across a greater distance than with the
+green direction. Principal component analysis will use the vector
+with the greater magnitude to transform the data into a smaller
+feature space, reducing dimensionality. For example, the above graph
+would be transformed into the following:</p>
+<div class="figure" id="id3">
+<img alt="../../_images/pca2.png" src="../../_images/pca2.png" />
+<p class="caption"><span class="caption-text">Ref: <a class="reference external" href="https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c">https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c</a></span></p>
+</div>
+<p>By transforming our data in this way, we’ve ignored a feature that
+is less important to our model - that is, higher variation along the
+green dimension will have a greater impact on our results than
+variation along the red.</p>
+<p>The mathematics behind principal component analysis are left out of
+this discussion for brevity, but if you’re interested in learning
+about them we highly recommend visiting the references listed at the
+bottom of this page.</p>
+</div>
+<div class="section" id="number-of-components">
+<h2><a class="toc-backref" href="#id9">Number of Components</a><a class="headerlink" href="#number-of-components" title="Permalink to this headline">¶</a></h2>
+<p>In the example above, we took a two-dimensional feature space and
+reduced it to a single dimension. In most scenarios though, you will
+be working with far more than two variables. Principal component
+analysis can be used to just remove a single feature, but it is often
+useful to reduce several. There are several strategies you can employ
+to decide how many feature reductions to perform:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Arbitrarily</strong></p>
+<p>This simply involves picking a number of features to keep for your
+given model. This method is highly dependent on your dataset and
+what you want to convey. For instance, it may be beneficial to
+represent your higher-order data on a 2D space for visualization.
+In this case, you would perform feature reduction until you have
+two features.</p>
+</li>
+<li><p class="first"><strong>Percent of cumulative variability</strong></p>
+<p>Part of the principal component analysis calculation involves
+finding a proportion of variance which approaches 1 through each
+round of PCA performed. This method of choosing the number of
+feature reduction steps involves selecting a target variance
+percentage. For instance, let’s look at a graph of cumulative
+variance at each level of PCA for a theoretical dataset:</p>
+<div class="figure" id="id4">
+<img alt="../../_images/pca3.png" src="../../_images/pca3.png" />
+<p class="caption"><span class="caption-text">Ref: <a class="reference external" href="https://www.centerspace.net/clustering-analysis-part-i-principal-component-analysis-pca">https://www.centerspace.net/clustering-analysis-part-i-principal-component-analysis-pca</a></span></p>
+</div>
+<p>The above image is called a scree plot, and is a representation
+of the cumulative and current proportion of variance for each
+principal component. If we wanted at least 80% cumulative variance,
+we would use at least 6 principal components based on this scree plot.
+Aiming for 100% variance is not generally recommended, as reaching
+this means your dataset has redundant data.</p>
+</li>
+<li><p class="first"><strong>Percent of individual variability</strong></p>
+<p>Instead of using principal components until we reach a cumulative
+percent of variability, we can instead use principal components
+until a new component wouldn’t add much variability. In the plot
+above, we might choose to use 3 principal components since the
+next components don’t have as strong a drop in variability.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="conclusion">
+<h2><a class="toc-backref" href="#id10">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Principal component analysis is a technique to summarize data, and is
+highly flexible depending on your use case. It can be valuable in both
+displaying and analyzing a large number of possibly dependent variables.
+Techniques of performing principal component analysis range from
+arbitrarily selecting principal components, to automatically finding
+them until a variance is reached.</p>
+</div>
+<div class="section" id="code-example">
+<h2><a class="toc-backref" href="#id11">Code Example</a><a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
+<p>Our example code, <a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/unsupervised/PCA/pca.py">pca.py</a>, shows you how to perform principal component
+analysis on a dataset of random x, y pairs. The script goes through a
+short process of generating this data, then calls sklearn’s PCA module:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find two principal components from our given dataset</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Each step in the process includes helpful visualizations using
+matplotlib. For instance, the principal components fitted above are
+plotted as two vectors on the dataset:</p>
+<div class="figure">
+<img alt="../../_images/pca5.png" src="../../_images/pca5.png" />
+</div>
+<p>The script also shows how to perform dimensionality reduction, discussed
+above. In sklearn, this is done by simply calling the transform method
+once a PCA is fitted, or doing both steps at the same time with
+fit_transform:</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reduce the dimensionality of our data using a PCA transformation</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">transformed_points</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The end result of our transformation is just a series of X values,
+though the code example performs an inverse transformation for plotting
+the result in the following graph:</p>
+<div class="figure">
+<img alt="../../_images/pca6.png" src="../../_images/pca6.png" />
+</div>
+</div>
+<div class="section" id="references">
+<h2><a class="toc-backref" href="#id12">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf">http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf</a></li>
+<li><a class="reference external" href="https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c">https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c</a></li>
+<li><a class="reference external" href="https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60">https://towardsdatascience.com/pca-using-python-scikit-learn-e653f8989e60</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Principal_component_analysis">https://en.wikipedia.org/wiki/Principal_component_analysis</a></li>
+<li><a class="reference external" href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues">https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues</a></li>
+<li><a class="reference external" href="https://www.centerspace.net/clustering-analysis-part-i-principal-component-analysis-pca">https://www.centerspace.net/clustering-analysis-part-i-principal-component-analysis-pca</a></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../deep_learning/cnn.html" class="btn btn-neutral float-right" title="Convolutional Neural Networks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="clustering.html" class="btn btn-neutral" title="Clustering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Amirsina Torfi
+      Last updated on True.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'en',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

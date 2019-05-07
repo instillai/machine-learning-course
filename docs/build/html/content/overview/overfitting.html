@@ -92,7 +92,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#underfitting">Underfitting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#code">Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="regularization.html">Regularization</a></li>
@@ -108,6 +111,14 @@
 <p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/pca.html">Principal Component Analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Deep Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/cnn.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html">Autoencoders and their implementations in TensorFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#create-an-undercomplete-autoencoder">Create an Undercomplete Autoencoder</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Document Credentials</span></p>
 <ul>
@@ -189,7 +200,10 @@
 <li><a class="reference internal" href="#underfitting" id="id3">Underfitting</a></li>
 <li><a class="reference internal" href="#motivation" id="id4">Motivation</a></li>
 <li><a class="reference internal" href="#code" id="id5">Code</a></li>
-<li><a class="reference internal" href="#conclusion" id="id6">Conclusion</a></li>
+<li><a class="reference internal" href="#conclusion" id="id6">Conclusion</a><ul>
+<li><a class="reference internal" href="#references" id="id7">References</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="overview">
@@ -210,7 +224,7 @@ may be picking up on tiny details that are misleading, like stray marks as an in
 In practice, this error isn’t always at edge cases and can pop up anywhere.
 The noise in training can cause error as seen in the graph below.</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../../_images/Overfit_small.png"><img alt="Overfit" src="../../_images/Overfit_small.png" style="width: 26.1px; height: 19.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/Overfit_small.png"><img alt="Overfit" src="../../_images/Overfit_small.png" style="width: 261.0px; height: 195.0px;" /></a>
 </div>
 <p>(Created using <a class="reference external" href="https://www.desmos.com/calculator/dffnj2jbow">https://www.desmos.com/calculator/dffnj2jbow</a>)</p>
 <p>In this example, the data is overfit by a polynomial degree.
@@ -229,7 +243,7 @@ nonlinear, and is instead just a simple line.
 In machine learning, this could be a result of underfitting, the model has not
 had enough exposure to training data to adapt to it, and is currently in a simple state.</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../../_images/Underfit.PNG"><img alt="Underfit" src="../../_images/Underfit.PNG" style="width: 212.5px; height: 109.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/Underfit.PNG"><img alt="Underfit" src="../../_images/Underfit.PNG" style="width: 425.0px; height: 218.0px;" /></a>
 </div>
 <p>(Created using Wolfram Alpha)</p>
 </div>
@@ -261,13 +275,21 @@ for the linear estimate, but poorly otherwise.</p>
 how to avoid overfitting in machine learning models.
 Ideally, a good fit looks something like this:</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../../_images/GoodFit.PNG"><img alt="Underfit" src="../../_images/GoodFit.PNG" style="width: 221.0px; height: 106.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/GoodFit.PNG"><img alt="Underfit" src="../../_images/GoodFit.PNG" style="width: 442.0px; height: 213.0px;" /></a>
 </div>
 <p>(Created using Wolfram Alpha)</p>
 <p>When using machine learning in any capacity, issues such as overfitting
 frequently come up, and having a grasp of the concept is very important.
 The modules in this section are among the most important in the whole repository,
 since regardless of the implementation, machine learning always includes these fundamentals.</p>
+<div class="section" id="references">
+<h3><a class="toc-backref" href="#id7">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://machinelearningmastery.com/overfitting-and-underfitting-with-machine-learning-algorithms/">https://machinelearningmastery.com/overfitting-and-underfitting-with-machine-learning-algorithms/</a></li>
+<li><a class="reference external" href="https://medium.com/greyatom/what-is-underfitting-and-overfitting-in-machine-learning-and-how-to-deal-with-it-6803a989c76">https://medium.com/greyatom/what-is-underfitting-and-overfitting-in-machine-learning-and-how-to-deal-with-it-6803a989c76</a></li>
+<li><a class="reference external" href="https://towardsdatascience.com/overfitting-vs-underfitting-a-conceptual-explanation-d94ee20ca7f9">https://towardsdatascience.com/overfitting-vs-underfitting-a-conceptual-explanation-d94ee20ca7f9</a></li>
+</ol>
+</div>
 </div>
 </div>
 

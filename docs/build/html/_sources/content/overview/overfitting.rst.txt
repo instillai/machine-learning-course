@@ -29,7 +29,7 @@ In practice, this error isn't always at edge cases and can pop up anywhere.
 The noise in training can cause error as seen in the graph below.
 
 .. figure:: _img/Overfit_small.png
-   :scale: 10 %
+   :scale: 100 %
    :alt: Overfit
 (Created using https://www.desmos.com/calculator/dffnj2jbow)
 
@@ -54,7 +54,7 @@ In machine learning, this could be a result of underfitting, the model has not
 had enough exposure to training data to adapt to it, and is currently in a simple state.
 
 .. figure:: _img/Underfit.PNG
-   :scale: 50 %
+   :scale: 100 %
    :alt: Underfit
 (Created using Wolfram Alpha)
 
@@ -97,7 +97,7 @@ how to avoid overfitting in machine learning models.
 Ideally, a good fit looks something like this:
 
 .. figure:: _img/GoodFit.PNG
-   :scale: 50 %
+   :scale: 100 %
    :alt: Underfit
 (Created using Wolfram Alpha)
 
@@ -106,3 +106,13 @@ When using machine learning in any capacity, issues such as overfitting
 frequently come up, and having a grasp of the concept is very important.
 The modules in this section are among the most important in the whole repository,
 since regardless of the implementation, machine learning always includes these fundamentals.
+
+
+************
+References
+************
+
+1. https://machinelearningmastery.com/overfitting-and-underfitting-with-machine-learning-algorithms/
+2. https://medium.com/greyatom/what-is-underfitting-and-overfitting-in-machine-learning-and-how-to-deal-with-it-6803a989c76
+3. https://towardsdatascience.com/overfitting-vs-underfitting-a-conceptual-explanation-d94ee20ca7f9
+

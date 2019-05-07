@@ -104,13 +104,24 @@
 <li class="toctree-l2"><a class="reference internal" href="#kernel-svm">Kernel SVM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#code-example">Code Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-example">Code Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/pca.html">Principal Component Analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Deep Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/cnn.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html">Autoencoders and their implementations in TensorFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#create-an-undercomplete-autoencoder">Create an Undercomplete Autoencoder</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Document Credentials</span></p>
 <ul>
@@ -195,7 +206,10 @@
 <li><a class="reference internal" href="#kernel-svm" id="id11">Kernel SVM</a></li>
 <li><a class="reference internal" href="#conclusion" id="id12">Conclusion</a></li>
 <li><a class="reference internal" href="#motivation" id="id13">Motivation</a></li>
-<li><a class="reference internal" href="#code-example" id="id14">Code Example</a></li>
+<li><a class="reference internal" href="#code-example" id="id14">Code Example</a><ul>
+<li><a class="reference internal" href="#references" id="id15">References</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="introduction">
@@ -219,14 +233,14 @@ we would have to calculate each data points nearest neighbors.</p>
 amount of lines that can divide two classes. As you can see in the graph below, every line splits the squares and
 the circles, so which one do we choose?</p>
 <div class="figure" id="id1">
-<a class="reference internal image-reference" href="../../_images/Possible_hyperplane.png"><img alt="Possible_Hyperplane" src="../../_images/Possible_hyperplane.png" style="width: 236.0px; height: 236.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/Possible_hyperplane.png"><img alt="Possible_Hyperplane" src="../../_images/Possible_hyperplane.png" style="width: 472.0px; height: 472.0px;" /></a>
 <p class="caption"><span class="caption-text">Ref: <a class="reference external" href="https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47">https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47</a></span></p>
 </div>
 <p>So how does SVM find the ideal line to separate the two classes? It doesn’t just pick a random one. The algorithm chooses
 the line/hyperplane with the <strong>maximum margin</strong>. Maximizing the margin will give us the optimal line to classify the data.
 This is shown in the figure below.</p>
 <div class="figure" id="id2">
-<a class="reference internal image-reference" href="../../_images/optimal_hyperplane.png"><img alt="Optimal_Hyperplane" src="../../_images/optimal_hyperplane.png" style="width: 236.0px; height: 235.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/optimal_hyperplane.png"><img alt="Optimal_Hyperplane" src="../../_images/optimal_hyperplane.png" style="width: 472.0px; height: 470.0px;" /></a>
 <p class="caption"><span class="caption-text">Ref: <a class="reference external" href="https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47">https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47</a></span></p>
 </div>
 </div>
@@ -243,7 +257,7 @@ and maximizing the margin. We won’t go into that; we just want to get the basi
 <p>Sometimes data classes will have <strong>outliers</strong>. These are data points that are clearly separated from the rest of their class.
 Support Vector Machines will ignore these outliers. This is shown in the figure below.</p>
 <div class="figure" id="id3">
-<a class="reference internal image-reference" href="../../_images/SVM_Outliers.png"><img alt="Outliers" src="../../_images/SVM_Outliers.png" style="width: 231.0px; height: 155.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/SVM_Outliers.png"><img alt="Outliers" src="../../_images/SVM_Outliers.png" style="width: 462.0px; height: 311.0px;" /></a>
 <p class="caption"><span class="caption-text">Ref:  <a class="reference external" href="https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/">https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/</a></span></p>
 </div>
 <p>The star that is with the red circles is the outlier. So, the SVM ignores the outlier and creates the best line to separate
@@ -254,7 +268,7 @@ the two classes.</p>
 <p>There will be data classes that can’t be separated with a simple line or hyperplane. This is called <strong>non-linearly
 separable data</strong>. Here is an example of that kind of data.</p>
 <div class="figure" id="id4">
-<a class="reference internal image-reference" href="../../_images/SVM_Kernal.png"><img alt="Kernel" src="../../_images/SVM_Kernal.png" style="width: 236.0px; height: 204.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/SVM_Kernal.png"><img alt="Kernel" src="../../_images/SVM_Kernal.png" style="width: 472.0px; height: 408.0px;" /></a>
 <p class="caption"><span class="caption-text">Ref:  <a class="reference external" href="https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/">https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/</a></span></p>
 </div>
 <p>There is no clear way to separate the stars from the circles. SVMs will be able to classify non-linearly separable
@@ -263,7 +277,7 @@ to a higher dimension to turn non-linearly separable data to linear separable da
 classified with a circle that separates the data.</p>
 <p>Here is an example of the kernel trick.</p>
 <div class="figure" id="id5">
-<a class="reference internal image-reference" href="../../_images/SVM_Kernel2.png"><img alt="Kernel X Y graph" src="../../_images/SVM_Kernel2.png" style="width: 236.0px; height: 204.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/SVM_Kernel2.png"><img alt="Kernel X Y graph" src="../../_images/SVM_Kernel2.png" style="width: 472.0px; height: 408.0px;" /></a>
 <p class="caption"><span class="caption-text">Ref:  <a class="reference external" href="https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/">https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/</a></span></p>
 </div>
 <p>There are three types of kernels:</p>
@@ -305,7 +319,7 @@ More information about Scikit-Learn can be found <a class="reference external" h
 The program will take the data and plot them on a graph, then use the SVM to create a hyperplane to separate the data.
 It also circles the support vectors that determine the hyperplane. The output should look like this:</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../../_images/linear_svm_output.png"><img alt="Linear SVM output" src="../../_images/linear_svm_output.png" style="width: 186.0px; height: 126.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/linear_svm_output.png"><img alt="Linear SVM output" src="../../_images/linear_svm_output.png" style="width: 372.0px; height: 252.0px;" /></a>
 </div>
 <p>The green points are classified as benign.
 The red points are classified as malignant.</p>
@@ -321,6 +335,16 @@ the data. You can change it here in the code:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span> <span class="o">=</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="section" id="references">
+<h3><a class="toc-backref" href="#id15">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/">https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/</a></li>
+<li><a class="reference external" href="https://stackabuse.com/implementing-svm-and-kernel-svm-with-pythons-scikit-learn/">https://stackabuse.com/implementing-svm-and-kernel-svm-with-pythons-scikit-learn/</a></li>
+<li><a class="reference external" href="https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47">https://towardsdatascience.com/support-vector-machine-introduction-to-machine-learning-algorithms-934a444fca47</a></li>
+<li><a class="reference external" href="https://towardsdatascience.com/https-medium-com-pupalerushikesh-svm-f4b42800e989">https://towardsdatascience.com/https-medium-com-pupalerushikesh-svm-f4b42800e989</a></li>
+<li><a class="reference external" href="https://towardsdatascience.com/support-vector-machines-svm-c9ef22815589">https://towardsdatascience.com/support-vector-machines-svm-c9ef22815589</a></li>
+</ol>
 </div>
 </div>
 </div>

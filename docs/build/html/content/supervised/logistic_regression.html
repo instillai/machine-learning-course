@@ -98,7 +98,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#multinomial-logistic-regression">Multinomial logistic regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#code">Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="bayes.html">Naive Bayes Classification</a></li>
@@ -109,6 +112,14 @@
 <p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/pca.html">Principal Component Analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Deep Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/cnn.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html">Autoencoders and their implementations in TensorFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning/autoencoder.html#create-an-undercomplete-autoencoder">Create an Undercomplete Autoencoder</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Document Credentials</span></p>
 <ul>
@@ -191,7 +202,10 @@
 <li><a class="reference internal" href="#multinomial-logistic-regression" id="id4">Multinomial logistic regression</a></li>
 <li><a class="reference internal" href="#code" id="id5">Code</a></li>
 <li><a class="reference internal" href="#motivation" id="id6">Motivation</a></li>
-<li><a class="reference internal" href="#conclusion" id="id7">Conclusion</a></li>
+<li><a class="reference internal" href="#conclusion" id="id7">Conclusion</a><ul>
+<li><a class="reference internal" href="#references" id="id8">References</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="introduction">
@@ -211,7 +225,7 @@ output from logistic regression is not just a one or zero.
 Here is the standard logistic function, note that the output is always between
 0 and 1, but never reaches either of those values.</p>
 <div class="figure">
-<a class="reference internal image-reference" href="../../_images/WikiLogistic.svg.png"><img alt="Logistic" src="../../_images/WikiLogistic.svg.png" style="width: 64.0px; height: 42.6px;" /></a>
+<a class="reference internal image-reference" href="../../_images/WikiLogistic.svg.png"><img alt="Logistic" src="../../_images/WikiLogistic.svg.png" style="width: 320.0px; height: 213.0px;" /></a>
 </div>
 <p>Ref: <a class="reference external" href="https://en.wikipedia.org/wiki/Logistic_regression">https://en.wikipedia.org/wiki/Logistic_regression</a></p>
 </div>
@@ -328,6 +342,21 @@ The basic idea is to supply the training data as pairs of input and
 classification, and the model will be built automatically.
 As always, keep in mind the basics mentioned in the overview section of this
 repository, as there is no fool-proof method for machine learning.</p>
+<div class="section" id="references">
+<h3><a class="toc-backref" href="#id8">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://towardsdatascience.com/logistic-regression-b0af09cdb8ad">https://towardsdatascience.com/logistic-regression-b0af09cdb8ad</a></li>
+<li><a class="reference external" href="https://medium.com/datadriveninvestor/machine-learning-model-logistic-regression-5fa4ffde5773">https://medium.com/datadriveninvestor/machine-learning-model-logistic-regression-5fa4ffde5773</a></li>
+<li><a class="reference external" href="https://github.com/bfortuner/ml-cheatsheet/blob/master/docs/logistic_regression.rst">https://github.com/bfortuner/ml-cheatsheet/blob/master/docs/logistic_regression.rst</a></li>
+<li><a class="reference external" href="https://machinelearningmastery.com/logistic-regression-tutorial-for-machine-learning/">https://machinelearningmastery.com/logistic-regression-tutorial-for-machine-learning/</a></li>
+<li><a class="reference external" href="https://towardsdatascience.com/logistic-regression-a-simplified-approach-using-python-c4bc81a87c31">https://towardsdatascience.com/logistic-regression-a-simplified-approach-using-python-c4bc81a87c31</a></li>
+<li><a class="reference external" href="https://hackernoon.com/introduction-to-machine-learning-algorithms-logistic-regression-cbdd82d81a36">https://hackernoon.com/introduction-to-machine-learning-algorithms-logistic-regression-cbdd82d81a36</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Logistic_regression">https://en.wikipedia.org/wiki/Logistic_regression</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Multinomial_logistic_regression">https://en.wikipedia.org/wiki/Multinomial_logistic_regression</a></li>
+<li><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html</a></li>
+<li><a class="reference external" href="https://towardsdatascience.com/5-reasons-logistic-regression-should-be-the-first-thing-you-learn-when-become-a-data-scientist-fcaae46605c4">https://towardsdatascience.com/5-reasons-logistic-regression-should-be-the-first-thing-you-learn-when-become-a-data-scientist-fcaae46605c4</a></li>
+</ol>
+</div>
 </div>
 </div>
 

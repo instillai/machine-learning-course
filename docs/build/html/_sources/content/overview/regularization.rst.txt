@@ -184,3 +184,16 @@ problem in modeling so it's good to know how to mediate it. We have also
 explored some methods of regularization that we can use in different
 situations. With this, we have learned enough about the core concepts of
 machine learning to move onto our next major topic, supervised learning.
+
+
+************
+References
+************
+
+1. https://towardsdatascience.com/regularization-in-machine-learning-76441ddcf99a
+2. https://www.analyticsvidhya.com/blog/2018/04/fundamentals-deep-learning-regularization-techniques 
+3. https://www.quora.com/What-is-regularization-in-machine-learning
+#. https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html 
+#. https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html
+
+

@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Convolutional Neural Networks &mdash; Machine-Learning-Course 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Autoencoders and their implementations in TensorFlow" href="autoencoder.html" />
+    <link rel="prev" title="Principal Component Analysis" href="../unsupervised/pca.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Foreword</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/crossvalidation.html">Cross-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/linear-regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/overfitting.html">Overfitting and Underfitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/regularization.html">Regularization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Supervised Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/logistic_regression.html">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/bayes.html">Naive Bayes Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/decisiontrees.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/knn.html">k-Nearest Neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/linear_SVM.html">Linear Support Vector Machines</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/pca.html">Principal Component Analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Deep Learning</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Convolutional Neural Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#convolutional-layers">Convolutional Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pooling-layers">Pooling Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fully-connected-layers">Fully Connected Layers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#training">Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autoencoder.html">Autoencoders and their implementations in TensorFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoencoder.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoencoder.html#create-an-undercomplete-autoencoder">Create an Undercomplete Autoencoder</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Document Credentials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/LICENSE.html">LICENSE</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Machine-Learning-Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Convolutional Neural Networks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com///blob/content/deep_learning/cnn.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="convolutional-neural-networks">
+<h1>Convolutional Neural Networks<a class="headerlink" href="#convolutional-neural-networks" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id12">Overview</a></li>
+<li><a class="reference internal" href="#motivation" id="id13">Motivation</a></li>
+<li><a class="reference internal" href="#architecture" id="id14">Architecture</a><ul>
+<li><a class="reference internal" href="#convolutional-layers" id="id15">Convolutional Layers</a></li>
+<li><a class="reference internal" href="#pooling-layers" id="id16">Pooling Layers</a></li>
+<li><a class="reference internal" href="#fully-connected-layers" id="id17">Fully Connected Layers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#training" id="id18">Training</a></li>
+<li><a class="reference internal" href="#summary" id="id19">Summary</a></li>
+<li><a class="reference internal" href="#references" id="id20">References</a></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id12">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In the last module, we started our dive into deep learning by talking about
+multi-layer perceptrons. In this module, we will learn about <strong>convolutional
+neural networks</strong> also called <strong>CNNs</strong> or <strong>ConvNets</strong>. CNNs differ from other
+neural networks in that sequential layers are not necessarily fully connected.
+This means that a subset of the input neurons may only feed into a single
+neuron in the next layer. Another interesting feature of CNNs is their inputs.
+With other neural networks we might use vectors as inputs, but with CNNs we
+are typically working with images and other objects with many dimensions.
+<em>Figure 1</em> shows some sample images that are each 6 pixels by 6 pixels. The
+first image is colored and has three channels for red, green, and blue values.
+The second image is black-and-white and only has one channel for gray values</p>
+<div class="figure" id="id1">
+<img alt="../../_images/Images.png" src="../../_images/Images.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 1. Two sample images and their color channels</strong></span></p>
+</div>
+</div>
+<div class="section" id="motivation">
+<h2><a class="toc-backref" href="#id13">Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>CNNs are widely used in computer vision where we are trying to analyze visual
+imagery. CNNs can also be used for other applications such as natural language
+processing. We will be focusing on the former case here because it is one of
+the most common applications of CNNs.</p>
+<p>Because we assume that we’re working with images, we can design our
+architecture so that it specifically does a good job at analyzing images.
+Images have heights, depths, and one or more channels for color. In an image,
+there might be lines and edges that make up shapes as well as more complex
+structures such as cars and faces. We will potentially need to identify a
+large set of relevant features in order to properly classify an image. But
+just identifying individual features in an image usually isn’t enough. Say we
+have an image that may or may not be a face. If we saw three noses, an eye,
+and an ear, we probably wouldn’t call it a face even though those are common
+features of a face. So then we must also care about where features are located
+in the image and their proximity to other features. This is a lot of
+information to keep track of! Fortunately, the architecture of CNNs will cover
+a lot of these requirements.</p>
+</div>
+<div class="section" id="architecture">
+<h2><a class="toc-backref" href="#id14">Architecture</a><a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
+<p>The architecture of a CNN can be broken down into an input layer, a set of
+hidden layers, and an output layer. These are shown in <em>Figure 2</em>.</p>
+<div class="figure" id="id2">
+<img alt="../../_images/Layers.png" src="../../_images/Layers.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 2. The layers of a CNN</strong></span></p>
+</div>
+<p>The hidden layers are where the magic happens. The hidden layers will break
+down our input image in order to identify features present in the image. The
+initial layers focus on low-level features such as edges while the later
+layers progressively get more abstract. At the end of all the layers, we have
+a fully connected layer with neurons for each of our classification values.
+What we end up with is a probability for each of the classification values. We
+choose the classification with the highest probability as our guess for what
+the image show.</p>
+<p>Below, we will talk about some types of layers we might use in our hidden
+layers. Remember that sequential layers are not necessarily fully connected
+with the exception of the final output layer.</p>
+<div class="section" id="convolutional-layers">
+<h3><a class="toc-backref" href="#id15">Convolutional Layers</a><a class="headerlink" href="#convolutional-layers" title="Permalink to this headline">¶</a></h3>
+<p>The first type of layer we will discuss is called a <strong>convolutional layer</strong>.
+The convolutional description comes from the concept of a convolution in
+mathematics. Roughly, a convolution is some operation that acts on two input
+functions and produces an output function that combines the information
+present in the inputs. The first input will be our image and the second input
+will be some sort of filter such as a blur or sharpen. When we combine our
+image with the filter, we extract some information about the image. This
+process is shown in <em>Figure 3</em>. This is precisely how the CNN will go about
+extracting features.</p>
+<div class="figure" id="id3">
+<img alt="../../_images/Filtering.png" src="../../_images/Filtering.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 3. An image before and after filtering</strong></span></p>
+</div>
+<p>In the human eye, a single neuron is only responsible for a small region of
+our field of view. It is through many neurons with overlapping regions that we
+are able to see the world. CNNs are similar. The neurons in a convolutional
+layer are only responsible for analyzing a small region of the input image but
+overlap so that we ultimately analyze the whole image. Let’s examine that
+filter concept we mentioned above.</p>
+<p>The <strong>filter</strong> or <strong>kernel</strong> is one of the functions used in the convolution.
+The filter will likely have a smaller height and width than the input image
+and can be thought of as a window sliding over the image. <em>Figure 4</em> shows a
+sample filter and the region of the image it will interact with in the first
+step of convolution.</p>
+<div class="figure" id="id4">
+<img alt="../../_images/Filter1.png" src="../../_images/Filter1.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 4. A sample filter and sample window of an image</strong></span></p>
+</div>
+<p>As the filter moves across the image, we are calculating values for the
+convolution output called a <strong>feature map</strong>. At each step, we multiply each
+entry in the image sample and filter elementwise and sum up all the products.
+This becomes an entry in the feature map. This process is shown in <em>Figure 5</em>.</p>
+<div class="figure" id="id5">
+<img alt="../../_images/Filter2.png" src="../../_images/Filter2.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 5. Calculating an entry in the feature map</strong></span></p>
+</div>
+<p>After the window traverses the entire image, we have the complete feature map.
+This is shown in <em>Figure 6</em>.</p>
+<div class="figure" id="id6">
+<img alt="../../_images/Filter3.png" src="../../_images/Filter3.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 6. The complete feature map</strong></span></p>
+</div>
+<p>In the example above, we moved the filter one unit horizontally or one unit
+vertically from some previous position. This value is called the <strong>stride</strong>. We
+could have used other values for the stride but using one everywhere tends to
+produce the best results.</p>
+<p>You may have noticed that the feature map we ended up with had a smaller
+height and width than the original image sample. This is a result of the way
+we moved the filter around the sample. If we wanted the feature map to have
+the same height and width, we could <strong>pad</strong> the sample. This involves adding
+zero entries around the sample so that moving the filter keeps the dimensions
+of the original sample in the feature map. <em>Figure 7</em> illustrates this process.</p>
+<div class="figure" id="id7">
+<img alt="../../_images/Padding.png" src="../../_images/Padding.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 7. Padding before applying a filter</strong></span></p>
+</div>
+<p>A feature map represents one type of feature we’re analyzing the image for.
+Often, we want to analyze the image for a bunch of features so we end up with
+a bunch of feature maps! The output of the convolution layer is a set of
+feature maps. <em>Figure 8</em> shows the process of going from an image to the
+resulting feature maps.</p>
+<div class="figure" id="id8">
+<img alt="../../_images/Convo_Output.png" src="../../_images/Convo_Output.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 8. The output of a convolutional layer</strong></span></p>
+</div>
+<p>After a convolutional layer, it is common to have a <strong>ReLU</strong> (rectified linear
+unit) layer. The purpose of this layer is to introduce non-linearity into the
+system. Basically, real-world problems are rarely nice and linear so we want
+our CNN to account for this when it trains. A good explanation of this layer
+requires math that we don’t expect you to know. If you are curious about the
+topic, you can find an explanation <a class="reference external" href="https://www.kaggle.com/dansbecker/rectified-linear-units-relu-in-deep-learning">here</a>.</p>
+</div>
+<div class="section" id="pooling-layers">
+<h3><a class="toc-backref" href="#id16">Pooling Layers</a><a class="headerlink" href="#pooling-layers" title="Permalink to this headline">¶</a></h3>
+<p>The next type of layer we will cover is called a <strong>pooling layer</strong>. The
+purpose of pooling layers are to reduce the spatial size of the problem. This
+in turn reduces the number of parameters needed for processing and the total
+amount of computation in the CNN. There are several options for pooling but we
+will cover the most common approach, <strong>max pooling</strong>.</p>
+<p>In max pooling, we slide a window over the input and take the max value in the
+window at each step. This process is shown in <em>Figure 9</em>.</p>
+<div class="figure" id="id9">
+<img alt="../../_images/Pooled.png" src="../../_images/Pooled.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 9. Max pooling on a feature map</strong></span></p>
+</div>
+<p>Max pooling is good because it maintains important features about the input,
+reduces noise by ignoring small values, and reduces the spatial size of the
+problem. We can use these after convolutional layers to keep the computation
+of problems manageable.</p>
+</div>
+<div class="section" id="fully-connected-layers">
+<h3><a class="toc-backref" href="#id17">Fully Connected Layers</a><a class="headerlink" href="#fully-connected-layers" title="Permalink to this headline">¶</a></h3>
+<p>The last type of layer we will discuss is called a <strong>fully connected layer</strong>.
+Fully connected layers are used to make the final classification in the CNN.
+They work exactly like they do in other neural networks. Before moving to the
+first fully connected layer, we must flatten our input values into a
+one-dimensional vector that the layer can interpret. <em>Figure 10</em> shows a
+simple example of converting a multi-dimensional input into a one-dimensional
+vector.</p>
+<div class="figure" id="id10">
+<img alt="../../_images/Flatten.png" src="../../_images/Flatten.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 10. Flattening input values</strong></span></p>
+</div>
+<p>After doing this, we may have several fully connected layers before the final
+output layer. The output layer uses some function, such as <a class="reference external" href="https://developers.google.com/machine-learning/crash-course/multi-class-neural-networks/softmax">softmax</a>,
+to convert the neuron values into a probability distribution over our classes.
+This means that the image has a certain probability for being classified as
+one of our classes and the sum of all those probabilities equals one. This is
+clearly visible in <em>Figure 11</em>.</p>
+<div class="figure" id="id11">
+<img alt="../../_images/Layers_Final.png" src="../../_images/Layers_Final.png" />
+<p class="caption"><span class="caption-text"><strong>Figure 11. The final probabilistic outputs</strong></span></p>
+</div>
+</div>
+</div>
+<div class="section" id="training">
+<h2><a class="toc-backref" href="#id18">Training</a><a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have the architecture in place for CNNs we can move on to
+training. Training a CNN is pretty much exactly the same as training a normal
+neural network. There is some added complexity due to the convolutional layers
+but the strategies for training remain the same. Techniques, such as gradient
+descent or backpropagation, can be used to train filter values and other
+parameters in the network. As with all the other training we have covered,
+having a large training set will improve the performance of the CNN. The
+problem with training CNNs and other deep learning models is that they are
+much more complex than the models we covered in earlier modules. This results
+in training being much more computationally expensive to the point where we
+would need specialized hardware like GPUs to run our code. However, we get
+what we pay for because deep learning models are much more powerful than the
+models covered in earlier modules.</p>
+</div>
+<div class="section" id="summary">
+<h2><a class="toc-backref" href="#id19">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this module, we learned about convolutional neural networks. CNNs differ
+from other neural networks because they usually take images as input and can
+have hidden layers that are not fully connected. CNNs are powerful tools
+widely used in image classification applications. By using a variety of hidden
+layers, we can extract features from an image and use them to
+probabilistically guess a classification. CNNs are also complex models and
+understanding how they work can be an intimidating task. We hope that the
+information presented gives you a better understanding of how CNNs work so
+that you can continue to learn about them and deep learning.</p>
+</div>
+<div class="section" id="references">
+<h2><a class="toc-backref" href="#id20">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://towardsdatascience.com/convolutional-neural-networks-for-beginners-practical-guide-with-python-and-keras-dc688ea90dca">https://towardsdatascience.com/convolutional-neural-networks-for-beginners-practical-guide-with-python-and-keras-dc688ea90dca</a></li>
+<li><a class="reference external" href="https://medium.com/technologymadeeasy/the-best-explanation-of-convolutional-neural-networks-on-the-internet-fbb8b1ad5df8">https://medium.com/technologymadeeasy/the-best-explanation-of-convolutional-neural-networks-on-the-internet-fbb8b1ad5df8</a></li>
+<li><a class="reference external" href="https://medium.freecodecamp.org/an-intuitive-guide-to-convolutional-neural-networks-260c2de0a050">https://medium.freecodecamp.org/an-intuitive-guide-to-convolutional-neural-networks-260c2de0a050</a></li>
+<li><a class="reference external" href="https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53">https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53</a></li>
+<li><a class="reference external" href="https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/">https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/</a></li>
+<li><a class="reference external" href="https://www.kaggle.com/dansbecker/rectified-linear-units-relu-in-deep-learning">https://www.kaggle.com/dansbecker/rectified-linear-units-relu-in-deep-learning</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Convolutional_neural_network#ReLU_layer">https://en.wikipedia.org/wiki/Convolutional_neural_network#ReLU_layer</a></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="autoencoder.html" class="btn btn-neutral float-right" title="Autoencoders and their implementations in TensorFlow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../unsupervised/pca.html" class="btn btn-neutral" title="Principal Component Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Amirsina Torfi
+      Last updated on True.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'en',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
