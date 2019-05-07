@@ -212,10 +212,19 @@ We are looking forward to your kind feedback. Please help us to improve this ope
 For contribution, please create a pull request and we will investigate it promptly. Once again, we appreciate
 your kind feedback and support.
 
-.. ========================
-.. Developers
-.. ========================
-..
-.. Team:
-..
-.. Supervisor: Amirsina Torfi
+========================
+Developers
+========================
+
+
+**Creator**: Machine Learning Mindset [`GitHub
+<https://machinelearningmindset.com/blog/>`_, `Twitter
+<https://twitter.com/machinemindset>`_]
+
+**Supervisor**: Amirsina Torfi [`GitHub
+<https://github.com/astorfi>`_, `Personal Website
+<https://astorfi.github.io/>`_, `Linkedin
+<https://www.linkedin.com/in/amirsinatorfi/>`_ ]
+**Developers**: Brendan Sherman\*, James E Hopkins\* [`Linkedin <https://www.linkedin.com/in/jhopk>`_], Zac Smith [`Linkedin <https://www.linkedin.com/in/zac-smith-a7bb60185/i>`_]
+
+\*: equally contributed
