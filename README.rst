@@ -218,9 +218,9 @@ your kind feedback and support.
 Developers
 ========================
 
-
-**Creator**: Machine Learning Mindset [`GitHub
-<https://machinelearningmindset.com/blog/>`_, `Twitter
+**Creator**: Machine Learning Mindset [`Blog
+<https://machinelearningmindset.com/blog/>`_, `GitHub
+<https://github.com/machinelearningmindset>`_, `Twitter
 <https://twitter.com/machinemindset>`_]
 
 **Supervisor**: Amirsina Torfi [`GitHub
