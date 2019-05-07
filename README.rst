@@ -96,7 +96,7 @@ Machine Learning Basics
 Supervised learning
 ------------------------------------------------------------
 
-.. figure:: _img/supervised.png
+.. figure:: _img/supervised.gif
 
 .. _dtdoc: docs/source/content/supervised/decisiontrees.rst
 .. _dtcode: code/supervised/DecisionTree/decisiontrees.py
