@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # A value we picked to always display the same results
-# Feel free to change this to view different random value outcomes
+# Feel free to change this to any value greater than 0 view different random value outcomes
 seed = 9000
 
 # We're using a seeded random state so we always get the same outcome
@@ -22,6 +22,14 @@ y = points[:, 1]
 # Now we have a sample dataset of 150 points to perform PCA on, so
 # go ahead and display this in a plot.
 plt.scatter(x, y, alpha=0.5)
+plt.title("Sample Dataset")
+
+print("Plotting our created dataset...\n")
+print("Points:")
+for p in points[:10, :]:
+    print("({:7.4f}, {:7.4f})".format(p[0], p[1]))
+print("...\n")
+
 plt.show()
 
 # Find two principal components from our given dataset
@@ -31,6 +39,7 @@ pca.fit(points)
 # Once we are fitted, we have access to inner mean_, components_, and explained_variance_ variables
 # Use these to add some arrows to our plot
 plt.scatter(x, y, alpha=0.5)
+plt.title("Sample Dataset with Principal Component Lines")
 for var, component in zip(pca.explained_variance_, pca.components_):
     plt.annotate(
         "",
@@ -41,6 +50,8 @@ for var, component in zip(pca.explained_variance_, pca.components_):
             "linewidth": 2
         }
     )
+
+print("Plotting our calculated principal components...\n")
 
 plt.show()
 
@@ -58,4 +69,8 @@ t_y = inverse[:, 0]
 # Plot the original and transformed data sets
 plt.scatter(x, y, alpha=0.3)
 plt.scatter(t_x, t_y, alpha=0.7)
+plt.title("Sample Dataset (Blue) and Transformed Dataset (Orange)")
+
+print("Plotting our dataset with a dimensionality reduction...")
+
 plt.show()
