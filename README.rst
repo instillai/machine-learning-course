@@ -62,6 +62,7 @@ Machine Learning
 ------------------------------------------------------------
 Machine Learning Basics
 ------------------------------------------------------------
+
 .. figure:: _img/deeplearning.png
 .. _lrtutorial: docs/source/content/overview/linear-regression.rst
 .. _lrcode: code/overview/linear_regression
@@ -70,10 +71,10 @@ Machine Learning Basics
 .. _overcode: code/overview/overfitting
 
 .. _regtutorial: docs/source/content/overview/regularization.rst
-.. _regpython: code/overview/regularization
+.. _regcode: code/overview/regularization
 
 .. _crosstutorial: docs/source/content/overview/crossvalidation.rst
-.. _crosspython: code/overview/cross-validation
+.. _crosscode: code/overview/cross-validation
 
 
 
@@ -81,13 +82,13 @@ Machine Learning Basics
 +--------------------------------------------------------------------+-------------------------------+--------------------------------+
 | Title                                                              |    Code                       |    Document                    |
 +====================================================================+===============================+================================+
-| Linear Regression                                                  |   `Python <lrcode_>`_         | `Tutorial <lrtutorial_>`_      |
+| Linear Regression                                                  | `Python <lrcode_>`_           | `Tutorial <lrtutorial_>`_      |
 +--------------------------------------------------------------------+-------------------------------+--------------------------------+
-| overfitting                                                        |  `Python <overcode_>`_        | `Tutorial <overtutorial_>`_    |
+| Overfitting / Underfitting                                         | `Python <overcode_>`_         | `Tutorial <overtutorial_>`_    |
 +--------------------------------------------------------------------+-------------------------------+--------------------------------+
-| regularization                                                     | `Python <regpython_>`_        | `Tutorial <regtutorial_>`_     |
+| Regularization                                                     | `Python <regcode_>`_          | `Tutorial <regtutorial_>`_     |
 +--------------------------------------------------------------------+-------------------------------+--------------------------------+
-| cross-validation                                                   | `Python <crosspython_>`_      | `Tutorial <crosstutorial_>`_   |
+| Cross-Validation                                                   | `Python <crosscode_>`_        | `Tutorial <crosstutorial_>`_   |
 +--------------------------------------------------------------------+-------------------------------+--------------------------------+
 
 
@@ -109,7 +110,6 @@ Supervised learning
 .. _logisticrdoc: docs/source/content/supervised/logistic_regression.rst
 .. _logisticrcode: supervised/Logistic_Regression/logistic_ex1.py
 
-
 .. _linearsvmdoc: docs/source/content/supervised/linear_SVM.rst
 .. _linearsvmcode: code/supervised/Linear_SVM/linear_svm.py
 
@@ -118,9 +118,9 @@ Supervised learning
 +--------------------------------------------------------------------+-------------------------------+------------------------------+
 | Title                                                              |    Code                       |    Document                  |
 +====================================================================+===============================+==============================+
-| Decision trees                                                     | `Python <dtcode_>`_           | `Tutorial <dtdoc_>`_         |
+| Decision Trees                                                     | `Python <dtcode_>`_           | `Tutorial <dtdoc_>`_         |
 +--------------------------------------------------------------------+-------------------------------+------------------------------+
-| K-Nearest Neighbor                                                 |  `Python <knncode_>`_         | `Tutorial <knndoc_>`_        |
+| K-Nearest Neighbors                                                | `Python <knncode_>`_          | `Tutorial <knndoc_>`_        |
 +--------------------------------------------------------------------+-------------------------------+------------------------------+
 | Naive Bayes                                                        | `Python <nbcode_>`_           |  `Tutorial <nbdoc_>`_        |
 +--------------------------------------------------------------------+-------------------------------+------------------------------+
@@ -141,44 +141,51 @@ Unsupervised learning
 .. _clusteringdoc: docs/source/content/unsupervised/clustering.rst
 .. _clusteringcode: code/unsupervised/Clustering
 
+.. _pcadoc: docs/source/content/unsupervised/pca.rst
+.. _pcacode: code/unsupervised/PCA
+
 +--------------------------------------------------------------------+-------------------------------+--------------------------------+
 | Title                                                              |    Code                       |    Document                    |
 +====================================================================+===============================+================================+
-| clustering                                                         | `Python <clusteringcode_>`_   | `Tutorial <clusteringdoc_>`_   |
+| Clustering                                                         | `Python <clusteringcode_>`_   | `Tutorial <clusteringdoc_>`_   |
 +--------------------------------------------------------------------+-------------------------------+--------------------------------+
-| Principal Components Analysis                                      |                               |                                |
+| Principal Components Analysis                                      | `Python <pcacode_>`_          | `Tutorial <pcadoc_>`_          |
 +--------------------------------------------------------------------+-------------------------------+--------------------------------+
 
-.. ------------------------------------------------------------
-.. Deep Learning
-.. ------------------------------------------------------------
-..
-.. .. _conganpaper: https://arxiv.org/abs/1411.1784
-.. .. _congancode: https://github.com/zhangqianhui/Conditional-GAN
-..
-.. .. _photorealpaper: https://arxiv.org/pdf/1609.04802.pdf
-.. .. _photorealcode: https://github.com/tensorlayer/srgan
-..
-.. .. _im2impaper: https://arxiv.org/abs/1611.07004
-.. .. _im2imcode: https://github.com/phillipi/pix2pix
-..
-.. .. _vismanpaper: https://arxiv.org/abs/1609.03552
-.. .. _vismancode: https://github.com/junyanz/iGAN
-..
-..
-..
-..
-.. +--------------------------------------------------------------------+-------------------------------+---------------------------+
-.. | Title                                                              |    Text                       |    Software               |
-.. +====================================================================+===============================+===========================+
-.. | Neural Networks Overview                                           |                               |                           |
-.. +--------------------------------------------------------------------+-------------------------------+---------------------------+
-.. | Convolutional Neural Networks                                      |                               |                           |
-.. +--------------------------------------------------------------------+-------------------------------+---------------------------+
-.. | Recurrent Neural Networks                                          |                               |                           |
-.. +--------------------------------------------------------------------+-------------------------------+---------------------------+
-.. | Autoencoders                                                       |                               |                           |
-.. +--------------------------------------------------------------------+-------------------------------+---------------------------+
+
+
+
+------------------------------------------------------------
+Deep Learning
+------------------------------------------------------------
+
+.. _conganpaper: https://arxiv.org/abs/1411.1784
+.. _congancode: https://github.com/zhangqianhui/Conditional-GAN
+
+.. _photorealpaper: https://arxiv.org/pdf/1609.04802.pdf
+.. _photorealcode: https://github.com/tensorlayer/srgan
+
+.. _im2impaper: https://arxiv.org/abs/1611.07004
+.. _im2imcode: https://github.com/phillipi/pix2pix
+
+.. _vismanpaper: https://arxiv.org/abs/1609.03552
+.. _vismancode: https://github.com/junyanz/iGAN
+
+
+.. _cnndoc: docs/source/content/deep_learning/cnn.rst
+
+
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Title                                                              |    Code                       |    Document               |
++====================================================================+===============================+===========================+
+| Neural Networks Overview                                           |                               |                           |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Convolutional Neural Networks                                      |                               | `Tutorial <cnndoc_>`_     |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Recurrent Neural Networks                                          |                               |                           |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
+| Autoencoders                                                       |                               |                           |
++--------------------------------------------------------------------+-------------------------------+---------------------------+
 
 
 
