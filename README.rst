@@ -1,4 +1,5 @@
 .. figure:: _img/teaser.gif
+  :target: https://machinelearningmindset.com/blog/
 
 ###################################################
 A Machine Learning Course with Python
