@@ -36,15 +36,13 @@ Welcome to Deep Learning NLP documentation!
   :caption: Unsupervised Learning
 
   content/unsupervised/clustering
+  content/unsupervised/pca
 
-..   :maxdepth: 3
-..   :caption: Supervised Learning
-..
-..    content/supervised/logistic_regression
-..    content/supervised/bayes
-..    content/supervised/decisiontrees
-..    content/supervised/knn
-..    content/supervised/linear_SVM
+.. toctree::
+  :maxdepth: 3
+  :caption: Deep Learning
+
+  content/deep_learning/cnn
 
 .. toctree::
    :maxdepth: 3
