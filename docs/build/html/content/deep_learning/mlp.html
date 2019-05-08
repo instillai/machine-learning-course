@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Multi-layer Perceptron &mdash; Machine-Learning-Course 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Convolutional Neural Networks" href="cnn.html" />
+    <link rel="prev" title="Principal Component Analysis" href="../unsupervised/pca.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Foreword</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/crossvalidation.html">Cross-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/linear-regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/overfitting.html">Overfitting and Underfitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/regularization.html">Regularization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Supervised Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/logistic_regression.html">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/bayes.html">Naive Bayes Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/decisiontrees.html">Decision Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/knn.html">k-Nearest Neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised/linear_SVM.html">Linear Support Vector Machines</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Unsupervised Learning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised/pca.html">Principal Component Analysis</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Deep Learning</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Multi-layer Perceptron</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-a-node">What is a node?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-defines-a-multilayer-perceptron">What defines a multilayer perceptron?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-backpropagation">What is backpropagation?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#further-resources">Further resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cnn.html">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoencoder.html">Autoencoders</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Document Credentials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/CODE_OF_CONDUCT.html">Contributor Covenant Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../credentials/LICENSE.html">LICENSE</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Machine-Learning-Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Multi-layer Perceptron</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com///blob/content/deep_learning/mlp.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="multi-layer-perceptron">
+<h1>Multi-layer Perceptron<a class="headerlink" href="#multi-layer-perceptron" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#overview" id="id1">Overview</a></li>
+<li><a class="reference internal" href="#motivation" id="id2">Motivation</a></li>
+<li><a class="reference internal" href="#what-is-a-node" id="id3">What is a node?</a></li>
+<li><a class="reference internal" href="#what-defines-a-multilayer-perceptron" id="id4">What defines a multilayer perceptron?</a></li>
+<li><a class="reference internal" href="#what-is-backpropagation" id="id5">What is backpropagation?</a></li>
+<li><a class="reference internal" href="#summary" id="id6">Summary</a></li>
+<li><a class="reference internal" href="#further-resources" id="id7">Further resources</a></li>
+<li><a class="reference internal" href="#references" id="id8">References</a></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>A multilayer perceptron (MLP) is a deep, artificial <strong>neural network</strong>.
+A <em>neural network</em> is comprised of layers of nodes which activate at various
+levels depending on the previous layer’s nodes.
+When thinking about neural networks, it may be helpful to isolate your thinking to a single node in the network.</p>
+<p>Multilayer perceptron refers to a neural network with at least three layers of nodes, an input layer, some
+number of intermediate layers, and an output layer.
+Each node in a given layer is connected to every node in the adjacent layers.
+The input layer is just that, it is the way the network takes in data.
+The intermediate layer(s) are the computational machine of the network, they
+actually transform the input to the output.
+The output layer is the way that results are obtained from the neural network.
+In a simple network where the responses are binary, there would likely be only one node in the output layer,
+which outputs a probability like in <a class="reference external" href="https://machine-learning-course.readthedocs.io/en/latest/content/supervised/logistic_regression.html">logistic regression</a>.</p>
+<p>For a visual look at a neural network in action, play with this <a class="reference external" href="https://playground.tensorflow.org/">website</a> where
+you can see a number recognition neural network.
+In this section, the ideas are focused on the “fully connected” layers, so try to think in terms of those.</p>
+<p>They require labeled sample data, so they carry out <strong>supervised learning</strong>.
+For each training sample, nodes activate according to stored weights of the previous layer.
+During training (and beyond), the weights will not be perfectly accurate, so they will need to change a little
+bit to meet the desired results.
+MLPs use a method called <em>backpropagation</em> to learn from training data, which we will explore briefly here.</p>
+</div>
+<div class="section" id="motivation">
+<h2><a class="toc-backref" href="#id2">Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Multilayer perceptron is the basic type of neural network, and should be well
+understood before moving on to more advanced models.
+By examining MLPs, we should be able to avoid some of the complications that come up in more
+advanced topics in deep learning, and establish a baseline of knowledge.</p>
+<p>This is not to undervalue the topic, as even simple networks can achieve great results.
+It was <a class="reference external" href="https://en.wikipedia.org/wiki/Universal_approximation_theorem">proven</a> that a network with a single hidden layer could approximate any continuous function.</p>
+</div>
+<div class="section" id="what-is-a-node">
+<h2><a class="toc-backref" href="#id3">What is a node?</a><a class="headerlink" href="#what-is-a-node" title="Permalink to this headline">¶</a></h2>
+<p>A node is a single unit in a neural network.
+Nodes <strong>activate</strong> at different levels depending on a weighted sum of the previous layer’s nodes.
+In practice, the actual activation is the result of a <strong>sigmoid function</strong>
+applied to this result, but we will skip over that detail here for simplicity.
+Thinking of the output in this way won’t lose any of the magic of neural networks, while avoiding some painful details.
+In MLPs, nodes activate based on <strong>all</strong> of the nodes in the previous layer.</p>
+<p>In this example, we let’s focus on the single-node layer, which is that way for example purposes.
+Each line represents the weights of the nodes in the previous layer.
+The sum of the weights of each connection multiplied by the activation of the
+connected node results in the activation of our node.
+The key here is the weights, since they determine the output of the node.
+Remember that nodes only take input from the previous layer, so the weights are
+the only differentiator of nodes in the same layer.</p>
+</div>
+<div class="section" id="what-defines-a-multilayer-perceptron">
+<h2><a class="toc-backref" href="#id4">What defines a multilayer perceptron?</a><a class="headerlink" href="#what-defines-a-multilayer-perceptron" title="Permalink to this headline">¶</a></h2>
+<p>A Multilayer Perceptron (MLP) is a type of <strong>feedforward</strong> neural network which is characterized
+by an input layer, some number of intermediate layers, and an output layer, which are <strong>fully connected</strong>.
+An MLP uses <strong>backpropagation</strong> for training.
+The term <strong>feedforward</strong> refers to the layered architecture in the network,
+specifically that there are no cycles in the network.
+The layer structure ensures no cycles exists, as layers are only allowed to have
+weights from the directly previous layer.
+The term <strong>fully connected</strong> refers to the fact that in MLP, all nodes in a given
+layer have a weight to all of the nodes in the previous layer.</p>
+</div>
+<div class="section" id="what-is-backpropagation">
+<h2><a class="toc-backref" href="#id5">What is backpropagation?</a><a class="headerlink" href="#what-is-backpropagation" title="Permalink to this headline">¶</a></h2>
+<p>When training a neural network, the expected output is a level of activation for each node in the output layer.
+From that information and the actual activation, we can find the <em>cost</em> at each node, and adjust the weights accordingly.
+The idea of backpropagation is to adjust the weights that determine each node’s activation based on the cost.</p>
+<p>To keep the idea here high-level, we will avoid the details on how the exact math works, and focus on the big picture.
+If you would like to see the math, check out this <a class="reference external" href="http://neuralnetworksanddeeplearning.com/chap2.html">article</a>.</p>
+<p>Take a look at this screenshot taken from the <a class="reference external" href="https://playground.tensorflow.org/">tensorflow</a> test site linked earlier.
+Here, we are training a neural network to classify the blue dots and the orange dots.
+The choices made for the nodes here are arbitrary, and we encourage you to mess around with them.</p>
+<div class="figure">
+<img alt="Tensorflow site 1" src="../../_images/MLP_0.PNG" />
+</div>
+<p>To talk about backpropagation, let’s consider what this network will do the first time step.
+The network will test some training data in the network, expecting to see full
+activation on the (hidden) correct output node and no activation on the wrong one.
+When the model is not right, it will look from the output backwards to find out how wrong it was.
+Then, it will change the weights accordingly, so weights that were way off will change more than those that were close.
+In these early steps, it will have a high <strong>learning rate</strong>, making the weights more volatile.
+After a few iterations, it will be much more stable as it should need smaller adjustments.
+With that in mind, let’s move forward one time step.</p>
+<div class="figure">
+<img alt="Tensorflow site 2" src="../../_images/MLP_1.PNG" />
+</div>
+<p>Now, the network has a vague idea of how to classify the data.
+It has a loose circle which will become more clear as we go on.
+Let’s jump forward a few more steps.</p>
+<div class="figure">
+<img alt="Tensorflow site 3" src="../../_images/MLP_2.PNG" />
+</div>
+<p>As you can see, the model has developed much better performance, classifying most of the points accurately.
+At this point, the network slows the <strong>learning rate</strong>, since it has gone through
+enough iterations to be somewhat successful.</p>
+</div>
+<div class="section" id="summary">
+<h2><a class="toc-backref" href="#id6">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we learned about the multilayer perceptron (MLP) class of neural networks, and
+a little bit about neural networks as a whole.
+We touched on what a <em>node</em> is, and what it knows about the things going on around it.
+We discussed how a network learns from training data, specifically using <em>backpropagation</em>.
+We also looked into what defines an MLP network, and how they differ from other neural networks.</p>
+</div>
+<div class="section" id="further-resources">
+<h2><a class="toc-backref" href="#id7">Further resources</a><a class="headerlink" href="#further-resources" title="Permalink to this headline">¶</a></h2>
+<p>If you wish to learn more about the topic of neural networks, we recommend this <a class="reference external" href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi">playlist</a> by 3Blue1Brown on YouTube.</p>
+<p>The playlist covers a more visual approach to neural networks, and can help you
+fill in some of the details on neural networks.</p>
+</div>
+<div class="section" id="references">
+<h2><a class="toc-backref" href="#id8">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://playground.tensorflow.org/">https://playground.tensorflow.org/</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Universal_approximation_theorem">https://en.wikipedia.org/wiki/Universal_approximation_theorem</a></li>
+<li><a class="reference external" href="https://www.techopedia.com/definition/20879/multilayer-perceptron-mlp">https://www.techopedia.com/definition/20879/multilayer-perceptron-mlp</a></li>
+<li><a class="reference external" href="http://neuralnetworksanddeeplearning.com/chap2.html">http://neuralnetworksanddeeplearning.com/chap2.html</a></li>
+<li><a class="reference external" href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi">https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi</a></li>
+<li><a class="reference external" href="http://cs231n.stanford.edu/">http://cs231n.stanford.edu/</a></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cnn.html" class="btn btn-neutral float-right" title="Convolutional Neural Networks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../unsupervised/pca.html" class="btn btn-neutral" title="Principal Component Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Amirsina Torfi
+      Last updated on True.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'en',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

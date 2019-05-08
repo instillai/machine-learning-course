@@ -42,6 +42,7 @@ Welcome to Deep Learning NLP documentation!
   :maxdepth: 3
   :caption: Deep Learning
   
+  content/deep_learning/mlp
   content/deep_learning/cnn
   content/deep_learning/autoencoder
 
