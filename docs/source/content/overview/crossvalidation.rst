@@ -1,6 +1,14 @@
 Cross-Validation
 ================
 
+.. contents::
+  :local:
+  :depth: 2
+
+
+Motivation
+----------
+
 It's easy to train a model against a particular dataset, but how does
 this model perform when introduced with new data? How do you know which
 machine learning model to use? Cross-validation answers these questions
@@ -225,10 +233,8 @@ how different values operate.
 .. _k-fold.py: https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/k-fold.py
 .. _leave-p-out.py: https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/leave-p-out.py
 
-
-************
 References
-************
+----------
 
 1. https://towardsdatascience.com/cross-validation-in-machine-learning-72924a69872f
 2. https://machinelearningmastery.com/k-fold-cross-validation/

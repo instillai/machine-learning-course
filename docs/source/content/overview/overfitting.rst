@@ -108,9 +108,9 @@ The modules in this section are among the most important in the whole repository
 since regardless of the implementation, machine learning always includes these fundamentals.
 
 
-************
+----------
 References
-************
+----------
 
 1. https://machinelearningmastery.com/overfitting-and-underfitting-with-machine-learning-algorithms/
 2. https://medium.com/greyatom/what-is-underfitting-and-overfitting-in-machine-learning-and-how-to-deal-with-it-6803a989c76
