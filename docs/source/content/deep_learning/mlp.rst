@@ -144,7 +144,7 @@ We discussed how a network learns from training data, specifically using *backpr
 We also looked into what defines an MLP network, and how they differ from other neural networks.
 
 *******
-Further resources
+Further Resources
 *******
 
 If you wish to learn more about the topic of neural networks, we recommend this playlist_ by 3Blue1Brown on YouTube.
