@@ -174,9 +174,8 @@ the data. You can change it here in the code:
 .. _linear_svm.py: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/supervised/Linear_SVM/linear_svm.py
 
 
-************
 References
-************
+----------
 
 1. https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/
 2. https://stackabuse.com/implementing-svm-and-kernel-svm-with-pythons-scikit-learn/
