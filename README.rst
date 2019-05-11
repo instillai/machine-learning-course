@@ -29,7 +29,7 @@ Table of Contents
 Introduction
 ========================
 
-The purpose of this project is to provide a comperehensive and yet simple course in Machine Learning using Python.
+The purpose of this project is to provide a comprehensive and yet simple course in Machine Learning using Python.
 
 
 ============
