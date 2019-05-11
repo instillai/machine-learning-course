@@ -168,9 +168,8 @@ Eventually the algorithm will classify all the data into 1 class, and there will
 .. _Support Vector Machines: https://machine-learning-course.readthedocs.io/en/latest/content/supervised/linear_SVM.html
 
 
-************
 References
-************
+----------
 
 1. https://medium.com/machine-learning-101/k-nearest-neighbors-classifier-1c1ff404d265
 2. https://www.analyticsvidhya.com/blog/2018/03/introduction-k-neighbours-algorithm-clustering/  
