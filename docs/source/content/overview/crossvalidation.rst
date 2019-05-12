@@ -229,9 +229,9 @@ train-test data split is created with the `split()` method:
 Note that you can change the P value at the top of the script to see
 how different values operate.
 
-.. _holdout.py: https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/holdout.py
-.. _k-fold.py: https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/k-fold.py
-.. _leave-p-out.py: https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/leave-p-out.py
+.. _holdout.py: https://github.com/machinelearningmindset/machine-learning-course/tree/master/code/overview/cross-validation/holdout.py
+.. _k-fold.py: https://github.com/machinelearningmindset/machine-learning-course/tree/master/code/overview/cross-validation/k-fold.py
+.. _leave-p-out.py: https://github.com/machinelearningmindset/machine-learning-course/tree/master/code/overview/cross-validation/leave-p-out.py
 
 References
 ----------
