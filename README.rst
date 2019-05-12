@@ -174,7 +174,7 @@ Deep Learning
 .. _aecode: code/deep_learning/autoencoder
 
 .. _rnndoc: code/deep_learning/rnn/rnn.ipynb
-.. _rnncode: code/deep_learning/rnn.py
+.. _rnncode: code/deep_learning/rnn/rnn.py
 
 
 +--------------------------------------------------------------------+-------------------------------+---------------------------+
