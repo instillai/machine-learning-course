@@ -6,27 +6,23 @@ Autoencoders
 Autoencoders and their implementations in TensorFlow
 ********************************************************
 
-In this post, you will learn the concept behind Autoencoders as well how
+In this post, you will learn the notion behind Autoencoders as well as how
 to implement an autoencoder in TensorFlow.
 
 ********************************************************
 Introduction
 ********************************************************
 
-Autoencoders are a type of neural networks which copy its input to its
-output. They usually consist of two main parts, namely Encoder and
-Decoder. The encoder map the input into a hidden layer space which we
-refer to as a code. The decoder then reconstructs the input from the
-code. There are different types of Autoencoders:
+Autoencoders are a kind of neural networks which imitate their inputs and produce the
+exact information at their outputs. They usually include two parts: Encoder and Decoder.
+The encoder transforms the input into a hidden space (hidden layer). The decoder then
+reconstructs the input information as the output. There are various types of autoencoders:
 
--   **Undercomplete Autoencoders:** An autoencoder whose code
-    dimension is less than the input dimension. Learning such an
-    autoencoder forces it to capture the most salient features.
-    However, using a big encoder and decoder in the lack of enough
-    training data allows the network to memorized the task and omits
-    learning useful features. In case of having linear decoder, it can
-    act as PCA. However, adding nonlinear activation functions to the
-    network makes it a nonlinear generalization of PCA.
+-   **Undercomplete Autoencoders:** In this type, the hidden dimension is smaller than the input dimension.
+    Training such autoencoder lead to capturing the most prominent features. However, using an overparameterized
+    architecture in case of a lack of sufficient training data create overfitting and bars learning valuable features.
+    A linear decoder can operate as PCA. However, the existence of non-linear functions create a more powerful
+    dimensionality reduction model.
 -   **Regularized Autoencoders:** Rather than limiting the size of
     autoencoder and the code dimension for the sake of feature
     learning, we can add a loss function to prevent it memorizing the
