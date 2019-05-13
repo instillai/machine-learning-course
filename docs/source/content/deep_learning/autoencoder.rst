@@ -25,39 +25,31 @@ reconstructs the input information as the output. There are various types of aut
     dimensionality reduction model.
 -   **Regularized Autoencoders:** Instead of limiting the dimension of an autoencoder and the hidden
     layer size for feature learning, a loss function will be added to prevent overfitting.
-     -   **Sparse Autoencoders:** An autoencoder which has a sparsity
-         penalty in the training loss in addition to the
-         reconstruction error. They usually being used for the
-         porpuse of other tasks such as classification. The loss is
-         not as straightforward as other regularizers, and we will
-         discuss it in another post later.
-     -   **Denoising Autoencoders (DAE):** The input of a DAE is a
-         corrupted copy of the real input which is supposed to be
-         reconstructed. Therefore, a DAE has to undo the corruption
-         (noise) as well as reconstruction.
-     -   **Contractive Autoencoders (CAE):** The main idea behind
-         these type of autoencoders is to learn a representation of
-         the data which is robust to small changes in the input.
--   **Variational Autoencoders:** They maximize the probability of the
-    training data instead of copying the input to the output and
-    therefore does not need regularization to capture useful
-    information.
+-   **Sparse Autoencoders:** Sparse autoencoders allow for representing the information bottleneck
+    without demanding a decrease in the size of the hidden layer. Instead, it operates based on a loss
+    function that penalizes the activations inside a layer.
+-   **Denoising Autoencoders (DAE):** We want an autoencoder to be sufficiently sensitive to regenerate
+    the original input but not strictly sensitive so the model can learn a generalizable encoding and decoding.
+    The approach is to insignificantly corrupt the input data with some noise with an uncorrupted data as the target output..
+-   **Contractive Autoencoders (CAE):** In this type of autoencoders, for small input variations,
+    the encoded features should also be very similar. Denoising autoencoders force the reconstruction
+    function to resist minor changes of the input, while contractive autoencoders enforce the encoder
+    to resist against the input perturbation.
+-   **Variational Autoencoders:** A variational autoencoder (VAE) presents a probabilistic fashion
+    for explaining an observation in hidden space. Therefore, instead of creating an encoder
+    which results in a value to represent each latent feature, the encoder produces a probability
+    distribution for each hidden feature.
 
-In this post, we are going to create a simple Undercomplete Autoencoder
-in TensorFlow to learn a low dimension representation (code) of the
-MNIST dataset.
+In this post, we are going to design an Undercomplete Autoencoder
+in TensorFlow to train a low dimension representation.
 
 ********************************************************
 Create an Undercomplete Autoencoder
 ********************************************************
 
-We are going to create an autoencoder with a 3-layer encoder and 3-layer
-decoder. Each layer of encoder downsamples its input along the spatial
-dimensions (width, height) by a factor of two using a stride 2.
-Consequently, the dimension of the code is 2(width) X 2(height) X
-8(depth) = 32 (for an image of 32X32). Similarly, each layer of the
-decoder upsamples its input by a factor of two (using transpose
-convolution with stride 2).
+We are working on building an autoencoder with a 3-layer encoder and 3-layer decoder. Each layer of encoder compresses its input along the spatial
+dimensions by a factor of two. Similarly, each segment of the
+decoder increases its input dimensionality by a factor of two.
 
 .. code-block:: python
 
