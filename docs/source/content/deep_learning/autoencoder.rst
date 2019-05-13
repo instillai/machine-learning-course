@@ -23,10 +23,8 @@ reconstructs the input information as the output. There are various types of aut
     architecture in case of a lack of sufficient training data create overfitting and bars learning valuable features.
     A linear decoder can operate as PCA. However, the existence of non-linear functions create a more powerful
     dimensionality reduction model.
--   **Regularized Autoencoders:** Rather than limiting the size of
-    autoencoder and the code dimension for the sake of feature
-    learning, we can add a loss function to prevent it memorizing the
-    task and the training data.
+-   **Regularized Autoencoders:** Instead of limiting the dimension of an autoencoder and the hidden
+    layer size for feature learning, a loss function will be added to prevent overfitting.
      -   **Sparse Autoencoders:** An autoencoder which has a sparsity
          penalty in the training loss in addition to the
          reconstruction error. They usually being used for the
