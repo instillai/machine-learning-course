@@ -29,8 +29,8 @@ Here is the standard logistic function, note that the output is always between
    :alt: Logistic
 Ref: https://en.wikipedia.org/wiki/Logistic_regression
 
-When to use it
------------------
+When to Use
+-----------
 
 Logistic regression is great for situations where you need to classify between two categories.
 Some good examples are accepted and rejected applicants and victory or defeat in a competition.
@@ -71,7 +71,7 @@ This formula gives the probability that the input belongs to Class B, which
 is the goal of the logistic regression model.
 
 
-Multinomial logistic regression
+Multinomial Logistic Regression
 -----------------
 
 Until now, we've been discussing the situation where there are exactly
@@ -144,9 +144,8 @@ As always, keep in mind the basics mentioned in the overview section of this
 repository, as there is no fool-proof method for machine learning.
 
 
-************
 References
-************
+----------
 
 1. https://towardsdatascience.com/logistic-regression-b0af09cdb8ad
 2. https://medium.com/datadriveninvestor/machine-learning-model-logistic-regression-5fa4ffde5773

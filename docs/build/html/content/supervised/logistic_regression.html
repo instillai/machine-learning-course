@@ -93,15 +93,13 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Logistic Regression</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#when-to-use-it">When to use it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#when-to-use">When to Use</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-does-it-work">How does it work?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#multinomial-logistic-regression">Multinomial logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multinomial-logistic-regression">Multinomial Logistic Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#code">Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="bayes.html">Naive Bayes Classification</a></li>
@@ -196,15 +194,13 @@
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><a class="reference internal" href="#introduction" id="id1">Introduction</a></li>
-<li><a class="reference internal" href="#when-to-use-it" id="id2">When to use it</a></li>
+<li><a class="reference internal" href="#when-to-use" id="id2">When to Use</a></li>
 <li><a class="reference internal" href="#how-does-it-work" id="id3">How does it work?</a></li>
-<li><a class="reference internal" href="#multinomial-logistic-regression" id="id4">Multinomial logistic regression</a></li>
+<li><a class="reference internal" href="#multinomial-logistic-regression" id="id4">Multinomial Logistic Regression</a></li>
 <li><a class="reference internal" href="#code" id="id5">Code</a></li>
 <li><a class="reference internal" href="#motivation" id="id6">Motivation</a></li>
-<li><a class="reference internal" href="#conclusion" id="id7">Conclusion</a><ul>
+<li><a class="reference internal" href="#conclusion" id="id7">Conclusion</a></li>
 <li><a class="reference internal" href="#references" id="id8">References</a></li>
-</ul>
-</li>
 </ul>
 </div>
 <div class="section" id="introduction">
@@ -228,8 +224,8 @@ Here is the standard logistic function, note that the output is always between
 </div>
 <p>Ref: <a class="reference external" href="https://en.wikipedia.org/wiki/Logistic_regression">https://en.wikipedia.org/wiki/Logistic_regression</a></p>
 </div>
-<div class="section" id="when-to-use-it">
-<h2><a class="toc-backref" href="#id2">When to use it</a><a class="headerlink" href="#when-to-use-it" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="when-to-use">
+<h2><a class="toc-backref" href="#id2">When to Use</a><a class="headerlink" href="#when-to-use" title="Permalink to this headline">¶</a></h2>
 <p>Logistic regression is great for situations where you need to classify between two categories.
 Some good examples are accepted and rejected applicants and victory or defeat in a competition.
 Here is an example table of data that would be a good candidate for logistic regression.</p>
@@ -287,7 +283,7 @@ This formula gives the probability that the input belongs to Class B, which
 is the goal of the logistic regression model.</p>
 </div>
 <div class="section" id="multinomial-logistic-regression">
-<h2><a class="toc-backref" href="#id4">Multinomial logistic regression</a><a class="headerlink" href="#multinomial-logistic-regression" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Multinomial Logistic Regression</a><a class="headerlink" href="#multinomial-logistic-regression" title="Permalink to this headline">¶</a></h2>
 <p>Until now, we’ve been discussing the situation where there are exactly
 two distinct outputs, for example a pass or a fail.
 But, what if there were more than two possible outputs?
@@ -341,8 +337,9 @@ The basic idea is to supply the training data as pairs of input and
 classification, and the model will be built automatically.
 As always, keep in mind the basics mentioned in the overview section of this
 repository, as there is no fool-proof method for machine learning.</p>
+</div>
 <div class="section" id="references">
-<h3><a class="toc-backref" href="#id8">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<h2><a class="toc-backref" href="#id8">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><a class="reference external" href="https://towardsdatascience.com/logistic-regression-b0af09cdb8ad">https://towardsdatascience.com/logistic-regression-b0af09cdb8ad</a></li>
 <li><a class="reference external" href="https://medium.com/datadriveninvestor/machine-learning-model-logistic-regression-5fa4ffde5773">https://medium.com/datadriveninvestor/machine-learning-model-logistic-regression-5fa4ffde5773</a></li>
@@ -355,7 +352,6 @@ repository, as there is no fool-proof method for machine learning.</p>
 <li><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html</a></li>
 <li><a class="reference external" href="https://towardsdatascience.com/5-reasons-logistic-regression-should-be-the-first-thing-you-learn-when-become-a-data-scientist-fcaae46605c4">https://towardsdatascience.com/5-reasons-logistic-regression-should-be-the-first-thing-you-learn-when-become-a-data-scientist-fcaae46605c4</a></li>
 </ol>
-</div>
 </div>
 </div>
 

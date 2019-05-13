@@ -65,7 +65,7 @@ Thinking of the output in this way won't lose any of the magic of neural network
 In MLPs, nodes activate based on **all** of the nodes in the previous layer.
 
 
-In this example, we let's focus on the single-node layer, which is that way for example purposes.
+In this example, let's focus on the single-node layer, which is that way for example purposes.
 Each line represents the weights of the nodes in the previous layer.
 The sum of the weights of each connection multiplied by the activation of the
 connected node results in the activation of our node.
@@ -144,7 +144,7 @@ We discussed how a network learns from training data, specifically using *backpr
 We also looked into what defines an MLP network, and how they differ from other neural networks.
 
 *******
-Further resources
+Further Resources
 *******
 
 If you wish to learn more about the topic of neural networks, we recommend this playlist_ by 3Blue1Brown on YouTube.

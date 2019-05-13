@@ -188,67 +188,46 @@
 <h1>Autoencoders<a class="headerlink" href="#autoencoders" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="autoencoders-and-their-implementations-in-tensorflow">
 <h2>Autoencoders and their implementations in TensorFlow<a class="headerlink" href="#autoencoders-and-their-implementations-in-tensorflow" title="Permalink to this headline">¶</a></h2>
-<p>In this post, you will learn the concept behind Autoencoders as well how
+<p>In this post, you will learn the notion behind Autoencoders as well as how
 to implement an autoencoder in TensorFlow.</p>
 </div>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>Autoencoders are a type of neural networks which copy its input to its
-output. They usually consist of two main parts, namely Encoder and
-Decoder. The encoder map the input into a hidden layer space which we
-refer to as a code. The decoder then reconstructs the input from the
-code. There are different types of Autoencoders:</p>
-<ul>
-<li><p class="first"><strong>Undercomplete Autoencoders:</strong> An autoencoder whose code
-dimension is less than the input dimension. Learning such an
-autoencoder forces it to capture the most salient features.
-However, using a big encoder and decoder in the lack of enough
-training data allows the network to memorized the task and omits
-learning useful features. In case of having linear decoder, it can
-act as PCA. However, adding nonlinear activation functions to the
-network makes it a nonlinear generalization of PCA.</p>
-</li>
-<li><p class="first"><strong>Regularized Autoencoders:</strong> Rather than limiting the size of
-autoencoder and the code dimension for the sake of feature
-learning, we can add a loss function to prevent it memorizing the
-task and the training data.</p>
-<blockquote>
-<div><ul class="simple">
-<li><strong>Sparse Autoencoders:</strong> An autoencoder which has a sparsity
-penalty in the training loss in addition to the
-reconstruction error. They usually being used for the
-porpuse of other tasks such as classification. The loss is
-not as straightforward as other regularizers, and we will
-discuss it in another post later.</li>
-<li><strong>Denoising Autoencoders (DAE):</strong> The input of a DAE is a
-corrupted copy of the real input which is supposed to be
-reconstructed. Therefore, a DAE has to undo the corruption
-(noise) as well as reconstruction.</li>
-<li><strong>Contractive Autoencoders (CAE):</strong> The main idea behind
-these type of autoencoders is to learn a representation of
-the data which is robust to small changes in the input.</li>
+<p>Autoencoders are a kind of neural networks which imitate their inputs and produce the
+exact information at their outputs. They usually include two parts: Encoder and Decoder.
+The encoder transforms the input into a hidden space (hidden layer). The decoder then
+reconstructs the input information as the output. There are various types of autoencoders:</p>
+<ul class="simple">
+<li><strong>Undercomplete Autoencoders:</strong> In this type, the hidden dimension is smaller than the input dimension.
+Training such autoencoder lead to capturing the most prominent features. However, using an overparameterized
+architecture in case of a lack of sufficient training data create overfitting and bars learning valuable features.
+A linear decoder can operate as PCA. However, the existence of non-linear functions create a more powerful
+dimensionality reduction model.</li>
+<li><strong>Regularized Autoencoders:</strong> Instead of limiting the dimension of an autoencoder and the hidden
+layer size for feature learning, a loss function will be added to prevent overfitting.</li>
+<li><strong>Sparse Autoencoders:</strong> Sparse autoencoders allow for representing the information bottleneck
+without demanding a decrease in the size of the hidden layer. Instead, it operates based on a loss
+function that penalizes the activations inside a layer.</li>
+<li><strong>Denoising Autoencoders (DAE):</strong> We want an autoencoder to be sufficiently sensitive to regenerate
+the original input but not strictly sensitive so the model can learn a generalizable encoding and decoding.
+The approach is to insignificantly corrupt the input data with some noise with an uncorrupted data as the target output..</li>
+<li><strong>Contractive Autoencoders (CAE):</strong> In this type of autoencoders, for small input variations,
+the encoded features should also be very similar. Denoising autoencoders force the reconstruction
+function to resist minor changes of the input, while contractive autoencoders enforce the encoder
+to resist against the input perturbation.</li>
+<li><strong>Variational Autoencoders:</strong> A variational autoencoder (VAE) presents a probabilistic fashion
+for explaining an observation in hidden space. Therefore, instead of creating an encoder
+which results in a value to represent each latent feature, the encoder produces a probability
+distribution for each hidden feature.</li>
 </ul>
-</div></blockquote>
-</li>
-<li><p class="first"><strong>Variational Autoencoders:</strong> They maximize the probability of the
-training data instead of copying the input to the output and
-therefore does not need regularization to capture useful
-information.</p>
-</li>
-</ul>
-<p>In this post, we are going to create a simple Undercomplete Autoencoder
-in TensorFlow to learn a low dimension representation (code) of the
-MNIST dataset.</p>
+<p>In this post, we are going to design an Undercomplete Autoencoder
+in TensorFlow to train a low dimension representation.</p>
 </div>
 <div class="section" id="create-an-undercomplete-autoencoder">
 <h2>Create an Undercomplete Autoencoder<a class="headerlink" href="#create-an-undercomplete-autoencoder" title="Permalink to this headline">¶</a></h2>
-<p>We are going to create an autoencoder with a 3-layer encoder and 3-layer
-decoder. Each layer of encoder downsamples its input along the spatial
-dimensions (width, height) by a factor of two using a stride 2.
-Consequently, the dimension of the code is 2(width) X 2(height) X
-8(depth) = 32 (for an image of 32X32). Similarly, each layer of the
-decoder upsamples its input by a factor of two (using transpose
-convolution with stride 2).</p>
+<p>We are working on building an autoencoder with a 3-layer encoder and 3-layer decoder. Each layer of encoder compresses its input along the spatial
+dimensions by a factor of two. Similarly, each segment of the
+decoder increases its input dimensionality by a factor of two.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow.contrib.layers</span> <span class="kn">as</span> <span class="nn">lays</span>
 
 <span class="k">def</span> <span class="nf">autoencoder</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>

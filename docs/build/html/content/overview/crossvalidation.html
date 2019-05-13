@@ -85,15 +85,14 @@
 <p class="caption"><span class="caption-text">Core Concepts</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Cross-Validation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#holdout-method">Holdout Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#k-fold-cross-validation">K-Fold Cross Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#leave-p-out-leave-one-out-cross-validation">Leave-P-Out / Leave-One-Out Cross Validation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#code-examples">Code Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-examples">Code Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="linear-regression.html">Linear Regression</a></li>
@@ -192,6 +191,20 @@
             
   <div class="section" id="cross-validation">
 <h1>Cross-Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#motivation" id="id5">Motivation</a></li>
+<li><a class="reference internal" href="#holdout-method" id="id6">Holdout Method</a></li>
+<li><a class="reference internal" href="#k-fold-cross-validation" id="id7">K-Fold Cross Validation</a></li>
+<li><a class="reference internal" href="#leave-p-out-leave-one-out-cross-validation" id="id8">Leave-P-Out / Leave-One-Out Cross Validation</a></li>
+<li><a class="reference internal" href="#conclusion" id="id9">Conclusion</a></li>
+<li><a class="reference internal" href="#id2" id="id10">Motivation</a></li>
+<li><a class="reference internal" href="#code-examples" id="id11">Code Examples</a></li>
+<li><a class="reference internal" href="#references" id="id12">References</a></li>
+</ul>
+</div>
+<div class="section" id="motivation">
+<h2><a class="toc-backref" href="#id5">Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
 <p>It’s easy to train a model against a particular dataset, but how does
 this model perform when introduced with new data? How do you know which
 machine learning model to use? Cross-validation answers these questions
@@ -201,8 +214,9 @@ validation, the process of analyzing how a model does on its own
 training data, by evaluating how a model does on <em>new</em> data. Several
 different methods of cross-validation are discussed in the following
 sections:</p>
+</div>
 <div class="section" id="holdout-method">
-<h2>Holdout Method<a class="headerlink" href="#holdout-method" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">Holdout Method</a><a class="headerlink" href="#holdout-method" title="Permalink to this headline">¶</a></h2>
 <p>The holdout cross-validation method involves removing a certain portion
 of the training data and using it as test data. The model is first
 trained against the training set, then asked to predict output from the
@@ -221,7 +235,7 @@ This lack of training or bias can lead to
 <a class="reference external" href="https://machine-learning-course.readthedocs.io/en/latest/content/overview/overfitting.html">Underfitting/Overfitting</a> of our model.</p>
 </div>
 <div class="section" id="k-fold-cross-validation">
-<h2>K-Fold Cross Validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">K-Fold Cross Validation</a><a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">¶</a></h2>
 <p>K-Fold Cross Validation helps remove these biases from your model by
 repeating the holdout method on k subsets of your dataset. With K-Fold
 Cross Validation, a dataset is broken up into several unique folds of
@@ -238,7 +252,7 @@ use your complete dataset for both training and testing. It’s especially
 useful when evaluating a model using small or limited datasets.</p>
 </div>
 <div class="section" id="leave-p-out-leave-one-out-cross-validation">
-<span id="id1"></span><h2>Leave-P-Out / Leave-One-Out Cross Validation<a class="headerlink" href="#leave-p-out-leave-one-out-cross-validation" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2><a class="toc-backref" href="#id8">Leave-P-Out / Leave-One-Out Cross Validation</a><a class="headerlink" href="#leave-p-out-leave-one-out-cross-validation" title="Permalink to this headline">¶</a></h2>
 <p>Leave-P-Out Cross Validation (LPOCV) tests a model by using every
 possible combination of P test data points on a model. As a simple
 example, if you have 4 data points and use 2 test points, the model will
@@ -253,7 +267,7 @@ be trained and tested as follows:</p>
 </div>
 <p>Where “T” is a test point, and “-” is a training point. Below is another
 visualization of LPOCV:</p>
-<div class="figure" id="id2">
+<div class="figure" id="id3">
 <a class="reference internal image-reference" href="../../_images/LPOCV.png"><img alt="kfold method" src="../../_images/LPOCV.png" style="width: 421.5px; height: 165.75px;" /></a>
 <p class="caption"><span class="caption-text">Ref: <a class="reference external" href="http://www.ebc.cat/2017/01/31/cross-validation-strategies/">http://www.ebc.cat/2017/01/31/cross-validation-strategies/</a></span></p>
 </div>
@@ -269,7 +283,7 @@ used cross-validation method. It is just a subset of LPOCV, with P being
 there are data points. LOOCV can also be seen as K-Fold Cross
 Validation, where the number of folds is equal to the number of data
 points.</p>
-<div class="figure" id="id3">
+<div class="figure" id="id4">
 <a class="reference internal image-reference" href="../../_images/LOOCV.png"><img alt="kfold method" src="../../_images/LOOCV.png" style="width: 421.5px; height: 165.75px;" /></a>
 <p class="caption"><span class="caption-text">Ref: <a class="reference external" href="http://www.ebc.cat/2017/01/31/cross-validation-strategies/">http://www.ebc.cat/2017/01/31/cross-validation-strategies/</a></span></p>
 </div>
@@ -278,7 +292,7 @@ the full dataset. They are particularly useful when you’re working with
 a small dataset, but incur performance tradeoffs.</p>
 </div>
 <div class="section" id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">Conclusion</a><a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
 <p>Cross-validation is a way to validate your model against new data. The
 most effective forms of cross-validation involve repeatedly testing
 a model against a dataset until every point or combination of points
@@ -291,8 +305,8 @@ cross-validation:</p>
 <li>Leave-P-Out Method: Using every combination of a number of points (P) as test data</li>
 </ul>
 </div>
-<div class="section" id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id10">Motivation</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>There are many different types of machine learning models, including
 Linear/Logistic Regression, K-Nearest-Neighbors, and Support Vector
 Machines - but how do we know which type of model is the best for our
@@ -302,11 +316,11 @@ Individuals and companies should make sure to cross-validate any models
 they put into use.</p>
 </div>
 <div class="section" id="code-examples">
-<h2>Code Examples<a class="headerlink" href="#code-examples" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">Code Examples</a><a class="headerlink" href="#code-examples" title="Permalink to this headline">¶</a></h2>
 <p>The provided code shows how to split a set of data with the three
 discussed methods of cross-validation using <a class="reference external" href="https://scikit-learn.org">Scikit-Learn</a>, a Python machine
 learning library.</p>
-<p><a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/holdout.py">holdout.py</a> splits a set of sample diabetes data using the Holdout Method.
+<p><a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/tree/master/code/overview/cross-validation/holdout.py">holdout.py</a> splits a set of sample diabetes data using the Holdout Method.
 In scikit-learn, this is done using a function called <code class="xref py py-obj docutils literal notranslate"><span class="pre">train_test_split()</span></code>
 which randomly splits a set of data into two portions:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TRAIN_SPLIT</span> <span class="o">=</span> <span class="mf">0.7</span>
@@ -324,7 +338,7 @@ Output from this file shows the number of training and test points used
 for the split. It may be beneficial to see the actual data points - if you
 would like to see these, uncomment the last two print statements in the script.</p>
 <hr class="docutils" />
-<p><a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/k-fold.py">k-fold.py</a> splits a set of data using the K-Fold Method. This is done by
+<p><a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/tree/master/code/overview/cross-validation/k-fold.py">k-fold.py</a> splits a set of data using the K-Fold Method. This is done by
 creating a KFold object initialized with the number of splits to use.
 Scikit-learn makes it easy to split data by calling KFold’s <code class="xref py py-obj docutils literal notranslate"><span class="pre">split()</span></code> method:</p>
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NUM_SPLITS</span> <span class="o">=</span> <span class="mi">3</span>
@@ -346,7 +360,7 @@ current fold:</p>
 </pre></div>
 </div>
 <hr class="docutils" />
-<p><a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/tree/mastercode/overview/cross-validation/leave-p-out.py">leave-p-out.py</a> splits a set of data using both the Leave-P-Out and
+<p><a class="reference external" href="https://github.com/machinelearningmindset/machine-learning-course/tree/master/code/overview/cross-validation/leave-p-out.py">leave-p-out.py</a> splits a set of data using both the Leave-P-Out and
 Leave-One-Out Methods. This is done by creating LeavePOut/LeaveOneOut objects,
 the LPO initialized with the number of splits to use. Similar to KFold, the
 train-test data split is created with the <code class="xref py py-obj docutils literal notranslate"><span class="pre">split()</span></code> method:</p>
@@ -362,15 +376,15 @@ train-test data split is created with the <code class="xref py py-obj docutils l
 </div>
 <p>Note that you can change the P value at the top of the script to see
 how different values operate.</p>
+</div>
 <div class="section" id="references">
-<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<h2><a class="toc-backref" href="#id12">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><a class="reference external" href="https://towardsdatascience.com/cross-validation-in-machine-learning-72924a69872f">https://towardsdatascience.com/cross-validation-in-machine-learning-72924a69872f</a></li>
 <li><a class="reference external" href="https://machinelearningmastery.com/k-fold-cross-validation/">https://machinelearningmastery.com/k-fold-cross-validation/</a></li>
 <li><a class="reference external" href="https://www.quora.com/What-is-cross-validation-in-machine-learning">https://www.quora.com/What-is-cross-validation-in-machine-learning</a></li>
 <li><a class="reference external" href="http://www.ebc.cat/2017/01/31/cross-validation-strategies/">http://www.ebc.cat/2017/01/31/cross-validation-strategies/</a></li>
 </ol>
-</div>
 </div>
 </div>
 
