@@ -47,7 +47,7 @@ tutorials using many different well-known Machine Learning frameworks such as ``
 
 * What is the definition of Machine Learning?
 * When it started and what is the trending evolution?
-* What are the Machine Learning categories and sucategories?
+* What are the Machine Learning categories and subcategories?
 * What are the mostly used Machine Learning algorithms and how to implement them?
 
 
