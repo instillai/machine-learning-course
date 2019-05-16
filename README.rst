@@ -1,7 +1,7 @@
 .. figure:: _img/teaser.gif
   :target: https://machinelearningmindset.com/blog/'
   
-.. figure:: _img/subscribe.png
+.. figure:: _img/subscribe.gif
   :target: https://machinelearningmindset.com/subscription/
 
 ###################################################
