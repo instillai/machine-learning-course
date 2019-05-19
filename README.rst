@@ -18,7 +18,7 @@ A Machine Learning Course with Python
       :target: https://github.com/machinelearningmindset/machine-learning-course/graphs/contributors
 .. image:: https://img.shields.io/twitter/follow/machinemindset.svg?label=Follow&style=social
       :target: https://twitter.com/machinemindset
-.. |Donate| image:: https://img.shields.io/badge/Donate-PayPal-green.svg
+.. image:: https://img.shields.io/badge/Donate-PayPal-green.svg
    :target: amirsina.torfi@gmail.com
 
 
