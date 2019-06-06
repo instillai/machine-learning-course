@@ -36,7 +36,11 @@ Introduction
 
 The purpose of this project is to provide a comprehensive and yet simple course in Machine Learning using Python.
 You can download the full book with the following link:
-[![Inline docs](http://inch-ci.org/github/dwyl/hapi-auth-jwt2.svg?branch=master)](https://machinelearningmindset.com/wp-content/uploads/2019/06/machine-learning-course.pdf)
+
+|Inline docs|
+
+.. |Inline docs| image:: http://inch-ci.org/github/dwyl/hapi-auth-jwt2.svg?branch=master
+   :target: https://machinelearningmindset.com/wp-content/uploads/2019/06/machine-learning-course.pdf
 
 ============
 Motivation
