@@ -16,10 +16,11 @@ A Machine Learning Course with Python
       :target: https://www.python.org/
 .. image:: https://img.shields.io/github/contributors/machinelearningmindset/machine-learning-course.svg
       :target: https://github.com/machinelearningmindset/machine-learning-course/graphs/contributors
-.. image:: https://img.shields.io/twitter/follow/machinemindset.svg?label=Follow&style=social
-      :target: https://twitter.com/machinemindset
 .. image:: https://img.shields.io/badge/book-pdf-blue.svg
    :target: https://machinelearningmindset.com/wp-content/uploads/2019/06/machine-learning-course.pdf
+.. image:: https://img.shields.io/twitter/follow/machinemindset.svg?label=Follow&style=social
+      :target: https://twitter.com/machinemindset
+
 
 
 ##################
