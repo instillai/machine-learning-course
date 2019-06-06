@@ -39,7 +39,7 @@ You can download the full book with the following link:
 
 |Inline docs|
 
-.. |Inline docs| image:: http://inch-ci.org/github/dwyl/hapi-auth-jwt2.svg?branch=master
+.. |Inline docs| image:: https://img.shields.io/badge/book-pdf-blue.svg
    :target: https://machinelearningmindset.com/wp-content/uploads/2019/06/machine-learning-course.pdf
 
 ============
