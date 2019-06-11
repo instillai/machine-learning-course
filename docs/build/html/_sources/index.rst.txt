@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Deep Learning NLP documentation!
+Welcome to Python Machine Learning course!
 =====================================================
 
 .. toctree::
