@@ -32,8 +32,8 @@ source_suffix = ['.rst', '.md']
 # }
 
 master_doc = 'index'
-project = u'Deep-Learning-World'
-copyright = u'2018, Amirsina Torfi'
+project = u'Python-Machine-Learning'
+copyright = u'2019, Amirsina Torfi'
 author = u'Amirsina Torfi Brendan Sherman James E Hopkins Zac Smith Eric Wynn'
 version = '1.0'
 release = '1.0'
@@ -45,11 +45,11 @@ pygments_style = 'sphinx'
 # }
 htmlhelp_basename = 'ReadTheDocsdoc'
 latex_documents = [
-    (master_doc, 'Deep-Learning-World.tex', u'Deep-Learning-World Documentation',
-     u'Amirsina Torfi', 'manual'),
+    (master_doc, 'Python-Machine-Learning.tex', u'Python-Machine-Learning Documentation',
+     u'Amirsina Torfi Brendan Sherman James E Hopkins Zac Smith Eric Wynn', 'manual'),
 ]
 man_pages = [
-    (master_doc, 'Deep-Learning-World', u'Deep-Learning-World Documentation',
+    (master_doc, 'Python-Machine-Learning', u'Python-Machine-Learning Documentation',
      [author], 1)
 ]
 exclude_patterns = [
