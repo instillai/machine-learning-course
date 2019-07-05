@@ -34,7 +34,7 @@ source_suffix = ['.rst', '.md']
 master_doc = 'index'
 project = u'Machine-Learning-Course'
 copyright = u'2019, Amirsina Torfi'
-author = u'Amirsina Torfi \n Brendan Sherman James E Hopkins Zac Smith Eric Wynn'
+author = u'Amirsina Torfi \n Brendan Sherman, James E Hopkins, Zac Smith, Eric Wynn'
 version = '1.0'
 release = '1.0'
 exclude_patterns = ['_build']
@@ -46,7 +46,7 @@ pygments_style = 'sphinx'
 htmlhelp_basename = 'ReadTheDocsdoc'
 latex_documents = [
     (master_doc, 'Machine-Learning-Course.tex', u'Machine-Learning-Course Documentation',
-     u'Amirsina Torfi /n Brendan Sherman James E Hopkins Zac Smith Eric Wynn', 'manual'),
+     u'Amirsina Torfi \n Brendan Sherman, James E Hopkins, Zac Smith, Eric Wynn', 'manual'),
 ]
 
 latex_logo = 'logo/pythonml.pdf'
