@@ -8,6 +8,12 @@ Welcome to Python Machine Learning course!
 
 .. toctree::
    :maxdepth: 3
+   :caption: Publisher
+
+   authorship/author
+
+.. toctree::
+   :maxdepth: 3
    :caption: Foreword
 
    intro/intro
