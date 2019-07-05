@@ -46,8 +46,12 @@ pygments_style = 'sphinx'
 htmlhelp_basename = 'ReadTheDocsdoc'
 latex_documents = [
     (master_doc, 'Machine-Learning-Course.tex', u'Machine-Learning-Course Documentation',
-     u'Amirsina Torfi \n Brendan Sherman James E Hopkins Zac Smith Eric Wynn', 'manual'),
+     u'Amirsina Torfi /n Brendan Sherman James E Hopkins Zac Smith Eric Wynn', 'manual'),
 ]
+
+latex_logo = 'logo/pythonml.pdf'
+latex_additional_files = ['flaskstyle.sty', 'logo/pythonml.pdf']
+
 man_pages = [
     (master_doc, 'Machine-Learning-Course', u'Machine-Learning-Course Documentation',
      [author], 1)
@@ -66,7 +70,7 @@ gettext_compact = False
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-html_logo = 'logo/logo.png'
+html_logo = 'logo/pythonml.png'
 html_theme_options = {
     'logo_only': True,
     'display_version': False,
