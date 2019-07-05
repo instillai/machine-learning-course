@@ -34,7 +34,7 @@ source_suffix = ['.rst', '.md']
 master_doc = 'index'
 project = u'Machine-Learning-Course'
 copyright = u'2019, Amirsina Torfi'
-author = u'Amirsina Torfi \n Brendan Sherman, James E Hopkins, Zac Smith, Eric Wynn'
+author = u'Amirsina Torfi'
 version = '1.0'
 release = '1.0'
 exclude_patterns = ['_build']
@@ -49,7 +49,7 @@ latex_documents = [
      u'Amirsina Torfi', 'manual'),
 ]
 
-latex_logo = 'logo/pythonml.pdf'
+latex_logo = 'logo/pythonml.png'
 latex_additional_files = ['flaskstyle.sty', 'logo/pythonml.pdf']
 
 man_pages = [
