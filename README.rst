@@ -230,6 +230,18 @@ We are looking forward to your kind feedback. Please help us to improve this ope
 For contribution, please create a pull request and we will investigate it promptly. Once again, we appreciate
 your kind feedback and support.
 
+.. raw:: html
+
+   <div align="center">
+
+.. raw:: html
+
+   <img align="center" hight="400" width="800" src="https://github.com/machinelearningmindset/machine-learning-course/blob/master/_img/pythonml.png">
+
+.. raw:: html
+
+   </div>
+
 ========================
 Developers
 ========================
