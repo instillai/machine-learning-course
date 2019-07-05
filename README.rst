@@ -1,6 +1,6 @@
 .. figure:: _img/teaser.gif
   :target: https://machinelearningmindset.com/blog/
-  
+
 .. figure:: _img/subscribe.gif
   :target: https://machinelearningmindset.com/subscription/
 
@@ -22,9 +22,9 @@ A Machine Learning Course with Python
    :target: https://machine-learning-course.readthedocs.io/en/latest/
 .. image:: https://img.shields.io/twitter/follow/machinemindset.svg?label=Follow&style=social
       :target: https://twitter.com/machinemindset
-   
-   
-   
+
+
+
 
 
 
@@ -239,7 +239,7 @@ Download Free Python Machine Learning Book
    <div align="center">
 
 .. raw:: html
-   
+
  <a href="http://www.machinelearningmindset.com/python-machine-learning-page/" target="_blank">
   <img width="950" height="450" align="center" src="https://github.com/machinelearningmindset/machine-learning-course/blob/master/_img/pythonml.png"/>
  </a>
@@ -263,5 +263,8 @@ Developers
 <https://www.linkedin.com/in/amirsinatorfi/>`_ ]
 
 **Developers**: Brendan Sherman\*, James E Hopkins\* [`Linkedin <https://www.linkedin.com/in/jhopk>`_], Zac Smith [`Linkedin <https://www.linkedin.com/in/zac-smith-a7bb60185/i>`_]
+
+**NOTE**: This project has been developed as a capstone project offered by [`CS 4624 Multimedia/ Hypertext course at Virginia Tech <https://vtechworks.lib.vt.edu/handle/10919/90655>`_] and
+Supervised and supported by [`Machine Learning Mindset <https://machinelearningmindset.com/>`_].
 
 \*: equally contributed
