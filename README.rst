@@ -236,7 +236,7 @@ your kind feedback and support.
 
 .. raw:: html
 
-   <img align="center" hight="400" width="800" src="https://github.com/machinelearningmindset/machine-learning-course/blob/master/_img/pythonml.png">
+   <img align="center" hight="400" width="800" src="https://github.com/machinelearningmindset/machine-learning-course/blob/master/_img/pythonml.png" target="www.google.com">
 
 .. raw:: html
 
