@@ -46,7 +46,7 @@ pygments_style = 'sphinx'
 htmlhelp_basename = 'ReadTheDocsdoc'
 latex_documents = [
     (master_doc, 'Machine-Learning-Course.tex', u'Machine-Learning-Course Documentation',
-     u'Amirsina Torfi \n Brendan Sherman, James E Hopkins, Zac Smith, Eric Wynn', 'manual'),
+     u'Amirsina Torfi', 'manual'),
 ]
 
 latex_logo = 'logo/pythonml.pdf'
