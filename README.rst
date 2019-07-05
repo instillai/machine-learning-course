@@ -238,7 +238,7 @@ your kind feedback and support.
    
  <a href="http://www.google.com" target="_blank">
   <img width="220" height="250" border="0" align="center"  src="https://github.com/machinelearningmindset/machine-learning-course/blob/master/_img/pythonml.png"/>
-</a>
+ </a>
 
 .. raw:: html
 
