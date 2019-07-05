@@ -50,7 +50,7 @@ latex_documents = [
 ]
 
 latex_logo = 'logo/pythonml.png'
-latex_additional_files = ['flaskstyle.sty', 'logo/pythonml.pdf']
+# latex_additional_files = ['flaskstyle.sty', 'logo/pythonml.pdf']
 
 man_pages = [
     (master_doc, 'Machine-Learning-Course', u'Machine-Learning-Course Documentation',
