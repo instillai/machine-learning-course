@@ -230,23 +230,23 @@ We are looking forward to your kind feedback. Please help us to improve this ope
 For contribution, please create a pull request and we will investigate it promptly. Once again, we appreciate
 your kind feedback and support.
 
-================================================
-Download Free Python Machine Learning Book
-================================================
+.. ================================================
+.. Download Free Python Machine Learning Book
+.. ================================================
 
-.. raw:: html
+.. .. raw:: html
 
-   <div align="center">
+..    <div align="center">
 
-.. raw:: html
+.. .. raw:: html
 
- <a href="http://www.machinelearningmindset.com/python-machine-learning-page/" target="_blank">
-  <img width="950" height="450" align="center" src="https://github.com/machinelearningmindset/machine-learning-course/blob/master/_img/pythonml.png"/>
- </a>
+..  <a href="http://www.machinelearningmindset.com/python-machine-learning-page/" target="_blank">
+..   <img width="950" height="450" align="center" src="https://github.com/machinelearningmindset/machine-learning-.. course/blob/master/_img/pythonml.png"/>
+..  </a>
 
-.. raw:: html
+.. .. raw:: html
 
-   </div>
+ ..   </div>
 
 ========================
 Developers
