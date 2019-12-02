@@ -240,13 +240,13 @@ your kind feedback and support.
 
 .. raw:: html
 
-<a href="https://www.machinelearningmindset.com/deep-learning-roadmap/" target="_blank">
-  <img width="950" height="450" align="center" src="https://github.com/machinelearningmindset/machine-learning-course/blob/master/_img/deeplearningcoversmall.png"/>
-</a>
+  <a href="https://www.machinelearningmindset.com/deep-learning-roadmap/" target="_blank">
+    <img width="950" height="450" align="center" src="https://github.com/machinelearningmindset/machine-learning-   course/blob/master/_img/deeplearningcoversmall.png"/>
+  </a>
 
 .. raw:: html
 
- ..   </div>
+   </div>
 
 ========================
 Developers
