@@ -1,8 +1,20 @@
-.. figure:: _img/teaser.gif
-  :target: https://machinelearningmindset.com/blog/
+================================================
+Download Free Deep Learning Resource Guide
+================================================
 
-.. figure:: _img/subscribe.gif
-  :target: https://machinelearningmindset.com/subscription/
+.. raw:: html
+
+   <div align="center">
+
+.. raw:: html
+
+  <a href="https://www.machinelearningmindset.com/deep-learning-roadmap/" target="_blank">
+    <img width="900" height="400" align="center" src="_img/deeplearningresource.png"/>
+  </a>
+
+.. raw:: html
+
+   </div>
 
 ###################################################
 A Machine Learning Course with Python
@@ -230,23 +242,6 @@ We are looking forward to your kind feedback. Please help us to improve this ope
 For contribution, please create a pull request and we will investigate it promptly. Once again, we appreciate
 your kind feedback and support.
 
-.. ================================================
-.. Download Free Python Machine Learning Book
-.. ================================================
-
-.. raw:: html
-
-   <div align="center">
-
-.. raw:: html
-
-  <a href="https://www.machinelearningmindset.com/deep-learning-roadmap/" target="_blank">
-    <img width="400" height="450" align="center" src="_img/deeplearningcoversmall.png"/>
-  </a>
-
-.. raw:: html
-
-   </div>
 
 ========================
 Developers
