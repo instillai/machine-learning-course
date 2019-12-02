@@ -43,7 +43,7 @@ Download Free Deep Learning Resource Guide
 .. raw:: html
 
   <a href="https://www.machinelearningmindset.com/deep-learning-roadmap/" target="_blank">
-    <img width="900" height="400" align="center" src="_img/deeplearningresource.png"/>
+    <img width="800" height="400" align="center" src="_img/deeplearningresource.png"/>
   </a>
 
 .. raw:: html
