@@ -1,20 +1,4 @@
-================================================
-Download Free Deep Learning Resource Guide
-================================================
 
-.. raw:: html
-
-   <div align="center">
-
-.. raw:: html
-
-  <a href="https://www.machinelearningmindset.com/deep-learning-roadmap/" target="_blank">
-    <img width="900" height="400" align="center" src="_img/deeplearningresource.png"/>
-  </a>
-
-.. raw:: html
-
-   </div>
 
 ###################################################
 A Machine Learning Course with Python
@@ -46,6 +30,25 @@ Table of Contents
 .. contents::
   :local:
   :depth: 4
+
+
+================================================
+Download Free Deep Learning Resource Guide
+================================================
+
+.. raw:: html
+
+   <div align="center">
+
+.. raw:: html
+
+  <a href="https://www.machinelearningmindset.com/deep-learning-roadmap/" target="_blank">
+    <img width="900" height="400" align="center" src="_img/deeplearningresource.png"/>
+  </a>
+
+.. raw:: html
+
+   </div>
 
 ========================
 Introduction
