@@ -266,3 +266,31 @@ Developers
 Supervised and supported by [`Machine Learning Mindset <https://machinelearningmindset.com/>`_].
 
 \*: equally contributed
+
+======================
+Citation
+======================
+
+If you found this course useful, please kindly consider citing as below:
+
+.. code:: shell
+
+    @software{amirsina_torfi_2019_3585763,
+      author       = {Amirsina Torfi and
+                      Brendan Sherman and
+                      Jay Hopkins and
+                      Eric Wynn and
+                      hokie45 and
+                      Frederik De Bleser and
+                      李明岳 and
+                      Samuel Husso and
+                      Alain},
+      title        = {{machinelearningmindset/machine-learning-course: 
+                       Machine Learning with Python}},
+      month        = dec,
+      year         = 2019,
+      publisher    = {Zenodo},
+      version      = {1.0},
+      doi          = {10.5281/zenodo.3585763},
+      url          = {https://doi.org/10.5281/zenodo.3585763}
+    }
