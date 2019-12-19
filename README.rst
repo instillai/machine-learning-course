@@ -271,7 +271,7 @@ Supervised and supported by [`Machine Learning Mindset <https://machinelearningm
 Citation
 ======================
 
-If you found this course useful, please kindly consider citing as below:
+If you found this course useful, please kindly consider citing it as below:
 
 .. code:: shell
 
