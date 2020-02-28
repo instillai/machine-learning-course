@@ -98,7 +98,7 @@ Machine Learning Basics
 
 .. figure:: _img/intro.png
 .. _lrtutorial: docs/source/content/overview/linear-regression.rst
-.. _lrcode: code/overview/linear_regression
+.. _lrcode: https://github.com/machinelearningmindset/machine-learning-course/blob/master/code/overview/linear_regression/linearRegressionOneVariable.ipynb
 
 .. _overtutorial: docs/source/content/overview/overfitting.rst
 .. _overcode: code/overview/overfitting
